@@ -101,7 +101,7 @@ dependencies {
   compile("org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion")
 
   //testCompile("org.jetbrains.kotlin:kotlin-test:$kotlinVersion")
-  testCompile("org.jetbrains.kotlin:kotlin-junit-test:$kotlinVersion")
+  testCompile("org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion")
 
   testCompile("org.springframework.boot:spring-boot-starter-test")
   testCompile("io.projectreactor:reactor-test")
