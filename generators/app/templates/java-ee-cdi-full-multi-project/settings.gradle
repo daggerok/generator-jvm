@@ -1,0 +1,8 @@
+rootProject.name = "<%= projectDirectory %>"
+include "ejb-data"
+include "ejb-services"
+include "servlet"
+include "jsp"
+include "rest"
+include "web"
+include "ear"

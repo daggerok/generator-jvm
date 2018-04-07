@@ -1,0 +1,13 @@
+dependencies {
+  compileOnly("com.h2database:h2:1.4.196")
+}
+
+// archiveName = "${baseName}-${version}-client.${extension}"
+task ejbClientJar(type: Jar) {
+  classifier = "client"
+  from sourceSets.main.output
+  include "**/api/*.*"
+  include "**/api/**/*.*"
+}
+
+jar.dependsOn(ejbClientJar)

@@ -1,0 +1,47 @@
+plugins {
+  id "ear"
+  id "com.avast.gradle.docker-compose" version "0.6.13"
+}
+
+repositories { mavenCentral() }
+
+dependencies {
+
+  [":ejb-data", ":ejb-services"]
+      .collect { project it }
+      .each { deploy it }
+
+  [":servlet", ":jsp", ":rest", ":web"]
+      .collect { project(path: it, configuration: "archives") }
+      .each { deploy it }
+}
+
+ear {
+  deploymentDescriptor {
+
+    version = "7"
+    description = "$rootProject.name Gradle EAR"
+
+    [":servlet", ":jsp", ":rest", ":web"]
+        .collect { project it }
+        .each { webModule("${it.name}-${it.version}.war", "/$it.name") }
+  }
+}
+
+def profile = project.hasProperty("profile") ? project.getProperty("profile") : "gradle"
+
+dockerCompose {
+  useComposeFiles = [project.file("docker-compose-${profile}.yaml")]
+  // captureContainersOutput = true
+  captureContainersOutput = false
+  stopContainers = true
+  removeContainers = true
+  removeImages = "Local"
+  removeVolumes = true
+  removeOrphans = true
+  forceRecreate = true
+  waitForTcpPorts = false
+  projectName = project.name
+}
+
+composeUp.dependsOn assemble

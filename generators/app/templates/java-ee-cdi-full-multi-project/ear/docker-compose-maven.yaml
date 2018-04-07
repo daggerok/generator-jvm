@@ -1,0 +1,17 @@
+version: "2.1"
+
+services:
+
+  maven-<%= projectDirectory %>-app:
+    build:
+      context: .
+      dockerfile: .mvn/Dockerfile
+    networks: [backing-services]
+    ports:
+    - "5005:5005"
+    - "8080:8080"
+    #mem_limit: 209715200 # container limit: 200Mb (200 * 1024 * 1024)
+
+networks:
+  backing-services:
+    driver: bridge

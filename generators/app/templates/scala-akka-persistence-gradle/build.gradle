@@ -1,0 +1,104 @@
+buildscript {
+  ext {
+    javaVersion = "1.8"
+    akkaVersion = "2.5.9"
+    slf4jVersion = "1.7.25"
+    lombokVersion = "1.16.18"
+    scalaCompatVersion = "2.12"
+    scalaVersion = "${scalaCompatVersion}.4"
+    scalatestVersion = "${scalaCompatVersion}:3.0.4"
+    specs2Version = "4.0.2"
+  }
+}
+
+plugins {
+  id "idea"
+  id "java"
+  id "scala"
+  id "maven"
+  id "eclipse"
+  id "application"
+  id "com.avast.gradle.docker-compose" version "0.6.13"
+}
+
+group = "daggerok"
+version = "0.0.1"
+sourceCompatibility = targetCompatibility = "$javaVersion"
+
+mainClassName = "daggerok.App"
+
+defaultTasks "clean", "installDist"
+
+repositories {
+  mavenLocal()
+  mavenCentral()
+}
+
+compileJava.dependsOn(processResources)
+
+dependencies {
+
+  compile "com.typesafe.akka:akka-persistence_$scalaCompatVersion:$akkaVersion",
+    "org.fusesource.leveldbjni:leveldbjni-all:1.8",
+    "org.iq80.leveldb:leveldb:0.7"
+
+  // compile "org.slf4j:slf4j-jdk14:$slf4jVersion"
+  compile "org.slf4j:log4j-over-slf4j:$slf4jVersion",
+    "org.slf4j:jul-to-slf4j:$slf4jVersion",
+    "ch.qos.logback:logback-classic:1.2.3",
+    "org.slf4j:slf4j-api:$slf4jVersion"
+
+  annotationProcessor "org.projectlombok:lombok:$lombokVersion"
+  testAnnotationProcessor "org.projectlombok:lombok:$lombokVersion"
+  //compileOnly "org.projectlombok:lombok:$lombokVersion"
+  //testCompileOnly "org.projectlombok:lombok:$lombokVersion"
+
+  testCompile "junit:junit:4.12"
+
+  compile "org.scala-lang:scala-library:$scalaVersion"
+
+  testCompile "org.specs2:specs2-junit_$scalaCompatVersion:$specs2Version",
+    "org.scalactic:scalactic_$scalatestVersion",
+    "org.scalatest:scalatest_$scalatestVersion"
+}
+
+dockerCompose {
+  useComposeFiles = [project.file("docker-compose.yaml")]
+//  captureContainersOutput = true
+  captureContainersOutput = false
+  stopContainers = true
+  removeContainers = true
+  removeImages = "Local"
+  removeVolumes = true
+  removeOrphans = true
+  forceRecreate = true
+  waitForTcpPorts = false
+  projectName = project.name
+}
+
+composeUp.dependsOn installDist
+
+task wrapper(type: Wrapper) {
+  gradleVersion = "4.6"
+  distributionType = "ALL"
+}
+
+test {
+  systemProperties "property": "value"
+}
+
+clean.doFirst {
+  delete "$projectDir/$out"
+}
+
+idea {
+  module {
+    downloadSources = true
+  }
+}
+
+eclipse {
+  classpath {
+    downloadSources = true
+  }
+}

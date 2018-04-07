@@ -1,0 +1,22 @@
+language: node_js
+node_js:
+- lts/*
+- v9
+- v8
+- v6
+
+install: true
+
+script:
+- export root=$(pwd)
+
+- mkdir /tmp/yo
+- cd /tmp/yo
+- npm i -g add yo generator-jvm
+- echo old-version | yo jvm
+
+- cd ${root}/
+- npm i
+- npm link
+- cd /tmp/yo
+- echo new-version | yo jvm

@@ -1,0 +1,11 @@
+plugins {
+  id "war"
+}
+
+// war { archiveName = "${baseName}.${extension}" }
+
+dependencies {
+  compileOnly(project(":ejb-services"))
+}
+
+jar.enabled = false

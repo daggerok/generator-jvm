@@ -1,0 +1,104 @@
+buildscript {
+  ext {
+    javaVersion = "1.8"
+    kotlinVersion = "1.2.31"
+    springCloudVersion = "Finchley.M9"
+    springBootVersion = "2.0.1.RELEASE"
+    springCloudFunctionVersion = "1.0.0.M3"
+  }
+}
+
+plugins {
+  id "idea"
+  id "java"
+  id "maven"
+  id "eclipse"
+  id "org.jetbrains.kotlin.jvm" version "1.2.31"
+  id "org.springframework.boot" version "2.0.1.RELEASE"
+  id "com.avast.gradle.docker-compose" version "0.6.13"
+  id "org.jetbrains.kotlin.plugin.spring" version "1.2.31"
+  id "io.spring.dependency-management" version "1.0.5.RELEASE"
+}
+
+group = "daggerok"
+version = "0.0.1"
+sourceCompatibility = targetCompatibility = "$javaVersion"
+
+compileKotlin {
+  incremental = true
+  kotlinOptions {
+    freeCompilerArgs = ["-Xjsr305=strict"]
+    jvmTarget = "$javaVersion"
+  }
+}
+
+compileTestKotlin {
+  incremental = true
+  kotlinOptions {
+    freeCompilerArgs = ["-Xjsr305=strict"]
+    jvmTarget = "$javaVersion"
+  }
+}
+
+defaultTasks "clean", "build"
+
+repositories {
+  mavenLocal()
+  mavenCentral()
+}
+
+dependencies {
+
+  compile("org.springframework.cloud:spring-cloud-function-web:$springCloudFunctionVersion")
+  compile("org.springframework.boot:spring-boot-starter-actuator")
+  compile("com.fasterxml.jackson.module:jackson-module-kotlin:2.9.5")
+  compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion")
+  //compile("org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion")
+  //annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+}
+
+dependencyManagement {
+  imports {
+    mavenBom "org.springframework.boot:spring-boot-dependencies:$springBootVersion"
+    mavenBom "org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion"
+  }
+}
+
+bootJar {
+  launchScript()
+}
+
+def profile = project.hasProperty("profile") ? project.getProperty("profile") : "gradle"
+
+dockerCompose {
+  useComposeFiles = [project.file("docker-compose-${profile}.yaml")]
+  // captureContainersOutput = true
+  captureContainersOutput = false
+  stopContainers = true
+  removeContainers = true
+  removeImages = "Local"
+  removeVolumes = true
+  removeOrphans = true
+  forceRecreate = true
+  waitForTcpPorts = false
+  projectName = project.name
+}
+
+composeUp.dependsOn assemble
+
+task wrapper(type: Wrapper) {
+  gradleVersion = "4.6"
+  distributionType = "ALL"
+}
+
+idea {
+  module {
+    downloadSources = true
+  }
+}
+
+eclipse {
+  classpath {
+    downloadSources = true
+  }
+}

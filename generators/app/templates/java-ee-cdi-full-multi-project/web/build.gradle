@@ -1,0 +1,7 @@
+plugins {
+  id "war"
+}
+
+// war { archiveName = "${baseName}.${extension}" }
+
+jar.enabled = false

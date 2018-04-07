@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>daggerok</groupId>
+    <artifactId><%= projectDirectory %></artifactId>
+    <version>0.0.1</version>
+  </parent>
+
+  <artifactId>ear</artifactId>
+  <packaging>ear</packaging>
+
+  <dependencies>
+    <dependency>
+      <groupId>daggerok</groupId>
+      <artifactId>ejb-data</artifactId>
+      <version>0.0.1</version>
+      <type>ejb</type>
+    </dependency>
+
+    <dependency>
+      <groupId>daggerok</groupId>
+      <artifactId>ejb-services</artifactId>
+      <version>0.0.1</version>
+      <type>ejb</type>
+    </dependency>
+
+    <dependency>
+      <groupId>daggerok</groupId>
+      <artifactId>servlet</artifactId>
+      <version>0.0.1</version>
+      <type>war</type>
+    </dependency>
+
+    <dependency>
+      <groupId>daggerok</groupId>
+      <artifactId>jsp</artifactId>
+      <version>0.0.1</version>
+      <type>war</type>
+    </dependency>
+
+    <dependency>
+      <groupId>daggerok</groupId>
+      <artifactId>rest</artifactId>
+      <version>0.0.1</version>
+      <type>war</type>
+    </dependency>
+
+    <dependency>
+      <groupId>daggerok</groupId>
+      <artifactId>web</artifactId>
+      <version>0.0.1</version>
+      <type>war</type>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-ear-plugin</artifactId>
+        <version>2.10.1</version>
+        <configuration>
+          <version>7</version>
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>com.dkanejs.maven.plugins</groupId>
+        <artifactId>docker-compose-maven-plugin</artifactId>
+        <version>1.0.1</version>
+        <executions>
+          <execution>
+            <id>up</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>up</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>down</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>down</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <composeFile>${project.basedir}/docker-compose-maven.yaml</composeFile>
+          <detachedMode>true</detachedMode>
+          <removeVolumes>true</removeVolumes>
+          <detail>true</detail>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>

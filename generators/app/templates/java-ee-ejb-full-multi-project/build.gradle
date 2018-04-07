@@ -1,0 +1,63 @@
+buildscript {
+  ext {
+    slf4jVersion = "1.7.25"
+  }
+}
+
+plugins {
+  id "idea"
+  id "eclipse"
+}
+
+allprojects {
+
+  apply plugin: "base"
+  apply plugin: "maven"
+
+  group = "daggerok"
+  version = "0.0.1"
+
+  defaultTasks "clean", "build"
+
+  task wrapper(type: Wrapper) {
+    gradleVersion = "4.6"
+    distributionType = "ALL"
+  }
+}
+
+subprojects { p ->
+
+  apply plugin: "java"
+
+  sourceCompatibility = targetCompatibility = "1.8"
+
+  repositories {
+    mavenLocal()
+    mavenCentral()
+  }
+
+  compileJava.dependsOn(processResources)
+
+  dependencies {
+    compileOnly("javax:javaee-api:8.0")
+    compile("javax.json:javax.json-api:1.0")
+    compile("org.glassfish:javax.json:1.0.4")
+    compile("io.vavr:vavr:0.9.2")
+    annotationProcessor("org.projectlombok:lombok:1.16.20")
+    //testAnnotationProcessor("org.projectlombok:lombok:1.16.20")
+    compile("org.slf4j:slf4j-api:$slf4jVersion")
+    compile("org.slf4j:slf4j-jdk14:$slf4jVersion")
+  }
+}
+
+idea {
+  module {
+    downloadSources = true
+  }
+}
+
+eclipse {
+  classpath {
+    downloadSources = true
+  }
+}

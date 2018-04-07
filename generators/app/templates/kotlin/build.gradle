@@ -1,0 +1,113 @@
+buildscript {
+  ext {
+    javaVersion = "1.8"
+    slf4jVersion = "1.7.25"
+    kotlinVersion = "1.2.31"
+  }
+}
+
+plugins {
+  id "idea"
+  id "java"
+  id "eclipse"
+  id "application"
+  id "maven-publish"
+  id "org.jetbrains.kotlin.jvm" version "1.2.31"
+  id "org.jetbrains.kotlin.plugin.noarg" version "1.2.31"
+  id "org.jetbrains.kotlin.plugin.allopen" version "1.2.31"
+  id "com.avast.gradle.docker-compose" version "0.6.13"
+  id "com.github.johnrengelman.shadow" version "2.0.2"
+}
+
+compileKotlin {
+  incremental = true
+  kotlinOptions {
+    freeCompilerArgs = ["-Xjsr305=strict"]
+    jvmTarget = "$javaVersion"
+  }
+}
+
+compileTestKotlin {
+  incremental = true
+  kotlinOptions {
+    freeCompilerArgs = ["-Xjsr305=strict"]
+    jvmTarget = "$javaVersion"
+  }
+}
+
+group = "daggerok"
+version = "0.0.1"
+sourceCompatibility = targetCompatibility = "$javaVersion"
+
+mainClassName = "daggerok.AppKt"
+shadowJar.mustRunAfter jar
+
+defaultTasks "clean", "build", "installDist", "distZip", "publish"
+
+repositories {
+  mavenLocal()
+  mavenCentral()
+}
+
+dependencies {
+
+  // compile("org.slf4j:slf4j-jdk14:$slf4jVersion")
+  compile("org.slf4j:slf4j-api:$slf4jVersion")
+  compile("org.slf4j:jul-to-slf4j:$slf4jVersion")
+  compile("org.slf4j:log4j-over-slf4j:$slf4jVersion")
+  compile("ch.qos.logback:logback-classic:1.2.3")
+
+  // Kotlin
+  compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion")
+  compile("org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion")
+  //testCompile("org.jetbrains.kotlin:kotlin-test:$kotlinVersion")
+  //compile("com.fasterxml.jackson.module:jackson-module-kotlin:2.9.5")
+}
+
+def profile = project.hasProperty("profile") ? project.getProperty("profile") : "gradle"
+
+dockerCompose {
+  useComposeFiles = [project.file("docker-compose-${profile}.yaml")]
+  // captureContainersOutput = true
+  captureContainersOutput = false
+  stopContainers = true
+  removeContainers = true
+  removeImages = "Local"
+  removeVolumes = true
+  removeOrphans = true
+  forceRecreate = true
+  waitForTcpPorts = false
+  projectName = project.name
+}
+
+composeUp.dependsOn assemble
+
+publishing {
+  publications {
+    shadow(MavenPublication) { publication ->
+      project.shadow.component(publication)
+    }
+  }
+  repositories {
+    maven {
+      url "$buildDir/maven-publish"
+    }
+  }
+}
+
+task wrapper(type: Wrapper) {
+  gradleVersion = "4.6"
+  distributionType = "ALL"
+}
+
+idea {
+  module {
+    downloadSources = true
+  }
+}
+
+eclipse {
+  classpath {
+    downloadSources = true
+  }
+}

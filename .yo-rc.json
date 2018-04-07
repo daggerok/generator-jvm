@@ -1,0 +1,9 @@
+{
+  "generator-node": {
+    "promptValues": {
+      "authorName": "Maksim Kostromin",
+      "authorEmail": "daggerok@gmail.com",
+      "authorUrl": "https://github.com/daggerok"
+    }
+  }
+}

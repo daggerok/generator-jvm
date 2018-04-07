@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:composite="http://java.sun.com/jsf/composite"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+<h:head>
+  <title>Hello, World!</title>
+</h:head>
+
+<h:body>
+  <h:form>
+    <h:outputLabel for="name" value="Enter your name" required="true" />
+    <h:inputText id="name" value="#{indexBean.name}" />
+    <h:message for="name" />
+    <br />
+    <h:commandButton value="Say hello" action="#{indexBean.createMessage}">
+      <f:ajax execute="@form" render="@form" />
+    </h:commandButton>
+    <br />
+    #{indexBean.message}
+  </h:form>
+
+  <!--
+  <h:commandButton value="Btm label" type="submit" />
+  <h:commandLink action="#{indexBean.message}">Do Something</h:commandLink>
+  <h:inputHidden value="hidden data" />
+  <h:inputSecret value="invalid" maxlength="60" />
+  <h:inputText value="this is an 'input[text]'" />
+  <h:inputTextarea value="this is an input[textaread]" rows="2" cols="100" />
+  <h:outputLabel value="this is a 'lable'" />
+  <h:link value="this is an 'a' producing HTTP GET on click" />
+  <h:outputText value="a texxt" />
+  <h:outputFormat value="Hello, {0}! I said: {1}">
+    <f:param value="#{indexBean.name}" />
+    <f:param value="#{indexBean.message}" />
+  </h:outputFormat>
+  <h:button />
+  <h:outputLink value="https://google.com">a element pointing to Google</h:outputLink>
+  -->
+
+</h:body>
+</html>

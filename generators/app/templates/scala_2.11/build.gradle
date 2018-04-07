@@ -1,0 +1,97 @@
+buildscript {
+  ext {
+    javaVersion = "1.8"
+    slf4jVersion = "1.7.25"
+    lombokVersion = "1.16.20"
+    scalaCompatVersion = "2.11"
+    scalaVersion = "${scalaCompatVersion}.8"
+    scalatestVersion = "${scalaCompatVersion}:3.0.4"
+  }
+}
+
+plugins {
+  id "idea"
+  id "java"
+  id "scala"
+  id "maven"
+  id "eclipse"
+  id "application"
+  id "com.github.johnrengelman.shadow" version "2.0.2"
+  id "com.avast.gradle.docker-compose" version "0.6.13"
+}
+
+group = "daggerok"
+version = "0.0.1"
+sourceCompatibility = targetCompatibility = "$javaVersion"
+
+mainClassName = "daggerok.App"
+shadowJar.mustRunAfter jar
+
+defaultTasks "clean", "build"
+
+repositories {
+  mavenLocal()
+  mavenCentral()
+}
+
+compileJava.dependsOn(processResources)
+
+dependencies {
+
+  compile "org.slf4j:slf4j-api:$slf4jVersion"
+  // compile "org.slf4j:slf4j-jdk14:$slf4jVersion"
+  compile "org.slf4j:jul-to-slf4j:$slf4jVersion"
+  compile "org.slf4j:log4j-over-slf4j:$slf4jVersion"
+  compile "ch.qos.logback:logback-classic:1.2.3"
+  annotationProcessor "org.projectlombok:lombok:$lombokVersion"
+  testAnnotationProcessor "org.projectlombok:lombok:$lombokVersion"
+  //compileOnly "org.projectlombok:lombok:$lombokVersion"
+  //testCompileOnly "org.projectlombok:lombok:$lombokVersion"
+
+  testCompile "junit:junit:4.12"
+
+  compile "org.scala-lang:scala-library:$scalaVersion"
+
+  testCompile "org.scalactic:scalactic_$scalatestVersion"
+  testCompile "org.scalatest:scalatest_$scalatestVersion"
+  testCompile "org.specs2:specs2-junit_${scalaCompatVersion}:3.7"
+}
+
+def profile = project.hasProperty("profile") ? project.getProperty("profile") : "gradle"
+
+dockerCompose {
+  useComposeFiles = [project.file("docker-compose-${profile}.yaml")]
+//  captureContainersOutput = true
+  captureContainersOutput = false
+  stopContainers = true
+  removeContainers = true
+  removeImages = "Local"
+  removeVolumes = true
+  removeOrphans = true
+  forceRecreate = true
+  waitForTcpPorts = false
+  projectName = project.name
+}
+
+composeUp.dependsOn assemble
+
+task wrapper(type: Wrapper) {
+  gradleVersion = "4.6"
+  distributionType = "ALL"
+}
+
+test {
+  systemProperties "property": "value"
+}
+
+idea {
+  module {
+    downloadSources = true
+  }
+}
+
+eclipse {
+  classpath {
+    downloadSources = true
+  }
+}
