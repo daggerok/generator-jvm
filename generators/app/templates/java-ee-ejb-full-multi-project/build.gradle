@@ -43,8 +43,8 @@ subprojects { p ->
     compile("javax.json:javax.json-api:1.0")
     compile("org.glassfish:javax.json:1.0.4")
     compile("io.vavr:vavr:0.9.2")
-    annotationProcessor("org.projectlombok:lombok:1.16.20")
-    //testAnnotationProcessor("org.projectlombok:lombok:1.16.20")
+    compileOnly("org.projectlombok:lombok:1.16.20")
+    //testCompileOnly("org.projectlombok:lombok:1.16.20")
     compile("org.slf4j:slf4j-api:$slf4jVersion")
     compile("org.slf4j:slf4j-jdk14:$slf4jVersion")
   }

@@ -68,7 +68,6 @@ dependencies {
   compile("org.springframework.boot:spring-boot-starter-actuator")
   //runtime("org.springframework.boot:spring-boot-devtools")
   //annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
-  //testAnnotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 
   //// JPA (+embedded)
   //runtime("com.h2database:h2")
@@ -90,10 +89,8 @@ dependencies {
 
   // In java we trust...
   //compile("io.vavr:vavr:$vavrVersion")
-  //annotationProcessor("org.projectlombok:lombok")
-  //testAnnotationProcessor("org.projectlombok:lombok")
-  ////compileOnly("org.projectlombok:lombok")
-  ////testCompileOnly("org.projectlombok:lombok")
+  //compileOnly("org.projectlombok:lombok")
+  //testCompileOnly("org.projectlombok:lombok")
 
   // Kotlin
   compile("com.fasterxml.jackson.module:jackson-module-kotlin:2.9.5")

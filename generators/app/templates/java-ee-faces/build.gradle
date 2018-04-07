@@ -54,10 +54,8 @@ dependencies {
   //compile("org.jboss.weld.servlet:weld-servlet:2.4.7.Final")
   providedCompile("javax:javaee-web-api:$javaeeVersion")
 
-  annotationProcessor("org.projectlombok:lombok:$lombokVersion")
-  testAnnotationProcessor("org.projectlombok:lombok:$lombokVersion")
-  //compileOnly("org.projectlombok:lombok:$lombokVersion")
-  //testCompileOnly("org.projectlombok:lombok:$lombokVersion")
+  compileOnly("org.projectlombok:lombok:$lombokVersion")
+  testCompileOnly("org.projectlombok:lombok:$lombokVersion")
   compile("org.slf4j:slf4j-api:$slf4jVersion")
   compile("org.slf4j:slf4j-jdk14:$slf4jVersion")
 

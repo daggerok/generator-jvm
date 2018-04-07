@@ -48,10 +48,8 @@ dependencies {
     "ch.qos.logback:logback-classic:1.2.3",
     "org.slf4j:slf4j-api:$slf4jVersion"
 
-  annotationProcessor "org.projectlombok:lombok:$lombokVersion"
-  testAnnotationProcessor "org.projectlombok:lombok:$lombokVersion"
-  //compileOnly "org.projectlombok:lombok:$lombokVersion"
-  //testCompileOnly "org.projectlombok:lombok:$lombokVersion"
+  compileOnly "org.projectlombok:lombok:$lombokVersion"
+  testCompileOnly "org.projectlombok:lombok:$lombokVersion"
 
   testCompile "junit:junit:4.12"
 
