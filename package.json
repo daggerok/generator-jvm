@@ -1,6 +1,6 @@
 {
   "name": "generator-jvm",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Helps you quick and easy generate JVM-based (java, kotlin, scala) projects with gradle and maven build systems, docker and docker-compose for rapid development",
   "homepage": "https://github.com/daggerok/generator-jvm",
   "author": {
@@ -42,7 +42,7 @@
   "license": "MIT",
   "dependencies": {
     "chalk": "2.3.2",
-    "yeoman-generator": "2.0.3",
+    "yeoman-generator": "2.0.4",
     "yosay": "2.0.2"
   },
   "jest": {
