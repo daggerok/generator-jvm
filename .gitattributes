@@ -1,1 +1,7 @@
+# gitattributes
+# git config --global core.autocrlf false
 * text=auto
+*.cmd text eol=crlf
+*.bat text eol=crlf
+*.bash text eol=lf
+*.sh text eol=lf
