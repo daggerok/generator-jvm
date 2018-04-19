@@ -5,7 +5,7 @@ const chalk = require('chalk');
 const yosay = require('yosay');
 const { version } = require('../../package.json');
 
-const safety = input =>
+const replaceSpacesWithDash = input =>
   (input.replace(/\W+/g, '-') || 'app')
     .trim().toLocaleLowerCase();
 
@@ -58,7 +58,7 @@ module.exports = class extends Generator {
 
   writing() {
 
-    const projectDirectory = safety(this.props.projectDirectory);
+    const projectDirectory = replaceSpacesWithDash(this.props.projectDirectory);
     const projectType = this.props.projectType;
 
     // .mvn workaround
@@ -72,7 +72,7 @@ module.exports = class extends Generator {
 
         ].forEach(pattern => this.fs.copy(
           this.templatePath(`${projectType}/${pattern}`),
-          this.destinationPath(`${projectDirectory}`)
+          this.destinationPath(projectDirectory)
         ));
 
         break;
@@ -86,7 +86,7 @@ module.exports = class extends Generator {
 
         ].forEach(pattern => this.fs.copy(
           this.templatePath(`${projectType}/${pattern}`),
-          this.destinationPath(`${projectDirectory}`)
+          this.destinationPath(projectDirectory)
         ));
 
         break;
@@ -172,11 +172,12 @@ module.exports = class extends Generator {
 
   install() {
 
-    const projectDirectory = safety(this.props.projectDirectory);
+    const projectDirectory = replaceSpacesWithDash(this.props.projectDirectory);
 
     this.log(`Done!`);
     this.log(`Import project and start hacking!`);
-    this.log(`cd ./${projectDirectory}/ && bash gradlew && idea build.gradle`);
     this.log(`cd ./${projectDirectory}/ && bash mvnw && idea pom.xml`);
+    this.log(`# or: cd ./${projectDirectory}/ && bash gradlew idea && idea build.gradle`);
+    this.log(`# or if you like eclipse: cd ./${projectDirectory}/ && bash gradlew eclipse`);
   }
 };
