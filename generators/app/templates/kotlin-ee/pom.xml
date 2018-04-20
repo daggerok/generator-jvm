@@ -10,7 +10,7 @@
   <packaging>war</packaging>
 
   <properties>
-    <kotlin.version>1.2.31</kotlin.version>
+    <kotlin.version>1.2.40</kotlin.version>
     <resteasy.version>3.5.0.Final</resteasy.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>${maven.compiler.target}</maven.compiler.source>

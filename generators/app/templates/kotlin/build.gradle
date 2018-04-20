@@ -2,7 +2,7 @@ buildscript {
   ext {
     javaVersion = "1.8"
     slf4jVersion = "1.7.25"
-    kotlinVersion = "1.2.31"
+    kotlinVersion = "1.2.40"
   }
 }
 
@@ -12,9 +12,9 @@ plugins {
   id "eclipse"
   id "application"
   id "maven-publish"
-  id "org.jetbrains.kotlin.jvm" version "1.2.31"
-  id "org.jetbrains.kotlin.plugin.noarg" version "1.2.31"
-  id "org.jetbrains.kotlin.plugin.allopen" version "1.2.31"
+  id "org.jetbrains.kotlin.jvm" version "1.2.40"
+  id "org.jetbrains.kotlin.plugin.noarg" version "1.2.40"
+  id "org.jetbrains.kotlin.plugin.allopen" version "1.2.40"
   id "com.avast.gradle.docker-compose" version "0.6.13"
   id "com.github.johnrengelman.shadow" version "2.0.2"
 }
