@@ -110,7 +110,7 @@ dependencies {
 
   // IDEA (older bundle):
   testRuntime("org.junit.platform:junit-platform-launcher:$junitPlatformVersion")
-  testCompileOnly('org.apiguardian:apiguardian-api:1.0.0')
+  testCompileOnly("org.apiguardian:apiguardian-api:1.0.0")
 }
 
 dependencyManagement {
