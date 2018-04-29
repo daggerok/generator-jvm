@@ -1,7 +1,7 @@
 buildscript {
   ext {
     javaVersion = "1.8"
-    kotlinVersion = "1.2.40"
+    kotlinVersion = "1.2.41"
     springCloudVersion = "Finchley.M9"
     springBootVersion = "2.0.1.RELEASE"
     springCloudFunctionVersion = "1.0.0.M3"
@@ -13,10 +13,10 @@ plugins {
   id "java"
   id "maven"
   id "eclipse"
-  id "org.jetbrains.kotlin.jvm" version "1.2.40"
+  id "org.jetbrains.kotlin.jvm" version "1.2.41"
   id "org.springframework.boot" version "2.0.1.RELEASE"
   id "com.avast.gradle.docker-compose" version "0.6.13"
-  id "org.jetbrains.kotlin.plugin.spring" version "1.2.40"
+  id "org.jetbrains.kotlin.plugin.spring" version "1.2.41"
   id "io.spring.dependency-management" version "1.0.5.RELEASE"
 }
 

@@ -10,7 +10,7 @@
   <packaging>war</packaging>
 
   <properties>
-    <kotlin.version>1.2.40</kotlin.version>
+    <kotlin.version>1.2.41</kotlin.version>
     <failOnMissingWebXml>false</failOnMissingWebXml>
     <version.wildfly.swarm>2018.1.0</version.wildfly.swarm>
     <java.net.preferIPv4Stack>true</java.net.preferIPv4Stack>
