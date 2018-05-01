@@ -64,6 +64,7 @@ module.exports = class extends Generator {
     // .mvn workaround
     switch (projectType) {
 
+      case 'kotlin':
       case 'scala-akka-persistence-gradle':
 
         [

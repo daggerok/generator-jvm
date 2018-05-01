@@ -1,6 +1,7 @@
 language: node_js
 node_js:
 - lts/*
+- v10
 - v9
 - v8
 - v6
