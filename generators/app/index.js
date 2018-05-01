@@ -72,6 +72,32 @@ module.exports = class extends Generator {
       this.destinationPath(projectDirectory),
     ));
 
+    /* copy dotted files / dirs, like: .mvn, .gitignore, ... */
+
+    [
+      'mvn',
+      'gitignore',
+      'hgignore',
+
+    ].forEach(suffix => this.fs.copy(
+      this.templatePath(`_dotted/${suffix}`),
+      this.destinationPath(`${projectDirectory}/.${suffix}`),
+    ));
+
+    /* copy commons */
+
+    [
+      'LICENSE',
+      'gradle',
+      'gradlew',
+      'gradlew.bat',
+      'mvnw',
+      'mvnw.cmd',
+
+    ].forEach(suffix => this.fs.copy(
+      this.templatePath(`_common/${suffix}`),
+      this.destinationPath(`${projectDirectory}/${suffix}`),
+    ));
 
     /* apply template substitutions */
 
@@ -143,33 +169,6 @@ module.exports = class extends Generator {
 
         break;
     }
-
-    /* copy dotted files / dirs, like: .mvn, .gitignore, ... */
-
-    [
-      'mvn',
-      'gitignore',
-      'hgignore',
-
-    ].forEach(suffix => this.fs.copy(
-      this.templatePath(`_dotted/${suffix}`),
-      this.destinationPath(`${projectDirectory}/.${suffix}`),
-    ));
-
-    /* copy commons */
-
-    [
-      'LICENSE',
-      'gradle',
-      'gradlew',
-      'gradlew.bat',
-      'mvnw',
-      'mvnw.cmd',
-
-    ].forEach(suffix => this.fs.copy(
-      this.templatePath(`_common/${suffix}`),
-      this.destinationPath(`${projectDirectory}/${suffix}`),
-    ));
   }
 
   install() {
