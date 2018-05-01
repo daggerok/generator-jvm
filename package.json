@@ -1,7 +1,7 @@
 {
   "name": "generator-jvm",
-  "version": "1.1.13",
-  "description": "Helps you quick and easy generate JVM-based (java, kotlin, scala) projects with gradle and maven build systems, docker and docker-compose for rapid development",
+  "version": "1.1.14",
+  "description": "Helps you quick and easy generate JVM-based (java, java ee, kotlin, scala) projects with gradle and maven build systems, docker and docker-compose for rapid development",
   "homepage": "https://github.com/daggerok/generator-jvm",
   "author": {
     "name": "Maksim Kostromin",
