@@ -61,6 +61,8 @@ module.exports = class extends Generator {
     const projectDirectory = replaceSpacesWithDash(this.props.projectDirectory);
     const projectType = this.props.projectType;
 
+    /* copy project files by type */
+
     [
       '**/*',
       '**/.*',
@@ -71,7 +73,8 @@ module.exports = class extends Generator {
     ));
 
 
-    // apply template substitutions
+    /* apply template substitutions */
+
     switch (projectType) {
 
       // specific Scala Akka project (gradle only):
@@ -156,6 +159,7 @@ module.exports = class extends Generator {
     /* copy commons */
 
     [
+      'LICENSE',
       'gradle',
       'gradlew',
       'gradlew.bat',
@@ -164,7 +168,7 @@ module.exports = class extends Generator {
 
     ].forEach(suffix => this.fs.copy(
       this.templatePath(`_common/${suffix}`),
-      this.destinationPath(`${projectDirectory}/.${suffix}`),
+      this.destinationPath(`${projectDirectory}/${suffix}`),
     ));
   }
 
