@@ -159,6 +159,8 @@ module.exports = class extends Generator {
       'gradle',
       'gradlew',
       'gradlew.bat',
+      'mvnw',
+      'mvnw.cmd',
 
     ].forEach(suffix => this.fs.copy(
       this.templatePath(`_common/${suffix}`),
