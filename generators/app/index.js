@@ -61,36 +61,15 @@ module.exports = class extends Generator {
     const projectDirectory = replaceSpacesWithDash(this.props.projectDirectory);
     const projectType = this.props.projectType;
 
-    // .mvn workaround
-    switch (projectType) {
+    [
+      '**/*',
+      '**/.*',
 
-      case 'scala-akka-persistence-gradle':
+    ].forEach(pattern => this.fs.copy(
+      this.templatePath(`${projectType}/${pattern}`),
+      this.destinationPath(projectDirectory),
+    ));
 
-        [
-          '**/*',
-          '**/.*',
-
-        ].forEach(pattern => this.fs.copy(
-          this.templatePath(`${projectType}/${pattern}`),
-          this.destinationPath(projectDirectory)
-        ));
-
-        break;
-
-      default:
-
-        [
-          '**/*',
-          '**/.*',
-          '.*/**/*.*',
-
-        ].forEach(pattern => this.fs.copy(
-          this.templatePath(`${projectType}/${pattern}`),
-          this.destinationPath(projectDirectory)
-        ));
-
-        break;
-    }
 
     // apply template substitutions
     switch (projectType) {
@@ -161,12 +140,13 @@ module.exports = class extends Generator {
     }
 
     [
+      'mvn',
       'gitignore',
       'hgignore',
 
     ].forEach(suffix => this.fs.copy(
       this.templatePath(`dotted/${suffix}`),
-      this.destinationPath(`${projectDirectory}/.${suffix}`)
+      this.destinationPath(`${projectDirectory}/.${suffix}`),
     ));
   }
 
