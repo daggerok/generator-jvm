@@ -1,0 +1,12 @@
+.hg
+.gradle
+build
+target
+out
+.idea
+*.iml
+*.ipr
+*.iws
+*.log*
+.DS_Store
+Thumbs.db
