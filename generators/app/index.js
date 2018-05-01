@@ -157,6 +157,7 @@ module.exports = class extends Generator {
           '.travis.yml',
           'README.adoc',
           'settings.gradle',
+          '.mvn/Dockerfile',
           'gradle/Dockerfile',
           'docker-compose-maven.yaml',
           'docker-compose-gradle.yaml',
