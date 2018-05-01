@@ -82,7 +82,7 @@ module.exports = class extends Generator {
         [
           '**/*',
           '**/.*',
-          '.mvn/wrapper/*.*',
+          '.*/**/*.*',
 
         ].forEach(pattern => this.fs.copy(
           this.templatePath(`${projectType}/${pattern}`),
