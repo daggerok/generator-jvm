@@ -64,7 +64,6 @@ module.exports = class extends Generator {
     // .mvn workaround
     switch (projectType) {
 
-      case 'kotlin':
       case 'scala-akka-persistence-gradle':
 
         [
@@ -83,7 +82,7 @@ module.exports = class extends Generator {
         [
           '**/*',
           '**/.*',
-          '.*/**/*',
+          '.mvn/wrapper/*.*',
 
         ].forEach(pattern => this.fs.copy(
           this.templatePath(`${projectType}/${pattern}`),
