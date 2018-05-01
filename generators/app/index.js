@@ -74,6 +74,7 @@ module.exports = class extends Generator {
     // apply template substitutions
     switch (projectType) {
 
+      // specific Scala Akka project (gradle only):
       case 'scala-akka-persistence-gradle':
 
         [
@@ -91,6 +92,7 @@ module.exports = class extends Generator {
 
         break;
 
+      // JavaEE projects with specific structure:
       case 'java-ee-ejb-full-multi-project':
       case 'java-ee-cdi-full-multi-project':
 
@@ -119,7 +121,7 @@ module.exports = class extends Generator {
 
         break;
 
-      default:
+      default: // any other projects by standard:
 
         [
           'pom.xml',
@@ -139,13 +141,27 @@ module.exports = class extends Generator {
         break;
     }
 
+    /* copy dotted files / dirs, like: .mvn, .gitignore, ... */
+
     [
       'mvn',
       'gitignore',
       'hgignore',
 
     ].forEach(suffix => this.fs.copy(
-      this.templatePath(`dotted/${suffix}`),
+      this.templatePath(`_dotted/${suffix}`),
+      this.destinationPath(`${projectDirectory}/.${suffix}`),
+    ));
+
+    /* copy commons */
+
+    [
+      'gradle',
+      'gradlew',
+      'gradlew.bat',
+
+    ].forEach(suffix => this.fs.copy(
+      this.templatePath(`_common/${suffix}`),
       this.destinationPath(`${projectDirectory}/.${suffix}`),
     ));
   }
