@@ -1,19 +1,21 @@
 language: node_js
-node_js:
-- lts/*
-- v10
-- v9
-- v8
-- v6
+node_js: lts/*
+#- lts/*
+#- v10
+#- v9
+#- v8
+#- v6
 
-install: true
+install:
+- yarn
+- npm
 
 script:
 - export root=$(pwd)
 
 - mkdir /tmp/yo
 - cd /tmp/yo
-- npm i -g add yo generator-jvm
+- yarn global add yo generator-jvm
 - echo old-version | yo jvm
 
 - cd ${root}/
@@ -21,3 +23,8 @@ script:
 - npm link
 - cd /tmp/yo
 - echo new-version | yo jvm
+
+cache:
+  yarn: true
+  directories:
+  - node_modules
