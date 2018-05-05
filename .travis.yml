@@ -8,7 +8,7 @@ node_js: lts/*
 
 install:
 - yarn
-- npm
+- node
 
 script:
 - export root=$(pwd)
