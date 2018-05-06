@@ -87,9 +87,11 @@ dependencies {
   //compile("org.springframework.kafka:spring-kafka-test")
   //testCompile("org.springframework.cloud:spring-cloud-stream-test-support")
 
-  // In java we trust...
+  //// In java we trust...
   //compile("io.vavr:vavr:$vavrVersion")
+  //annotationProcessor("org.projectlombok:lombok")
   //compileOnly("org.projectlombok:lombok")
+  //testAnnotationProcessor("org.projectlombok:lombok")
   //testCompileOnly("org.projectlombok:lombok")
 
   // Kotlin
@@ -167,3 +169,26 @@ eclipse {
     downloadSources = true
   }
 }
+
+/*
+// spring-boot multi-module preamble:
+// this in dependencies closure really doesn't work:
+// compile project(":submodule").sourceSets.main.output // dot't do this!
+
+// 1. in spring-boot submodules use next configs:
+
+bootJar {
+  enabled = false
+}
+jar {
+  enabled = true
+}
+
+// 2. in spring-boot target main module to fix gradle compile build + lombok issue use all of these:
+
+dependencies {
+  annotationProcessor(project(":submodule"))
+  compileOnly(project(":submodule"))
+  compile(project(":submodule"))
+}
+*/

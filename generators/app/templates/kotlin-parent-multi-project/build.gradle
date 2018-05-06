@@ -103,8 +103,10 @@ subprojects {
 
     // In java we trust...
     compile("io.vavr:vavr:$vavrVersion")
-    compileOnly("org.projectlombok:lombok:$lombokVersion")
-    testCompileOnly("org.projectlombok:lombok:$lombokVersion")
+    annotationProcessor("org.projectlombok:lombok")
+    compileOnly("org.projectlombok:lombok")
+    testAnnotationProcessor("org.projectlombok:lombok")
+    testCompileOnly("org.projectlombok:lombok")
     compile("org.slf4j:slf4j-api:$slf4jVersion")
     // compile("org.slf4j:slf4j-jdk14:$slf4jVersion")
     compile("org.slf4j:jul-to-slf4j:$slf4jVersion")
@@ -166,3 +168,26 @@ eclipse {
     downloadSources = true
   }
 }
+
+/*
+// spring-boot multi-module preamble:
+// this in dependencies closure really doesn't work:
+// compile project(":submodule").sourceSets.main.output // dot't do this!
+
+// 1. in spring-boot submodules use next configs:
+
+bootJar {
+  enabled = false
+}
+jar {
+  enabled = true
+}
+
+// 2. in spring-boot target main module to fix gradle compile build + lombok issue use all of these:
+
+dependencies {
+  annotationProcessor(project(":submodule"))
+  compileOnly(project(":submodule"))
+  compile(project(":submodule"))
+}
+*/

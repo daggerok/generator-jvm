@@ -2,6 +2,7 @@ buildscript {
   ext {
     javaVersion = "1.8"
     vavrVersion = "0.9.2"
+    lombokVersion = "0.9.2"
   }
 }
 
@@ -39,7 +40,12 @@ subprojects {
   }
 
   dependencies {
-    compile "io.vavr:vavr:$vavrVersion"
+    // In java we trust...
+    compile("io.vavr:vavr:$vavrVersion")
+    //annotationProcessor("org.projectlombok:lombok:$lombokVersion")
+    //compileOnly("org.projectlombok:lombok:$lombokVersion")
+    //testAnnotationProcessor("org.projectlombok:lombok:$lombokVersion")
+    //testCompileOnly("org.projectlombok:lombok:$lombokVersion")
   }
 }
 
@@ -72,3 +78,26 @@ eclipse {
     downloadSources = true
   }
 }
+
+/*
+// spring-boot multi-module preamble:
+// this in dependencies closure really doesn't work:
+// compile project(":submodule").sourceSets.main.output // dot't do this!
+
+// 1. in spring-boot submodules use next configs:
+
+bootJar {
+  enabled = false
+}
+jar {
+  enabled = true
+}
+
+// 2. in spring-boot target main module to fix gradle compile build + lombok issue use all of these:
+
+dependencies {
+  annotationProcessor(project(":submodule"))
+  compileOnly(project(":submodule"))
+  compile(project(":submodule"))
+}
+*/
