@@ -7,6 +7,8 @@ buildscript {
     lombokVersion = "1.16.20"
     junitJupiterVersion = "5.0.2"
     junitPlatformVersion = "1.0.2"
+    springCloudVersion = "Finchley.RC1"
+    springCloudVersion = "2.0.2.RELEASE"
   }
   repositories {
     mavenLocal()
@@ -103,10 +105,12 @@ subprojects {
 
     // In java we trust...
     compile("io.vavr:vavr:$vavrVersion")
-    annotationProcessor("org.projectlombok:lombok")
-    compileOnly("org.projectlombok:lombok")
-    testAnnotationProcessor("org.projectlombok:lombok")
-    testCompileOnly("org.projectlombok:lombok")
+
+    annotationProcessor("org.projectlombok:lombok:$lombokVersion")
+    compileOnly("org.projectlombok:lombok:$lombokVersion")
+    testAnnotationProcessor("org.projectlombok:lombok:$lombokVersion")
+    testCompileOnly("org.projectlombok:lombok:$lombokVersion")
+
     compile("org.slf4j:slf4j-api:$slf4jVersion")
     // compile("org.slf4j:slf4j-jdk14:$slf4jVersion")
     compile("org.slf4j:jul-to-slf4j:$slf4jVersion")

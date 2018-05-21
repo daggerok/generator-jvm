@@ -109,8 +109,12 @@ dependencies {
   //compile("org.hibernate:hibernate-core:4.2.18.Final")
 
   compile("io.vavr:vavr:$vavrVersion")
+
+  annotationProcessor("org.projectlombok:lombok:$lombokVersion")
   compileOnly("org.projectlombok:lombok:$lombokVersion")
+  testAnnotationProcessor("org.projectlombok:lombok:$lombokVersion")
   testCompileOnly("org.projectlombok:lombok:$lombokVersion")
+
   compile("org.slf4j:slf4j-api:$slf4jVersion")
   compile("org.slf4j:slf4j-jdk14:$slf4jVersion")
 

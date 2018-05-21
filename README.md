@@ -18,6 +18,7 @@ I'm not recommend you, but you can stop npm audit on install by using
 npm install --no-audit
 ```
 
+## Usage
 
 Then generate your new project:
 
@@ -25,7 +26,7 @@ Then generate your new project:
 yo jvm
 # enter projectDirectory or just press enter (default: app)
 # chose projectType (default: java)
-cd $projectDirectory
+cd app
 ```
 
 using gradle

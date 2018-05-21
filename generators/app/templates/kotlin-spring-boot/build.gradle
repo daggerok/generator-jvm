@@ -24,10 +24,14 @@ plugins {
   id "maven"
   id "eclipse"
   id "org.jetbrains.kotlin.jvm" version "1.2.41"
-  id "org.springframework.boot" version "2.0.2.RELEASE"
-  id "com.avast.gradle.docker-compose" version "0.6.13"
   id "org.jetbrains.kotlin.plugin.spring" version "1.2.41"
   id "io.spring.dependency-management" version "1.0.5.RELEASE"
+  id "org.springframework.boot" version "2.0.2.RELEASE"
+  id "com.avast.gradle.docker-compose" version "0.6.13"
+  //id "cn.bestwu.propdeps-eclipse" version "0.0.10"
+  //id "cn.bestwu.propdeps-maven" version "0.0.10"
+  //id "cn.bestwu.propdeps-idea" version "0.0.10"
+  //id "cn.bestwu.propdeps" version "0.0.10"
 }
 
 apply plugin: "org.junit.platform.gradle.plugin"
@@ -68,7 +72,10 @@ dependencies {
   compile("org.springframework.boot:spring-boot-starter-webflux")
   compile("org.springframework.boot:spring-boot-starter-actuator")
   //runtime("org.springframework.boot:spring-boot-devtools")
+
+  ////do not forget uncomment: apply plugin: "cn.bestwu.propdeps"
   //annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+  //testAnnotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 
   //// JPA (+embedded)
   //runtime("com.h2database:h2")
@@ -90,6 +97,7 @@ dependencies {
 
   //// In java we trust...
   //compile("io.vavr:vavr:$vavrVersion")
+
   //annotationProcessor("org.projectlombok:lombok")
   //compileOnly("org.projectlombok:lombok")
   //testAnnotationProcessor("org.projectlombok:lombok")
@@ -124,7 +132,7 @@ dependencies {
 dependencyManagement {
   imports {
     mavenBom "org.springframework.boot:spring-boot-dependencies:$springBootVersion"
-    //mavenBom "org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion"
+    mavenBom "org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion"
   }
 }
 
