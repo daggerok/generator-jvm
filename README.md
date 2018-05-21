@@ -10,6 +10,15 @@ npm install -g yo
 npm install -g generator-jvm
 ```
 
+## npm audit
+
+I'm not recommend you, but you can stop npm audit on install by using
+
+```bash
+npm install --no-audit
+```
+
+
 Then generate your new project:
 
 ```bash
