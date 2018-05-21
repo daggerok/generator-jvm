@@ -3,8 +3,8 @@ buildscript {
     javaVersion = "1.8"
     vavrVersion = "0.9.2"
     kotlinVersion = "1.2.41"
-    springCloudVersion = "Finchley.M9"
-    springBootVersion = "2.0.1.RELEASE"
+    springCloudVersion = "Finchley.RC1"
+    springBootVersion = "2.0.2.RELEASE"
     hibernateCoreVersion = "4.2.18.Final"
     junitPlatformVersion = "1.0.2"
     junitJupiterVersion = "5.0.2"
@@ -24,7 +24,7 @@ plugins {
   id "maven"
   id "eclipse"
   id "org.jetbrains.kotlin.jvm" version "1.2.41"
-  id "org.springframework.boot" version "2.0.1.RELEASE"
+  id "org.springframework.boot" version "2.0.2.RELEASE"
   id "com.avast.gradle.docker-compose" version "0.6.13"
   id "org.jetbrains.kotlin.plugin.spring" version "1.2.41"
   id "io.spring.dependency-management" version "1.0.5.RELEASE"
@@ -57,6 +57,7 @@ defaultTasks "clean", "build"
 repositories {
   mavenLocal()
   mavenCentral()
+  maven { url "https://repo.spring.io/libs-milestone" }
 }
 
 compileJava.dependsOn(processResources)

@@ -2,8 +2,8 @@ buildscript {
   ext {
     javaVersion = "1.8"
     kotlinVersion = "1.2.41"
-    springCloudVersion = "Finchley.M9"
-    springBootVersion = "2.0.1.RELEASE"
+    springCloudVersion = "Finchley.RC1"
+    springBootVersion = "2.0.2.RELEASE"
     springCloudFunctionVersion = "1.0.0.M3"
   }
 }
@@ -14,7 +14,7 @@ plugins {
   id "maven"
   id "eclipse"
   id "org.jetbrains.kotlin.jvm" version "1.2.41"
-  id "org.springframework.boot" version "2.0.1.RELEASE"
+  id "org.springframework.boot" version "2.0.2.RELEASE"
   id "com.avast.gradle.docker-compose" version "0.6.13"
   id "org.jetbrains.kotlin.plugin.spring" version "1.2.41"
   id "io.spring.dependency-management" version "1.0.5.RELEASE"
@@ -45,6 +45,7 @@ defaultTasks "clean", "build"
 repositories {
   mavenLocal()
   mavenCentral()
+  maven { url "https://repo.spring.io/libs-milestone" }
 }
 
 dependencies {

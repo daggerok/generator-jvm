@@ -13,8 +13,8 @@
     <vavr.version>0.9.2</vavr.version>
     <kotlin.version>1.2.41</kotlin.version>
     <lombok.version>1.16.20</lombok.version>
-    <spring-cloud.version>Finchley.M9</spring-cloud.version>
-    <spring-boot.version>2.0.1.RELEASE</spring-boot.version>
+    <spring-cloud.version>Finchley.RC1</spring-cloud.version>
+    <spring-boot.version>2.0.2.RELEASE</spring-boot.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
     <hibernate.core.version>4.2.18.Final</hibernate.core.version>
@@ -34,7 +34,6 @@
         <scope>import</scope>
         <type>pom</type>
       </dependency>
-      <!--
       <dependency>
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-dependencies</artifactId>
@@ -42,9 +41,19 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
-      -->
     </dependencies>
   </dependencyManagement>
+
+  <repositories>
+    <repository>
+      <id>spring-milestones</id>
+      <name>Spring Milestones</name>
+      <url>https://repo.spring.io/libs-milestone</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
 
   <dependencies>
     <dependency>
