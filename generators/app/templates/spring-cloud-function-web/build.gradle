@@ -1,6 +1,6 @@
 buildscript {
   ext {
-    springCloudFunctionVersion = "1.0.0.M3"
+    springCloudFunctionVersion = "1.0.0.RC1"
     javaVersion = JavaVersion.VERSION_1_8
     hibernateCoreVersion = "4.2.18.Final"
     springBootVersion = "2.0.2.RELEASE"
