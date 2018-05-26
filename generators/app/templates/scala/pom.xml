@@ -11,15 +11,15 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <scala.version>${scala.compat.version}.4</scala.version>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <scala.version>${scala.compat.version}.4</scala.version>
     <scala.compat.version>2.12</scala.compat.version>
+    <scalatestic.version>3.0.4</scalatestic.version>
     <lombok.version>1.16.20</lombok.version>
+    <specs2.version>4.0.2</specs2.version>
     <slf4j.version>1.7.25</slf4j.version>
     <junit4.version>4.12</junit4.version>
-    <specs2.version>4.0.2</specs2.version>
-    <scalatestic.version>3.0.4</scalatestic.version>
   </properties>
 
   <dependencies> <dependency>
@@ -132,36 +132,6 @@
       </plugin>
 
       <plugin>
-        <groupId>com.dkanejs.maven.plugins</groupId>
-        <artifactId>docker-compose-maven-plugin</artifactId>
-        <version>1.0.1</version>
-        <executions>
-          <execution>
-            <id>up</id>
-            <!--<phase>process-resources</phase>-->
-            <phase>verify</phase>
-            <goals>
-              <goal>up</goal>
-            </goals>
-          </execution>
-          <execution>
-            <id>down</id>
-            <!--<phase>test</phase>-->
-            <phase>verify</phase>
-            <goals>
-              <goal>down</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-          <composeFile>${project.basedir}/docker-compose-maven.yaml</composeFile>
-          <detachedMode>true</detachedMode>
-          <removeVolumes>true</removeVolumes>
-          <detail>true</detail>
-        </configuration>
-      </plugin>
-
-      <plugin>
         <!-- see http://davidb.github.com/scala-maven-plugin -->
         <groupId>net.alchim31.maven</groupId>
         <artifactId>scala-maven-plugin</artifactId>
@@ -200,5 +170,52 @@
       </plugin>
     </plugins>
   </build>
+
+  <profiles>
+    <profile>
+      <id>docker</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>com.dkanejs.maven.plugins</groupId>
+            <artifactId>docker-compose-maven-plugin</artifactId>
+            <version>1.0.1</version>
+            <executions>
+              <execution>
+                <id>up</id>
+                <!--<phase>process-resources</phase>-->
+                <phase>verify</phase>
+                <goals>
+                  <goal>up</goal>
+                </goals>
+              </execution>
+              <execution>
+                <id>down</id>
+                <!--<phase>test</phase>-->
+                <phase>verify</phase>
+                <goals>
+                  <goal>down</goal>
+                </goals>
+              </execution>
+            </executions>
+            <configuration>
+              <composeFile>${project.basedir}/docker-compose-maven.yaml</composeFile>
+              <detachedMode>true</detachedMode>
+              <removeVolumes>true</removeVolumes>
+              <detail>true</detail>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+
+  <!-- deploy -->
+  <distributionManagement>
+    <repository>
+      <id>local-repo</id>
+      <url>file://${project.basedir}/target/local-repo</url>
+    </repository>
+  </distributionManagement>
 
 </project>

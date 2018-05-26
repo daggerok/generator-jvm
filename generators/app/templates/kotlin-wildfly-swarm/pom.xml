@@ -10,23 +10,23 @@
   <packaging>war</packaging>
 
   <properties>
-    <kotlin.version>1.2.41</kotlin.version>
-    <failOnMissingWebXml>false</failOnMissingWebXml>
-    <version.wildfly.swarm>2018.1.0</version.wildfly.swarm>
-    <java.net.preferIPv4Stack>true</java.net.preferIPv4Stack>
+    <maven.compiler.source>${maven.compiler.target}</maven.compiler.source>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
-    <maven.compiler.source>${maven.compiler.target}</maven.compiler.source>
+    <hibernate.core.version>4.2.18.Final</hibernate.core.version>
+    <java.net.preferIPv4Stack>true</java.net.preferIPv4Stack>
+    <version.wildfly.swarm>2018.1.0</version.wildfly.swarm>
+    <junit.platform.version>1.0.2</junit.platform.version>
+    <junit.jupiter.version>5.0.2</junit.jupiter.version>
     <maven.compiler.target>1.8</maven.compiler.target>
+    <failOnMissingWebXml>false</failOnMissingWebXml>
     <lombok.version>1.16.20</lombok.version>
+    <kotlin.version>1.2.41</kotlin.version>
+    <junit4.version>4.12</junit4.version>
     <slf4j.version>1.7.22</slf4j.version>
     <javaee.version>8.0</javaee.version>
-    <h2.version>1.4.196</h2.version>
     <vavr.version>0.9.2</vavr.version>
-    <junit4.version>4.12</junit4.version>
-    <junit.jupiter.version>5.0.2</junit.jupiter.version>
-    <junit.platform.version>1.0.2</junit.platform.version>
-    <hibernate.core.version>4.2.18.Final</hibernate.core.version>
+    <h2.version>1.4.196</h2.version>
   </properties>
 
   <dependencyManagement>
@@ -345,38 +345,54 @@
           </dependency>
         </dependencies>
       </plugin>
-
-      <!-- docker -->
-      <plugin>
-        <groupId>com.dkanejs.maven.plugins</groupId>
-        <artifactId>docker-compose-maven-plugin</artifactId>
-        <version>1.0.1</version>
-        <executions>
-          <execution>
-            <id>up</id>
-            <!--<phase>process-resources</phase>-->
-            <phase>verify</phase>
-            <goals>
-              <goal>up</goal>
-            </goals>
-          </execution>
-          <execution>
-            <id>down</id>
-            <!--<phase>test</phase>-->
-            <phase>verify</phase>
-            <goals>
-              <goal>down</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-          <composeFile>${project.basedir}/docker-compose-maven.yaml</composeFile>
-          <detachedMode>true</detachedMode>
-          <removeVolumes>true</removeVolumes>
-          <detail>true</detail>
-        </configuration>
-      </plugin>
     </plugins>
   </build>
+
+  <profiles>
+    <profile>
+      <id>docker</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>com.dkanejs.maven.plugins</groupId>
+            <artifactId>docker-compose-maven-plugin</artifactId>
+            <version>1.0.1</version>
+            <executions>
+              <execution>
+                <id>up</id>
+                <!--<phase>process-resources</phase>-->
+                <phase>verify</phase>
+                <goals>
+                  <goal>up</goal>
+                </goals>
+              </execution>
+              <execution>
+                <id>down</id>
+                <!--<phase>test</phase>-->
+                <phase>verify</phase>
+                <goals>
+                  <goal>down</goal>
+                </goals>
+              </execution>
+            </executions>
+            <configuration>
+              <composeFile>${project.basedir}/docker-compose-maven.yaml</composeFile>
+              <detachedMode>true</detachedMode>
+              <removeVolumes>true</removeVolumes>
+              <detail>true</detail>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+
+  <!-- deploy -->
+  <distributionManagement>
+    <repository>
+      <id>local-repo</id>
+      <url>file://${project.basedir}/target/local-repo</url>
+    </repository>
+  </distributionManagement>
 
 </project>
