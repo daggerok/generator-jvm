@@ -180,9 +180,8 @@ module.exports = class extends Generator {
     const projectDirectory = replaceSpacesWithDash(this.props.projectDirectory);
 
     this.log(`Done!`);
-    this.log(`Import project and start hacking!`);
-    this.log(`cd ./${projectDirectory}/ && bash mvnw && idea pom.xml`);
-    this.log(`# or: cd ./${projectDirectory}/ && bash gradlew idea && idea build.gradle`);
-    this.log(`# or if you like eclipse: cd ./${projectDirectory}/ && bash gradlew eclipse`);
+    this.log(`Import project and start hacking:`);
+    this.log(`idea ./${projectDirectory}/pom.xml`);
+    this.log(`idea ./${projectDirectory}/build.gradle`);
   }
 };
