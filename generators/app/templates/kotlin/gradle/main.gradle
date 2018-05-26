@@ -1,0 +1,6 @@
+apply plugin: "application"
+apply plugin: "com.github.johnrengelman.shadow"
+
+mainClassName = "daggerok.AppKt"
+shadowJar.mustRunAfter jar
+defaultTasks "clean", "build", "installDist", "distZip", "publish"

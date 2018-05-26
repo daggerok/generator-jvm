@@ -1,0 +1,29 @@
+/*
+// Plugin 'idea' is a core Gradle plugin, which is already on the classpath. Requesting it with the 'apply false' option is a no-op.
+plugins {
+  id "idea" apply false // will fail
+}
+*/
+
+apply plugin: "idea"
+apply plugin: "cn.bestwu.propdeps-idea"
+
+idea {
+  module {
+    downloadSources = true
+  }
+}
+
+/*
+apply plugin: "eclipse"
+apply plugin: "cn.bestwu.propdeps-eclipse"
+
+eclipse {
+  classpath {
+    downloadSources = true
+  }
+}
+
+apply plugin: "maven"
+apply plugin: "cn.bestwu.propdeps-maven"
+*/

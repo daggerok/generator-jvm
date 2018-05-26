@@ -3,7 +3,7 @@ buildscript {
     javaVersion = "1.8"
     akkaVersion = "2.5.9"
     slf4jVersion = "1.7.25"
-    lombokVersion = "1.16.18"
+    lombokVersion = "1.16.20"
     scalaCompatVersion = "2.12"
     scalaVersion = "${scalaCompatVersion}.4"
     scalatestVersion = "${scalaCompatVersion}:3.0.4"
