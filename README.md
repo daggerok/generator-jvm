@@ -20,7 +20,15 @@ npm install --no-audit
 
 ## Usage
 
-Then generate your new project:
+Then generate your new project using command line options (`name` and `type`):
+
+```bash
+yo jvm --name my-awesom-java-project --type java
+yo jvm -n spring-boot-kotlin-project -t kotlin-spring-boot
+cd my-awesom-java-project
+```
+
+Then generate your new project using prompt:
 
 ```bash
 yo jvm
@@ -54,7 +62,75 @@ bash mvnw com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:up
 
 ## What's inside?
 
-java-ee-faces project:
+___spring cloud function web project___
+
+ * java 8 based spring-cloud-function-web project
+ * spring-boot 2 / spring framework 5
+ * support fatjar
+ * support executable bash jar
+ * support kotlin or java
+ * support maven
+ * support gradle
+ * docker / docker-compose support
+
+type options:
+
+- `java-spring-cloud-function-web`
+- `kotlin-spring-cloud-function-web`
+
+___spring-boot 2 / spring framework 5 project___
+
+ * java 8 based project
+ * spring-boot 2 / spring framework 5
+ * support fatjar
+ * support executable bash jar
+ * support kotlin or java
+ * support maven
+ * support gradle
+ * vavr (javaslang)
+ * lombok (slf4j + logback logging)
+ * support testing with junit 4 / 5
+ * docker / docker-compose support
+
+type options:
+
+- `java-spring-boot`
+- `kotlin-spring-boot`
+
+___spring-boot 1 / spring framework 4 project___
+
+ * java 8 based project
+ * spring-boot 1 / spring framework 4
+ * support fatjar
+ * support executable bash jar
+ * support kotlin or java
+ * support maven
+ * support gradle
+ * vavr (javaslang)
+ * lombok (slf4j + logback logging)
+ * support testing with junit 4 / 5
+ * docker / docker-compose support
+
+type options:
+
+- `java-spring-boot-1.x`
+- `kotlin-spring-boot-1.x`
+
+___kotlin parent multi project___
+
+ * java 8 based parent multi project
+ * support kotlin
+ * support fatjar
+ * support executable bash jar
+ * support kotlin
+ * support maven
+ * support gradle
+ * vavr (javaslang)
+ * lombok (slf4j + logback logging)
+ * support testing with junit 4 / 5
+ * docker / docker-compose support
+
+___java-ee-faces project___
 
  * javaee 8.0 project
  * JSF using mojarrra 2.2.16 faces implementation
@@ -63,7 +139,7 @@ java-ee-faces project:
  * support gradle
  * docker / docker-compose support (Glassfish 5.0 / JBOSS EAP 7.1)
 
-java-ee CDI full multi project:
+___java-ee CDI full multi project___
 
  * javaee 8.0 project
  * EAR with EJB + CDI configured
@@ -78,7 +154,7 @@ java-ee CDI full multi project:
  * support gradle
  * docker / docker-compose support (JBOSS EAP 7.1)
 
-java-ee EJB full multi project:
+___java-ee EJB full multi project___
 
  * javaee 8.0 project
  * EAR without CDI at all, but could be easily added (see java-ee-cdi-multi-project)
@@ -93,7 +169,7 @@ java-ee EJB full multi project:
  * support gradle
  * docker / docker-compose support (JBOSS EAP 7.1)
 
-kotlin java-ee project:
+___kotlin java-ee project___
 
  * javaee 8.0 project
  * lombok (slf4j + logback logging)
@@ -104,7 +180,7 @@ kotlin java-ee project:
  * support testing with junit 4 / 5
  * docker / docker-compose support (JBOSS EAP 7.1)
 
-kotlin fat project
+___kotlin fat project___
 
  * java 8 based project
  * support kotlin
@@ -115,60 +191,7 @@ kotlin fat project
  * support application scripts when using gradle
  * docker / docker-compose support
 
-spring cloud function web project
-
- * java 8 based spring-cloud-function-web project
- * spring-boot 2 / spring framework 5
- * support fatjar
- * support executable bash jar
- * support kotlin or java
- * support maven
- * support gradle
- * docker / docker-compose support
-
-spring-boot 1 / spring framework 4 project
-
- * java 8 based project
- * spring-boot 1 / spring framework 4
- * support fatjar
- * support executable bash jar
- * support kotlin or java
- * support maven
- * support gradle
- * vavr (javaslang)
- * lombok (slf4j + logback logging)
- * support testing with junit 4 / 5
- * docker / docker-compose support
-
-kotlin parent multi project:
-
- * java 8 based parent multi project
- * support kotlin
- * support fatjar
- * support executable bash jar
- * support kotlin
- * support maven
- * support gradle
- * vavr (javaslang)
- * lombok (slf4j + logback logging)
- * support testing with junit 4 / 5
- * docker / docker-compose support
-
-spring-boot 2 / spring framework 5 project
-
- * java 8 based project
- * spring-boot 2 / spring framework 5
- * support fatjar
- * support executable bash jar
- * support kotlin or java
- * support maven
- * support gradle
- * vavr (javaslang)
- * lombok (slf4j + logback logging)
- * support testing with junit 4 / 5
- * docker / docker-compose support
-
-scala akka-persistence gradle project
+___scala akka-persistence gradle project___
 
  * scala 2.12 based project
  * akka-persistence
@@ -177,7 +200,7 @@ scala akka-persistence gradle project
  * support testing using junit 4, scalactic, scalatest, specs2
  * docker / docker-compose support
 
-java-akka project
+___java-akka project___
 
  * java 8 based project
  * akka-actor
@@ -190,7 +213,7 @@ java-akka project
  * support testing with junit 4 / 5
  * docker / docker-compose support
 
-java-ee (micro-profile) project:
+___java-ee (micro-profile) project___
 
  * java 8 based project
  * javaee 8.0 using wildfly-swarm micro-profile
@@ -204,7 +227,7 @@ java-ee (micro-profile) project:
  * support testing with junit 4 / 5
  * docker / docker-compose support
 
-scala project:
+___scala project___
 
  * scala 2.12 based project
  * lombok (slf4j + logback logging)
@@ -215,7 +238,7 @@ scala project:
  * support testing using junit 4, scalactic, scalatest, specs2
  * docker / docker-compose support
 
-java-ee project:
+___java-ee project___
 
  * java 8 based project
  * javaee 8.0
@@ -226,7 +249,7 @@ java-ee project:
  * support testing with junit 4 / 5
  * docker / docker-compose support (JBOSS EAP 7)
 
-java parent multi project:
+___java parent multi project___
 
  * java 8 based parent multi project
  * vavr (javaslang)
@@ -234,7 +257,7 @@ java parent multi project:
  * support gradle
  * docker / docker-compose support
 
-scala_2.11 project:
+___scala_2.11 project___
 
  * scala 2.11 based project
  * lombok (slf4j + logback logging)
@@ -245,7 +268,7 @@ scala_2.11 project:
  * support testing using junit 4, scalactic, scalatest, specs2
  * docker / docker-compose support
 
-java project:
+___java project___
 
  * java 8 based project
  * lombok (slf4j + logback logging)

@@ -130,7 +130,11 @@
 
         <configuration>
           <finalName>${project.artifactId}-${project.version}-all</finalName>
-
+          <!--
+          <descriptors>
+            <descriptor>${project.basedir}/.mvn/assembly.xml</descriptor>
+          </descriptors>
+          -->
           <appendAssemblyId>false</appendAssemblyId>
 
           <descriptorRefs>

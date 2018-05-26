@@ -5,64 +5,110 @@ const chalk = require('chalk');
 const yosay = require('yosay');
 const { version } = require('../../package.json');
 
+const defaultProjectName = 'app';
+const defaultProjectType = 'java';
 const replaceSpacesWithDash = input =>
-  (input.replace(/\W+/g, '-') || 'app')
-    .trim().toLocaleLowerCase();
+  (input.replace(/\W+/g, '-') || defaultProjectName).trim();
 
 module.exports = class extends Generator {
-  prompting() {
 
+  // note: arguments and options should be defined in the constructor.
+  constructor(args, opts) {
+    super(args, opts);
+
+    this.projectTypes = [
+      'java',
+      'java-spring-boot',
+      'java-spring-boot-1.x',
+      'java-spring-cloud-function-web',
+      'java-parent-multi-project',
+      'java-akka',
+      'java-ee',
+      'java-ee-faces',
+      'java-ee-cdi-full-multi-project',
+      'java-ee-ejb-full-multi-project',
+      'kotlin',
+      'kotlin-spring-boot',
+      'kotlin-spring-boot-1.x',
+      'kotlin-spring-cloud-function-web',
+      'kotlin-parent-multi-project',
+      'kotlin-wildfly-swarm',
+      'kotlin-ee',
+      'scala',
+      'scala-2.11',
+      'scala-akka-persistence-gradle',
+    ];
+
+    this.props = {
+      projectDirectory: defaultProjectName,
+      projectType: defaultProjectType,
+    };
+
+    this.option('name', {
+      alias: 'n',
+      hide: false,
+      type: String,
+      required: false,
+      desc: `Name of project directory / application name.
+                        # Will be prompted if no values was specify.
+                        # Non alphanumeric symbols of project directory will be replaced with hyphen.`,
+      default: undefined,
+    });
+
+    this.option('type', {
+      alias: 't',
+      hide: false,
+      type: String,
+      required: false,
+      desc: `Project type.
+                        # Will be prompted if no values was specify. 
+                        # Possible values are:
+               ` + this.projectTypes.join(`\n               `),
+      default: undefined,
+    });
+
+    this.prompts = [];
+    const name = this.options['name'];
+    const type = this.options['type'];
+    const typeOptionFound = !!type && this.projectTypes
+      .indexOf(type.trim().toLowerCase()) !== -1;
+
+    if (typeOptionFound) this.props.projectType = type;
+
+    else {
+      this.prompts.push({
+        type: 'list',
+        name: 'projectType',
+        message: 'What kind of project do you wanna build today, my friend?',
+        choices: this.projectTypes,
+        default: defaultProjectType,
+      });
+    }
+
+    if (!!name) this.props.projectDirectory = name;
+    else if (typeOptionFound) this.props.projectDirectory = defaultProjectName;
+    else this.prompts.push({
+      type: 'input',
+      name: 'projectDirectory',
+      message: 'Enter application project directory name',
+      default: defaultProjectName
+    });
+  }
+
+  prompting() {
     this.log(yosay(
       `Welcome to the terrific ${chalk.red('jvm')} generator ${chalk.blue('v' + version)}`
     ));
 
-    const prompts = [
-      {
-        type: 'input',
-        name: 'projectDirectory',
-        message: 'Enter project directory name',
-        default: 'app'
-      },
-      {
-        type: 'list',
-        name: 'projectType',
-        message: 'My friend, what type of jvm project do you want to create today?',
-        choices: [
-          'java',
-          'java-spring-boot',
-          'java-spring-boot_1.x',
-          'java-spring-cloud-function-web',
-          'java-parent-multi-project',
-          'java-akka',
-          'java-ee',
-          'java-ee-faces',
-          'java-ee-cdi-full-multi-project',
-          'java-ee-ejb-full-multi-project',
-          'kotlin',
-          'kotlin-spring-boot',
-          'kotlin-spring-boot_1.x',
-          'kotlin-spring-cloud-function-web',
-          'kotlin-parent-multi-project',
-          'kotlin-wildfly-swarm',
-          'kotlin-ee',
-          'scala',
-          'scala_2.11',
-          'scala-akka-persistence-gradle',
-        ],
-        default: 'java',
-      },
-    ];
-
-    return this.prompt(prompts).then(props => {
+    return this.prompt(this.prompts).then(props => {
       // To access props later use this.props.someAnswer;
-      this.props = props;
+      this.props = Object.assign({}, this.props, props);
     });
   }
 
   writing() {
-
     const projectDirectory = replaceSpacesWithDash(this.props.projectDirectory);
-    const projectType = this.props.projectType;
+    const projectType = this.props.projectType.trim().toLowerCase();
 
     /* copy project files by type */
 
@@ -105,7 +151,6 @@ module.exports = class extends Generator {
     /* apply template substitutions */
 
     switch (projectType) {
-
       // specific Scala Akka project (gradle only):
       case 'scala-akka-persistence-gradle':
 
@@ -176,12 +221,15 @@ module.exports = class extends Generator {
   }
 
   install() {
-
+    const projectType = this.props.projectType;
+    const nonMavenProjects = ['scala-akka-persistence-gradle'];
     const projectDirectory = replaceSpacesWithDash(this.props.projectDirectory);
+    const projectHasPomXml = nonMavenProjects.filter(i => i === projectType).length === 0;
 
-    this.log(`Done!`);
-    this.log(`Import project and start hacking:`);
-    this.log(`idea ./${projectDirectory}/pom.xml`);
+    this.log(`\nDone!`);
+    this.log(`Project ${projectType} located in ./${projectDirectory}`);
+    this.log(`Let's start hacking! ^_^`);
+    if (projectHasPomXml) this.log(`idea ./${projectDirectory}/pom.xml`);
     this.log(`idea ./${projectDirectory}/build.gradle`);
   }
 };
