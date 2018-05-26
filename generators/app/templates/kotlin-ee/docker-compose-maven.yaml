@@ -6,7 +6,7 @@ services:
     build:
       context: .
       dockerfile: .mvn/Dockerfile
-    volumes: ["maven-<%= projectDirectory %>-app-data:/home/app"]
+    volumes: ["maven-<%= projectDirectory %>-app-data:/home/appuser"]
     ports:
     - "5005:5005"
     - "8080:8080"

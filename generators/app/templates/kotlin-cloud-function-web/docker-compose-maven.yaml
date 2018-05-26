@@ -6,7 +6,7 @@ services:
     build:
       context: .
       dockerfile: .mvn/Dockerfile
-    volumes: ["maven-<%= projectDirectory %>-app-data:/home/app"]
+    volumes: ["maven-<%= projectDirectory %>-app-data:/home/appuser"]
     ports: ["8080:8080"]
     networks: [backing-services]
     #mem_limit: 786432000 # container limit: 700Mb (700 * 1024 * 1024)

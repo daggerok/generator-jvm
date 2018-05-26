@@ -132,7 +132,8 @@
       <scope>test</scope>
     </dependency>
     -->
-    <!-- In java we trust
+
+    <!-- In java we trust -->
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
@@ -144,7 +145,7 @@
       <artifactId>vavr</artifactId>
       <version>${vavr.version}</version>
     </dependency>
-    -->
+
     <!-- Kotlin -->
     <dependency>
       <groupId>com.fasterxml.jackson.module</groupId>

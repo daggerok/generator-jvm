@@ -2,17 +2,17 @@ version: "2.1"
 
 services:
 
-  gradle-<%= projectDirectory %>-app:
+  maven-<%= projectDirectory %>-app:
     build:
       context: .
-      dockerfile: gradle/Dockerfile
-    volumes: ["gradle-<%= projectDirectory %>-app-data:/home/app"]
+      dockerfile: .mvn/Dockerfile
+    volumes: ["maven-<%= projectDirectory %>-app-data:/home/appuser"]
     ports: ["8080:8080"]
     networks: [backing-services]
     #mem_limit: 786432000 # container limit: 700Mb (700 * 1024 * 1024)
 
 volumes:
-  gradle-<%= projectDirectory %>-app-data: {}
+  maven-<%= projectDirectory %>-app-data: {}
 
 networks:
   backing-services:

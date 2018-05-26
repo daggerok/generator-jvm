@@ -133,8 +133,8 @@
       <scope>test</scope>
     </dependency>
     -->
+
     <!-- In java we trust -->
-    <!--
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
@@ -146,7 +146,7 @@
       <artifactId>vavr</artifactId>
       <version>${vavr.version}</version>
     </dependency>
-    -->
+
     <!-- Kotlin -->
     <!--
     <dependency>

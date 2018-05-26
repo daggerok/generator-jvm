@@ -20,16 +20,14 @@
     <spring-cloud-function.version>1.0.0.RC1</spring-cloud-function.version>
     <spring-boot.version>${project.parent.version}</spring-boot.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
     <spring-cloud.version>Finchley.RC1</spring-cloud.version>
     <junit.platform.version>1.2.0</junit.platform.version>
     <junit.jupiter.version>5.1.0</junit.jupiter.version>
-    <jakson-kotlin.version>2.9.5</jakson-kotlin.version>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <lombok.version>1.16.20</lombok.version>
-    <kotlin.version>1.2.41</kotlin.version>
     <junit4.version>4.12</junit4.version>
+    <vavr.version>0.9.2</vavr.version>
   </properties>
 
   <pluginRepositories>
@@ -103,22 +101,18 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-actuator</artifactId>
     </dependency>
+
+    <!-- In java we trust -->
     <dependency>
-      <groupId>org.jetbrains.kotlin</groupId>
-      <artifactId>kotlin-stdlib-jdk8</artifactId>
-      <version>${kotlin.version}</version>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <optional>true</optional>
+      <scope>provided</scope>
     </dependency>
-    <!--
     <dependency>
-      <groupId>org.jetbrains.kotlin</groupId>
-      <artifactId>kotlin-reflect</artifactId>
-      <version>${kotlin.version}</version>
-    </dependency>
-    -->
-    <dependency>
-      <groupId>com.fasterxml.jackson.module</groupId>
-      <artifactId>jackson-module-kotlin</artifactId>
-      <version>${jakson-kotlin.version}</version>
+      <groupId>io.vavr</groupId>
+      <artifactId>vavr</artifactId>
+      <version>${vavr.version}</version>
     </dependency>
 
     <!-- junit 4 -->
@@ -183,61 +177,6 @@
             </goals>
           </execution>
         </executions>
-      </plugin>
-      <plugin>
-        <artifactId>kotlin-maven-plugin</artifactId>
-        <groupId>org.jetbrains.kotlin</groupId>
-        <version>${kotlin.version}</version>
-        <configuration>
-          <jvmTarget>${maven.compiler.target}</jvmTarget>
-          <compilerPlugins>
-            <plugin>all-open</plugin>
-            <plugin>no-arg</plugin>
-            <plugin>spring</plugin>
-          </compilerPlugins>
-          <pluginOptions>
-            <option>all-open:annotation=javax.persistence.Entity</option>
-            <option>no-arg:annotation=javax.persistence.Entity</option>
-          </pluginOptions>
-        </configuration>
-        <executions>
-          <execution>
-            <id>compile</id>
-            <goals>
-              <goal>compile</goal>
-            </goals>
-            <configuration>
-              <sourceDirs>
-                <sourceDir>${project.basedir}/src/main/kotlin</sourceDir>
-                <sourceDir>${project.basedir}/src/main/java</sourceDir>
-              </sourceDirs>
-            </configuration>
-          </execution>
-          <execution>
-            <id>test-compile</id>
-            <goals>
-              <goal>test-compile</goal>
-            </goals>
-            <configuration>
-              <sourceDirs>
-                <sourceDir>${project.basedir}/src/test/kotlin</sourceDir>
-                <sourceDir>${project.basedir}/src/test/java</sourceDir>
-              </sourceDirs>
-            </configuration>
-          </execution>
-        </executions>
-        <dependencies>
-          <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-maven-allopen</artifactId>
-            <version>${kotlin.version}</version>
-          </dependency>
-          <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-maven-noarg</artifactId>
-            <version>${kotlin.version}</version>
-          </dependency>
-        </dependencies>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
