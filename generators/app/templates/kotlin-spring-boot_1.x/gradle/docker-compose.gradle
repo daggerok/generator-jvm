@@ -1,0 +1,25 @@
+apply plugin: "com.avast.gradle.docker-compose"
+
+def dockerComposeFile = project.file("$rootDir/docker-compose.yaml")
+if (project.hasProperty("profile")) {
+  def profile = project.getProperty("profile") ?: ""
+  if (profile.trim().length() > 0) {
+    dockerComposeFile = project.file("$rootDir/docker-compose-${profile}.yaml")
+  }
+}
+
+dockerCompose {
+  useComposeFiles = [dockerComposeFile]
+  // captureContainersOutput = true
+  captureContainersOutput = false
+  stopContainers = true
+  removeContainers = true
+  removeImages = "Local"
+  removeVolumes = true
+  removeOrphans = true
+  forceRecreate = true
+  waitForTcpPorts = false
+  projectName = project.name
+}
+
+composeUp.dependsOn assemble

@@ -12,8 +12,9 @@
   <properties>
     <maven.compiler.source>${maven.compiler.target}</maven.compiler.source>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <junit.platform.version>1.0.2</junit.platform.version>
-    <junit.jupiter.version>5.0.2</junit.jupiter.version>
+    <junit.platform.version>1.2.0</junit.platform.version>
+    <junit.jupiter.version>5.2.0</junit.jupiter.version>
+    <jakson-kotlin.version>2.9.5</jakson-kotlin.version>
     <maven.compiler.target>1.8</maven.compiler.target>
     <resteasy.version>3.5.0.Final</resteasy.version>
     <lombok.version>1.16.20</lombok.version>
@@ -31,7 +32,7 @@
     <dependency>
       <groupId>com.fasterxml.jackson.module</groupId>
       <artifactId>jackson-module-kotlin</artifactId>
-      <version>2.9.4.1</version>
+      <version>${jakson-kotlin.version}</version>
     </dependency>
     -->
     <dependency>
@@ -140,7 +141,7 @@
     <dependency>
       <groupId>org.junit.vintage</groupId>
       <artifactId>junit-vintage-engine</artifactId>
-      <version>${junit4.version}.3</version>
+      <version><version>${junit.jupiter.version}</version></version>
       <scope>test</scope>
     </dependency>
     <!-- junit 5 -->

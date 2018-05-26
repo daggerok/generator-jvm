@@ -22,8 +22,9 @@
     <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
     <hibernate.core.version>4.2.18.Final</hibernate.core.version>
     <spring-cloud.version>Edgware.SR3</spring-cloud.version>
-    <junit.platform.version>1.0.2</junit.platform.version>
-    <junit.jupiter.version>5.0.2</junit.jupiter.version>
+    <junit.platform.version>1.2.0</junit.platform.version>
+    <junit.jupiter.version>5.2.0</junit.jupiter.version>
+    <jakson-kotlin.version>2.9.5</jakson-kotlin.version>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <lombok.version>1.16.20</lombok.version>
@@ -151,6 +152,7 @@
     <dependency>
       <groupId>com.fasterxml.jackson.module</groupId>
       <artifactId>jackson-module-kotlin</artifactId>
+      <version>${jakson-kotlin.version}</version>
     </dependency>
     -->
     <dependency>
@@ -176,6 +178,7 @@
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
     </dependency>
+
     <!-- junit 4 -->
     <dependency>
       <groupId>junit</groupId>
@@ -186,7 +189,7 @@
     <dependency>
       <groupId>org.junit.vintage</groupId>
       <artifactId>junit-vintage-engine</artifactId>
-      <version>${junit4.version}.3</version>
+      <version>${junit.jupiter.version}</version>
       <scope>test</scope>
     </dependency>
     <!-- junit 5 -->
@@ -212,6 +215,12 @@
       <groupId>org.junit.platform</groupId>
       <artifactId>junit-platform-runner</artifactId>
       <version>${junit.platform.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-params</artifactId>
+      <version>${junit.jupiter.version}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -321,17 +330,21 @@
         </executions>
       </plugin>
 
-      <!-- junit 5 -->
+      <!-- junit -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.21.0</version>
         <!--
           there are issues with 2.20.1 version
           The junit-platform-surefire-provider is not compatible with version 2.20 of the maven-surefire-plugin.
           see https://github.com/junit-team/junit5/issues/809
         -->
         <!--<version>2.20.1</version>-->
-        <version>2.19.1</version>
+        <!--
+          version 2.19.1 previously worked, so switch on it if any problems occurs
+        -->
+        <!--<version>2.19.1</version>-->
         <dependencies>
           <dependency>
             <groupId>org.junit.platform</groupId>
@@ -343,7 +356,25 @@
             <artifactId>junit-jupiter-engine</artifactId>
             <version>${junit.jupiter.version}</version>
           </dependency>
+          <dependency>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+            <version>${junit.jupiter.version}</version>
+          </dependency>
         </dependencies>
+        <configuration>
+          <properties>
+            <!--
+            <includeTags>acceptance | !feature-a</includeTags>
+            <excludeTags>integration, regression</excludeTags>
+            <configurationParameters>
+              junit.jupiter.conditions.deactivate = *
+              junit.jupiter.extensions.autodetection.enabled = true
+              junit.jupiter.testinstance.lifecycle.default = per_class
+            </configurationParameters>
+            -->
+          </properties>
+        </configuration>
       </plugin>
     </plugins>
   </build>

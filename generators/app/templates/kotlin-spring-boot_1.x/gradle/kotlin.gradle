@@ -1,0 +1,46 @@
+allprojects {
+  apply plugin: "org.jetbrains.kotlin.jvm"
+  apply plugin: "org.jetbrains.kotlin.plugin.spring"
+
+  def projectIncremental = true
+  def projectFreeCompileArgs = [
+      "-Xjsr305=strict",
+      "-java-parameters",
+      "-Xenable-jvm-default",
+  ]
+
+  kotlin {
+    experimental {
+      coroutines "enable"
+    }
+  }
+
+  kapt {
+    useBuildCache = true
+  }
+
+  compileKotlin {
+    incremental = projectIncremental
+    kotlinOptions {
+      jvmTarget = "$javaVersion"
+      freeCompilerArgs = projectFreeCompileArgs
+    }
+  }
+
+  compileTestKotlin {
+    incremental = projectIncremental
+    kotlinOptions {
+      jvmTarget = "$javaVersion"
+      freeCompilerArgs = projectFreeCompileArgs
+    }
+  }
+
+  dependencies {
+    //compile("com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonKotlinVersion")
+    compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion")
+    compile("org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion")
+
+    testImplementation("org.jetbrains.kotlin:kotlin-test:$kotlinVersion")
+    testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion")
+  }
+}

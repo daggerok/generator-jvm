@@ -6,8 +6,8 @@ buildscript {
     slf4jVersion = "1.7.25"
     lombokVersion = "1.16.20"
     scalaCompatVersion = "2.12"
-    junitJupiterVersion = "5.0.2"
-    junitPlatformVersion = "1.0.2"
+    junitJupiterVersion = "5.2.0"
+    junitPlatformVersion = "1.2.0"
   }
   repositories {
     mavenLocal()

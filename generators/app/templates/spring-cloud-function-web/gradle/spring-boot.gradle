@@ -1,0 +1,77 @@
+apply plugin: "idea"
+apply plugin: "cn.bestwu.propdeps"
+apply plugin: "org.springframework.boot"
+apply plugin: "io.spring.dependency-management"
+
+defaultTasks "clean", "build"
+
+compileJava.dependsOn(processResources)
+
+dependencies {
+
+  // spring-cloud
+  compile("org.springframework.cloud:spring-cloud-function-web:$springCloudFunctionVersion")
+
+  // spring-boot
+  compile("org.springframework.boot:spring-boot-starter-webflux")
+  compile("org.springframework.boot:spring-boot-starter-actuator")
+  //runtime("org.springframework.boot:spring-boot-devtools")
+
+  //annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+  //testAnnotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+
+  //// JPA (+embedded)
+  //runtime("com.h2database:h2")
+  //compile("org.springframework.boot:spring-boot-starter-data-jpa")
+  //compile("org.springframework.boot:spring-boot-starter-data-rest")
+  //// @Id UUID
+  //compile("org.hibernate:hibernate-core:$hibernateCoreVersion")
+
+  //// Mongo (+embedded)
+  //compile("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
+  //compile("de.flapdoodle.embed:de.flapdoodle.embed.mongo")
+
+  //// Kafka (+embedded)
+  //compile("org.springframework.cloud:spring-cloud-stream")
+  //compile("org.springframework.cloud:spring-cloud-stream-binder-kafka")
+  //compile("org.springframework.kafka:spring-kafka")
+  //compile("org.springframework.kafka:spring-kafka-test")
+  //testImplementation("org.springframework.cloud:spring-cloud-stream-test-support")
+
+  testImplementation("org.springframework.boot:spring-boot-starter-test")
+  testImplementation("io.projectreactor:reactor-test")
+}
+
+dependencyManagement {
+  imports {
+    mavenBom "org.springframework.boot:spring-boot-dependencies:$springBootVersion"
+    mavenBom "org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion"
+  }
+}
+
+bootJar {
+  launchScript()
+}
+
+/*
+// spring-boot multi-module preamble:
+// this in dependencies closure really doesn't work:
+// compile project(":submodule").sourceSets.main.output // dot't do this!
+
+// 1. in spring-boot submodules use next configs:
+
+bootJar {
+  enabled = false
+}
+jar {
+  enabled = true
+}
+
+// 2. in spring-boot target main module to fix gradle compile build + lombok issue use all of these:
+
+dependencies {
+  annotationProcessor(project(":submodule"))
+  compileOnly(project(":submodule"))
+  compile(project(":submodule"))
+}
+*/

@@ -1,0 +1,18 @@
+allprojects {
+  apply plugin: "maven-publish"
+
+  publishing {
+    dependsOn assemble
+
+    publications {
+      mavenJava(MavenPublication) {
+        from components.java
+      }
+    }
+    repositories {
+      maven {
+        url "$buildDir/maven-publish"
+      }
+    }
+  }
+}

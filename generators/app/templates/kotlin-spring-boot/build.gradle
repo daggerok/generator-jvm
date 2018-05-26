@@ -1,203 +1,66 @@
 buildscript {
   ext {
-    javaVersion = "1.8"
-    vavrVersion = "0.9.2"
-    kotlinVersion = "1.2.41"
-    springCloudVersion = "Finchley.RC1"
-    springBootVersion = "2.0.2.RELEASE"
+    javaVersion = JavaVersion.VERSION_1_8
     hibernateCoreVersion = "4.2.18.Final"
-    junitPlatformVersion = "1.0.2"
-    junitJupiterVersion = "5.0.2"
+    springBootVersion = "2.0.2.RELEASE"
+    springCloudVersion = "Finchley.RC1"
+    jacksonKotlinVersion = "2.9.5"
+    lombokVersion = "1.16.20"
+    kotlinVersion = "1.2.41"
+    slf4jVersion = "1.7.25"
+    vavrVersion = "0.9.2"
+
+    phantomjsDriverVersion = "1.4.4"
+    seleniumDriverVersion = "3.12.0"
+    junitPlatformVersion = "1.2.0"
+    junitJupiterVersion = "5.2.0"
+    selenideVersion = "4.11.4"
+    hamcrestVersion = "1.3"
+    junit4Version = "4.12"
+
+    allureVersion = "2.6.0"
+
+    asciidoctorjPdfVersion = "1.5.0-alpha.15"
   }
-  repositories {
-    mavenLocal()
-    mavenCentral()
-  }
+
+  apply from: "$project.rootDir/gradle/repositories.gradle"
+
   dependencies {
-    classpath("org.junit.platform:junit-platform-gradle-plugin:$junitPlatformVersion")
+    classpath("org.asciidoctor:asciidoctorj-pdf:$asciidoctorjPdfVersion")
   }
+
+  //// spring-boot versions overriding, be careful with it!
+  // In our case we are fixing PhantomJS (replacing older spring-boot version):
+  ext["selenium.version"] = "3.12.0"
 }
 
 plugins {
-  id "idea"
-  id "java"
-  id "maven"
-  id "eclipse"
-  id "org.jetbrains.kotlin.jvm" version "1.2.41"
-  id "org.jetbrains.kotlin.plugin.spring" version "1.2.41"
-  id "io.spring.dependency-management" version "1.0.5.RELEASE"
-  id "org.springframework.boot" version "2.0.2.RELEASE"
-  id "com.avast.gradle.docker-compose" version "0.6.13"
-  //id "cn.bestwu.propdeps-eclipse" version "0.0.10"
-  //id "cn.bestwu.propdeps-maven" version "0.0.10"
-  //id "cn.bestwu.propdeps-idea" version "0.0.10"
-  //id "cn.bestwu.propdeps" version "0.0.10"
+  id "org.asciidoctor.convert" version "1.5.3" apply false
+  id "org.jetbrains.kotlin.jvm" version "1.2.41" apply false
+  id "org.jetbrains.kotlin.plugin.allopen" version "1.2.41" apply false
+  id "io.spring.dependency-management" version "1.0.5.RELEASE" apply false
+  id "org.springframeowrk.boot" version "2.0.2.RELEASE" apply false
+  id "com.avast.gradle.docker-compose" version "0.6.13" apply false
+  id "cn.bestwu.propdeps-eclipse" version "0.0.10" apply false
+  id "cn.bestwu.propdeps-maven" version "0.0.10" apply false
+  id "cn.bestwu.propdeps-idea" version "0.0.10" apply false
+  id "cn.bestwu.propdeps" version "0.0.10" apply false
+  id "io.qameta.allure" version "2.5" apply false
 }
-
-apply plugin: "org.junit.platform.gradle.plugin"
-
-group = "daggerok"
-version = "0.0.1"
-sourceCompatibility = targetCompatibility = "$javaVersion"
-
-compileKotlin {
-  incremental = true
-  kotlinOptions {
-    freeCompilerArgs = ["-Xjsr305=strict"]
-    jvmTarget = "$javaVersion"
-  }
-}
-
-compileTestKotlin {
-  incremental = true
-  kotlinOptions {
-    freeCompilerArgs = ["-Xjsr305=strict"]
-    jvmTarget = "$javaVersion"
-  }
-}
-
-defaultTasks "clean", "build"
-
-repositories {
-  mavenLocal()
-  mavenCentral()
-  maven { url "https://repo.spring.io/libs-milestone" }
-}
-
-compileJava.dependsOn(processResources)
-
-dependencies {
-
-  // spring-boot
-  compile("org.springframework.boot:spring-boot-starter-webflux")
-  compile("org.springframework.boot:spring-boot-starter-actuator")
-  //runtime("org.springframework.boot:spring-boot-devtools")
-
-  ////do not forget uncomment: apply plugin: "cn.bestwu.propdeps"
-  //annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
-  //testAnnotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
-
-  //// JPA (+embedded)
-  //runtime("com.h2database:h2")
-  //compile("org.springframework.boot:spring-boot-starter-data-jpa")
-  //compile("org.springframework.boot:spring-boot-starter-data-rest")
-  //// @Id UUID
-  //compile("org.hibernate:hibernate-core:$hibernateCoreVersion")
-
-  //// Mongo (+embedded)
-  //compile("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
-  //compile("de.flapdoodle.embed:de.flapdoodle.embed.mongo")
-
-  //// Kafka (+embedded)
-  //compile("org.springframework.cloud:spring-cloud-stream")
-  //compile("org.springframework.cloud:spring-cloud-stream-binder-kafka")
-  //compile("org.springframework.kafka:spring-kafka")
-  //compile("org.springframework.kafka:spring-kafka-test")
-  //testCompile("org.springframework.cloud:spring-cloud-stream-test-support")
-
-  //// In java we trust...
-  //compile("io.vavr:vavr:$vavrVersion")
-
-  //annotationProcessor("org.projectlombok:lombok")
-  //compileOnly("org.projectlombok:lombok")
-  //testAnnotationProcessor("org.projectlombok:lombok")
-  //testCompileOnly("org.projectlombok:lombok")
-
-  // Kotlin
-  compile("com.fasterxml.jackson.module:jackson-module-kotlin:2.9.5")
-  compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion")
-  compile("org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion")
-
-  //testCompile("org.jetbrains.kotlin:kotlin-test:$kotlinVersion")
-  testCompile("org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion")
-
-  testCompile("org.springframework.boot:spring-boot-starter-test")
-  testCompile("io.projectreactor:reactor-test")
-
-  // junit 4
-  testCompile "junit:junit:4.12"
-  testImplementation("org.hamcrest:hamcrest-core:1.3")
-
-  // junit 5
-  testImplementation("org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion")
-  testRuntime("org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion")
-  testRuntime("org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion")
-  testRuntime("org.junit.vintage:junit-vintage-engine:4.12.3")
-
-  // IDEA (older bundle):
-  testRuntime("org.junit.platform:junit-platform-launcher:$junitPlatformVersion")
-  testCompileOnly("org.apiguardian:apiguardian-api:1.0.0")
-}
-
-dependencyManagement {
-  imports {
-    mavenBom "org.springframework.boot:spring-boot-dependencies:$springBootVersion"
-    mavenBom "org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion"
-  }
-}
-
-bootJar {
-  launchScript()
-}
-
-def profile = project.hasProperty("profile") ? project.getProperty("profile") : "gradle"
-
-dockerCompose {
-  useComposeFiles = [project.file("docker-compose-${profile}.yaml")]
-  // captureContainersOutput = true
-  captureContainersOutput = false
-  stopContainers = true
-  removeContainers = true
-  removeImages = "Local"
-  removeVolumes = true
-  removeOrphans = true
-  forceRecreate = true
-  waitForTcpPorts = false
-  projectName = project.name
-}
-
-composeUp.dependsOn assemble
 
 task wrapper(type: Wrapper) {
   gradleVersion = "4.7"
   distributionType = "ALL"
 }
 
-test {
-  systemProperties "property": "value"
-}
-
-idea {
-  module {
-    downloadSources = true
-  }
-}
-
-eclipse {
-  classpath {
-    downloadSources = true
-  }
-}
-
-/*
-// spring-boot multi-module preamble:
-// this in dependencies closure really doesn't work:
-// compile project(":submodule").sourceSets.main.output // dot't do this!
-
-// 1. in spring-boot submodules use next configs:
-
-bootJar {
-  enabled = false
-}
-jar {
-  enabled = true
-}
-
-// 2. in spring-boot target main module to fix gradle compile build + lombok issue use all of these:
-
-dependencies {
-  annotationProcessor(project(":submodule"))
-  compileOnly(project(":submodule"))
-  compile(project(":submodule"))
-}
-*/
+apply from: "$rootDir/gradle/ide.gradle"
+apply from: "$rootDir/gradle/clean.gradle"
+apply from: "$rootDir/gradle/java.gradle"
+apply from: "$rootDir/gradle/kotlin.gradle"
+apply from: "$rootDir/gradle/spring-boot.gradle"
+apply from: "$rootDir/gradle/publishing.gradle"
+apply from: "$rootDir/gradle/jacoco.gradle"
+apply from: "$rootDir/gradle/junit.gradle"
+//apply from: "$rootDir/gradle/allure.gradle"
+//apply from: "$rootDir/gradle/selenide.gradle"
+apply from: "$rootDir/gradle/docker-compose.gradle"

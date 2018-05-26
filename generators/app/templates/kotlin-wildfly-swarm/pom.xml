@@ -16,8 +16,8 @@
     <hibernate.core.version>4.2.18.Final</hibernate.core.version>
     <java.net.preferIPv4Stack>true</java.net.preferIPv4Stack>
     <version.wildfly.swarm>2018.1.0</version.wildfly.swarm>
-    <junit.platform.version>1.0.2</junit.platform.version>
-    <junit.jupiter.version>5.0.2</junit.jupiter.version>
+    <junit.platform.version>1.2.0</junit.platform.version>
+    <junit.jupiter.version>5.2.0</junit.jupiter.version>
     <maven.compiler.target>1.8</maven.compiler.target>
     <failOnMissingWebXml>false</failOnMissingWebXml>
     <lombok.version>1.16.20</lombok.version>
@@ -151,7 +151,7 @@
     <dependency>
       <groupId>org.junit.vintage</groupId>
       <artifactId>junit-vintage-engine</artifactId>
-      <version>${junit4.version}.3</version>
+      <version><version>${junit.jupiter.version}</version></version>
       <scope>test</scope>
     </dependency>
     <!-- junit 5 -->

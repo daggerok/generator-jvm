@@ -6,8 +6,9 @@ buildscript {
     slf4jVersion = "1.7.25"
     kotlinVersion = "1.2.41"
     lombokVersion = "1.16.20"
-    junitJupiterVersion = "5.0.2"
-    junitPlatformVersion = "1.0.2"
+    junitJupiterVersion = "5.2.0"
+    junitPlatformVersion = "1.2.0"
+    jacksonKotlinVersion = "2.9.5"
     wildflySwarmVersion = "2018.1.0"
     hibernateCoreVersion = "4.2.18.Final"
   }
