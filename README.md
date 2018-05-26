@@ -121,7 +121,7 @@ spring cloud function web project
  * spring-boot 2 / spring framework 5
  * support fatjar
  * support executable bash jar
- * support kotlin
+ * support kotlin or java
  * support maven
  * support gradle
  * docker / docker-compose support
@@ -132,7 +132,7 @@ spring-boot 1 / spring framework 4 project
  * spring-boot 1 / spring framework 4
  * support fatjar
  * support executable bash jar
- * support kotlin
+ * support kotlin or java
  * support maven
  * support gradle
  * vavr (javaslang)
@@ -160,7 +160,7 @@ spring-boot 2 / spring framework 5 project
  * spring-boot 2 / spring framework 5
  * support fatjar
  * support executable bash jar
- * support kotlin
+ * support kotlin or java
  * support maven
  * support gradle
  * vavr (javaslang)
