@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>daggerok</groupId>
+    <groupId>com.github.daggerok</groupId>
     <artifactId><%= projectDirectory %></artifactId>
     <version>0.0.1</version>
   </parent>
@@ -14,42 +14,42 @@
 
   <dependencies>
     <dependency>
-      <groupId>daggerok</groupId>
+      <groupId>com.github.daggerok</groupId>
       <artifactId>ejb-data</artifactId>
       <version>0.0.1</version>
       <type>ejb</type>
     </dependency>
 
     <dependency>
-      <groupId>daggerok</groupId>
+      <groupId>com.github.daggerok</groupId>
       <artifactId>ejb-services</artifactId>
       <version>0.0.1</version>
       <type>ejb</type>
     </dependency>
 
     <dependency>
-      <groupId>daggerok</groupId>
+      <groupId>com.github.daggerok</groupId>
       <artifactId>servlet</artifactId>
       <version>0.0.1</version>
       <type>war</type>
     </dependency>
 
     <dependency>
-      <groupId>daggerok</groupId>
+      <groupId>com.github.daggerok</groupId>
       <artifactId>jsp</artifactId>
       <version>0.0.1</version>
       <type>war</type>
     </dependency>
 
     <dependency>
-      <groupId>daggerok</groupId>
+      <groupId>com.github.daggerok</groupId>
       <artifactId>rest</artifactId>
       <version>0.0.1</version>
       <type>war</type>
     </dependency>
 
     <dependency>
-      <groupId>daggerok</groupId>
+      <groupId>com.github.daggerok</groupId>
       <artifactId>web</artifactId>
       <version>0.0.1</version>
       <type>war</type>

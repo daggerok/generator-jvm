@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>daggerok</groupId>
+    <groupId>com.github.daggerok</groupId>
     <artifactId><%= projectDirectory %></artifactId>
     <version>0.0.1</version>
   </parent>
@@ -14,7 +14,7 @@
 
   <dependencies>
     <dependency>
-      <groupId>daggerok</groupId>
+      <groupId>com.github.daggerok</groupId>
       <artifactId>ejb-services</artifactId>
       <version>0.0.1</version>
       <type>ejb-client</type>
