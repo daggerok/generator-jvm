@@ -2,8 +2,6 @@ allprojects {
   apply plugin: "maven-publish"
 
   publishing {
-    dependsOn assemble
-
     publications {
       mavenJava(MavenPublication) {
         from components.java
@@ -15,4 +13,6 @@ allprojects {
       }
     }
   }
+
+  publish.dependsOn assemble
 }
