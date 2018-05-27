@@ -140,6 +140,7 @@ module.exports = class extends Generator {
       'gradle',
       'gradlew',
       'gradlew.bat',
+      'gradle.properties',
       'mvnw',
       'mvnw.cmd',
 
