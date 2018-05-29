@@ -6,7 +6,7 @@ plugins {
 */
 
 apply plugin: "idea"
-apply plugin: "cn.bestwu.propdeps-idea"
+allprojects*.apply plugin: "cn.bestwu.propdeps-idea"
 
 idea {
   module {
@@ -16,7 +16,7 @@ idea {
 
 /*
 apply plugin: "eclipse"
-apply plugin: "cn.bestwu.propdeps-eclipse"
+allprojects*.apply plugin: "cn.bestwu.propdeps-eclipse"
 
 eclipse {
   classpath {
@@ -24,6 +24,6 @@ eclipse {
   }
 }
 
-apply plugin: "maven"
-apply plugin: "cn.bestwu.propdeps-maven"
+allprojects*.apply plugin: "maven"
+allprojects*.apply plugin: "cn.bestwu.propdeps-maven"
 */

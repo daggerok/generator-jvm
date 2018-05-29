@@ -1,6 +1,6 @@
 apply plugin: "com.avast.gradle.docker-compose"
 
-def dockerComposeFile = project.file("$rootDir/docker-compose.yaml")
+def dockerComposeFile = project.file("$rootDir/docker-compose-gradle.yaml")
 if (project.hasProperty("profile")) {
   def profile = project.getProperty("profile") ?: ""
   if (profile.trim().length() > 0) {

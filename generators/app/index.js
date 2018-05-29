@@ -39,6 +39,10 @@ module.exports = class extends Generator {
       'scala-akka-persistence-gradle',
     ];
 
+    this.nonMavenProjects = [
+      'scala-akka-persistence-gradle',
+    ];
+
     this.props = {
       projectDirectory: defaultProjectName,
       projectType: defaultProjectType,
@@ -107,31 +111,11 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    const projectDirectory = replaceSpacesWithDash(this.props.projectDirectory);
-    const projectType = this.props.projectType.trim().toLowerCase();
 
-    /* copy project files by type */
+    /* safety */
 
-    [
-      '**/*',
-      '**/.*',
-
-    ].forEach(pattern => this.fs.copy(
-      this.templatePath(`${projectType}/${pattern}`),
-      this.destinationPath(projectDirectory),
-    ));
-
-    /* copy dotted files / dirs, like: .mvn, .gitignore, ... */
-
-    [
-      'mvn',
-      'gitignore',
-      'hgignore',
-
-    ].forEach(suffix => this.fs.copy(
-      this.templatePath(`_dotted/${suffix}`),
-      this.destinationPath(`${projectDirectory}/.${suffix}`),
-    ));
+    this.props.projectDirectory = replaceSpacesWithDash(this.props.projectDirectory);
+    this.props.projectType = this.props.projectType.trim().toLowerCase();
 
     /* copy commons */
 
@@ -146,12 +130,35 @@ module.exports = class extends Generator {
 
     ].forEach(suffix => this.fs.copy(
       this.templatePath(`_common/${suffix}`),
-      this.destinationPath(`${projectDirectory}/${suffix}`),
+      this.destinationPath(`${this.props.projectDirectory}/${suffix}`),
+    ));
+
+    /* copy dotted files / dirs, like: .mvn, .gitignore, ... */
+
+    [
+      'mvn',
+      'gitignore',
+      'hgignore',
+
+    ].forEach(suffix => this.fs.copy(
+      this.templatePath(`_dotted/${suffix}`),
+      this.destinationPath(`${this.props.projectDirectory}/.${suffix}`),
+    ));
+
+    /* copy project files by type */
+
+    [
+      '**/*',
+      '**/.*',
+
+    ].forEach(pattern => this.fs.copy(
+      this.templatePath(`${this.props.projectType}/${pattern}`),
+      this.destinationPath(this.props.projectDirectory),
     ));
 
     /* apply template substitutions */
 
-    switch (projectType) {
+    switch (this.props.projectType) {
       // specific Scala Akka project (gradle only):
       case 'scala-akka-persistence-gradle':
 
@@ -163,9 +170,9 @@ module.exports = class extends Generator {
           'docker-compose.yaml',
 
         ].forEach(path => this.fs.copyTpl(
-          this.templatePath(`${projectType}/${path}`),
-          this.destinationPath(`${projectDirectory}/${path}`),
-          { projectDirectory }
+          this.templatePath(`${this.props.projectType}/${path}`),
+          this.destinationPath(`${this.props.projectDirectory}/${path}`),
+          { projectDirectory: this.props.projectDirectory }
         ));
 
         break;
@@ -192,9 +199,11 @@ module.exports = class extends Generator {
           'ear/docker-compose-gradle.yaml',
 
         ].forEach(path => this.fs.copyTpl(
-          this.templatePath(`${projectType}/${path}`),
-          this.destinationPath(`${projectDirectory}/${path}`),
-          { projectDirectory }
+          this.templatePath(`${this.props.projectType}/${path}`),
+          this.destinationPath(`${this.props.projectDirectory}/${path}`),
+          {
+            projectDirectory: this.props.projectDirectory,
+          }
         ));
 
         break;
@@ -212,9 +221,11 @@ module.exports = class extends Generator {
           'docker-compose-gradle.yaml',
 
         ].forEach(path => this.fs.copyTpl(
-          this.templatePath(`${projectType}/${path}`),
-          this.destinationPath(`${projectDirectory}/${path}`),
-          { projectDirectory }
+          this.templatePath(`${this.props.projectType}/${path}`),
+          this.destinationPath(`${this.props.projectDirectory}/${path}`),
+          {
+            projectDirectory: this.props.projectDirectory,
+          }
         ));
 
         break;
@@ -222,15 +233,12 @@ module.exports = class extends Generator {
   }
 
   install() {
-    const projectType = this.props.projectType;
-    const nonMavenProjects = ['scala-akka-persistence-gradle'];
-    const projectDirectory = replaceSpacesWithDash(this.props.projectDirectory);
-    const projectHasPomXml = nonMavenProjects.filter(i => i === projectType).length === 0;
+    const projectHasPomXml = this.nonMavenProjects.filter(i => i === this.props.projectType).length === 0;
 
     this.log(`\nDone!`);
-    this.log(`Project ${projectType} located in ./${projectDirectory}`);
+    this.log(`Project ${this.props.projectType} located in ./${this.props.projectDirectory}`);
     this.log(`Let's start hacking! ^_^`);
-    if (projectHasPomXml) this.log(`idea ./${projectDirectory}/pom.xml`);
-    this.log(`idea ./${projectDirectory}/build.gradle`);
+    if (projectHasPomXml) this.log(`idea ./${this.props.projectDirectory}/pom.xml`);
+    this.log(`idea ./${this.props.projectDirectory}/build.gradle`);
   }
 };
