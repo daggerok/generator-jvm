@@ -52,43 +52,43 @@ script:
 - cd ${e2e}
 - yo jvm -n javaspringboot -t java-spring-boot
 - cd javaspringboot
-- ./gradlew -S
+- ./gradlew -S >/dev/null
 - ./mvnw clean deploy >/dev/null
 # java-spring-boot-1.x
 - cd ${e2e}
 - yo jvm -n javaspringboot1x -t java-spring-boot-1.x
 - cd javaspringboot1x
-- ./gradlew -S
+- ./gradlew -S >/dev/null
 - ./mvnw clean deploy >/dev/null
 # java-spring-cloud-function-web
 - cd ${e2e}/
 - yo jvm -n javaspringcloudfunctionweb -t java-spring-cloud-function-web
 - cd javaspringcloudfunctionweb
-- ./gradlew -S
+- ./gradlew -S >/dev/null
 - ./mvnw clean deploy >/dev/null
 # kotlin
 - cd ${e2e}
 - yo jvm -n kotlin -t kotlin
 - cd kotlin
-- ./gradlew -S
+- ./gradlew -S >/dev/null
 - ./mvnw clean deploy >/dev/null
 # kotlin-spring-boot
 - cd ${e2e}
 - yo jvm -n kotlinspringboot -t kotlin-spring-boot
 - cd kotlinspringboot
-- ./gradlew -S
+- ./gradlew -S >/dev/null
 - ./mvnw clean deploy >/dev/null
 # kotlin-spring-boot-1.x
 - cd ${e2e}
 - yo jvm -n kotlinspringboot1x -t kotlin-spring-boot-1.x
 - cd kotlinspringboot1x
-- ./gradlew -S
+- ./gradlew -S >/dev/null
 - ./mvnw clean deploy >/dev/null
 # kotlin-spring-cloud-function-web
 - cd ${e2e}
 - yo jvm -n kotlinspringcloudfunctionweb -t kotlin-spring-cloud-function-web
 - cd kotlinspringcloudfunctionweb
-- ./gradlew -S
+- ./gradlew -S >/dev/null
 - ./mvnw clean deploy >/dev/null
 # done
 - cd ${base}
@@ -105,4 +105,4 @@ deploy:
   skip_cleanup: true
   on:
     repo: daggerok/generator-jvm
-  #tag: next
+  tag: next
