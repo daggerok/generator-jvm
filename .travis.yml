@@ -105,4 +105,4 @@ deploy:
   skip_cleanup: true
   on:
     repo: daggerok/generator-jvm
-  tag: next
+  #tag: next
