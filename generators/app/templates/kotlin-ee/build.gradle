@@ -29,6 +29,7 @@ plugins {
   id "org.jetbrains.kotlin.jvm" version "1.2.41"
   id "org.jetbrains.kotlin.plugin.noarg" version "1.2.41"
   id "org.jetbrains.kotlin.plugin.allopen" version "1.2.41"
+  id "org.jetbrains.kotlin.plugin.spring" version "1.2.41" apply false
   id "com.avast.gradle.docker-compose" version "0.6.13"
 }
 
