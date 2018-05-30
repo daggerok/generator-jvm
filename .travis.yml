@@ -96,6 +96,10 @@ cache:
   yarn: true
   directories:
   - node_modules
+  - .m2
+  - .gradle
+  - $HOME/.m2
+  - $HOME/.gradle
 deploy:
   provider: npm
   email: daggerok@gmail.com
