@@ -1,14 +1,18 @@
 allprojects {
   apply plugin: 'maven-publish'
 
-  publications {
-    shadow(MavenPublication) { publication ->
-      project.shadow.component(publication)
+  publishing {
+    publications {
+      shadow(MavenPublication) { publication ->
+        project.shadow.component(publication)
+      }
     }
   }
-  repositories {
-    maven {
-      url "$rootProject.buildDir/maven-publish"
+  publishing {
+    repositories {
+      maven {
+        url "$rootProject.buildDir/maven-publish"
+      }
     }
   }
 
@@ -21,10 +25,12 @@ allprojects {
 
   publishing {
     publications {
-      shadow(MavenPublication) { publication ->
-        project.shadow.component(publication)
+      mavenJava(MavenPublication) {
+        from components.java
       }
     }
+  }
+  publishing {
     repositories {
       maven {
         url "$rootProject.buildDir/maven-publish"
