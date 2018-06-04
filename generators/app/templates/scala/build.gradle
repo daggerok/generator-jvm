@@ -53,6 +53,8 @@ allprojects {
         project.shadow.component(publication)
       }
     }
+  }
+  publishing {
     repositories {
       maven {
         url "$rootProject.buildDir/maven-publish"
