@@ -39,9 +39,9 @@ module.exports = class extends Generator {
       'scala-akka-persistence-gradle',
     ];
 
-    this.nonMavenProjects = [
-      'scala-akka-persistence-gradle',
-    ];
+    // this.nonMavenProjects = [
+    //   'scala-akka-persistence-gradle',
+    // ];
 
     this.props = {
       projectDirectory: defaultProjectName,
@@ -130,7 +130,7 @@ module.exports = class extends Generator {
 
     ].forEach(suffix => this.fs.copy(
       this.templatePath(`_common/${suffix}`),
-      this.destinationPath(`${this.props.projectDirectory}/${suffix}`),
+      this.destinationPath(`${this.props.projectDirectory}/${suffix}`)
     ));
 
     /* copy dotted files / dirs, like: .mvn, .gitignore, ... */
@@ -156,6 +156,17 @@ module.exports = class extends Generator {
       this.destinationPath(this.props.projectDirectory),
     ));
 
+    /* apply common template substitutions */
+
+    [
+      'settings.gradle',
+
+    ].forEach(suffix => this.fs.copy(
+      this.templatePath(`_common/${suffix}`),
+      this.destinationPath(`${this.props.projectDirectory}/${suffix}`),
+      { projectDirectory: this.props.projectDirectory }
+    ));
+
     /* apply template substitutions */
 
     switch (this.props.projectType) {
@@ -165,7 +176,6 @@ module.exports = class extends Generator {
         [
           '.travis.yml',
           'README.adoc',
-          'settings.gradle',
           'gradle/Dockerfile',
           'docker-compose.yaml',
 
@@ -201,9 +211,7 @@ module.exports = class extends Generator {
         ].forEach(path => this.fs.copyTpl(
           this.templatePath(`${this.props.projectType}/${path}`),
           this.destinationPath(`${this.props.projectDirectory}/${path}`),
-          {
-            projectDirectory: this.props.projectDirectory,
-          }
+          { projectDirectory: this.props.projectDirectory, }
         ));
 
         break;
@@ -214,7 +222,6 @@ module.exports = class extends Generator {
           'pom.xml',
           '.travis.yml',
           'README.adoc',
-          'settings.gradle',
           '.mvn/Dockerfile',
           'gradle/Dockerfile',
           'docker-compose-maven.yaml',
@@ -223,9 +230,7 @@ module.exports = class extends Generator {
         ].forEach(path => this.fs.copyTpl(
           this.templatePath(`${this.props.projectType}/${path}`),
           this.destinationPath(`${this.props.projectDirectory}/${path}`),
-          {
-            projectDirectory: this.props.projectDirectory,
-          }
+          { projectDirectory: this.props.projectDirectory, }
         ));
 
         break;
@@ -233,12 +238,11 @@ module.exports = class extends Generator {
   }
 
   install() {
-    const projectHasPomXml = this.nonMavenProjects.filter(i => i === this.props.projectType).length === 0;
-
     this.log(`\nDone!`);
     this.log(`Project ${this.props.projectType} located in ./${this.props.projectDirectory}`);
     this.log(`Let's start hacking! ^_^`);
-    if (projectHasPomXml) this.log(`idea ./${this.props.projectDirectory}/pom.xml`);
     this.log(`idea ./${this.props.projectDirectory}/build.gradle`);
+    // const projectHasPomXml = this.nonMavenProjects.filter(i => i === this.props.projectType).length === 0;
+    // if (projectHasPomXml) this.log(`idea ./${this.props.projectDirectory}/pom.xml`);
   }
 };

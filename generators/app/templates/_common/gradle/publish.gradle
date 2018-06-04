@@ -1,7 +1,7 @@
 allprojects {
-  apply plugin: "maven-publish"
+  apply plugin: 'maven-publish'
 
-  publishing {
+  publish {
     publications {
       /*
       shadow(MavenPublication) { publication ->
@@ -14,7 +14,7 @@ allprojects {
     }
     repositories {
       maven {
-        url "$buildDir/maven-publish"
+        url "$rootProject.buildDir/maven-publish"
       }
     }
   }

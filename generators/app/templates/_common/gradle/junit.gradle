@@ -6,18 +6,18 @@ allprojects {
     testImplementation("org.hamcrest:hamcrest-core:$hamcrestVersion")
     testImplementation("org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion")
-    //testCompileOnly("org.apiguardian:apiguardian-api:1.0.0")
+    //testCompileOnly('org.apiguardian:apiguardian-api:1.0.0')
     testRuntimeOnly("org.junit.vintage:junit-vintage-engine:$junitJupiterVersion") {
-      because "allows JUnit 3 and JUnit 4 tests to run"
+      because 'allows JUnit 3 and JUnit 4 tests to run'
     }
     testRuntime("org.junit.platform:junit-platform-launcher:$junitPlatformVersion") {
-      because "allows tests to run from IDEs that bundle older version of launcher"
+      because 'allows tests to run from IDEs that bundle older version of launcher'
     }
   }
 
   test {
     useJUnitPlatform {
-      includeEngines "junit-jupiter", "junit-vintage"
+      includeEngines 'junit-jupiter', 'junit-vintage'
     }
   }
 }

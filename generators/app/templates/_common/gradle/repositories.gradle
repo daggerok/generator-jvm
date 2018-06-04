@@ -1,6 +1,6 @@
-repositories {
-  mavenLocal()
-  mavenCentral()
-  jcenter()
-  //maven { url "https://repo.spring.io/libs-milestone" }
+allprojects {
+  buildscript {
+    apply from: "$rootDir/gradle/repositories-config.gradle"
+  }
+  apply from: "$rootDir/gradle/repositories-config.gradle"
 }

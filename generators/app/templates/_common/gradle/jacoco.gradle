@@ -2,10 +2,10 @@
 // Also got some thoughts from here: https://gist.github.com/aalmiray/e6f54aa4b3803be0bcac
 
 allprojects {
-  apply plugin: "jacoco"
+  apply plugin: 'jacoco'
 
   jacoco {
-    toolVersion = "0.8.1"
+    toolVersion = '0.8.1'
   }
 
   jacocoTestCoverageVerification {
@@ -17,13 +17,13 @@ allprojects {
       }
       rule {
         enabled = false
-        element = "CLASS"
+        element = 'CLASS'
         includes = [
-            "org.gradle.*",
+            'org.gradle.*',
         ]
         limit {
-          counter = "LINE"
-          value = "TOTALCOUNT"
+          counter = 'LINE'
+          value = 'TOTALCOUNT'
           maximum = 0.3
         }
       }
@@ -60,8 +60,8 @@ jacocoTestReport {
       fileTree(
         dir    : it,
         exclude: [
-          "*donot/check/me*",
-          "*dont/check/metoo*",
+          '*donot/check/me*',
+          '*dont/check/metoo*',
         ]
       )
     })

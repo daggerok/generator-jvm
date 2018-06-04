@@ -1,5 +1,5 @@
 allprojects {
-  apply plugin: "io.qameta.allure"
+  apply plugin: 'io.qameta.allure'
 
   dependencies {
     testCompile("io.qameta.allure:allure-selenide:$allureVersion")

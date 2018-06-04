@@ -1,18 +1,18 @@
 allprojects {
-  apply plugin: "org.jetbrains.kotlin.jvm"
-  apply plugin: "org.jetbrains.kotlin.plugin.noarg"
-  apply plugin: "org.jetbrains.kotlin.plugin.spring"
+  apply plugin: 'org.jetbrains.kotlin.jvm'
+  apply plugin: 'org.jetbrains.kotlin.plugin.noarg'
+  apply plugin: 'org.jetbrains.kotlin.plugin.spring'
 
   def projectIncremental = true
   def projectFreeCompileArgs = [
-      "-Xjsr305=strict",
-      "-java-parameters",
-      "-Xenable-jvm-default",
+      '-Xjsr305=strict',
+      '-java-parameters',
+      '-Xenable-jvm-default',
   ]
 
   kotlin {
     experimental {
-      coroutines "enable"
+      coroutines 'enable'
     }
   }
 

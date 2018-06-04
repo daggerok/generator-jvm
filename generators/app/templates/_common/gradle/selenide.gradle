@@ -1,12 +1,9 @@
-/**
- * Selenide / drivers dependencies...
- */
 dependencies {
   testImplementation("com.codeborne:selenide:$selenideVersion") {
-    exclude module: "selenium-opera-driver"
-    exclude module: "selenium-safari-driver"
-    exclude module: "selenium-edge-driver"
-    exclude module: "selenium-ie-driver"
+    exclude module: 'selenium-opera-driver'
+    exclude module: 'selenium-safari-driver'
+    exclude module: 'selenium-edge-driver'
+    exclude module: 'selenium-ie-driver'
     because "we don't wanna use any of these..."
   }
   testImplementation("com.codeborne:phantomjsdriver:$phantomjsDriverVersion")
@@ -16,35 +13,19 @@ dependencies {
 }
 
 static def findAllSelenideSystemProps() {
-  System.properties?.findAll { it.key.startsWith("selenide") } ?: [:]
+  System.properties?.findAll { it.key.startsWith('selenide') } ?: [:]
 }
 
-final String selenideBrowser = "selenide.browser"
-final String defaultBrowser = "chrome" // "phantomjs"
-
-/**
- * Specify default phantomjs headless browser if no one was specified
- *
- * just for default `./gradlew build` execution
- */
 test {
   systemProperties = findAllSelenideSystemProps() + [
-      "selenide.browser": System.getProperty(selenideBrowser, defaultBrowser)
+      'selenide.browser': System.getProperty('selenide.browser', 'chrome')
   ]
 }
 
-/**
- * Browser selector tasks: specify / select browser you wanna run within e2e selenide tests
- *
- * Usage:
- *
- * ./gradlew test chrome
- * ./gradlew firefox check
- */
-["firefox", "chrome", "phantomjs"].each { taskName ->
+['firefox', 'chrome', 'phantomjs'].each { taskName ->
   Task e2eTestBrowserSelectorTask = tasks.create(name: taskName) {
     def systemProps = findAllSelenideSystemProps()
-    systemProps["$selenideBrowser"] = taskName
+    systemProps['selenide.browser'] = taskName
 
     doFirst {
       test {
@@ -55,16 +36,9 @@ test {
   test.shouldRunAfter(e2eTestBrowserSelectorTask)
 }
 
-final String selenideHeadless = "selenide.headless"
-
-/**
- * Force tests execution in headless mode.
- *
- * ./gradlew test headless chrome
- */
 task headless {
   def systemProps = findAllSelenideSystemProps()
-  systemProps["$selenideHeadless"] = true
+  systemProps['selenide.headless'] = true
 
   doFirst {
     test {
@@ -73,14 +47,9 @@ task headless {
   }
 }
 
-/**
- * Disabling headless mode even with default system configuration.
- *
- * ./gradlew test headful chrome
- */
 task headful {
   def systemProps = findAllSelenideSystemProps()
-  systemProps["$selenideHeadless"] = false
+  systemProps['selenide.headless'] = false
 
   doFirst {
     test {
