@@ -2,8 +2,6 @@ apply plugin: 'cn.bestwu.propdeps'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
-defaultTasks 'clean', 'build'
-
 compileJava.dependsOn(processResources)
 
 dependencies {

@@ -7,8 +7,6 @@ allprojects {
 
   defaultTasks 'clean', 'build'
 
-  apply from: "$project.rootDir/gradle/repositories.gradle"
-
   dependencies {
     //// In java we trust...
     //compile("io.vavr:vavr:$vavrVersion")

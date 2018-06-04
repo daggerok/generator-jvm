@@ -161,7 +161,7 @@ module.exports = class extends Generator {
     [
       'settings.gradle',
 
-    ].forEach(suffix => this.fs.copy(
+    ].forEach(suffix => this.fs.copyTpl(
       this.templatePath(`_common/${suffix}`),
       this.destinationPath(`${this.props.projectDirectory}/${suffix}`),
       { projectDirectory: this.props.projectDirectory }
