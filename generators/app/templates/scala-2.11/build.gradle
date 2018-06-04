@@ -27,6 +27,25 @@ sourceCompatibility = targetCompatibility = "$javaVersion"
 mainClassName = "daggerok.App"
 shadowJar.mustRunAfter jar
 
+allprojects {
+  apply plugin: 'maven-publish'
+
+  publishing {
+    publications {
+      shadow(MavenPublication) { publication ->
+        project.shadow.component(publication)
+      }
+    }
+    repositories {
+      maven {
+        url "$rootProject.buildDir/maven-publish"
+      }
+    }
+  }
+
+  publish.dependsOn assemble
+}
+
 defaultTasks "clean", "build"
 
 repositories {

@@ -14,3 +14,24 @@ allprojects {
 
   publish.dependsOn assemble
 }
+
+/*
+allprojects {
+  apply plugin: 'maven-publish'
+
+  publishing {
+    publications {
+      shadow(MavenPublication) { publication ->
+        project.shadow.component(publication)
+      }
+    }
+    repositories {
+      maven {
+        url "$rootProject.buildDir/maven-publish"
+      }
+    }
+  }
+
+  publish.dependsOn assemble
+}
+*/
