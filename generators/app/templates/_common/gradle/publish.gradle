@@ -63,16 +63,18 @@ allprojects {
 
   publish.dependsOn assemble
 
+  /* // This one is required signatory to be configured (gpg stuff...)
   apply plugin: 'signing'
 
   signing {
     sign project.publishing.publications.mavenJava
   }
+  */
 }
 
 /*
 allprojects {
-  // ...
+  // with shadow plugin
   publishing {
     publications {
       mavenJava(MavenPublication) { publication ->
@@ -83,6 +85,7 @@ allprojects {
       }
     }
   }
+  // without shadow plugin
   publishing {
     publications {
       mavenJava(MavenPublication) ->

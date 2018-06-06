@@ -63,20 +63,37 @@ allprojects {
 
   publish.dependsOn assemble
 
+  /* // This one is required signatory to be configured (gpg stuff...)
   apply plugin: 'signing'
 
   signing {
     sign project.publishing.publications.mavenJava
   }
+  */
 }
 
 /*
 allprojects {
-  publications {
-    mavenJava(MavenPublication) {
-      from components.java
-      // ...
+  // with shadow plugin
+  publishing {
+    publications {
+      mavenJava(MavenPublication) { publication ->
+        project.shadow.component(publication)
+        artifact sourcesJar
+        artifact javadocJar
+        // ...
+      }
     }
   }
+  // without shadow plugin
+  publishing {
+    publications {
+      mavenJava(MavenPublication) ->
+        artifact sourcesJar
+        artifact javadocJar
+      }
+    }
+  }
+  // ...
 }
 */
