@@ -1,37 +1,96 @@
-allprojects {
-  apply plugin: 'maven-publish'
+/* please, read this: https://docs.gradle.org/4.8/userguide/publishing_maven.html#publishing_m */
 
-  publications {
-    mavenJava(MavenPublication) {
-      from components.java
-    }
-  }
-  repositories {
-    maven {
-      url "$rootProject.buildDir/maven-publish"
-    }
+allprojects {
+  apply plugin: 'java'
+
+  project.javadoc.failOnError = false
+
+  task sourcesJar(type: Jar) {
+    from sourceSets.main.allJava
+    classifier 'sources'
   }
 
-  publish.dependsOn assemble
-}
+  task javadocJar(type: Jar) {
+    from javadoc
+    classifier 'javadoc'
+  }
 
-/*
-allprojects {
   apply plugin: 'maven-publish'
 
   publishing {
     publications {
-      shadow(MavenPublication) { publication ->
-        project.shadow.component(publication)
+      mavenJava(MavenPublication) {
+        from components.java
+        artifact sourcesJar
+        artifact javadocJar
+
+        pom {
+          name = project.name
+          description = project.description
+          url = "https://github.com/daggerok/$project.name" as String
+          licenses {
+            license {
+              name = 'MIT License'
+              url = "https://github.com/daggerok/${project.name}/blob/master/LICENSE" as String
+            }
+          }
+          developers {
+            developer {
+              id = 'daggerok'
+              name = 'Maksim Kostromin'
+              email = 'daggerok@gmail.com'
+            }
+          }
+          scm {
+            connection = "scm:git:git://github.com/daggeropk/${project.name}.git" as String
+            developerConnection = "scm:git:ssh://github.com/daggeropk/${project.name}.git" as String
+            url = "http://github.com/daggeropk/$project.name" as String
+          }
+        }
       }
     }
+  }
+
+  publishing {
     repositories {
       maven {
-        url "$rootProject.buildDir/maven-publish"
+        url """$rootProject.buildDir/maven-publish/repos/${(
+          project.version.endsWith("SNAPSHOT") ? 'snapshots' : 'releases'
+        )}"""
       }
     }
   }
 
   publish.dependsOn assemble
+
+  apply plugin: 'signing'
+
+  signing {
+    sign project.publishing.publications.mavenJava
+  }
+}
+
+/*
+allprojects {
+  // ...
+  publishing {
+    publications {
+      mavenJava(MavenPublication) { publication ->
+        project.shadow.component(publication)
+        artifact sourcesJar
+        artifact javadocJar
+        // ...
+      }
+    }
+  }
+  publishing {
+    publications {
+      mavenJava(MavenPublication) ->
+        artifact sourcesJar
+        artifact javadocJar
+      }
+    }
+  }
+  // ...
 }
 */
