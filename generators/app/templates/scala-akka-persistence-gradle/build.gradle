@@ -3,6 +3,7 @@ buildscript {
     javaVersion = "1.8"
     akkaVersion = "2.5.9"
     slf4jVersion = "1.7.25"
+    logbackVersion = "1.2.3"
     lombokVersion = "1.16.20"
     scalaCompatVersion = "2.12"
     scalaVersion = "${scalaCompatVersion}.4"
@@ -99,8 +100,8 @@ dockerCompose {
 composeUp.dependsOn installDist
 
 task wrapper(type: Wrapper) {
-  gradleVersion = "4.7"
-  distributionType = "ALL"
+  gradleVersion = '4.8'
+  distributionType = 'BIN'
 }
 
 test {

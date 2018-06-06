@@ -4,6 +4,7 @@ buildscript {
     vavrVersion = "0.9.2"
     slf4jVersion = "1.7.25"
     kotlinVersion = "1.2.41"
+    logbackVersion = "1.2.3"
     lombokVersion = "1.16.20"
     junitJupiterVersion = "5.2.0"
     junitPlatformVersion = "1.2.0"
@@ -30,6 +31,7 @@ plugins {
   id "org.jetbrains.kotlin.plugin.allopen" version "1.2.41" apply false
   id "io.spring.dependency-management" version "1.0.5.RELEASE" apply false
   id "com.github.johnrengelman.shadow" version "2.0.2" apply false
+  id "io.franzbecker.gradle-lombok" version "1.14" apply false
 }
 
 allprojects {
@@ -102,21 +104,22 @@ subprojects {
 
   compileJava.dependsOn(processResources)
 
+  apply plugin: "io.franzbecker.gradle-lombok"
+
+  lombok {
+    version = project.lombokVersion
+  }
+
   dependencies {
 
     // In java we trust...
     compile("io.vavr:vavr:$vavrVersion")
 
-    annotationProcessor("org.projectlombok:lombok:$lombokVersion")
-    compileOnly("org.projectlombok:lombok:$lombokVersion")
-    testAnnotationProcessor("org.projectlombok:lombok:$lombokVersion")
-    testCompileOnly("org.projectlombok:lombok:$lombokVersion")
-
     compile("org.slf4j:slf4j-api:$slf4jVersion")
-    // compile("org.slf4j:slf4j-jdk14:$slf4jVersion")
     compile("org.slf4j:jul-to-slf4j:$slf4jVersion")
+    // compile("org.slf4j:slf4j-jdk14:$slf4jVersion")
     compile("org.slf4j:log4j-over-slf4j:$slf4jVersion")
-    compile("ch.qos.logback:logback-classic:1.2.3")
+    compile("ch.qos.logback:logback-classic:$logbackVersion")
 
     // Kotlin
     compile("com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonKotlinVersion")
@@ -158,8 +161,8 @@ dockerCompose {
 composeUp.dependsOn assemble
 
 task wrapper(type: Wrapper) {
-  gradleVersion = "4.7"
-  distributionType = "ALL"
+  gradleVersion = '4.8'
+  distributionType = 'BIN'
 }
 
 idea {

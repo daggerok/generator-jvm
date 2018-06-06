@@ -2,6 +2,7 @@ buildscript {
   ext {
     javaVersion = "1.8"
     slf4jVersion = "1.7.25"
+    logbackVersion = "1.2.3"
     lombokVersion = "1.16.20"
     scalaCompatVersion = "2.11"
     scalaVersion = "${scalaCompatVersion}.8"
@@ -95,8 +96,8 @@ dockerCompose {
 composeUp.dependsOn assemble
 
 task wrapper(type: Wrapper) {
-  gradleVersion = "4.7"
-  distributionType = "ALL"
+  gradleVersion = '4.8'
+  distributionType = 'BIN'
 }
 
 test {

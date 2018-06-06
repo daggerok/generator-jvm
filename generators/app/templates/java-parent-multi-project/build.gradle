@@ -3,6 +3,7 @@ buildscript {
     javaVersion = "1.8"
     vavrVersion = "0.9.2"
     lombokVersion = "0.9.2"
+    logbackVersion = "1.2.3"
   }
 }
 
@@ -23,8 +24,8 @@ allprojects {
   defaultTasks "clean", "build"
 
   task wrapper(type: Wrapper) {
-    gradleVersion = "4.7"
-    distributionType = "ALL"
+    gradleVersion = '4.8'
+    distributionType = 'BIN'
   }
 }
 

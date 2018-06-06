@@ -2,6 +2,7 @@ buildscript {
   ext {
     javaVersion = "1.8"
     slf4jVersion = "1.7.25"
+    logbackVersion = "1.2.3"
     lombokVersion = "1.16.20"
     scalaCompatVersion = "2.12"
     scalaVersion = "${scalaCompatVersion}.4"
@@ -80,9 +81,7 @@ dependencies {
   // compile "org.slf4j:slf4j-jdk14:$slf4jVersion"
   compile "org.slf4j:jul-to-slf4j:$slf4jVersion"
   compile "org.slf4j:log4j-over-slf4j:$slf4jVersion"
-  compile "ch.qos.logback:logback-classic:1.2.3"
-  compileOnly "org.projectlombok:lombok:$lombokVersion"
-  testCompileOnly "org.projectlombok:lombok:$lombokVersion"
+  compile "ch.qos.logback:logback-classic:$logbackVersion"
 
   testCompile "junit:junit:$junit4Version"
 
@@ -112,8 +111,8 @@ dockerCompose {
 composeUp.dependsOn assemble
 
 task wrapper(type: Wrapper) {
-  gradleVersion = "4.7"
-  distributionType = "ALL"
+  gradleVersion = '4.8'
+  distributionType = 'BIN'
 }
 
 test {
