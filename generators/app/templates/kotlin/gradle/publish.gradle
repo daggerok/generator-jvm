@@ -20,31 +20,33 @@ allprojects {
   publishing {
     publications {
       mavenJava(MavenPublication) { publication ->
-        project.shadow.component(publication)
-        artifact sourcesJar
-        artifact javadocJar
+        afterEvaluate {
+          project.shadow.component(publication)
+          artifact sourcesJar
+          artifact javadocJar
 
-        pom {
-          name = project.name
-          description = project.description
-          url = "https://github.com/daggerok/$project.name" as String
-          licenses {
-            license {
-              name = 'MIT License'
-              url = "https://github.com/daggerok/${project.name}/blob/master/LICENSE" as String
+          pom {
+            name = project.name
+            description = project.description
+            url = "https://github.com/daggerok/$project.name" as String
+            licenses {
+              license {
+                name = 'MIT License'
+                url = "https://github.com/daggerok/${project.name}/blob/master/LICENSE" as String
+              }
             }
-          }
-          developers {
-            developer {
-              id = 'daggerok'
-              name = 'Maksim Kostromin'
-              email = 'daggerok@gmail.com'
+            developers {
+              developer {
+                id = 'daggerok'
+                name = 'Maksim Kostromin'
+                email = 'daggerok@gmail.com'
+              }
             }
-          }
-          scm {
-            connection = "scm:git:git://github.com/daggeropk/${project.name}.git" as String
-            developerConnection = "scm:git:ssh://github.com/daggeropk/${project.name}.git" as String
-            url = "http://github.com/daggeropk/$project.name" as String
+            scm {
+              connection = "scm:git:git://github.com/daggeropk/${project.name}.git" as String
+              developerConnection = "scm:git:ssh://github.com/daggeropk/${project.name}.git" as String
+              url = "http://github.com/daggeropk/$project.name" as String
+            }
           }
         }
       }
