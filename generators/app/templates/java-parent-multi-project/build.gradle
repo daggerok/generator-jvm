@@ -23,7 +23,7 @@ allprojects {
 
   defaultTasks "clean", "build"
 
-  task wrapper(type: Wrapper) {
+  wrapper {
     gradleVersion = '4.8'
     distributionType = 'BIN'
   }

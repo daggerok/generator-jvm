@@ -49,7 +49,7 @@ plugins {
   id 'io.qameta.allure' version '2.5' apply false
 }
 
-task wrapper(type: Wrapper) {
+wrapper {
   gradleVersion = '4.8'
   distributionType = 'BIN'
 }

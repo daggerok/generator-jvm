@@ -99,7 +99,7 @@ dockerCompose {
 
 composeUp.dependsOn installDist
 
-task wrapper(type: Wrapper) {
+wrapper {
   gradleVersion = '4.8'
   distributionType = 'BIN'
 }
