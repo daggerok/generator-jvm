@@ -142,6 +142,8 @@ subprojects {
   }
 }
 
+//apply from: "$rootDir/gradle/findbugs.gradle"
+
 def profile = project.hasProperty("profile") ? project.getProperty("profile") : "gradle"
 
 dockerCompose {

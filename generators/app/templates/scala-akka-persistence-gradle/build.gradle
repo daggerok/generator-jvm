@@ -83,6 +83,8 @@ dependencies {
     "org.scalatest:scalatest_$scalatestVersion"
 }
 
+//apply from: "$rootDir/gradle/findbugs.gradle"
+
 dockerCompose {
   useComposeFiles = [project.file("docker-compose.yaml")]
 //  captureContainersOutput = true

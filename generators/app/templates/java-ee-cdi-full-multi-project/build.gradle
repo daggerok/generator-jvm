@@ -51,6 +51,8 @@ subprojects { p ->
   }
 }
 
+//apply from: "$rootDir/gradle/findbugs.gradle"
+
 idea {
   module {
     downloadSources = true
@@ -62,3 +64,5 @@ eclipse {
     downloadSources = true
   }
 }
+
+//apply from: "$rootDir/gradle/findbugs.gradle"

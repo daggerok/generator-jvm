@@ -139,6 +139,7 @@ module.exports = class extends Generator {
       'mvn',
       'gitignore',
       'hgignore',
+      'gitlab-ci.yml',
 
     ].forEach(suffix => this.fs.copy(
       this.templatePath(`_dotted/${suffix}`),

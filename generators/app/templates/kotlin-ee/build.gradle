@@ -133,6 +133,8 @@ dependencies {
   testCompileOnly("org.apiguardian:apiguardian-api:1.0.0")
 }
 
+//apply from: "$rootDir/gradle/findbugs.gradle"
+
 def profile = project.hasProperty("profile") ? project.getProperty("profile") : "gradle"
 
 dockerCompose {
