@@ -120,6 +120,7 @@ module.exports = class extends Generator {
     /* copy commons */
 
     [
+      'docs',
       'LICENSE',
       'gradle',
       'gradlew',

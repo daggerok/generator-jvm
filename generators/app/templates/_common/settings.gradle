@@ -1,2 +1,3 @@
 rootProject.name = '<%= projectDirectory %>'
 enableFeaturePreview 'STABLE_PUBLISHING'
+include 'docs'
