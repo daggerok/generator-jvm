@@ -23,6 +23,7 @@ allprojects {
         project.shadow.component(publication)
         artifact sourcesJar
         artifact javadocJar
+        //artifactId = jar.baseName
 
         pom {
           name = project.name

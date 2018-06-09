@@ -24,7 +24,7 @@ allprojects {
           from components.java
           artifact sourcesJar
           artifact javadocJar
-          artifactId = jar.baseName
+          //artifactId = jar.baseName
 
           pom {
             name = project.name
@@ -57,11 +57,9 @@ allprojects {
   publishing {
     repositories {
       maven {
-        url """$rootProject.buildDir/maven-publish/repos/${
-          (
+        url """$rootProject.buildDir/maven-publish/repos/${(
             project.version.endsWith("SNAPSHOT") ? 'snapshots' : 'releases'
-          )
-        }"""
+        )}"""
       }
     }
   }

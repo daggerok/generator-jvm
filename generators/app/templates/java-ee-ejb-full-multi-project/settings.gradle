@@ -1,4 +1,5 @@
 rootProject.name = '<%= projectDirectory %>'
+enableFeaturePreview 'STABLE_PUBLISHING'
 include 'ejb-data'
 include 'ejb-services'
 include 'servlet'
