@@ -48,3 +48,11 @@ ci-job:
   - #stop_any 80 8080
   #
   - #./mvnw >/dev/null
+
+#pages:
+#  image: alpine:latest
+#  script:
+#  - ./gradlew documentation >/dev/null || true
+#  artifacts:
+#    paths:
+#    - public

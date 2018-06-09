@@ -280,6 +280,17 @@ ___java project___
  * support testing with junit 4 / 5
  * docker / docker-compose support
 
+## Also inside all projects available
+
+- FindBugs maven / gradle plugins functionality
+  ```./gradlew check```
+  ```./mvnw verify site```
+- Ascii documentation (asciidoctor gradle plugin)
+  ```./gradlew asciidoctor```
+- Artifact deployment (local maven repositories)
+  ```./gradlew publish``` 
+  ```./mvnw deploy``` 
+
 ## Getting To Know Yeoman
 
  * Yeoman has a heart of gold.

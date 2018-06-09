@@ -8,6 +8,7 @@ allprojects {
         project.file('bin'),
         project.file('build'),
         project.file('target'),
+        project.file('public'),
         project.file('.allure'),
         project.file('.project'),
         project.file('.settings'),
