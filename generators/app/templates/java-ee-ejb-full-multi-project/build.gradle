@@ -2,6 +2,7 @@ buildscript {
   ext {
     slf4jVersion = "1.7.25"
     logbackVersion = "1.2.3"
+    jgivenVersion = "0.15.3"
   }
 }
 

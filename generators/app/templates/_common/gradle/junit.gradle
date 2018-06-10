@@ -20,4 +20,6 @@ allprojects {
       includeEngines 'junit-jupiter', 'junit-vintage'
     }
   }
+
+  apply from: "$project.rootDir/gradle/jgiven.gradle"
 }

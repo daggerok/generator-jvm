@@ -3,6 +3,7 @@ buildscript {
     javaVersion = "1.8"
     vavrVersion = "0.9.2"
     lombokVersion = "0.9.2"
+    jgivenVersion = "0.15.3"
     logbackVersion = "1.2.3"
   }
 }

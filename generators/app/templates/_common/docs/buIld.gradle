@@ -29,6 +29,7 @@ asciidoctor {
       imagesdir: './static/images',
       'source-highlighter': 'coderay',
       'toc-title': 'Table of Contents',
+      'root-project-name': rootProject.name,
       'build-gradle': project.file('build.gradle'),
       'github-url': "https://github.com/daggerok/$rootProject.name",
       'gitlab-url': "https://gitlab.com/daggerok/$rootProject.name"

@@ -17,6 +17,7 @@
     <scala.compat.version>2.11</scala.compat.version>
     <scalatestic.version>3.0.4</scalatestic.version>
     <lombok.version>1.16.20</lombok.version>
+    <jgiven.version>0.15.3</jgiven.version>
     <slf4j.version>1.7.25</slf4j.version>
     <junit4.version>4.12</junit4.version>
   </properties>
@@ -87,6 +88,25 @@
       <groupId>org.specs2</groupId>
       <artifactId>specs2-junit_${scala.compat.version}</artifactId>
       <version>3.7</version>
+      <scope>test</scope>
+    </dependency>
+    <!-- jgiven -->
+    <dependency>
+      <groupId>com.tngtech.jgiven</groupId>
+      <artifactId>jgiven-html5-report</artifactId>
+      <version>${jgiven.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.tngtech.jgiven</groupId>
+      <artifactId>jgiven-junit</artifactId>
+      <version>${jgiven.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.tngtech.jgiven</groupId>
+      <artifactId>jgiven-junit5</artifactId>
+      <version>${jgiven.version}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -170,6 +190,24 @@
             <include>**/*Test.*</include>
             <include>**/*Suite.*</include>
           </includes>
+        </configuration>
+      </plugin>
+
+      <!-- jgiven: `mvn verify` -->
+      <plugin>
+        <groupId>com.tngtech.jgiven</groupId>
+        <artifactId>jgiven-maven-plugin</artifactId>
+        <version>${jgiven.version}</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>report</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <format>html</format>
+          <outputDirectory>${project.build.directory}/jgiven-report</outputDirectory>
         </configuration>
       </plugin>
     </plugins>

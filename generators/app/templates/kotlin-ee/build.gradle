@@ -6,6 +6,7 @@ buildscript {
     slf4jVersion = "1.7.25"
     logbackVersion = "1.2.3"
     kotlinVersion = "1.2.41"
+    jgivenVersion = "0.15.3"
     lombokVersion = "1.16.20"
     junitJupiterVersion = "5.2.0"
     junitPlatformVersion = "1.2.0"

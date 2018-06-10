@@ -1,4 +1,4 @@
-= {project-name} ({project-version})
+= {root-project-name} ({project-version})
 ////
 image:https://travis-ci.org/daggerok/change-me.svg?branch=master["Build Status", link={github-url}]
 image:https://gitlab.com/daggerok/findbugs-example/badges/master/build.svg["Build Status", link={gitlab-url}]

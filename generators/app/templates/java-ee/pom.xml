@@ -17,6 +17,7 @@
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <lombok.version>1.16.20</lombok.version>
+    <jgiven.version>0.15.3</jgiven.version>
     <junit4.version>4.12</junit4.version>
     <slf4j.version>1.7.25</slf4j.version>
     <javaee.version>8.0</javaee.version>
@@ -136,6 +137,25 @@
       <scope>test</scope>
       <optional>true</optional>
     </dependency>
+    <!-- jgiven -->
+    <dependency>
+      <groupId>com.tngtech.jgiven</groupId>
+      <artifactId>jgiven-html5-report</artifactId>
+      <version>${jgiven.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.tngtech.jgiven</groupId>
+      <artifactId>jgiven-junit</artifactId>
+      <version>${jgiven.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.tngtech.jgiven</groupId>
+      <artifactId>jgiven-junit5</artifactId>
+      <version>${jgiven.version}</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <build>
@@ -201,6 +221,24 @@
             <version>${junit.jupiter.version}</version>
           </dependency>
         </dependencies>
+      </plugin>
+
+      <!-- jgiven: `mvn verify` -->
+      <plugin>
+        <groupId>com.tngtech.jgiven</groupId>
+        <artifactId>jgiven-maven-plugin</artifactId>
+        <version>${jgiven.version}</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>report</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <format>html</format>
+          <outputDirectory>${project.build.directory}/jgiven-report</outputDirectory>
+        </configuration>
       </plugin>
     </plugins>
   </build>
