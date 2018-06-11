@@ -61,9 +61,7 @@ gitPublish {
   branch = 'gh-pages'
 
   contents {
-    from "$asciidoctor.outputDir/html5"
-    from "$asciidoctor.outputDir/pdf"
-    from "$asciidoctor.sourceDir/static", {
+    from "$rootDir/public", {
       into '.'
     }
   }
@@ -71,8 +69,8 @@ gitPublish {
   commitMessage = "Publish $rootProject.name documentation (${project.group}:${project.name}:$project.version)"
 }
 
-gitPublishPush.dependsOn asciidoctor
-gitPublishPush.shouldRunAfter clean, asciidoctor
+gitPublishPush.dependsOn documentation
+gitPublishPush.shouldRunAfter clean, documentation
 
 task docs(dependsOn: gitPublishPush) {
   shouldRunAfter clean, asciidoctor
