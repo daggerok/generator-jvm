@@ -31,11 +31,12 @@ buildscript {
 
   //// spring-boot versions overriding, be careful with it!
   // In our case we are fixing PhantomJS (replacing older spring-boot version):
-  ext['selenium.version'] = '3.12.0'
+  ext['selenium.version'] = "$seleniumDriverVersion"
 }
 
 plugins {
-  id 'org.asciidoctor.convert' version '1.5.3' apply false
+  id 'org.asciidoctor.convert' version '1.5.7' apply false
+  id 'org.ajoberstar.git-publish' version '0.3.0' apply false
   id 'org.jetbrains.kotlin.jvm' version '1.2.41' apply false
   id 'org.jetbrains.kotlin.plugin.noarg' version '1.2.41' apply false
   id 'org.jetbrains.kotlin.plugin.spring' version '1.2.41' apply false

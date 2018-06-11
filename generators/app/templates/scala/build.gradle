@@ -1,34 +1,36 @@
 buildscript {
   ext {
-    javaVersion = "1.8"
-    slf4jVersion = "1.7.25"
-    jgivenVersion = "0.15.3"
-    logbackVersion = "1.2.3"
-    lombokVersion = "1.16.20"
-    scalaCompatVersion = "2.12"
+    javaVersion = '1.8'
+    slf4jVersion = '1.7.25'
+    jgivenVersion = '0.15.3'
+    logbackVersion = '1.2.3'
+    lombokVersion = '1.16.20'
+    scalaCompatVersion = '2.12'
     scalaVersion = "${scalaCompatVersion}.4"
     scalatestVersion = "${scalaCompatVersion}:3.0.4"
-    specs2Version = "4.0.2"
-    junit4Version = "4.12"
+    specs2Version = '4.0.2'
+    junit4Version = '4.12'
   }
 }
 
 plugins {
-  id "idea"
-  id "java"
-  id "scala"
-  id "maven"
-  id "eclipse"
-  id "application"
-  id "com.github.johnrengelman.shadow" version "2.0.2"
-  id "com.avast.gradle.docker-compose" version "0.6.13"
+  id 'idea'
+  id 'java'
+  id 'scala'
+  id 'maven'
+  id 'eclipse'
+  id 'application'
+  id 'com.github.johnrengelman.shadow' version '2.0.2'
+  id 'com.avast.gradle.docker-compose' version '0.6.13'
+  id 'org.asciidoctor.convert' version '1.5.7' apply false
+  id 'org.ajoberstar.git-publish' version '0.3.0' apply false
 }
 
-group = "com.github.daggerok"
-version = "0.0.1"
+group = 'com.github.daggerok'
+version = '0.0.1'
 sourceCompatibility = targetCompatibility = "$javaVersion"
 
-mainClassName = "daggerok.App"
+mainClassName = 'daggerok.App'
 shadowJar.mustRunAfter jar
 
 /*
@@ -41,7 +43,7 @@ shadowJar {
 jar {
   baseName = project.name
   manifest {
-    attributes("Main-Class": mainClassName)
+    attributes('Main-Class': mainClassName)
   }
 }
 */
@@ -67,7 +69,7 @@ allprojects {
   publish.dependsOn assemble
 }
 
-defaultTasks "clean", "build"
+defaultTasks 'clean', 'build'
 
 repositories {
   mavenLocal()
@@ -95,7 +97,7 @@ dependencies {
 
 //apply from: "$rootDir/gradle/findbugs.gradle"
 
-def profile = project.hasProperty("profile") ? project.getProperty("profile") : "gradle"
+def profile = project.hasProperty('profile') ? project.getProperty('profile') : 'gradle'
 
 dockerCompose {
   useComposeFiles = [project.file("docker-compose-${profile}.yaml")]
@@ -103,7 +105,7 @@ dockerCompose {
   captureContainersOutput = false
   stopContainers = true
   removeContainers = true
-  removeImages = "Local"
+  removeImages = 'Local'
   removeVolumes = true
   removeOrphans = true
   forceRecreate = true
@@ -116,10 +118,6 @@ composeUp.dependsOn assemble
 wrapper {
   gradleVersion = '4.8'
   distributionType = 'BIN'
-}
-
-test {
-  systemProperties "property": "value"
 }
 
 idea {
