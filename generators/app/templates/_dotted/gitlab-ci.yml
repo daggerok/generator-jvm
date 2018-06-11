@@ -1,5 +1,4 @@
 image: openjdk:8u171-jdk-stretch
-
 #services:
 #- docker:dind
 
@@ -15,7 +14,6 @@ cache:
   - ${HOME}/.gradle
 
 ci-job:
-
   before_script:
   - pwd
   - whoami
@@ -38,21 +36,17 @@ ci-job:
   - #curl -s 127.0.0.1:8080/api/ | jq .
   - #stop_any 80 8080
   #
-  - #./gradlew -S publish
-  #
   - #./mvnw >/dev/hull
   - #bash target/*.jar &
   - #wait_for 8080
   - #curl http://127.0.0.1:8080
   - #curl -sH'content-type:application/json' http://127.0.0.1:8080/api/ | jq .
   - #stop_any 80 8080
-  #
-  - #./mvnw >/dev/null
 
-#pages:
-#  image: alpine:latest
-#  script:
-#  - ./gradlew documentation >/dev/null || true
-#  artifacts:
-#    paths:
-#    - public
+pages:
+  script:
+  - ./gradlew documentation >/dev/null
+
+  artifacts:
+    paths:
+    - public
