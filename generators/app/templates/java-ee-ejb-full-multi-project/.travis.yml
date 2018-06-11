@@ -8,18 +8,27 @@ env:
 language: java
 jdk: oraclejdk8
 
+apt:
+  update: true
+  packages:
+  - bash
+  - unzip
+  - curl
+  - jq
+  - libxml2-utils
+  - docker-ce
+  - python-pip
+
 install: true
 before_script:
-- sudo apt update -y >/dev/null 2>&1 || true
-- sudo apt install -y --no-install-recommends curl docker-ce python-pip >/dev/null 2>&1
 - sudo pip install docker-compose httpie >/dev/null 2>&1
 - source <(curl -s https://raw.githubusercontent.com/daggerok/bash-functions/master/main.bash)
 - stop_any 8080 80
 
 script:
 # maven
-- bash ./mvnw >/dev/null 2>&1
-- bash ./mvnw -pl ear com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:up >/dev/null 2>&1
+- bash ./mvnw >/dev/null
+- bash ./mvnw -pl ear com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:up >/dev/null
 - wait_for 8080
 - docker logs -f ear_maven-<%= projectDirectory %>-app_1 &
 - sleep 35
@@ -30,8 +39,8 @@ script:
 - bash ./mvnw -pl ear com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:down >/dev/null 2>&1
 - stop_any 8080 80
 # gradle
-- bash ./gradlew >/dev/null 2>&1
-- bash ./gradlew composeUp >/dev/null 2>&1
+- bash ./gradlew >/dev/null
+- bash ./gradlew composeUp >/dev/null
 - sleep 3
 - wait_for 8080
 - docker logs -f ear_gradle-<%= projectDirectory %>-app_1 &
@@ -42,7 +51,7 @@ script:
 - bash ./gradlew composeDown >/dev/null 2>&1
 - stop_any 8080 80
 # gradle (maven profile)
-- bash ./gradlew -Pprofile=maven clean build composeUp >/dev/null 2>&1
+- bash ./gradlew -Pprofile=maven clean build composeUp >/dev/null
 - wait_for 8080
 - docker logs -f ear_maven-<%= projectDirectory %>-app_1 &
 - sleep 3
