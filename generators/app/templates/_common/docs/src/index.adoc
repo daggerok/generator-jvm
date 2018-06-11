@@ -16,13 +16,10 @@ Maksim Kostromin <daggerok@gmail.com>
 :example-caption!:
 
 Travis CI status:
-ifdef::backend-html5[image:https://travis-ci.org/daggerok/{project-name}.svg?branch=master["Build Status", link={github-url}]]
+ifdef::backend-html5[image:https://travis-ci.org/daggerok/{root-project-name}.svg?branch=master["Build Status", link={github-url}]]
 
 GitLab CI status:
-ifdef::backend-html5[image:https://gitlab.com/daggerok/findbugs-example/badges/master/build.svg["Build Status", link={gitlab-url}]]
-
-PDF:
-ifdef::backend-html5[link:./index.pdf["Documentation in PFD format"]]
+ifdef::backend-html5[image:https://gitlab.com/daggerok/{root-project-name}/badges/master/build.svg["Build Status", link={gitlab-url}]]
 
 == Introduction
 
@@ -30,4 +27,12 @@ include::../../README.adoc[tags=content]
 
 == Implementation
 
-//TODO: iplement documentation...
+TODO: implement documentation...
+
+== Links
+
+ifdef::backend-html5[link:./index.pdf[Documentation in PFD format]]
+
+ifdef::backend-html5[link:https://daggerok.github.io/{root-project-name}[GitHub Pages]]
+
+ifdef::backend-html5[link:https://daggerok.gitlab.io/{root-project-name}[GitLab Pages]]
