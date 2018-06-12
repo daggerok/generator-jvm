@@ -95,7 +95,7 @@ dependencies {
   testCompile "org.specs2:specs2-junit_$scalaCompatVersion:$specs2Version"
 }
 
-//apply from: "$rootDir/gradle/findbugs.gradle"
+apply from: "$rootDir/gradle/findbugs.gradle"
 
 def profile = project.hasProperty('profile') ? project.getProperty('profile') : 'gradle'
 

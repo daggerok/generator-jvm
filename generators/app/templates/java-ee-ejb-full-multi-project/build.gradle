@@ -54,7 +54,7 @@ subprojects { p ->
   }
 }
 
-//apply from: "$rootDir/gradle/findbugs.gradle"
+apply from: "$rootDir/gradle/findbugs.gradle"
 
 idea {
   module {

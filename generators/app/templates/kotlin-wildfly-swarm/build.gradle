@@ -156,7 +156,7 @@ swarm {
   executable = true
 }
 
-//apply from: "$rootDir/gradle/findbugs.gradle"
+apply from: "$rootDir/gradle/findbugs.gradle"
 
 def profile = project.hasProperty('profile') ? project.getProperty('profile') : 'gradle'
 
