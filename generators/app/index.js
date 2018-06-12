@@ -162,6 +162,7 @@ module.exports = class extends Generator {
 
     [
       'settings.gradle',
+      'bitbucket-pipelines.yml',
 
     ].forEach(suffix => this.fs.copyTpl(
       this.templatePath(`_common/${suffix}`),

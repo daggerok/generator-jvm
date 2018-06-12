@@ -32,7 +32,8 @@ asciidoctor {
       'root-project-name': rootProject.name,
       'build-gradle': project.file('build.gradle'),
       'github-url': "https://github.com/daggerok/$rootProject.name",
-      'gitlab-url': "https://gitlab.com/daggerok/$rootProject.name"
+      'gitlab-url': "https://gitlab.com/daggerok/$rootProject.name",
+      'bitbucket-url': "https://bitbucket.com/daggerok/$rootProject.name"
 
   logDocuments = true
   //backends 'pdf', 'html5'

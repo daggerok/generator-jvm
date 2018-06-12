@@ -1,5 +1,11 @@
 = <%= projectDirectory %>
 
+////
+image:https://travis-ci.org/daggerok/<%= projectDirectory %>.svg?branch=master["Build Status", link="https://travis-ci.org/daggerok/<%= projectDirectory %>"]
+image:https://gitlab.com/daggerok/<%= projectDirectory %>/badges/master/build.svg["Build Status", link="https://gitlab.com/daggerok/<%= projectDirectory %>/-/jobs"]
+image:https://img.shields.io/bitbucket/pipelines/daggerok/<%= projectDirectory %>.svg["Build Status", link="https://bitbucket.com/daggerok/<%= projectDirectory %>"]
+////
+
 //tag::content[]
 .build
 [source,bash]

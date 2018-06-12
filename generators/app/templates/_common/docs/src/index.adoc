@@ -1,7 +1,8 @@
 = {root-project-name} ({project-version})
 ////
-image:https://travis-ci.org/daggerok/change-me.svg?branch=master["Build Status", link={github-url}]
-image:https://gitlab.com/daggerok/findbugs-example/badges/master/build.svg["Build Status", link={gitlab-url}]
+image:https://travis-ci.org/daggerok/root-project-name.svg?branch=master["Build Status", link=github-url]
+image:https://gitlab.com/daggerok/root-project-name/badges/master/build.svg["Build Status", link=gitlab-url]
+image:https://img.shields.io/bitbucket/pipelines/daggerok/root-project-name.svg["Build Status", link=bitbucket-url]
 ////
 Maksim Kostromin <daggerok@gmail.com>
 {docdatetime}
@@ -21,6 +22,9 @@ ifdef::backend-html5[image:https://travis-ci.org/daggerok/{root-project-name}.sv
 GitLab CI status:
 ifdef::backend-html5[image:https://gitlab.com/daggerok/{root-project-name}/badges/master/build.svg["Build Status", link={gitlab-url}]]
 
+BitBucket CI status:
+ifdef::backend-html5[image:https://img.shields.io/bitbucket/pipelines/daggerok/{root-project-name}.svg["Build Status", link={bitbucket-url}]]
+
 == Introduction
 
 include::../../README.adoc[tags=content]
@@ -36,3 +40,5 @@ ifdef::backend-html5[link:./index.pdf[Documentation in PFD format]]
 ifdef::backend-html5[link:https://daggerok.github.io/{root-project-name}[GitHub Pages]]
 
 ifdef::backend-html5[link:https://daggerok.gitlab.io/{root-project-name}[GitLab Pages]]
+
+//ifdef::backend-html5[link:https://daggerok.gitlab.io/{root-project-name}[Bitbucket Pages]]
