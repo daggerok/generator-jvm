@@ -49,6 +49,7 @@ before_deploy: ./gradlew documentation
 deploy:
   provider: pages
   skip-cleanup: true
+  # travis encrypt GITHUB_TOKEN=<your github repo token> --add
   github-token: "$GITHUB_TOKEN"
   keep-history: true
   on:

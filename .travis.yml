@@ -1,8 +1,10 @@
 service:
 - docker
+
 env:
   global:
   - TERM=dumb
+
 addons:
   apt:
     update: true
@@ -16,9 +18,11 @@ addons:
     - libxml2-utils
     - docker-ce
     - python-pip
+
 language: java
 jdk: oraclejdk8
 node_js: lts/*
+
 before_install:
 - nvm install lts/*
 - export CHROME_BIN=/usr/bin/google-chrome
@@ -29,6 +33,7 @@ before_install:
 - sudo pip install docker-compose httpie >/dev/null 2>&1
 - source <(curl -s https://raw.githubusercontent.com/daggerok/bash-functions/master/main.bash)
 - stop_any 8080 80
+
 script:
 - export base=$(pwd)
 - npm i
@@ -92,14 +97,7 @@ script:
 - ./mvnw clean deploy >/dev/null
 # done
 - cd ${base}
-cache:
-  yarn: true
-  directories:
-  - node_modules
-  - .m2
-  - .gradle
-  - $HOME/.m2
-  - $HOME/.gradle
+
 deploy:
   provider: npm
   email: daggerok@gmail.com
@@ -110,3 +108,17 @@ deploy:
   on:
     repo: daggerok/generator-jvm
 #  tag: next
+
+before_cache:
+- sudo rm -rf $HOME/.gradle/caches/4.8/fileHashes/fileHashes.bin
+- sudo rm -rf $HOME/.gradle/caches/4.8/fileHashes/fileHashes.lock
+- sudo rm -rf $HOME/.gradle/caches/modules-2/modules-2.lock
+
+cache:
+  yarn: true
+  directories:
+  - node_modules
+  - .m2
+  - .gradle
+  - $HOME/.m2
+  - $HOME/.gradle
