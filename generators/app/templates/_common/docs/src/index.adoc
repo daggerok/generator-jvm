@@ -37,8 +37,10 @@ TODO: implement documentation...
 
 ifdef::backend-html5[link:./index.pdf[Documentation in PFD format]]
 
-ifdef::backend-html5[link:https://daggerok.github.io/{root-project-name}[GitHub Pages]]
+ifdef::backend-html5[link:{github-url}[GitHub repo]]
+ifdef::backend-html5[link:https://daggerok.github.io/{root-project-name}[GitHub pages]]
 
-ifdef::backend-html5[link:https://daggerok.gitlab.io/{root-project-name}[GitLab Pages]]
+ifdef::backend-html5[link:{gitlab-url}[GitLab repo]]
+ifdef::backend-html5[link:https://daggerok.gitlab.io/{root-project-name}[GitLab pages]]
 
-//ifdef::backend-html5[link:https://daggerok.gitlab.io/{root-project-name}[Bitbucket Pages]]
+ifdef::backend-html5[link:{bitbucket-url}[Bitbucket repo]]
