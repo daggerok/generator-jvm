@@ -17,13 +17,13 @@ Maksim Kostromin <daggerok@gmail.com>
 :example-caption!:
 
 Travis CI status:
-ifdef::backend-html5[image:https://travis-ci.org/daggerok/{root-project-name}.svg?branch=master["Build Status", link={github-url}]]
+image:https://travis-ci.org/daggerok/{root-project-name}.svg?branch=master["Build Status", link={github-url}]
 
 GitLab CI status:
-ifdef::backend-html5[image:https://gitlab.com/daggerok/{root-project-name}/badges/master/build.svg["Build Status", link={gitlab-url}]]
+image:https://gitlab.com/daggerok/{root-project-name}/badges/master/build.svg["Build Status", link={gitlab-url}]
 
 BitBucket CI status:
-ifdef::backend-html5[image:https://img.shields.io/bitbucket/pipelines/daggerok/{root-project-name}.svg["Build Status", link={bitbucket-url}]]
+image:https://img.shields.io/bitbucket/pipelines/daggerok/{root-project-name}.svg["Build Status", link={bitbucket-url}]
 
 == Introduction
 
@@ -37,10 +37,10 @@ TODO: implement documentation...
 
 ifdef::backend-html5[link:./index.pdf[Documentation in PFD format]]
 
-ifdef::backend-html5[link:{github-url}[GitHub repo]]
-ifdef::backend-html5[link:https://daggerok.github.io/{root-project-name}[GitHub pages]]
+link:{github-url}[GitHub repo]
+link:https://daggerok.github.io/{root-project-name}[GitHub pages]
 
-ifdef::backend-html5[link:{gitlab-url}[GitLab repo]]
-ifdef::backend-html5[link:https://daggerok.gitlab.io/{root-project-name}[GitLab pages]]
+link:{gitlab-url}[GitLab repo]
+link:https://daggerok.gitlab.io/{root-project-name}[GitLab pages]
 
-ifdef::backend-html5[link:{bitbucket-url}[Bitbucket repo]]
+link:{bitbucket-url}[BitBucket repo]
