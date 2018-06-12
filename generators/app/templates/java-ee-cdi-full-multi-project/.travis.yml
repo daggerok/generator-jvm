@@ -28,7 +28,7 @@ before_script:
 script:
 # maven
 - bash ./mvnw >/dev/null
-- bash ./mvnw -pl ear com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:up >/dev/null
+- bash ./mvnw -pl ear com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:up -P docker >/dev/null
 - wait_for 8080
 - docker logs -f ear_maven-<%= projectDirectory %>-app_1 &
 - sleep 35
@@ -36,7 +36,7 @@ script:
 - http --form :8080/servlet/api/ name=Max
 - http post :8080/rest/api/ name=Maksim
 - http :8080/jsp/
-- bash ./mvnw -pl ear com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:down >/dev/null 2>&1
+- bash ./mvnw -pl ear com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:down -P docker >/dev/null 2>&1
 - stop_any 8080 80
 # gradle
 - bash ./gradlew >/dev/null

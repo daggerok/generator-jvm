@@ -4,8 +4,8 @@
 .build
 [source,bash]
 ----
-./mvnw clean package com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:up
-./mvnw com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:down
+./mvnw clean package com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:up -P docker
+./mvnw com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:down -P docker
 
 ./gradlew clean build composeUp
 ./gradlew composeDown

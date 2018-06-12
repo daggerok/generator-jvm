@@ -8,12 +8,12 @@ Don't ask...
 ----
 # maven
 ./mvnw
-./mvnw -pl ear com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:up
+./mvnw -pl ear com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:up -P docker
 http :8080/web/
 http --form :8080/servlet/api/ name=Max
 http post :8080/rest/api/ name=Maksim
 http :8080/jsp/
-./mvnw -pl ear com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:down
+./mvnw -pl ear com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:down -P docker
 
 # gradle
 ./gradlew

@@ -9,8 +9,8 @@
 java -jar target/*-all.jar
 
 # maven docker / docker-compose
-./mvnw com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:up
-./mvnw com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:down
+./mvnw com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:up -P docker
+./mvnw com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:down -P docker
 
 # gradle jar
 ./gradlew
