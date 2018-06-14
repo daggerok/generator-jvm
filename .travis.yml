@@ -42,6 +42,17 @@ script:
 - mkdir -p ${e2e}
 - npm i -g yo yeoman-generator
 - yo jvm --help
+# replace dots with underscores test
+- cd ${e2e}
+- yo jvm -n dotted.java1.8 -t java
+- cd dotted_java1_8
+- ./gradlew -S >/dev/null
+- java -jar build/libs/*-all.jar
+- bash build/install/java/bin/java
+- tree build/maven-publish
+- ./mvnw clean deploy >/dev/null
+- java -jar target/*-all.jar
+- tree target/local-repo/
 # java
 - cd ${e2e}
 - yo jvm -n java -t java

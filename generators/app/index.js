@@ -8,7 +8,7 @@ const { version } = require('../../package.json');
 const defaultProjectName = 'app';
 const defaultProjectType = 'java';
 const replaceSpacesWithDash = input =>
-  (input.replace(/\W+/g, '-') || defaultProjectName).trim();
+  (input.replace(/\.+/, '_').replace(/\W+/g, '-') || defaultProjectName).trim();
 
 module.exports = class extends Generator {
 
