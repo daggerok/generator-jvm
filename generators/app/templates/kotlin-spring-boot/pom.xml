@@ -14,14 +14,14 @@
     <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
     <hibernate.core.version>4.2.18.Final</hibernate.core.version>
     <spring-cloud.version>Finchley.RC1</spring-cloud.version>
-    <spring-boot.version>2.0.2.RELEASE</spring-boot.version>
+    <spring-boot.version>2.0.3.RELEASE</spring-boot.version>
     <junit.platform.version>1.2.0</junit.platform.version>
     <jakson-kotlin.version>2.9.5</jakson-kotlin.version>
     <junit.jupiter.version>5.2.0</junit.jupiter.version>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <lombok.version>1.16.20</lombok.version>
-    <kotlin.version>1.2.41</kotlin.version>
+    <kotlin.version>1.2.50</kotlin.version>
     <jgiven.version>0.15.3</jgiven.version>
     <junit4.version>4.12</junit4.version>
     <vavr.version>0.9.2</vavr.version>
