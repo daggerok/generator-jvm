@@ -7,7 +7,7 @@ allprojects {
   def projectFreeCompileArgs = [
       '-Xjsr305=strict',
       '-java-parameters',
-      '-Xenable-jvm-default',
+      //'-Xenable-jvm-default',
   ]
 
   kotlin {
