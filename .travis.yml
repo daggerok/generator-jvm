@@ -48,7 +48,7 @@ script:
 - cd dotted_java1_8
 - ./gradlew -S >/dev/null
 - java -jar build/libs/*-all.jar
-- bash build/install/java/bin/java
+- bash build/install/dotted_java1_8/bin/dotted_java1_8
 - tree build/maven-publish
 - ./mvnw clean deploy >/dev/null
 - java -jar target/*-all.jar
