@@ -25,7 +25,7 @@ buildscript {
   }
 
   dependencies {
-    classpath("org.asciidoctor:asciidoctorj-pdf:$asciidoctorjPdfVersion")
+    classpath "org.asciidoctor:asciidoctorj-pdf:$asciidoctorjPdfVersion"
   }
 
   //// spring-boot versions overriding, be careful with it!

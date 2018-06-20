@@ -9,18 +9,17 @@ buildscript {
     lombokVersion = '1.16.20'
     junitJupiterVersion = '5.2.0'
     junitPlatformVersion = '1.2.0'
+    asciidoctorjPdfVersion = '1.5.0-alpha.15'
   }
-  repositories {
-    mavenLocal()
-    mavenCentral()
-  }
+
   dependencies {
+    classpath "org.asciidoctor:asciidoctorj-pdf:$asciidoctorjPdfVersion"
     classpath "org.junit.platform:junit-platform-gradle-plugin:$junitPlatformVersion"
   }
 }
 
 plugins {
-  //id 'ear'
+//id 'ear'
   id 'war'
   id 'idea'
   id 'maven'
@@ -29,6 +28,15 @@ plugins {
   id 'org.asciidoctor.convert' version '1.5.7' apply false
   id 'org.ajoberstar.git-publish' version '0.3.0' apply false
 }
+
+wrapper {
+  gradleVersion = '4.8'
+  distributionType = 'BIN'
+}
+
+apply from: "$rootDir/gradle/ide.gradle"
+apply from: "$rootDir/gradle/clean.gradle"
+apply from: "$rootDir/gradle/repositories.gradle"
 
 apply plugin: 'org.junit.platform.gradle.plugin'
 
@@ -42,11 +50,6 @@ war {
 }
 
 defaultTasks 'clean', 'build'
-
-repositories {
-  mavenLocal()
-  mavenCentral()
-}
 
 compileJava.dependsOn(processResources)
 
@@ -74,38 +77,4 @@ dependencies {
 }
 
 apply from: "$rootDir/gradle/findbugs.gradle"
-
-def profile = project.hasProperty('profile') ? project.getProperty('profile') : 'gradle'
-
-dockerCompose {
-  useComposeFiles = [project.file("docker-compose-${profile}.yaml")]
-  // captureContainersOutput = true
-  captureContainersOutput = false
-  stopContainers = true
-  removeContainers = true
-  removeImages = 'Local'
-  removeVolumes = true
-  removeOrphans = true
-  forceRecreate = true
-  waitForTcpPorts = false
-  projectName = project.name
-}
-
-composeUp.dependsOn assemble
-
-wrapper {
-  gradleVersion = '4.8'
-  distributionType = 'BIN'
-}
-
-idea {
-  module {
-    downloadSources = true
-  }
-}
-
-eclipse {
-  classpath {
-    downloadSources = true
-  }
-}
+apply from: "$rootDir/gradle/docker-compose.gradle"

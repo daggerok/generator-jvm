@@ -13,14 +13,13 @@ buildscript {
     jacksonKotlinVersion = '2.9.5'
     wildflySwarmVersion = '2018.1.0'
     hibernateCoreVersion = '4.2.18.Final'
+    asciidoctorjPdfVersion = '1.5.0-alpha.15'
   }
-  repositories {
-    mavenCentral()
-    jcenter()
-  }
+
   dependencies {
-    classpath("org.junit.platform:junit-platform-gradle-plugin:$junitPlatformVersion")
-    classpath("org.wildfly.swarm:wildfly-swarm-gradle-plugin:$wildflySwarmVersion")
+    classpath "org.asciidoctor:asciidoctorj-pdf:$asciidoctorjPdfVersion"
+    classpath "org.junit.platform:junit-platform-gradle-plugin:$junitPlatformVersion"
+    classpath "org.wildfly.swarm:wildfly-swarm-gradle-plugin:$wildflySwarmVersion"
   }
 }
 
@@ -43,6 +42,15 @@ plugins {
 
 apply plugin: 'wildfly-swarm'
 apply plugin: 'org.junit.platform.gradle.plugin'
+
+wrapper {
+  gradleVersion = '4.8'
+  distributionType = 'BIN'
+}
+
+apply from: "$rootDir/gradle/ide.gradle"
+apply from: "$rootDir/gradle/clean.gradle"
+apply from: "$rootDir/gradle/repositories.gradle"
 
 group = 'com.github.daggerok'
 version = '0.0.1'
@@ -95,11 +103,6 @@ war {
 }
 
 defaultTasks 'clean', 'build'
-
-repositories {
-  mavenLocal()
-  mavenCentral()
-}
 
 compileJava.dependsOn(processResources)
 
@@ -157,38 +160,4 @@ swarm {
 }
 
 apply from: "$rootDir/gradle/findbugs.gradle"
-
-def profile = project.hasProperty('profile') ? project.getProperty('profile') : 'gradle'
-
-dockerCompose {
-  useComposeFiles = [project.file("docker-compose-${profile}.yaml")]
-  // captureContainersOutput = true
-  captureContainersOutput = false
-  stopContainers = true
-  removeContainers = true
-  removeImages = 'Local'
-  removeVolumes = true
-  removeOrphans = true
-  forceRecreate = true
-  waitForTcpPorts = false
-  projectName = project.name
-}
-
-composeUp.dependsOn assemble
-
-wrapper {
-  gradleVersion = '4.8'
-  distributionType = 'BIN'
-}
-
-idea {
-  module {
-    downloadSources = true
-  }
-}
-
-eclipse {
-  classpath {
-    downloadSources = true
-  }
-}
+apply from: "$rootDir/gradle/docker-compose.gradle"

@@ -2,10 +2,10 @@ version: "2.1"
 
 services:
 
-  maven-<%= projectDirectory %>-app:
+  gradle-<%= projectDirectory %>-app:
     build:
-      context: .
-      dockerfile: .mvn/Dockerfile
+      context: ear
+      dockerfile: ear/gradle/Dockerfile
     networks: [backing-services]
     ports:
     - "5005:5005"

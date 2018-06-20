@@ -3,6 +3,7 @@ buildscript {
     javaVersion = '1.8'
     akkaVersion = '2.5.9'
     vavrVersion = '0.9.2'
+    junit4Version = '4.12'
     slf4jVersion = '1.7.25'
     jgivenVersion = '0.15.3'
     logbackVersion = '1.2.3'
@@ -10,13 +11,11 @@ buildscript {
     scalaCompatVersion = '2.12'
     junitJupiterVersion = '5.2.0'
     junitPlatformVersion = '1.2.0'
-    junit4Version = '4.12'
+    asciidoctorjPdfVersion = '1.5.0-alpha.15'
   }
-  repositories {
-    mavenLocal()
-    mavenCentral()
-  }
+
   dependencies {
+    classpath "org.asciidoctor:asciidoctorj-pdf:$asciidoctorjPdfVersion"
     classpath "org.junit.platform:junit-platform-gradle-plugin:$junitPlatformVersion"
   }
 }
@@ -33,6 +32,15 @@ plugins {
   id 'org.ajoberstar.git-publish' version '0.3.0' apply false
 }
 
+wrapper {
+  gradleVersion = '4.8'
+  distributionType = 'BIN'
+}
+
+apply from: "$rootDir/gradle/ide.gradle"
+apply from: "$rootDir/gradle/clean.gradle"
+apply from: "$rootDir/gradle/repositories.gradle"
+
 apply plugin: 'org.junit.platform.gradle.plugin'
 
 group = 'com.github.daggerok'
@@ -43,11 +51,6 @@ mainClassName = 'daggerok.App'
 shadowJar.mustRunAfter jar
 
 defaultTasks 'clean', 'build'
-
-repositories {
-  mavenLocal()
-  mavenCentral()
-}
 
 compileJava.dependsOn(processResources)
 
@@ -82,38 +85,4 @@ dependencies {
 }
 
 apply from: "$rootDir/gradle/findbugs.gradle"
-
-def profile = project.hasProperty('profile') ? project.getProperty('profile') : 'gradle'
-
-dockerCompose {
-  useComposeFiles = [project.file("docker-compose-${profile}.yaml")]
-  // captureContainersOutput = true
-  captureContainersOutput = false
-  stopContainers = true
-  removeContainers = true
-  removeImages = 'Local'
-  removeVolumes = true
-  removeOrphans = true
-  forceRecreate = true
-  waitForTcpPorts = false
-  projectName = project.name
-}
-
-composeUp.dependsOn assemble
-
-wrapper {
-  gradleVersion = '4.8'
-  distributionType = 'BIN'
-}
-
-idea {
-  module {
-    downloadSources = true
-  }
-}
-
-eclipse {
-  classpath {
-    downloadSources = true
-  }
-}
+apply from: "$rootDir/gradle/docker-compose.gradle"

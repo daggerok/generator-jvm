@@ -12,13 +12,12 @@ buildscript {
     jacksonKotlinVersion = '2.9.5'
     springCloudVersion = 'Finchley.RC1'
     springCloudVersion = '2.0.3.RELEASE'
+    asciidoctorjPdfVersion = '1.5.0-alpha.15'
   }
-  repositories {
-    mavenLocal()
-    mavenCentral()
-  }
+
   dependencies {
-    classpath("org.junit.platform:junit-platform-gradle-plugin:$junitPlatformVersion")
+    classpath "org.asciidoctor:asciidoctorj-pdf:$asciidoctorjPdfVersion"
+    classpath "org.junit.platform:junit-platform-gradle-plugin:$junitPlatformVersion"
   }
 }
 
@@ -36,6 +35,15 @@ plugins {
   id 'org.ajoberstar.git-publish' version '0.3.0' apply false
   id 'org.asciidoctor.convert' version '1.5.7' apply false
 }
+
+wrapper {
+  gradleVersion = '4.8'
+  distributionType = 'BIN'
+}
+
+apply from: "$rootDir/gradle/ide.gradle"
+apply from: "$rootDir/gradle/clean.gradle"
+apply from: "$rootDir/gradle/repositories.gradle"
 
 allprojects {
 
@@ -96,11 +104,6 @@ subprojects {
 
   apply plugin: 'org.junit.platform.gradle.plugin'
 
-  repositories {
-    mavenLocal()
-    mavenCentral()
-  }
-
   compileJava.dependsOn(processResources)
 
   apply plugin: 'io.franzbecker.gradle-lombok'
@@ -142,41 +145,7 @@ subprojects {
 }
 
 apply from: "$rootDir/gradle/findbugs.gradle"
-
-def profile = project.hasProperty('profile') ? project.getProperty('profile') : 'gradle'
-
-dockerCompose {
-  useComposeFiles = [project.file("docker-compose-${profile}.yaml")]
-  // captureContainersOutput = true
-  captureContainersOutput = false
-  stopContainers = true
-  removeContainers = true
-  removeImages = 'Local'
-  removeVolumes = true
-  removeOrphans = true
-  forceRecreate = true
-  waitForTcpPorts = false
-  projectName = project.name
-}
-
-composeUp.dependsOn assemble
-
-wrapper {
-  gradleVersion = '4.8'
-  distributionType = 'BIN'
-}
-
-idea {
-  module {
-    downloadSources = true
-  }
-}
-
-eclipse {
-  classpath {
-    downloadSources = true
-  }
-}
+apply from: "$rootDir/gradle/docker-compose.gradle"
 
 /*
 // spring-boot multi-module preamble:

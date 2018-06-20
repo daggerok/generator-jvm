@@ -4,8 +4,8 @@ services:
 
   maven-<%= projectDirectory %>-app:
     build:
-      context: .
-      dockerfile: .mvn/Dockerfile
+      context: ear
+      dockerfile: ear/.mvn/Dockerfile
     networks: [backing-services]
     ports:
     - "5005:5005"

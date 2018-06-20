@@ -4,4 +4,4 @@ EXPOSE 5005
 HEALTHCHECK --timeout=2s --retries=22 \
         CMD wget -q --spider http://127.0.0.1:8080/web/ \
          || exit 1
-ADD --chown=jboss-eap-7.1 ./build/libs/*.ear ${JBOSS_HOME}/standalone/deployments/
+ADD --chown=jboss-eap-7.1 ./ear/build/libs/*.ear ${JBOSS_HOME}/standalone/deployments/

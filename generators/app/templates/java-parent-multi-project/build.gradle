@@ -5,6 +5,11 @@ buildscript {
     lombokVersion = '0.9.2'
     jgivenVersion = '0.15.3'
     logbackVersion = '1.2.3'
+    asciidoctorjPdfVersion = '1.5.0-alpha.15'
+  }
+
+  dependencies {
+    classpath "org.asciidoctor:asciidoctorj-pdf:$asciidoctorjPdfVersion"
   }
 }
 
@@ -16,6 +21,15 @@ plugins {
   id 'org.ajoberstar.git-publish' version '0.3.0' apply false
 }
 
+wrapper {
+  gradleVersion = '4.8'
+  distributionType = 'BIN'
+}
+
+apply from: "$rootDir/gradle/ide.gradle"
+apply from: "$rootDir/gradle/clean.gradle"
+apply from: "$rootDir/gradle/repositories.gradle"
+
 allprojects {
 
   apply plugin: 'base'
@@ -25,11 +39,6 @@ allprojects {
   version = '0.0.1'
 
   defaultTasks 'clean', 'build'
-
-  wrapper {
-    gradleVersion = '4.8'
-    distributionType = 'BIN'
-  }
 }
 
 subprojects {
@@ -37,11 +46,6 @@ subprojects {
   apply plugin: 'java'
 
   sourceCompatibility = targetCompatibility = "$javaVersion"
-
-  repositories {
-    mavenLocal()
-    mavenCentral()
-  }
 
   dependencies {
     // In java we trust...
@@ -54,36 +58,7 @@ subprojects {
 }
 
 apply from: "$rootDir/gradle/findbugs.gradle"
-
-def profile = project.hasProperty('profile') ? project.getProperty('profile') : 'gradle'
-
-dockerCompose {
-  useComposeFiles = [project.file("docker-compose-${profile}.yaml")]
-  // captureContainersOutput = true
-  captureContainersOutput = false
-  stopContainers = true
-  removeContainers = true
-  removeImages = 'Local'
-  removeVolumes = true
-  removeOrphans = true
-  forceRecreate = true
-  waitForTcpPorts = false
-  projectName = project.name
-}
-
-composeUp.dependsOn assemble
-
-idea {
-  module {
-    downloadSources = true
-  }
-}
-
-eclipse {
-  classpath {
-    downloadSources = true
-  }
-}
+apply from: "$rootDir/gradle/docker-compose.gradle"
 
 /*
 // spring-boot multi-module preamble:

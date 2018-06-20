@@ -8,6 +8,11 @@ buildscript {
     scalaCompatVersion = '2.11'
     scalaVersion = "${scalaCompatVersion}.8"
     scalatestVersion = "${scalaCompatVersion}:3.0.4"
+    asciidoctorjPdfVersion = '1.5.0-alpha.15'
+  }
+
+  dependencies {
+    classpath "org.asciidoctor:asciidoctorj-pdf:$asciidoctorjPdfVersion"
   }
 }
 
@@ -23,6 +28,15 @@ plugins {
   id 'org.asciidoctor.convert' version '1.5.7' apply false
   id 'org.ajoberstar.git-publish' version '0.3.0' apply false
 }
+
+wrapper {
+  gradleVersion = '4.8'
+  distributionType = 'BIN'
+}
+
+apply from: "$rootDir/gradle/ide.gradle"
+apply from: "$rootDir/gradle/clean.gradle"
+apply from: "$rootDir/gradle/repositories.gradle"
 
 group = 'com.github.daggerok'
 version = '0.0.1'
@@ -54,11 +68,6 @@ allprojects {
 
 defaultTasks 'clean', 'build'
 
-repositories {
-  mavenLocal()
-  mavenCentral()
-}
-
 compileJava.dependsOn(processResources)
 
 dependencies {
@@ -81,38 +90,4 @@ dependencies {
 }
 
 apply from: "$rootDir/gradle/findbugs.gradle"
-
-def profile = project.hasProperty('profile') ? project.getProperty('profile') : 'gradle'
-
-dockerCompose {
-  useComposeFiles = [project.file("docker-compose-${profile}.yaml")]
-//  captureContainersOutput = true
-  captureContainersOutput = false
-  stopContainers = true
-  removeContainers = true
-  removeImages = 'Local'
-  removeVolumes = true
-  removeOrphans = true
-  forceRecreate = true
-  waitForTcpPorts = false
-  projectName = project.name
-}
-
-composeUp.dependsOn assemble
-
-wrapper {
-  gradleVersion = '4.8'
-  distributionType = 'BIN'
-}
-
-idea {
-  module {
-    downloadSources = true
-  }
-}
-
-eclipse {
-  classpath {
-    downloadSources = true
-  }
-}
+apply from: "$rootDir/gradle/docker-compose.gradle"

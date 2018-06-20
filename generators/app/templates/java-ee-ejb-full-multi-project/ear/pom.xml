@@ -92,7 +92,7 @@
           </execution>
         </executions>
         <configuration>
-          <composeFile>${project.basedir}/docker-compose-maven.yaml</composeFile>
+          <composeFile>${project.basedir}/../docker-compose-maven.yaml</composeFile>
           <detachedMode>true</detachedMode>
           <removeVolumes>true</removeVolumes>
           <detail>true</detail>

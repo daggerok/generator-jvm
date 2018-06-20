@@ -3,6 +3,11 @@ buildscript {
     slf4jVersion = '1.7.25'
     jgivenVersion = '0.15.3'
     logbackVersion = '1.2.3'
+    asciidoctorjPdfVersion = '1.5.0-alpha.15'
+  }
+
+  dependencies {
+    classpath "org.asciidoctor:asciidoctorj-pdf:$asciidoctorjPdfVersion"
   }
 }
 
@@ -13,6 +18,15 @@ plugins {
   id 'org.ajoberstar.git-publish' version '0.3.0' apply false
 }
 
+wrapper {
+  gradleVersion = '4.8'
+  distributionType = 'BIN'
+}
+
+apply from: "$rootDir/gradle/ide.gradle"
+apply from: "$rootDir/gradle/clean.gradle"
+apply from: "$rootDir/gradle/repositories.gradle"
+
 allprojects {
 
   apply plugin: 'base'
@@ -22,11 +36,6 @@ allprojects {
   version = '0.0.1'
 
   defaultTasks 'clean', 'build'
-
-  wrapper {
-    gradleVersion = '4.8'
-    distributionType = 'BIN'
-  }
 }
 
 subprojects { p ->
@@ -34,11 +43,6 @@ subprojects { p ->
   apply plugin: 'java'
 
   sourceCompatibility = targetCompatibility = '1.8'
-
-  repositories {
-    mavenLocal()
-    mavenCentral()
-  }
 
   compileJava.dependsOn(processResources)
 
@@ -55,15 +59,4 @@ subprojects { p ->
 }
 
 apply from: "$rootDir/gradle/findbugs.gradle"
-
-idea {
-  module {
-    downloadSources = true
-  }
-}
-
-eclipse {
-  classpath {
-    downloadSources = true
-  }
-}
+apply from: "$rootDir/gradle/docker-compose.gradle"

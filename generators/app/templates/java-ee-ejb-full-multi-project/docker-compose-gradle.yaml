@@ -5,7 +5,7 @@ services:
   gradle-<%= projectDirectory %>-app:
     build:
       context: .
-      dockerfile: gradle/Dockerfile
+      dockerfile: ./ear/gradle/Dockerfile
     networks: [backing-services]
     ports:
     - "5005:5005"
