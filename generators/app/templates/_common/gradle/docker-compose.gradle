@@ -1,7 +1,7 @@
 def dockerComposeFile = project.file("$rootDir/docker-compose-gradle.yaml")
 
 if (project.hasProperty('profile')) {
-  def profile = project.getProperty('profile') ?: ''
+  def profile = project.property('profile') ?: ''
   if (!profile.trim().isEmpty()) {
     dockerComposeFile = dockerComposeFile.replace('-gradle.yaml', "-${profile}.yaml")
   }
