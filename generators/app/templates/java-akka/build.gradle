@@ -61,9 +61,7 @@ dependencies {
   implementation "io.vavr:vavr:$vavrVersion"
 
   implementation "org.slf4j:slf4j-api:$slf4jVersion"
-  // implementation "org.slf4j:slf4j-jdk14:$slf4jVersion"
   implementation "org.slf4j:jul-to-slf4j:$slf4jVersion"
-  implementation "org.slf4j:log4j-over-slf4j:$slf4jVersion"
   implementation "ch.qos.logback:logback-classic:$logbackVersion"
 
   compileOnly "org.projectlombok:lombok:$lombokVersion"
