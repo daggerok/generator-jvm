@@ -19,11 +19,13 @@ Maksim Kostromin <daggerok@gmail.com>
 Travis CI status:
 image:https://travis-ci.org/daggerok/{root-project-name}.svg?branch=master["Build Status", link={github-url}]
 
+////
 GitLab CI status:
 image:https://gitlab.com/daggerok/{root-project-name}/badges/master/build.svg["Build Status", link={gitlab-url}]
 
 BitBucket CI status:
 image:https://img.shields.io/bitbucket/pipelines/daggerok/{root-project-name}.svg["Build Status", link={bitbucket-url}]
+////
 
 == Introduction
 
@@ -35,12 +37,11 @@ TODO: implement documentation...
 
 == Links
 
-ifdef::backend-html5[link:./index.pdf[Documentation in PFD format]]
-
-link:{github-url}[GitHub repo]
-link:https://daggerok.github.io/{root-project-name}[GitHub pages]
-
-link:{gitlab-url}[GitLab repo]
-link:https://daggerok.gitlab.io/{root-project-name}[GitLab pages]
-
-link:{bitbucket-url}[BitBucket repo]
+ifdef::backend-html5[- link:./index.pdf[Documentation in PFD format]]
+- link:{github-url}[GitHub repo]
+- link:https://daggerok.github.io/{root-project-name}[GitHub pages]
+////
+- link:{gitlab-url}[GitLab repo]
+- link:https://daggerok.gitlab.io/{root-project-name}[GitLab pages]
+- link:{bitbucket-url}[BitBucket repo]
+////
