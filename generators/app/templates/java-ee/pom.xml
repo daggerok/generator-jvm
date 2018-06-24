@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="
+         http://maven.apache.org/POM/4.0.0
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.github.daggerok</groupId>
@@ -102,7 +105,7 @@
     <dependency>
       <groupId>org.junit.vintage</groupId>
       <artifactId>junit-vintage-engine</artifactId>
-      <version><version>${junit.jupiter.version}</version></version>
+      <version>${junit.jupiter.version}</version>
       <scope>test</scope>
     </dependency>
     <!-- junit 5 -->
@@ -202,13 +205,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <!--
-          there are issues with 2.20.1 version
-          The junit-platform-surefire-provider is not compatible with version 2.20 of the maven-surefire-plugin.
-          see https://github.com/junit-team/junit5/issues/809
-        -->
-        <!--<version>2.20.1</version>-->
-        <version>2.19.1</version>
+        <version>2.21.0</version>
         <dependencies>
           <dependency>
             <groupId>org.junit.platform</groupId>
@@ -242,45 +239,6 @@
       </plugin>
     </plugins>
   </build>
-
-  <profiles>
-    <profile>
-      <id>docker</id>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>com.dkanejs.maven.plugins</groupId>
-            <artifactId>docker-compose-maven-plugin</artifactId>
-            <version>1.0.1</version>
-            <executions>
-              <execution>
-                <id>up</id>
-                <!--<phase>process-resources</phase>-->
-                <phase>verify</phase>
-                <goals>
-                  <goal>up</goal>
-                </goals>
-              </execution>
-              <execution>
-                <id>down</id>
-                <!--<phase>test</phase>-->
-                <phase>verify</phase>
-                <goals>
-                  <goal>down</goal>
-                </goals>
-              </execution>
-            </executions>
-            <configuration>
-              <composeFile>${project.basedir}/docker-compose-maven.yaml</composeFile>
-              <detachedMode>true</detachedMode>
-              <removeVolumes>true</removeVolumes>
-              <detail>true</detail>
-            </configuration>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-  </profiles>
 
   <!-- generate findbugs html report `target/site/findbugs.html as part of maven-project-info-report -->
   <reporting>
@@ -328,4 +286,108 @@
     </repository>
   </distributionManagement>
 
+  <profiles>
+    <profile>
+      <id>docker</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>com.dkanejs.maven.plugins</groupId>
+            <artifactId>docker-compose-maven-plugin</artifactId>
+            <version>1.0.1</version>
+            <executions>
+              <execution>
+                <id>up</id>
+                <!--<phase>process-resources</phase>-->
+                <phase>verify</phase>
+                <goals>
+                  <goal>up</goal>
+                </goals>
+              </execution>
+              <execution>
+                <id>down</id>
+                <!--<phase>test</phase>-->
+                <phase>verify</phase>
+                <goals>
+                  <goal>down</goal>
+                </goals>
+              </execution>
+            </executions>
+            <configuration>
+              <composeFile>${project.basedir}/docker-compose-maven.yaml</composeFile>
+              <detachedMode>true</detachedMode>
+              <removeVolumes>true</removeVolumes>
+              <detail>true</detail>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <profile>
+      <id>docs</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.asciidoctor</groupId>
+            <artifactId>asciidoctor-maven-plugin</artifactId>
+            <version>1.5.6</version>
+            <executions>
+              <execution>
+                <id>output-html</id>
+                <phase>generate-resources</phase>
+                <goals>
+                  <goal>process-asciidoc</goal>
+                </goals>
+                <configuration>
+                  <baseDir>docs</baseDir>
+                  <imagesDir>images</imagesDir>
+                  <sourceHighlighter>coderay</sourceHighlighter>
+                  <backend>html</backend>
+                  <attributes>
+                    <toc>left</toc>
+                    <linkcss>false</linkcss>
+                    <doctype>book</doctype>
+                    <ruby>erubis</ruby>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                    <linkattrs>true</linkattrs>
+                    <numbered>true</numbered>
+                    <sectanchors>true</sectanchors>
+                    <sectlink>true</sectlink>
+                    <idprefix/>
+                    <docinfo1/>
+                    <icons>font</icons>
+                    <idseparator>-</idseparator>
+                    <setanchors>true</setanchors>
+                    <source-highlighter>coderay</source-highlighter>
+                    <toc-title>Table of Contents</toc-title>
+                    <project-name>${project.artifactId}</project-name>
+                    <root-project-name>${project.artifactId}</root-project-name>
+                    <project-version>${project.version}</project-version>
+                    <github-url>https://github.com/daggerok/${project.artifactId}</github-url>
+                  </attributes>
+                </configuration>
+              </execution>
+              <execution>
+                <id>output-docbook</id>
+                <phase>generate-resources</phase>
+                <goals>
+                  <goal>process-asciidoc</goal>
+                </goals>
+                <configuration>
+                  <backend>docbook</backend>
+                  <doctype>book</doctype>
+                </configuration>
+              </execution>
+            </executions>
+            <configuration>
+              <sourceDirectory>./docs</sourceDirectory>
+              <headerFooter>true</headerFooter>
+            </configuration>
+          </plugin>
+        </plugins>
+        <defaultGoal>clean process-resources</defaultGoal>
+      </build>
+    </profile>
+  </profiles>
 </project>
