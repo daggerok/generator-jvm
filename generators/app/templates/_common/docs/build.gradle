@@ -53,7 +53,7 @@ task documentation(type: Copy, dependsOn: asciidoctor) {
   from "$asciidoctor.sourceDir/static", {
     into '.'
   }
-  into "$rootDir/public"
+  into "$rootDir/target/generated-docs"
 }
 
 gitPublish {
@@ -62,7 +62,7 @@ gitPublish {
   branch = 'gh-pages'
 
   contents {
-    from "$rootDir/public", {
+    from "$rootDir/target/generated-docs", {
       into '.'
     }
   }

@@ -72,7 +72,7 @@ deploy:
   keep-history: true
   on:
     branch: master
-  local-dir: public
+  local-dir: target/generated-docs
   target_branch: gh-pages
 
 before_cache:
