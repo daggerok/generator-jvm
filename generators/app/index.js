@@ -18,6 +18,7 @@ module.exports = class extends Generator {
 
     this.projectTypes = [
       'java',
+      'java-vertx',
       'java-spring-boot',
       'java-spring-boot-1.x',
       'java-spring-cloud-function-web',

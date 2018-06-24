@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# ./mvnw clean deploy
+# unzip target/local-repo/com/github/daggerok/java-app/0.0.1/java-app-0.0.1.zip -d target
+# bash target/java-app-0.0.1-all/start
+APPLICATION=java-app-0.0.1.jar
+LIB_DIR_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+java -Djava.ext.dirs=${LIB_DIR_PATH}/lib -jar ./${APPLICATION}

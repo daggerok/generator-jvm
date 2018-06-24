@@ -62,6 +62,19 @@ bash mvnw com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:up
 
 ## What's inside?
 
+___vertx web project___
+
+ * java 8 based Vert.x web project
+ * support fatjar
+ * support java (TODO: kotlin, js)
+ * support maven
+ * support gradle
+ * docker / docker-compose support
+
+type options:
+
+- `java-vertx`
+
 ___spring cloud function web project___
 
  * java 8 based spring-cloud-function-web project

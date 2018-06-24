@@ -32,6 +32,6 @@ CMD /bin/bash
 #CMD /bin/bash
 #EXPOSE 8080
 #HEALTHCHECK --timeout=1s \
-#            --retries=35 \
+#            --retries=66 \
 #            CMD curl -f http://127.0.0.1:8080/actuator/health || exit 1
 COPY --chown=appuser ./build/libs/*-all.jar ./app.jar

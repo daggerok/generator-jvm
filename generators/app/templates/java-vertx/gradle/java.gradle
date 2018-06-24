@@ -1,0 +1,18 @@
+allprojects {
+  apply plugin: 'java'
+  apply plugin: 'io.franzbecker.gradle-lombok'
+
+  version = '0.0.1'
+  group = 'com.github.daggerok'
+  sourceCompatibility = targetCompatibility = "$javaVersion"
+
+  defaultTasks 'clean', 'build'
+
+  dependencies {
+    compile("io.vertx:vertx-core:$vertxVersion")
+    // In java we trust...
+    compile("io.vavr:vavr:$vavrVersion")
+    compile("org.slf4j:slf4j-api:$slf4jVersion")
+    compile("ch.qos.logback:logback-classic:$logbackVersion")
+  }
+}
