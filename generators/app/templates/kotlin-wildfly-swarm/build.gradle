@@ -161,3 +161,4 @@ swarm {
 
 apply from: "$rootDir/gradle/findbugs.gradle"
 apply from: "$rootDir/gradle/docker-compose.gradle"
+apply from: "$rootDir/gradle/docs.gradle"

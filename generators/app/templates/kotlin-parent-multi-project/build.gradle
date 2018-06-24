@@ -143,6 +143,7 @@ subprojects {
 
 apply from: "$rootDir/gradle/findbugs.gradle"
 apply from: "$rootDir/gradle/docker-compose.gradle"
+apply from: "$rootDir/gradle/docs.gradle"
 
 /*
 // spring-boot multi-module preamble:
