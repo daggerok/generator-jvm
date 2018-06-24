@@ -316,6 +316,7 @@
       </build>
     </profile>
 
+    <!-- mvn -Pdocs -->
     <profile>
       <id>docs</id>
       <build>

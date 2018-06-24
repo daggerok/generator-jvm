@@ -45,7 +45,7 @@ script:
 - bash mvnw com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:up -P docker
 - bash mvnw com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:down -P docker
 
-before_deploy: ./gradlew documentation
+before_deploy: ./mvnw -Pdocs
 
 deploy:
   provider: pages

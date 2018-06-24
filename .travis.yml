@@ -61,9 +61,21 @@ script:
 - java -jar build/libs/*-all.jar
 - bash build/install/java/bin/java
 - tree build/maven-publish
+- ./gradlew documentation
 - ./mvnw clean deploy >/dev/null
 - java -jar target/*-all.jar
 - tree target/local-repo/
+- ./mvnw -P docs >/dev/null
+# java-vertx
+- cd ${e2e}
+- yo jvm -n javavertx -t java-vertx
+- cd javavertx
+- ./gradlew -S >/dev/null
+- ./gradlew documentation >/dev/null
+- tree target/generated-docs
+- ./mvnw clean deploy >/dev/null
+- ./mvnw -Pdocs
+- tree target/generated-docs
 # java-spring-boot
 - cd ${e2e}
 - yo jvm -n javaspringboot -t java-spring-boot
