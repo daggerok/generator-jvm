@@ -128,6 +128,7 @@ module.exports = class extends Generator {
       'gradle.properties',
       'mvnw',
       'mvnw.cmd',
+      'idea.xml',
 
     ].forEach(suffix => this.fs.copy(
       this.templatePath(`_common/${suffix}`),
