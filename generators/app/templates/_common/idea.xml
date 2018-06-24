@@ -53,8 +53,10 @@
     <option name="KEEP_BLANK_LINES_IN_CODE" value="1" />
     <option name="KEEP_BLANK_LINES_BEFORE_RBRACE" value="1" />
     <option name="ALIGN_MULTILINE_CHAINED_METHODS" value="true" />
+    <option name="ALIGN_MULTILINE_PARAMETERS_IN_CALLS" value="true" />
     <option name="SPACE_WITHIN_ARRAY_INITIALIZER_BRACES" value="true" />
     <option name="SPACE_BEFORE_ARRAY_INITIALIZER_LBRACE" value="true" />
+    <option name="CALL_PARAMETERS_WRAP" value="5" />
     <option name="METHOD_CALL_CHAIN_WRAP" value="5" />
     <indentOptions>
       <option name="INDENT_SIZE" value="2" />
