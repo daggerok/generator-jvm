@@ -1,8 +1,69 @@
 <style>
   /*
-  @media screen and (min-width: 4096px) {
+  @media screen and (max-width: 7680px) {
     body {
       font-size: 2em;
+    }
+  }
+  @media screen and (max-width: 4096px) {
+    body {
+      font-size: 1.75em;
+    }
+  }
+  @media screen and (max-width: 3840px) {
+    body {
+      font-size: 1.5em;
+    }
+  }
+  @media screen and (max-width: 1920px) {
+    body {
+      font-size: 1.4em;
+    }
+  }
+  @media screen and (max-width: 1366px) {
+    body {
+      font-size: 1.3em;
+    }
+  }
+  @media screen and (max-width: 1280px) {
+    body {
+      font-size: 1.25em;
+    }
+  }
+  @media screen and (max-width: 1024px) {
+    body {
+      font-size: 1.2em;
+    }
+  }
+  @media screen and (max-width: 720px) {
+    body {
+      font-size: 1.1em;
+    }
+  }
+  @media screen and (max-width: 680px) {
+    body {
+      font-size: 1.075em;
+    }
+  }
+  @media screen and (max-width: 576px) {
+    body {
+      font-size: 1.05em;
+    }
+  }
+  @media screen and (max-width: 480px) {
+    body {
+      font-size: 1.025em;
+    }
+  }
+  @media screen and (max-width: 324px) {
+    body {
+      font-size: 1em;
+    }
+  }
+  */
+  @media screen and (min-width: 1920px) {
+    body {
+      font-size: 2.00em;
     }
   }
   @media screen and (max-width: 324px) {
@@ -10,7 +71,6 @@
       font-size: 1.00em;
     }
   }
-  */
   #content {
     max-width: 98%;
   }
@@ -23,17 +83,17 @@
 </style>
 
 <meta name="keywords"
-      content="Gradle, doc, docs, adoc, asciidoc, asciidoctor, documentation">
+      content="Gradle, doc, docs, adoc, asciidoc, asciidoctor, documentation, <%= projectDirectory %>">
 <meta name="description"
-      content="Gradle, doc, docs, adoc, asciidoc, asciidoctor, documentation">
+      content="Gradle, doc, docs, adoc, asciidoc, asciidoctor, documentation, <%= projectDirectory %>">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <!-- see https://codepo8.github.io/css-fork-on-github-ribbon/ -->
 <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
 <div>
-  <!--<a href="https://gitlab.com/daggerok/change-me">-->
-  <a href="https://github.com/daggerok/change-me">
+  <!--<a href="https://gitlab.com/daggerok/<%= projectDirectory %>">-->
+  <a href="https://github.com/daggerok/<%= projectDirectory %>">
     <img class="positioned-image"
          src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"
          alt="Don't fork me!">
