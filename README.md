@@ -12,7 +12,7 @@ npm install -g generator-jvm
 
 ## npm audit
 
-I'm not recommend you, but you can stop npm audit on install by using
+It's not recommended, but if you really need, you can install npm packages without audit by using:
 
 ```bash
 npm install --no-audit
