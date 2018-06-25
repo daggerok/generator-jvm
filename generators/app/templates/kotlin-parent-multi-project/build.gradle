@@ -13,11 +13,12 @@ buildscript {
     springCloudVersion = 'Finchley.RC1'
     springCloudVersion = '2.0.3.RELEASE'
     asciidoctorjPdfVersion = '1.5.0-alpha.15'
+    hamcrestVersion = '1.3'
+    junit4Version = '4.12'
   }
 
   dependencies {
     classpath "org.asciidoctor:asciidoctorj-pdf:$asciidoctorjPdfVersion"
-    classpath "org.junit.platform:junit-platform-gradle-plugin:$junitPlatformVersion"
   }
 }
 
@@ -34,6 +35,10 @@ plugins {
   id 'io.franzbecker.gradle-lombok' version '1.14' apply false
   id 'org.ajoberstar.git-publish' version '0.3.0' apply false
   id 'org.asciidoctor.convert' version '1.5.7' apply false
+  id 'cn.bestwu.propdeps-eclipse' version '0.0.10' apply false
+  id 'cn.bestwu.propdeps-maven' version '0.0.10' apply false
+  id 'cn.bestwu.propdeps-idea' version '0.0.10' apply false
+  id 'cn.bestwu.propdeps' version '0.0.10' apply false
 }
 
 wrapper {
@@ -102,8 +107,6 @@ subprojects {
     }
   }
 
-  apply plugin: 'org.junit.platform.gradle.plugin'
-
   compileJava.dependsOn(processResources)
 
   apply plugin: 'io.franzbecker.gradle-lombok'
@@ -126,21 +129,10 @@ subprojects {
     compile("org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion")
 
     testCompile("org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion")
-    testCompile('junit:junit:4.12')
-    // junit 5
-    testImplementation("org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion")
-    // hamcrest asserts, like: assertThat
-    testImplementation('org.hamcrest:hamcrest-core:1.3')
-
-    testRuntime("org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion")
-    testRuntime("org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion")
-    testRuntime('org.junit.vintage:junit-vintage-engine:4.12.3')
-    // IDEA (older bundle):
-    testRuntime("org.junit.platform:junit-platform-launcher:$junitPlatformVersion")
-    testCompileOnly('org.apiguardian:apiguardian-api:1.0.0')
   }
 }
 
+apply from: "$rootDir/gradle/junit.gradle"
 apply from: "$rootDir/gradle/findbugs.gradle"
 apply from: "$rootDir/gradle/docker-compose.gradle"
 apply from: "$rootDir/gradle/docs.gradle"
