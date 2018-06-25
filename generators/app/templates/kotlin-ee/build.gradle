@@ -10,7 +10,7 @@ buildscript {
     lombokVersion = '1.16.20'
     junitJupiterVersion = '5.2.0'
     junitPlatformVersion = '1.2.0'
-    jacksonKotlinVersion = '2.9.5'
+    jacksonKotlinVersion = '2.9.6'
     resteasyVersion = '3.5.0.Final'
     asciidoctorjPdfVersion = '1.5.0-alpha.15'
   }

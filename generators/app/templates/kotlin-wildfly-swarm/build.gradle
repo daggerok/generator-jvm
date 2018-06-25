@@ -10,7 +10,7 @@ buildscript {
     lombokVersion = '1.16.20'
     junitJupiterVersion = '5.2.0'
     junitPlatformVersion = '1.2.0'
-    jacksonKotlinVersion = '2.9.5'
+    jacksonKotlinVersion = '2.9.6'
     wildflySwarmVersion = '2018.1.0'
     hibernateCoreVersion = '4.2.18.Final'
     asciidoctorjPdfVersion = '1.5.0-alpha.15'

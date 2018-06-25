@@ -19,7 +19,7 @@
     <spring-cloud.version>Finchley.RC1</spring-cloud.version>
     <spring-boot.version>2.0.3.RELEASE</spring-boot.version>
     <junit.platform.version>1.2.0</junit.platform.version>
-    <jakson-kotlin.version>2.9.5</jakson-kotlin.version>
+    <jakson-kotlin.version>2.9.6</jakson-kotlin.version>
     <junit.jupiter.version>5.2.0</junit.jupiter.version>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>

@@ -17,7 +17,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <junit.platform.version>1.2.0</junit.platform.version>
     <junit.jupiter.version>5.2.0</junit.jupiter.version>
-    <jakson-kotlin.version>2.9.5</jakson-kotlin.version>
+    <jakson-kotlin.version>2.9.6</jakson-kotlin.version>
     <maven.compiler.target>1.8</maven.compiler.target>
     <resteasy.version>3.5.0.Final</resteasy.version>
     <lombok.version>1.16.20</lombok.version>
