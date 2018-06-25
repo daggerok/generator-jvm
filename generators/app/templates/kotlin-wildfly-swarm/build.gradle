@@ -44,7 +44,7 @@ apply plugin: 'wildfly-swarm'
 apply plugin: 'org.junit.platform.gradle.plugin'
 
 wrapper {
-  gradleVersion = '4.8'
+  gradleVersion = '4.8.1'
   distributionType = 'BIN'
 }
 
