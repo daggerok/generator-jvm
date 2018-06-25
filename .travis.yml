@@ -75,6 +75,16 @@ script:
 - ./mvnw clean deploy >/dev/null
 - ./mvnw -Pdocs
 - tree target/generated-docs
+# kotlin-vertx
+- cd ${e2e}
+- yo jvm -n kotlinvertx -t kotlin-vertx
+- cd kotlinvertx
+- ./gradlew -S >/dev/null
+- ./gradlew documentation >/dev/null
+- tree target/generated-docs
+- ./mvnw clean deploy >/dev/null
+- ./mvnw -Pdocs
+- tree target/generated-docs
 # java-spring-boot
 - cd ${e2e}
 - yo jvm -n javaspringboot -t java-spring-boot

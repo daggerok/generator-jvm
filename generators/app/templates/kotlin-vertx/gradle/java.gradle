@@ -1,0 +1,20 @@
+allprojects {
+  apply plugin: 'java'
+
+  version = '0.0.1'
+  group = 'com.github.daggerok'
+  sourceCompatibility = targetCompatibility = "$javaVersion"
+
+  defaultTasks 'clean', 'build'
+
+  dependencies {
+    //// In java we trust...
+    //compile("io.vavr:vavr:$vavrVersion")
+    //compileOnly("org.projectlombok:lombok:$lombokVersion")
+    //testCompileOnly("org.projectlombok:lombok:$lombokVersion")
+    //annotationProcessor("org.projectlombok:lombok:$lombokVersion")
+    //testAnnotationProcessor("org.projectlombok:lombok:$lombokVersion")
+    compile("org.slf4j:slf4j-api:$slf4jVersion")
+    compile("ch.qos.logback:logback-classic:$logbackVersion")
+  }
+}

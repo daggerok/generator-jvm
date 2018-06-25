@@ -40,11 +40,11 @@ allprojects {
   }
 
   dependencies {
-    //compile("com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonKotlinVersion")
-    compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion")
-    compile("org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion")
+    //compile "com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonKotlinVersion"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
+    compile "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
 
-    testImplementation("org.jetbrains.kotlin:kotlin-test:$kotlinVersion")
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion")
+    testImplementation "org.jetbrains.kotlin:kotlin-test:$kotlinVersion"
+    testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion"
   }
 }

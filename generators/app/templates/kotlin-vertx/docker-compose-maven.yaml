@@ -17,7 +17,7 @@ services:
         - app
 
 volumes:
-  maven-<%= projectDirectory %>-app-data:
+  maven-<%= projectDirectory %>-app-data: {}
 
 networks:
   public-network:

@@ -1,10 +1,10 @@
 apply plugin: 'application'
 apply plugin: 'com.github.johnrengelman.shadow'
 
-mainClassName = 'daggerok.App'
+mainClassName = 'daggerok.AppKt'
 shadowJar.mustRunAfter jar
 defaultTasks 'clean', 'build', 'installDist', 'distZip', 'publish'
 
 dependencies {
-  compile "io.vertx:vertx-core:$vertxVersion"
+  compile "io.vertx:vertx-web:$vertxVersion"
 }

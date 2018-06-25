@@ -9,12 +9,12 @@ allprojects {
 
   dependencies {
     //// In java we trust...
-    //compile("io.vavr:vavr:$vavrVersion")
-    compileOnly("org.projectlombok:lombok:$lombokVersion")
-    testCompileOnly("org.projectlombok:lombok:$lombokVersion")
-    annotationProcessor("org.projectlombok:lombok:$lombokVersion")
-    testAnnotationProcessor("org.projectlombok:lombok:$lombokVersion")
-    //compile("org.slf4j:slf4j-api:$slf4jVersion")
-    //compile("ch.qos.logback:logback-classic:$logbackVersion")
+    //compile "io.vavr:vavr:$vavrVersion"
+    compileOnly "org.projectlombok:lombok:$lombokVersion"
+    testCompileOnly "org.projectlombok:lombok:$lombokVersion"
+    annotationProcessor "org.projectlombok:lombok:$lombokVersion"
+    testAnnotationProcessor "org.projectlombok:lombok:$lombokVersion"
+    //compile "org.slf4j:slf4j-api:$slf4jVersion"
+    //compile "ch.qos.logback:logback-classic:$logbackVersion"
   }
 }

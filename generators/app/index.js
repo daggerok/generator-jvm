@@ -29,6 +29,7 @@ module.exports = class extends Generator {
       'java-ee-cdi-full-multi-project',
       'java-ee-ejb-full-multi-project',
       'kotlin',
+      'kotlin-vertx',
       'kotlin-spring-boot',
       'kotlin-spring-boot-1.x',
       'kotlin-spring-cloud-function-web',

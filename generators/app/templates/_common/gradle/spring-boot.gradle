@@ -10,31 +10,31 @@ compileJava.dependsOn(processResources)
 dependencies {
 
   // spring-boot
-  compile('org.springframework.boot:spring-boot-starter-webflux')
-  compile('org.springframework.boot:spring-boot-starter-actuator')
-  //runtime('org.springframework.boot:spring-boot-devtools')
+  compile 'org.springframework.boot:spring-boot-starter-webflux'
+  compile 'org.springframework.boot:spring-boot-starter-actuator'
+  //runtime 'org.springframework.boot:spring-boot-devtools'
 
-  //annotationProcessor('org.springframework.boot:spring-boot-configuration-processor')
-  //testAnnotationProcessor('org.springframework.boot:spring-boot-configuration-processor')
+  //annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+  //testAnnotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 
   //// JPA (+embedded)
-  //runtime('com.h2database:h2')
-  //compile('org.springframework.boot:spring-boot-starter-data-jpa')
-  //compile('org.springframework.boot:spring-boot-starter-data-rest')
+  //runtime 'com.h2database:h2'
+  //compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+  //compile 'org.springframework.boot:spring-boot-starter-data-rest'
 
   //// Mongo (+embedded)
-  //compile('org.springframework.boot:spring-boot-starter-data-mongodb-reactive')
-  //compile('de.flapdoodle.embed:de.flapdoodle.embed.mongo')
+  //compile 'org.springframework.boot:spring-boot-starter-data-mongodb-reactive'
+  //compile 'de.flapdoodle.embed:de.flapdoodle.embed.mongo'
 
   //// Kafka (+embedded)
-  //compile('org.springframework.cloud:spring-cloud-stream')
-  //compile('org.springframework.cloud:spring-cloud-stream-binder-kafka')
-  //compile('org.springframework.kafka:spring-kafka')
-  //compile('org.springframework.kafka:spring-kafka-test')
-  //testImplementation('org.springframework.cloud:spring-cloud-stream-test-support')
+  //compile 'org.springframework.cloud:spring-cloud-stream'
+  //compile 'org.springframework.cloud:spring-cloud-stream-binder-kafka'
+  //compile 'org.springframework.kafka:spring-kafka'
+  //compile 'org.springframework.kafka:spring-kafka-test'
+  //testImplementation 'org.springframework.cloud:spring-cloud-stream-test-support'
 
-  testImplementation('org.springframework.boot:spring-boot-starter-test')
-  testImplementation('io.projectreactor:reactor-test')
+  testImplementation 'org.springframework.boot:spring-boot-starter-test'
+  testImplementation 'io.projectreactor:reactor-test'
 }
 
 dependencyManagement {

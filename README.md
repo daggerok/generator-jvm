@@ -66,7 +66,7 @@ ___vertx web project___
 
  * java 8 based Vert.x web project
  * support fatjar
- * support java (TODO: kotlin, js)
+ * support kotlin or java
  * support maven
  * support gradle
  * docker / docker-compose support
@@ -298,7 +298,7 @@ ___java project___
 - FindBugs maven / gradle plugins functionality
   ```./gradlew check```
   ```./mvnw verify site```
-- Ascii documentation (asciidoctor gradle plugin)
+- Ascii documentation (asciidoctor maven / gradle plugins functionality)
   ```./gradlew asciidoctor```
 - Artifact deployment (local maven repositories)
   ```./gradlew publish``` 

@@ -19,9 +19,9 @@ allprojects {
 
   publishing {
     publications {
-      mavenJava(MavenPublication) {
+      mavenJava(MavenPublication) { publication ->
         afterEvaluate {
-          from components.java
+          project.shadow.component(publication)
           artifact sourcesJar
           artifact javadocJar
           //artifactId = jar.baseName
@@ -58,7 +58,7 @@ allprojects {
     repositories {
       maven {
         url """$rootProject.buildDir/maven-publish/repos/${(
-            project.version.endsWith('SNAPSHOT') ? 'snapshots' : 'releases'
+          project.version.endsWith("SNAPSHOT") ? 'snapshots' : 'releases'
         )}"""
       }
     }
@@ -81,12 +81,10 @@ allprojects {
   publishing {
     publications {
       mavenJava(MavenPublication) { publication ->
-        afterEvaluate {
-          project.shadow.component(publication)
-          artifact sourcesJar
-          artifact javadocJar
-          // ...
-        }
+        project.shadow.component(publication)
+        artifact sourcesJar
+        artifact javadocJar
+        // ...
       }
     }
   }

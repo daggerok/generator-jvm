@@ -64,7 +64,7 @@ script:
 - stop_any 8080
 - bash mvnw com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:down -P docker
 
-before_deploy: ./mvnw -Pdocs
+before_deploy: ./mvnw -P docs
 
 deploy:
   provider: pages

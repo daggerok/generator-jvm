@@ -1,15 +1,15 @@
 dependencies {
-  testImplementation("com.codeborne:selenide:$selenideVersion") {
+  testImplementation "com.codeborne:selenide:$selenideVersion", {
     exclude module: 'selenium-opera-driver'
     exclude module: 'selenium-safari-driver'
     exclude module: 'selenium-edge-driver'
     exclude module: 'selenium-ie-driver'
     because "we don't wanna use any of these..."
   }
-  testImplementation("com.codeborne:phantomjsdriver:$phantomjsDriverVersion")
+  testImplementation "com.codeborne:phantomjsdriver:$phantomjsDriverVersion"
   ////these are must be included by selenide library as a transitive dependencies:
-  //testImplementation("org.seleniumhq.selenium:selenium-chrome-driver:$seleniumDriverVersion")
-  //testImplementation("org.seleniumhq.selenium:selenium-firefox-driver:$seleniumDriverVersion")
+  //testImplementation "org.seleniumhq.selenium:selenium-chrome-driver:$seleniumDriverVersion"
+  //testImplementation "org.seleniumhq.selenium:selenium-firefox-driver:$seleniumDriverVersion"
 }
 
 static def findAllSelenideSystemProps() {

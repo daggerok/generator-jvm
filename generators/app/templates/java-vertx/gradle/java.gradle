@@ -9,7 +9,6 @@ allprojects {
   defaultTasks 'clean', 'build'
 
   dependencies {
-    compile("io.vertx:vertx-core:$vertxVersion")
     // In java we trust...
     compile("io.vavr:vavr:$vavrVersion")
     compile("org.slf4j:slf4j-api:$slf4jVersion")

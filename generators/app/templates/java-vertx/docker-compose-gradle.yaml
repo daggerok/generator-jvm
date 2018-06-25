@@ -1,4 +1,4 @@
-version: "2.1"
+version: '2.1'
 
 services:
 
@@ -6,15 +6,19 @@ services:
     build:
       context: .
       dockerfile: gradle/Dockerfile
-    volumes: ["gradle-<%= projectDirectory %>-app-data:/home/appuser"]
-    networks: [backing-services]
-    #ports: ["8080:8080"]
-    #restart: unless-stopped
-    #mem_limit: 209715200 # container limit: 200Mb (200 * 1024 * 1024)
+    volumes: ['gradle-<%= projectDirectory %>-app-data:/home/appuser']
+    ports: ['8080:8080']
+    restart: unless-stopped
+    # container limit: 200Mb (200 * 1024 * 1024)
+    mem_limit: 209715200
+    networks:
+      public-network:
+        aliases:
+        - app
 
 volumes:
-  gradle-<%= projectDirectory %>-app-data: {}
+  gradle-<%= projectDirectory %>-app-data:
 
 networks:
-  backing-services:
+  public-network:
     driver: bridge
