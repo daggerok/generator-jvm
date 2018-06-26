@@ -19,7 +19,7 @@
     <maven.compiler.target>1.8</maven.compiler.target>
     <scala.compat.version>2.12</scala.compat.version>
     <scalatestic.version>3.0.4</scalatestic.version>
-    <lombok.version>1.16.20</lombok.version>
+    <lombok.version>1.16.22</lombok.version>
     <jgiven.version>0.15.3</jgiven.version>
     <specs2.version>4.0.2</specs2.version>
     <slf4j.version>1.7.25</slf4j.version>
