@@ -4,7 +4,7 @@ buildscript {
     springBootVersion = '1.5.14.RELEASE'
     springCloudVersion = 'Edgware.SR3'
     jacksonKotlinVersion = '2.9.6'
-    lombokVersion = '1.16.20'
+    lombokVersion = '1.16.22'
     logbackVersion = '1.2.3'
     kotlinVersion = '1.2.50'
     slf4jVersion = '1.7.25'

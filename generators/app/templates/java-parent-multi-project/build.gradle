@@ -19,6 +19,10 @@ plugins {
   id 'com.avast.gradle.docker-compose' version '0.6.13'
   id 'org.asciidoctor.convert' version '1.5.7' apply false
   id 'org.ajoberstar.git-publish' version '0.3.0' apply false
+  id 'cn.bestwu.propdeps-eclipse' version '0.0.10' apply false
+  id 'cn.bestwu.propdeps-maven' version '0.0.10' apply false
+  id 'cn.bestwu.propdeps-idea' version '0.0.10' apply false
+  id 'cn.bestwu.propdeps' version '0.0.10' apply false
 }
 
 wrapper {
@@ -49,11 +53,11 @@ subprojects {
 
   dependencies {
     // In java we trust...
-    compile("io.vavr:vavr:$vavrVersion")
-    //annotationProcessor("org.projectlombok:lombok:$lombokVersion")
-    //compileOnly("org.projectlombok:lombok:$lombokVersion")
-    //testAnnotationProcessor("org.projectlombok:lombok:$lombokVersion")
-    //testCompileOnly("org.projectlombok:lombok:$lombokVersion")
+    compile "io.vavr:vavr:$vavrVersion"
+    //annotationProcessor "org.projectlombok:lombok:$lombokVersion"
+    //compileOnly "org.projectlombok:lombok:$lombokVersion"
+    //testAnnotationProcessor "org.projectlombok:lombok:$lombokVersion"
+    //testCompileOnly "org.projectlombok:lombok:$lombokVersion"
   }
 }
 

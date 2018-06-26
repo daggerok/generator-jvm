@@ -6,7 +6,7 @@ buildscript {
     slf4jVersion = '1.7.25'
     jgivenVersion = '0.15.3'
     logbackVersion = '1.2.3'
-    lombokVersion = '1.16.20'
+    lombokVersion = '1.16.22'
     junitJupiterVersion = '5.2.0'
     junitPlatformVersion = '1.2.0'
     hibernateCoreVersion = '4.2.18.Final'
@@ -28,6 +28,10 @@ plugins {
   id 'com.avast.gradle.docker-compose' version '0.6.13'
   id 'org.asciidoctor.convert' version '1.5.7' apply false
   id 'org.ajoberstar.git-publish' version '0.3.0' apply false
+  id 'cn.bestwu.propdeps-eclipse' version '0.0.10' apply false
+  id 'cn.bestwu.propdeps-maven' version '0.0.10' apply false
+  id 'cn.bestwu.propdeps-idea' version '0.0.10' apply false
+  id 'cn.bestwu.propdeps' version '0.0.10' apply false
 }
 
 wrapper {

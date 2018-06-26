@@ -7,7 +7,7 @@ buildscript {
     logbackVersion = '1.2.3'
     kotlinVersion = '1.2.50'
     jgivenVersion = '0.15.3'
-    lombokVersion = '1.16.20'
+    lombokVersion = '1.16.22'
     junitJupiterVersion = '5.2.0'
     junitPlatformVersion = '1.2.0'
     jacksonKotlinVersion = '2.9.6'
@@ -24,7 +24,7 @@ buildscript {
 }
 
 plugins {
-  //id 'ear'
+//id 'ear'
   id 'war'
   id 'idea'
   id 'maven'
@@ -38,6 +38,10 @@ plugins {
   id 'org.asciidoctor.convert' version '1.5.7' apply false
   id 'com.avast.gradle.docker-compose' version '0.6.13'
   id 'io.franzbecker.gradle-lombok' version '1.14'
+  id 'cn.bestwu.propdeps-eclipse' version '0.0.10' apply false
+  id 'cn.bestwu.propdeps-maven' version '0.0.10' apply false
+  id 'cn.bestwu.propdeps-idea' version '0.0.10' apply false
+  id 'cn.bestwu.propdeps' version '0.0.10' apply false
 }
 
 apply plugin: 'wildfly-swarm'
@@ -112,10 +116,10 @@ lombok {
 
 dependencies {
 
-  compile('org.wildfly.swarm:microprofile')
-  compile('org.wildfly.swarm:logging')
-  compile('org.wildfly.swarm:ejb')
-  testCompile('org.wildfly.swarm:arquillian')
+  compile 'org.wildfly.swarm:microprofile'
+  compile 'org.wildfly.swarm:logging'
+  compile 'org.wildfly.swarm:ejb'
+  testCompile 'org.wildfly.swarm:arquillian'
 
   //compile("com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonVersion")
   compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
@@ -139,14 +143,14 @@ dependencies {
   // junit 5
   testImplementation("org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion")
   // hamcrest asserts, like: assertThat
-  testImplementation('org.hamcrest:hamcrest-core:1.3')
+  testImplementation 'org.hamcrest:hamcrest-core:1.3'
 
   testRuntime("org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion")
   testRuntime("org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion")
-  testRuntime('org.junit.vintage:junit-vintage-engine:4.12.3')
+  testRuntime 'org.junit.vintage:junit-vintage-engine:4.12.3'
   // IDEA (older bundle):
   testRuntime("org.junit.platform:junit-platform-launcher:$junitPlatformVersion")
-  testCompileOnly('org.apiguardian:apiguardian-api:1.0.0')
+  testCompileOnly 'org.apiguardian:apiguardian-api:1.0.0'
 }
 
 dependencyManagement {

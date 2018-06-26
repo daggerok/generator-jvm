@@ -6,7 +6,7 @@ buildscript {
     kotlinVersion = '1.2.50'
     jgivenVersion = '0.15.3'
     logbackVersion = '1.2.3'
-    lombokVersion = '1.16.20'
+    lombokVersion = '1.16.22'
     junitJupiterVersion = '5.2.0'
     junitPlatformVersion = '1.2.0'
     jacksonKotlinVersion = '2.9.6'
@@ -118,17 +118,17 @@ subprojects {
   dependencies {
 
     // In java we trust...
-    compile("io.vavr:vavr:$vavrVersion")
+    compile "io.vavr:vavr:$vavrVersion"
 
-    compile("org.slf4j:slf4j-api:$slf4jVersion")
-    compile("ch.qos.logback:logback-classic:$logbackVersion")
+    compile "org.slf4j:slf4j-api:$slf4jVersion"
+    compile "ch.qos.logback:logback-classic:$logbackVersion"
 
     // Kotlin
-    compile("com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonKotlinVersion")
-    compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion")
-    compile("org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion")
+    compile "com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonKotlinVersion"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
+    compile "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
 
-    testCompile("org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion")
+    testCompile "org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion"
   }
 }
 
