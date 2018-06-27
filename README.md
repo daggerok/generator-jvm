@@ -62,7 +62,7 @@ bash mvnw com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:up
 
 ## What's inside?
 
-___vertx web project___
+___java-ee thymeleaf project___
 
  * Java EE 8 based web project
  * Thymeleaf
@@ -77,7 +77,7 @@ type options:
 
 - `java-ee-thymeleaf`
 
-___vertx web project___
+___vertx project___
 
  * java 8 based Vert.x web project
  * support fatjar
@@ -89,6 +89,7 @@ ___vertx web project___
 type options:
 
 - `java-vertx`
+- `kotlin-vertx`
 
 ___spring cloud function web project___
 
