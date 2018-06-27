@@ -12,6 +12,8 @@ jdk: oraclejdk8
 #  apt:
 #    update: true
 #    packages:
+#    - sudo
+#    - lsof
 #    - bash
 #    - unzip
 #    - curl

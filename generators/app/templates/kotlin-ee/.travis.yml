@@ -12,6 +12,8 @@ addons:
   apt:
     update: true
     packages:
+    - sudo
+    - lsof
     - bash
     - unzip
     - curl
