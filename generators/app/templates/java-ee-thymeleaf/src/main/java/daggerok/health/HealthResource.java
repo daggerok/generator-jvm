@@ -11,7 +11,7 @@ import javax.ws.rs.core.UriInfo;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
-@Path("")
+@Path("api")
 @Stateless
 @Produces(APPLICATION_JSON)
 public class HealthResource {

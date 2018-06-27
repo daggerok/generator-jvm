@@ -19,7 +19,7 @@ public class HelloPage {
   @Inject Models models;
 
   @GET
-  @Path("hello")
+  @Path("")
   public String helloView() {
     models.put("message", "Hello, World!");
     models.put("data", List.of("ololo", "trololo").toJavaList());

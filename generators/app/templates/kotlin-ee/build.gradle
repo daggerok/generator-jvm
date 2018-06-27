@@ -8,25 +8,20 @@ buildscript {
     kotlinVersion = '1.2.50'
     jgivenVersion = '0.15.3'
     lombokVersion = '1.16.22'
-    junitJupiterVersion = '5.2.0'
-    junitPlatformVersion = '1.2.0'
     jacksonKotlinVersion = '2.9.6'
     resteasyVersion = '3.5.0.Final'
     asciidoctorjPdfVersion = '1.5.0-alpha.15'
+    junitPlatformVersion = '1.2.0'
+    junitJupiterVersion = '5.2.0'
+    junit4Version = '4.12'
   }
 
   dependencies {
     classpath "org.asciidoctor:asciidoctorj-pdf:$asciidoctorjPdfVersion"
-    classpath "org.junit.platform:junit-platform-gradle-plugin:$junitPlatformVersion"
   }
 }
 
 plugins {
-//id 'ear'
-  id 'war'
-  id 'idea'
-  id 'maven'
-  id 'eclipse'
   id 'org.jetbrains.kotlin.jvm' version '1.2.50'
   id 'org.jetbrains.kotlin.plugin.noarg' version '1.2.50'
   id 'org.jetbrains.kotlin.plugin.allopen' version '1.2.50'
@@ -48,101 +43,9 @@ wrapper {
 apply from: "$rootDir/gradle/ide.gradle"
 apply from: "$rootDir/gradle/clean.gradle"
 apply from: "$rootDir/gradle/repositories.gradle"
-
-apply plugin: 'org.junit.platform.gradle.plugin'
-
-group = 'com.github.daggerok'
-version = '0.0.1'
-sourceCompatibility = targetCompatibility = "$javaVersion"
-
-compileKotlin {
-  incremental = true
-  kotlinOptions {
-    freeCompilerArgs = ['-Xjsr305=strict']
-    jvmTarget = "$javaVersion"
-  }
-}
-
-compileTestKotlin {
-  incremental = true
-  kotlinOptions {
-    freeCompilerArgs = ['-Xjsr305=strict']
-    jvmTarget = "$javaVersion"
-  }
-}
-
-allOpen {
-  annotation('javax.ws.rs.Path')
-  annotation('javax.ejb.Startup')
-  annotation('javax.ejb.Stateless')
-  annotation('javax.ejb.Singleton')
-  annotation('javax.inject.Singleton')
-  annotation('javax.persistence.Entity')
-  annotation('javax.enterprise.context.ApplicationScoped')
-}
-
-noArg {
-  annotation('javax.ws.rs.Path')
-  annotation('javax.ejb.Startup')
-  annotation('javax.ejb.Stateless')
-  annotation('javax.ejb.Singleton')
-  annotation('javax.inject.Singleton')
-  annotation('javax.persistence.Entity')
-  annotation('javax.enterprise.context.ApplicationScoped')
-}
-
-/*
-ear {
-  archiveName = "${project.name}.ear"
-}
-*/
-
-war {
-  archiveName = "${project.name}.war"
-}
-
-defaultTasks 'clean', 'build'
-
-compileJava.dependsOn(processResources)
-
-dependencies {
-
-  //compile "com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonKotlinVersion"
-  compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
-  compile "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
-
-  providedCompile "javax:javaee-api:$javaeeVersion"
-  providedCompile "org.jboss.resteasy:resteasy-jaxrs:$resteasyVersion"
-  providedCompile "org.jboss.resteasy:resteasy-multipart-provider:$resteasyVersion"
-  providedCompile "org.jboss.resteasy:resteasy-json-p-provider:$resteasyVersion"
-  compile 'javax.json:javax.json-api:1.0'
-  compile 'org.glassfish:javax.json:1.0.4'
-
-  //providedCompile 'com.h2database:h2:1.4.196'
-  //compile 'org.hibernate:hibernate-core:4.2.18.Final'
-
-  compile "io.vavr:vavr:$vavrVersion"
-
-  annotationProcessor "org.projectlombok:lombok:$lombokVersion"
-  compileOnly "org.projectlombok:lombok:$lombokVersion"
-  testAnnotationProcessor "org.projectlombok:lombok:$lombokVersion"
-  testCompileOnly "org.projectlombok:lombok:$lombokVersion"
-
-  compile "org.slf4j:slf4j-api:$slf4jVersion"
-  compile "org.slf4j:slf4j-jdk14:$slf4jVersion"
-
-  //testCompileOnly "org.projectlombok:lombok:$lombokVersion"
-  testCompile "org.jetbrains.kotlin:kotlin-test:$kotlinVersion"
-  testCompile 'junit:junit:4.12'
-  testImplementation "org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion"
-  testImplementation 'org.hamcrest:hamcrest-core:1.3'
-  testRuntime "org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion"
-  testRuntime "org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion"
-  testRuntime 'org.junit.vintage:junit-vintage-engine:4.12.3'
-  testRuntime "org.junit.platform:junit-platform-launcher:$junitPlatformVersion"
-  testCompileOnly 'org.apiguardian:apiguardian-api:1.0.0'
-}
-
-//apply from: "$rootDir/gradle/findbugs.gradle"
+apply from: "$rootDir/gradle/java.gradle"
+apply from: "$rootDir/gradle/kotlin.gradle"
+apply from: "$rootDir/gradle/junit.gradle"
+apply from: "$rootDir/gradle/findbugs.gradle"
 apply from: "$rootDir/gradle/docker-compose.gradle"
 apply from: "$rootDir/gradle/docs.gradle"

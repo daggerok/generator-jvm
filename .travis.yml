@@ -79,16 +79,6 @@ script:
 - ./mvnw -Pdocs
 - tree target/generated-docs
 
-# java-ee-thymeleaf
-- cd ${e2e}
-- yo jvm -n javaeeth -t java-ee-thymeleaf
-- cd javaeeth
-- ./mvnw >/dev/null
-- ./gradlew -S >/dev/null
-- ./gradlew composeUp
-- http :8080/app/hello
-- ./gradlew composeDown
-
 # kotlin-vertx
 - cd ${e2e}
 - yo jvm -n kotlinvertx -t kotlin-vertx
@@ -99,6 +89,39 @@ script:
 - ./mvnw clean deploy >/dev/null
 - ./mvnw -Pdocs
 - tree target/generated-docs
+
+# java-ee
+- cd ${e2e}
+- yo jvm -n javaee -t java-ee
+- cd javaee
+- ./mvnw >/dev/null
+- ./gradlew -S >/dev/null
+- ./gradlew composeUp
+- http :8080/app/api/health
+- http :8080/app/api/
+- ./gradlew composeDown
+
+# java-ee-thymeleaf
+- cd ${e2e}
+- yo jvm -n javaeeth -t java-ee-thymeleaf
+- cd javaeeth
+- ./mvnw >/dev/null
+- ./gradlew -S >/dev/null
+- ./gradlew composeUp
+- http :8080/app/api/health
+- http :8080/app/
+- ./gradlew composeDown
+
+# kotlin-ee
+- cd ${e2e}
+- yo jvm -n kotlinee -t kotlin-ee
+- cd kotlinee
+- ./mvnw >/dev/null
+- ./gradlew -S >/dev/null
+- ./gradlew composeUp
+- http :8080/app/api/health
+- http :8080/app/api/
+- ./gradlew composeDown
 
 # java-spring-boot
 - cd ${e2e}

@@ -10,7 +10,7 @@ import javax.ws.rs.core.*;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
-@Path("")
+@Path("api")
 @Stateless
 //@ApplicationScoped
 @ApplicationPath("")

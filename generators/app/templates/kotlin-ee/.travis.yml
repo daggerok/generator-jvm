@@ -27,7 +27,11 @@ before_script:
 
 script:
 - bash ./mvnw >/dev/null
-- bash ./gradlew >/dev/null
+#
+- ./gradlew >/dev/null
+- ./gradlew composeUp
+- http :8080/app/api/health
+- ./gradlew composeDown
 
 before_deploy: ./gradlew documentation
 
