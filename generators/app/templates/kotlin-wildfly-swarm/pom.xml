@@ -343,13 +343,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <!--
-          there are issues with 2.20.1 version
-          The junit-platform-surefire-provider is not compatible with version 2.20 of the maven-surefire-plugin.
-          see https://github.com/junit-team/junit5/issues/809
-        -->
-        <!--<version>2.20.1</version>-->
-        <version>2.19.1</version>
+        <version>2.21.0</version>
         <dependencies>
           <dependency>
             <groupId>org.junit.platform</groupId>
