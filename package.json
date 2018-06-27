@@ -1,6 +1,6 @@
 {
   "name": "generator-jvm",
-  "version": "1.17.0",
+  "version": "1.17.1",
   "description": "Helps you quick and easy generate JVM-based (java, java ee, kotlin, scala) projects with gradle and maven build systems, docker and docker-compose for rapid development",
   "homepage": "https://github.com/daggerok/generator-jvm",
   "author": {
@@ -31,12 +31,16 @@
     "scala_2.11",
     "scala_2.12",
     "spring-mvc",
+    "asciidoctor",
     "spring-boot",
     "spring-cloud",
     "wildfly-swarm",
     "spring-webflux",
     "docker-compose",
+    "asciidoctor-pdf",
     "yeoman-generator",
+    "asciidoctor-html",
+    "asciidoctor-html5",
     "spring-cloud-function"
   ],
   "devDependencies": {
