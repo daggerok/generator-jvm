@@ -1,0 +1,70 @@
+allprojects {
+  apply plugin: 'org.jetbrains.kotlin.jvm'
+  apply plugin: 'org.jetbrains.kotlin.plugin.noarg'
+  apply plugin: 'org.jetbrains.kotlin.plugin.spring'
+
+  def projectIncremental = true
+  def projectFreeCompileArgs = [
+      '-Xjsr305=strict',
+      '-java-parameters',
+      //1.2.41:
+      //"-Xenable-jvm-default",
+      //1.2.50:
+      "-Xjvm-default=compatibility",
+  ]
+
+  kotlin {
+    experimental {
+      coroutines 'enable'
+    }
+  }
+
+  kapt {
+    useBuildCache = true
+  }
+
+  compileKotlin {
+    incremental = projectIncremental
+    kotlinOptions {
+      jvmTarget = "$javaVersion"
+      freeCompilerArgs = projectFreeCompileArgs
+    }
+  }
+
+  compileTestKotlin {
+    incremental = projectIncremental
+    kotlinOptions {
+      jvmTarget = "$javaVersion"
+      freeCompilerArgs = projectFreeCompileArgs
+    }
+  }
+
+  allOpen {
+    annotation('javax.ws.rs.Path')
+    annotation('javax.ejb.Startup')
+    annotation('javax.ejb.Stateless')
+    annotation('javax.ejb.Singleton')
+    annotation('javax.inject.Singleton')
+    annotation('javax.persistence.Entity')
+    annotation('javax.enterprise.context.ApplicationScoped')
+  }
+
+  noArg {
+    annotation('javax.ws.rs.Path')
+    annotation('javax.ejb.Startup')
+    annotation('javax.ejb.Stateless')
+    annotation('javax.ejb.Singleton')
+    annotation('javax.inject.Singleton')
+    annotation('javax.persistence.Entity')
+    annotation('javax.enterprise.context.ApplicationScoped')
+  }
+
+  dependencies {
+    implementation "com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonKotlinVersion"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
+
+    testImplementation "org.jetbrains.kotlin:kotlin-test:$kotlinVersion"
+    testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion"
+  }
+}
