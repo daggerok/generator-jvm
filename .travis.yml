@@ -95,6 +95,7 @@ script:
 - yo jvm -n javaee -t java-ee
 - cd javaee
 - ./mvnw >/dev/null
+- ./mvnw -Pdocs
 - ./gradlew -S >/dev/null
 - ./gradlew composeUp
 - http :8080/app/api/health
@@ -106,6 +107,7 @@ script:
 - yo jvm -n javaeeth -t java-ee-thymeleaf
 - cd javaeeth
 - ./mvnw >/dev/null
+- ./mvnw -Pdocs
 - ./gradlew -S >/dev/null
 - ./gradlew composeUp
 - http :8080/app/api/health
@@ -117,6 +119,7 @@ script:
 - yo jvm -n kotlinee -t kotlin-ee
 - cd kotlinee
 - ./mvnw >/dev/null
+- ./mvnw -Pdocs
 - ./gradlew -S >/dev/null
 - ./gradlew composeUp
 - http :8080/app/api/health
@@ -129,6 +132,7 @@ script:
 - cd javaspringboot
 - ./gradlew -S >/dev/null
 - ./mvnw clean deploy >/dev/null
+- ./mvnw -Pdocs
 
 # java-spring-boot-1.x
 - cd ${e2e}
@@ -136,6 +140,7 @@ script:
 - cd javaspringboot1x
 - ./gradlew -S >/dev/null
 - ./mvnw clean deploy >/dev/null
+- ./mvnw -Pdocs
 
 # java-spring-cloud-function-web
 - cd ${e2e}/
@@ -143,6 +148,7 @@ script:
 - cd javaspringcloudfunctionweb
 - ./gradlew -S >/dev/null
 - ./mvnw clean deploy >/dev/null
+- ./mvnw -Pdocs
 
 # kotlin
 - cd ${e2e}
@@ -150,6 +156,7 @@ script:
 - cd kotlin
 - ./gradlew -S >/dev/null
 - ./mvnw clean deploy >/dev/null
+- ./mvnw -Pdocs
 
 # kotlin-spring-boot
 - cd ${e2e}
@@ -157,6 +164,7 @@ script:
 - cd kotlinspringboot
 - ./gradlew -S >/dev/null
 - ./mvnw clean deploy >/dev/null
+- ./mvnw -Pdocs
 
 # kotlin-spring-boot-1.x
 - cd ${e2e}
@@ -164,6 +172,7 @@ script:
 - cd kotlinspringboot1x
 - ./gradlew -S >/dev/null
 - ./mvnw clean deploy >/dev/null
+- ./mvnw -Pdocs
 
 # kotlin-spring-cloud-function-web
 - cd ${e2e}
@@ -171,6 +180,7 @@ script:
 - cd kotlinspringcloudfunctionweb
 - ./gradlew -S >/dev/null
 - ./mvnw clean deploy >/dev/null
+- ./mvnw -Pdocs
 
 # done
 - cd ${base}
