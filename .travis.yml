@@ -41,6 +41,7 @@ script:
 - mkdir -p ${e2e}
 - npm i -g yo yeoman-generator
 - yo jvm --help
+
 # replace dots with underscores test
 - cd ${e2e}
 - yo jvm -n dotted.java1.8 -t java
@@ -52,6 +53,7 @@ script:
 - ./mvnw clean deploy >/dev/null
 - java -jar target/*-all.jar
 - tree target/local-repo/
+
 # java
 - cd ${e2e}
 - yo jvm -n java -t java
@@ -65,6 +67,7 @@ script:
 - java -jar target/*-all.jar
 - tree target/local-repo/
 - ./mvnw -P docs >/dev/null
+
 # java-vertx
 - cd ${e2e}
 - yo jvm -n javavertx -t java-vertx
@@ -75,6 +78,17 @@ script:
 - ./mvnw clean deploy >/dev/null
 - ./mvnw -Pdocs
 - tree target/generated-docs
+
+# java-ee-thymeleaf
+- cd ${e2e}
+- yo jvm -n javaeeth -t java-ee-thymeleaf
+- cd javaeeth
+- ./mvnw >/dev/null
+- ./gradlew -S >/dev/null
+- ./gradlew composeUp
+- http :8080/app/hello
+- ./gradlew composeDown
+
 # kotlin-vertx
 - cd ${e2e}
 - yo jvm -n kotlinvertx -t kotlin-vertx
@@ -85,48 +99,56 @@ script:
 - ./mvnw clean deploy >/dev/null
 - ./mvnw -Pdocs
 - tree target/generated-docs
+
 # java-spring-boot
 - cd ${e2e}
 - yo jvm -n javaspringboot -t java-spring-boot
 - cd javaspringboot
 - ./gradlew -S >/dev/null
 - ./mvnw clean deploy >/dev/null
+
 # java-spring-boot-1.x
 - cd ${e2e}
 - yo jvm -n javaspringboot1x -t java-spring-boot-1.x
 - cd javaspringboot1x
 - ./gradlew -S >/dev/null
 - ./mvnw clean deploy >/dev/null
+
 # java-spring-cloud-function-web
 - cd ${e2e}/
 - yo jvm -n javaspringcloudfunctionweb -t java-spring-cloud-function-web
 - cd javaspringcloudfunctionweb
 - ./gradlew -S >/dev/null
 - ./mvnw clean deploy >/dev/null
+
 # kotlin
 - cd ${e2e}
 - yo jvm -n kotlin -t kotlin
 - cd kotlin
 - ./gradlew -S >/dev/null
 - ./mvnw clean deploy >/dev/null
+
 # kotlin-spring-boot
 - cd ${e2e}
 - yo jvm -n kotlinspringboot -t kotlin-spring-boot
 - cd kotlinspringboot
 - ./gradlew -S >/dev/null
 - ./mvnw clean deploy >/dev/null
+
 # kotlin-spring-boot-1.x
 - cd ${e2e}
 - yo jvm -n kotlinspringboot1x -t kotlin-spring-boot-1.x
 - cd kotlinspringboot1x
 - ./gradlew -S >/dev/null
 - ./mvnw clean deploy >/dev/null
+
 # kotlin-spring-cloud-function-web
 - cd ${e2e}
 - yo jvm -n kotlinspringcloudfunctionweb -t kotlin-spring-cloud-function-web
 - cd kotlinspringcloudfunctionweb
 - ./gradlew -S >/dev/null
 - ./mvnw clean deploy >/dev/null
+
 # done
 - cd ${base}
 

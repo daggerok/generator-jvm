@@ -64,6 +64,21 @@ bash mvnw com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:up
 
 ___vertx web project___
 
+ * Java EE 8 based web project
+ * Thymeleaf
+ * JAX-RX
+ * support JBOSS EAP 7.1 (docker)
+ * support java
+ * support maven
+ * support gradle
+ * docker / docker-compose support
+
+type options:
+
+- `java-ee-thymeleaf`
+
+___vertx web project___
+
  * java 8 based Vert.x web project
  * support fatjar
  * support kotlin or java

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+  <title>Template | Thymeleaf EE</title>
+  <link rel="icon" type="image/x-icon" th:href="@{/assets/favicon.ico}" />
+  <link rel="stylesheet" type="text/css" th:href="@{/assets/styles.css}" />
+  <!-- custom styles will be added here...-->
+  <th:block th:include="${view} :: header" />
+</head>
+<body>
+
+<div th:text="${message}">Here should be some basic message...</div>
+<ul th:each="item : ${data}">
+  <li th:text="${item}"></li>
+</ul>
+
+<!-- custom view specific stuff: -->
+<div th:replace="${view} :: content"></div>
+
+<script th:src="@{/assets/scripts.js}"></script>
+<!-- custom scripts will be added here...-->
+<th:block th:include="${view} :: footer" />
+</body>
+</html>

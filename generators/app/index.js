@@ -26,6 +26,7 @@ module.exports = class extends Generator {
       'java-akka',
       'java-ee',
       'java-ee-faces',
+      'java-ee-thymeleaf',
       'java-ee-cdi-full-multi-project',
       'java-ee-ejb-full-multi-project',
       'kotlin',

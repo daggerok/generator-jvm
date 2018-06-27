@@ -26,6 +26,18 @@ allprojects {
 
   dependencies {
 
+    // MVC 1.0 @Controller
+    implementation 'javax.mvc:javax.mvc-api:1.0-pr'
+
+    // Thymeleaf
+    implementation "org.mvc-spec.ozark:ozark-resteasy:$ozarkVersion"
+    implementation "org.mvc-spec.ozark.ext:ozark-thymeleaf:$ozarkVersion", {
+      exclude group: 'org.thymeleaf', module: 'thymeleaf'
+    }
+    implementation 'org.thymeleaf:thymeleaf:3.0.9.RELEASE'
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-java8time:3.0.1.RELEASE'
+    testImplementation 'org.thymeleaf:thymeleaf-testing:3.0.3.RELEASE'
+
     //// In java we trust...
     implementation "io.vavr:vavr:$vavrVersion"
     compileOnly "org.projectlombok:lombok:$lombokVersion"
@@ -43,6 +55,5 @@ allprojects {
 
     implementation "org.slf4j:slf4j-api:$slf4jVersion"
     implementation "org.slf4j:slf4j-jdk14:$slf4jVersion"
-
   }
 }
