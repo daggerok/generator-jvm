@@ -4,7 +4,6 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.servlet.ServletContext;
 import javax.ws.rs.GET;
-import javax.ws.rs.HeaderParam;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
@@ -13,6 +12,7 @@ import java.io.InputStream;
 import static java.lang.String.format;
 import static javax.ws.rs.core.Response.Status.NOT_FOUND;
 
+//tag::content[]
 @Path("")
 @Stateless
 public class StaticResourcesResource {
@@ -27,10 +27,7 @@ public class StaticResourcesResource {
 
   @GET
   @Path("{path: ^webjars\\/.*}")
-  public Response webjars(@PathParam("path") final String path,
-                          @HeaderParam("Accept-Encoding") final String encoding,
-                          @HeaderParam("Content-Type") final String contentType,
-                          @HeaderParam("Accept") final String accept) {
+  public Response webjars(@PathParam("path") final String path) {
 
     final String absolutePath = format("/META-INF/resources/%s", path);
     final InputStream resource = getClass().getClassLoader().getResourceAsStream(absolutePath);
@@ -60,3 +57,4 @@ public class StaticResourcesResource {
       : Response.ok().entity(resource).build();
   }
 }
+//end::content[]
