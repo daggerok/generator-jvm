@@ -9,6 +9,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
   <title>Template | Thymeleaf EE</title>
   <link rel="icon" type="image/x-icon" th:href="@{/assets/favicon.ico}" />
+  <link rel="stylesheet" type="text/css" th:href="@{/webjars/material-design-icons/3.0.1/material-icons.css}"
+        href="/webjars/material-design-icons/3.0.1/material-icons.css"/>
+  <link rel="stylesheet" type="text/css" th:href="@{/webjars/materializecss/0.100.2/css/materialize.min.css}"
+        href="/webjars/materializecss/0.100.2/css/materialize.css"/>
   <link rel="stylesheet" type="text/css" th:href="@{/assets/styles.css}" />
   <!-- custom styles will be added here...-->
   <th:block th:include="${view} :: header" />
@@ -23,6 +27,10 @@
 <!-- custom view specific stuff: -->
 <div th:replace="${view} :: content"></div>
 
+<script th:src="@{/webjars/jquery/3.3.1-1/jquery.min.js}"
+        src="/webjars/jquery/3.3.1-1/jquery.js"></script>
+<script th:src="@{/webjars/materializecss/0.100.2/js/materialize.min.js}"
+        src="/webjars/materializecss/0.100.2/js/materialize.js"></script>
 <script th:src="@{/assets/scripts.js}"></script>
 <!-- custom scripts will be added here...-->
 <th:block th:include="${view} :: footer" />
