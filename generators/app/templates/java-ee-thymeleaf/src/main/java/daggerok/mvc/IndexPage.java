@@ -1,7 +1,5 @@
 package daggerok.mvc;
 
-import io.vavr.collection.List;
-
 import javax.inject.Inject;
 import javax.mvc.Models;
 import javax.mvc.annotation.Controller;
@@ -9,20 +7,21 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
+import static java.util.Arrays.asList;
 import static javax.ws.rs.core.MediaType.TEXT_HTML;
 
 @Path("")
-@Controller
-@Produces(TEXT_HTML)
-public class HelloPage {
+public class IndexPage {
 
   @Inject Models models;
 
   @GET
   @Path("")
-  public String helloView() {
+  @Controller
+  @Produces(TEXT_HTML)
+  public String indexView() {
     models.put("message", "Hello, World!");
-    models.put("data", List.of("ololo", "trololo").toJavaList());
-    return "hello";
+    models.put("data", asList("ololo", "trololo"));
+    return "index";
   }
 }

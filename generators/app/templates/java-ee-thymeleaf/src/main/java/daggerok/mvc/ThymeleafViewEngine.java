@@ -42,19 +42,15 @@ public class ThymeleafViewEngine extends ViewEngineBase {
 
   @Override
   public void processView(ViewEngineContext context) throws ViewEngineException {
-    Try.of(() -> {
+    Try.run(() -> {
 
       final HttpServletRequest request = context.getRequest();
       final HttpServletResponse response = context.getResponse();
-
       final WebContext webContext = new WebContext(request, response, servletContext, request.getLocale());
+
       webContext.setVariables(context.getModels());
       request.setAttribute("view", context.getView());
-
-      final String template = "default";
-      engine.process(template, webContext, response.getWriter());
-
-      return template; // not needed, just because we are using vavr Try.of()
+      engine.process(/*layout*/ "default", webContext, response.getWriter());
 
     }).getOrElseThrow(ViewEngineException::new);
   }
