@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Hello | Thymeleaf EE</title>
+  <div th:fragment="header" th:remove="tag">
+    <!-- additional styles -->
+  </div>
+</head>
+<body th:fragment="content">
+<h1>Hello!</h1>
+<div th:fragment="footer" th:remove="tag">
+  <!-- additional scripts -->
+</div>
+</body>
+</html>
