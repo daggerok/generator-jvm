@@ -6,5 +6,5 @@ shadowJar.mustRunAfter jar
 defaultTasks 'clean', 'build', 'installDist', 'distZip', 'publish'
 
 dependencies {
-  compile "io.vertx:vertx-web:$vertxVersion"
+  implementation "io.vertx:vertx-web:$vertxVersion"
 }
