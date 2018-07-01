@@ -8,6 +8,8 @@ image:https://img.shields.io/bitbucket/pipelines/daggerok/<%= projectDirectory %
 
 //tag::content[]
 
+//Read link:https://daggerok.github.io/<%= projectDirectory %>[project reference documentation]
+
 .docker / docker-compose
 [source,bash]
 ----

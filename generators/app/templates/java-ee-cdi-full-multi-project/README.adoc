@@ -10,6 +10,8 @@ Don't ask...
 
 //tag::content[]
 
+//Read link:https://daggerok.github.io/<%= projectDirectory %>[project reference documentation]
+
 .build and with docker
 [source,bash]
 ----
