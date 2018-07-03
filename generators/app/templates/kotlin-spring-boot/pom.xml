@@ -548,10 +548,11 @@
               </execution>
             </executions>
             <configuration>
-              <sourceDirectory>./docs</sourceDirectory>
+              <outputDirectory>target/generated-docs</outputDirectory>
+              <sourceDirectory>docs</sourceDirectory>
+              <relativeBaseDir>true</relativeBaseDir>
               <headerFooter>true</headerFooter>
-              <baseDir>docs</baseDir>
-              <imagesDir>static</imagesDir>
+              <imagesDir>images</imagesDir>
               <sourceHighlighter>coderay</sourceHighlighter>
               <attributes>
                 <toc>left</toc>
