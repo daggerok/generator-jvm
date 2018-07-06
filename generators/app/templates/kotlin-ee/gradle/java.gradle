@@ -27,26 +27,23 @@ allprojects {
   dependencies {
 
     providedCompile "javax:javaee-api:$javaeeVersion"
-    providedCompile "org.jboss.resteasy:resteasy-jaxrs:$resteasyVersion"
-    providedCompile "org.jboss.resteasy:resteasy-multipart-provider:$resteasyVersion"
-    providedCompile "org.jboss.resteasy:resteasy-json-p-provider:$resteasyVersion"
-
-    implementation "org.jboss.resteasy:resteasy-json-p-provider:$resteasyVersion"
+    //providedCompile "org.jboss.resteasy:resteasy-jaxrs:$resteasyVersion"
+    //providedCompile "org.jboss.resteasy:resteasy-multipart-provider:$resteasyVersion"
+    //providedCompile "org.jboss.resteasy:resteasy-json-p-provider:$resteasyVersion"
+    //implementation "org.jboss.resteasy:resteasy-json-p-provider:$resteasyVersion"
     implementation 'javax.json:javax.json-api:1.0'
     implementation 'org.glassfish:javax.json:1.0.4'
 
     providedCompile 'com.h2database:h2:1.4.196'
-    implementation "org.hibernate:hibernate-core:$hibernateCoreVersion"
+    //implementation "org.hibernate:hibernate-core:$hibernateCoreVersion"
 
     //// In java we trust...
-    implementation "io.vavr:vavr:$vavrVersion"
-    compileOnly "org.projectlombok:lombok:$lombokVersion"
+    testImplementation "io.vavr:vavr:$vavrVersion"
+    //compileOnly "org.projectlombok:lombok:$lombokVersion"
     testCompileOnly "org.projectlombok:lombok:$lombokVersion"
-    annotationProcessor "org.projectlombok:lombok:$lombokVersion"
+    //annotationProcessor "org.projectlombok:lombok:$lombokVersion"
     testAnnotationProcessor "org.projectlombok:lombok:$lombokVersion"
-
-    implementation "org.slf4j:slf4j-api:$slf4jVersion"
-    implementation "org.slf4j:slf4j-jdk14:$slf4jVersion"
-
+    testImplementation "org.slf4j:slf4j-api:$slf4jVersion"
+    testImplementation "org.slf4j:slf4j-jdk14:$slf4jVersion"
   }
 }

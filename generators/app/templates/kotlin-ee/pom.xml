@@ -32,13 +32,11 @@
 
   <dependencies>
     <!-- Kotlin -->
-    <!--
     <dependency>
       <groupId>com.fasterxml.jackson.module</groupId>
       <artifactId>jackson-module-kotlin</artifactId>
       <version>${jakson-kotlin.version}</version>
     </dependency>
-    -->
     <dependency>
       <groupId>org.jetbrains.kotlin</groupId>
       <artifactId>kotlin-stdlib-jdk8</artifactId>
@@ -57,7 +55,6 @@
       <scope>provided</scope>
     </dependency>
     <!-- H2 -->
-    <!--
     <dependency>
       <groupId>com.h2database</groupId>
       <artifactId>h2</artifactId>
@@ -65,7 +62,6 @@
       <type>jar</type>
       <scope>provided</scope>
     </dependency>
-    -->
     <!-- Hibernate UUID -->
     <!--
     <dependency>
@@ -74,31 +70,8 @@
       <version>4.2.18.Final</version>
     </dependency>
     -->
-    <!-- Tools -->
-    <dependency>
-      <groupId>io.vavr</groupId>
-      <artifactId>vavr</artifactId>
-      <version>${vavr.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <version>${lombok.version}</version>
-      <optional>true</optional>
-      <scope>provided</scope>
-    </dependency>
-    <!-- Logging -->
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-      <version>${slf4j.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-jdk14</artifactId>
-      <version>${slf4j.version}</version>
-    </dependency>
     <!-- REST / JSON -->
+    <!--
     <dependency>
       <groupId>org.jboss.resteasy</groupId>
       <artifactId>resteasy-jaxrs</artifactId>
@@ -117,6 +90,7 @@
       <version>${resteasy.version}</version>
       <scope>provided</scope>
     </dependency>
+    -->
     <dependency>
       <groupId>javax.json</groupId>
       <artifactId>javax.json-api</artifactId>
@@ -128,6 +102,33 @@
       <version>1.0.4</version>
     </dependency>
 
+    <!-- Tools -->
+    <dependency>
+      <groupId>io.vavr</groupId>
+      <artifactId>vavr</artifactId>
+      <version>${vavr.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>${lombok.version}</version>
+      <optional>true</optional>
+      <scope>provided</scope>
+    </dependency>
+    <!-- Logging -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>${slf4j.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-jdk14</artifactId>
+      <version>${slf4j.version}</version>
+      <scope>test</scope>
+    </dependency>
     <!-- testing -->
     <dependency>
       <groupId>org.jetbrains.kotlin</groupId>
@@ -213,9 +214,9 @@
         <configuration>
           <jvmTarget>${maven.compiler.target}</jvmTarget>
           <compilerPlugins>
-            <!--<plugin>spring</plugin>-->
             <plugin>all-open</plugin>
             <plugin>no-arg</plugin>
+            <plugin>spring</plugin>
           </compilerPlugins>
           <pluginOptions>
             <option>all-open:annotation=javax.ws.rs.Path</option>
@@ -223,6 +224,7 @@
             <option>all-open:annotation=javax.ejb.Stateless</option>
             <option>all-open:annotation=javax.ejb.Singleton</option>
             <option>all-open:annotation=javax.inject.Singleton</option>
+            <option>all-open:annotation=javax.ws.rs.ext.Provider</option>
             <option>all-open:annotation=javax.persistence.Entity</option>
             <option>all-open:annotation=javax.enterprise.context.ApplicationScoped</option>
             <option>no-arg:annotation=javax.ws.rs.Path</option>
@@ -230,6 +232,7 @@
             <option>no-arg:annotation=javax.ejb.Stateless</option>
             <option>no-arg:annotation=javax.ejb.Singleton</option>
             <option>no-arg:annotation=javax.inject.Singleton</option>
+            <option>no-arg:annotation=javax.ws.rs.ext.Provider</option>
             <option>no-arg:annotation=javax.persistence.Entity</option>
             <option>no-arg:annotation=javax.enterprise.context.ApplicationScoped</option>
           </pluginOptions>
