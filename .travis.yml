@@ -99,6 +99,8 @@ script:
 - ./gradlew -S >/dev/null
 - ./gradlew composeUp
 - http :8080/app/api/health
+- http :8080/app/api/ping
+- http :8080/app/api/pong
 - http :8080/app/api/
 - ./gradlew composeDown
 
@@ -124,6 +126,10 @@ script:
 - ./gradlew composeUp
 - http :8080/app/api/health
 - http :8080/app/api/
+- http :8080/app/api/items value=ololo
+- http :8080/app/api/items value=trololo
+- http :8080/app/api/items/2
+- http :8080/app/api/items
 - ./gradlew composeDown
 
 # java-spring-boot
