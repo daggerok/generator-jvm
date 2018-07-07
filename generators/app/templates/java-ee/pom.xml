@@ -35,47 +35,6 @@
       <version>${javaee.version}</version>
       <scope>provided</scope>
     </dependency>
-
-    <dependency>
-      <groupId>com.h2database</groupId>
-      <artifactId>h2</artifactId>
-      <version>${h2.version}</version>
-      <type>jar</type>
-      <scope>provided</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>io.vavr</groupId>
-      <artifactId>vavr</artifactId>
-      <version>${vavr.version}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <version>${lombok.version}</version>
-      <optional>true</optional>
-      <scope>provided</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-      <version>${slf4j.version}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-jdk14</artifactId>
-      <version>${slf4j.version}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.jboss.resteasy</groupId>
-      <artifactId>resteasy-json-p-provider</artifactId>
-      <version>3.0.7.Final</version>
-    </dependency>
-
     <!-- JSON -->
     <dependency>
       <groupId>javax.json</groupId>
@@ -88,12 +47,44 @@
       <version>1.0.4</version>
     </dependency>
 
-    <!-- Hibernate UUID -->
+    <!-- In java we trust -->
+    <dependency>
+      <groupId>io.vavr</groupId>
+      <artifactId>vavr</artifactId>
+      <version>${vavr.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>${lombok.version}</version>
+      <optional>true</optional>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>${slf4j.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-jdk14</artifactId>
+      <version>${slf4j.version}</version>
+    </dependency>
+
+    <!--
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+      <version>${h2.version}</version>
+      <type>jar</type>
+      <scope>provided</scope>
+    </dependency>
     <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-core</artifactId>
       <version>${hibernate.core.version}</version>
     </dependency>
+    -->
 
     <!-- junit 4 -->
     <dependency>

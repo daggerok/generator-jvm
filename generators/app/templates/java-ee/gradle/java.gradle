@@ -25,24 +25,20 @@ allprojects {
   compileJava.dependsOn(processResources)
 
   dependencies {
+    providedCompile "javax:javaee-api:$javaeeVersion"
+    implementation 'javax.json:javax.json-api:1.0'
+    implementation 'org.glassfish:javax.json:1.0.4'
 
-    //// In java we trust...
+    // In java we trust...
     implementation "io.vavr:vavr:$vavrVersion"
     compileOnly "org.projectlombok:lombok:$lombokVersion"
     testCompileOnly "org.projectlombok:lombok:$lombokVersion"
     annotationProcessor "org.projectlombok:lombok:$lombokVersion"
     testAnnotationProcessor "org.projectlombok:lombok:$lombokVersion"
-
-    providedCompile "javax:javaee-api:$javaeeVersion"
-    providedCompile 'com.h2database:h2:1.4.196'
-
-    implementation "org.hibernate:hibernate-core:$hibernateCoreVersion"
-    implementation 'javax.json:javax.json-api:1.0'
-    implementation 'org.glassfish:javax.json:1.0.4'
-    implementation 'org.jboss.resteasy:resteasy-json-p-provider:3.0.7.Final'
-
     implementation "org.slf4j:slf4j-api:$slf4jVersion"
     implementation "org.slf4j:slf4j-jdk14:$slf4jVersion"
 
+    //providedCompile 'com.h2database:h2:1.4.196'
+    //implementation "org.hibernate:hibernate-core:$hibernateCoreVersion"
   }
 }
