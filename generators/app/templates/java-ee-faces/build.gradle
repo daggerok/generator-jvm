@@ -33,14 +33,16 @@ plugins {
   id 'cn.bestwu.propdeps' version '0.0.10' apply false
 }
 
+/*
 wrapper {
   gradleVersion = '4.8.1'
   distributionType = 'BIN'
 }
+*/
 
-apply from: "$rootDir/gradle/ide.gradle"
-apply from: "$rootDir/gradle/clean.gradle"
-apply from: "$rootDir/gradle/repositories.gradle"
+apply from: "$projectDir/gradle/ide.gradle"
+apply from: "$projectDir/gradle/clean.gradle"
+apply from: "$projectDir/gradle/repositories.gradle"
 
 apply plugin: 'org.junit.platform.gradle.plugin'
 
@@ -80,6 +82,6 @@ dependencies {
   testCompileOnly 'org.apiguardian:apiguardian-api:1.0.0'
 }
 
-apply from: "$rootDir/gradle/findbugs.gradle"
-apply from: "$rootDir/gradle/docker-compose.gradle"
-apply from: "$rootDir/gradle/docs.gradle"
+apply from: "$projectDir/gradle/findbugs.gradle"
+apply from: "$projectDir/gradle/docker-compose.gradle"
+apply from: "$projectDir/gradle/docs.gradle"

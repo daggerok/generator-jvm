@@ -44,21 +44,23 @@ plugins {
   id 'io.qameta.allure' version '2.5' apply false
 }
 
+/*
 wrapper {
   gradleVersion = '4.8.1'
   distributionType = 'BIN'
 }
+*/
 
-apply from: "$rootDir/gradle/ide.gradle"
-apply from: "$rootDir/gradle/clean.gradle"
-apply from: "$rootDir/gradle/repositories.gradle"
-apply from: "$rootDir/gradle/java.gradle"
-apply from: "$rootDir/gradle/main.gradle"
-apply from: "$rootDir/gradle/junit.gradle"
-apply from: "$rootDir/gradle/publish.gradle"
-apply from: "$rootDir/gradle/findbugs.gradle"
-//apply from: "$rootDir/gradle/jacoco.gradle"
-//apply from: "$rootDir/gradle/allure.gradle"
-//apply from: "$rootDir/gradle/selenide.gradle"
-apply from: "$rootDir/gradle/docker-compose.gradle"
-apply from: "$rootDir/gradle/docs.gradle"
+apply from: "$projectDir/gradle/ide.gradle"
+apply from: "$projectDir/gradle/clean.gradle"
+apply from: "$projectDir/gradle/repositories.gradle"
+apply from: "$projectDir/gradle/java.gradle"
+apply from: "$projectDir/gradle/main.gradle"
+apply from: "$projectDir/gradle/junit.gradle"
+apply from: "$projectDir/gradle/publish.gradle"
+apply from: "$projectDir/gradle/findbugs.gradle"
+//apply from: "$projectDir/gradle/jacoco.gradle"
+//apply from: "$projectDir/gradle/allure.gradle"
+//apply from: "$projectDir/gradle/selenide.gradle"
+apply from: "$projectDir/gradle/docker-compose.gradle"
+apply from: "$projectDir/gradle/docs.gradle"

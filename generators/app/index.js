@@ -168,6 +168,7 @@ module.exports = class extends Generator {
       'settings.gradle',
       'bitbucket-pipelines.yml',
       'docs/docinfo.html',
+      '.mvn/redeploy.sh',
       'gradle/redeploy.sh',
 
     ].forEach(suffix => this.fs.copyTpl(
