@@ -175,6 +175,27 @@ module.exports = class extends Generator {
       { projectDirectory: this.props.projectDirectory }
     ));
 
+    /* apply java-ee redeploy.sh template substitutions */
+
+    if ([
+      'java-ee',
+      'java-ee-cdi-full-multi-project',
+      'java-ee-ejb-full-multi-project',
+      'java-ee-faces',
+      'java-ee-thymeleaf',
+      'kotlin-ee',
+    ].indexOf(this.props.projectType) != -1) {
+      [
+        'gradle/redeply.sh',
+        '.mvn/redeply.sh',
+
+      ].forEach(suffix => this.fs.copyTpl(
+        this.templatePath(`${suffix}`),
+        this.destinationPath(`${this.props.projectDirectory}/${suffix}`),
+        { projectDirectory: this.props.projectDirectory }
+      ));
+    }
+
     /* apply template substitutions */
 
     switch (this.props.projectType) {
