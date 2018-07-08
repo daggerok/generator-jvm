@@ -44,8 +44,8 @@ script:
 
 # scala-akka-sbt
 - cd ${e2e}
-- yes 'scala-akka-sbt' | yo jvm -t scala-akka-sbt
-- cd scala-akka-sbt/
+- yo jvm -n scala-akka-sbt-project -t scala-akka-sbt
+- cd scala-akka-sbt-project/
 - ./sbtw clean compile test run
 
 # replace dots with underscores test
