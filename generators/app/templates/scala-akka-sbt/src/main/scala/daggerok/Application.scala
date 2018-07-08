@@ -6,7 +6,7 @@ case class MyMessage(body: String)
 
 class MyActor extends Actor {
   override def receive: Receive = {
-    case MyMessage(body) => println(s"received: $body")
+    case MyMessage(body) => println(s"received message: '$body'")
   }
 }
 
