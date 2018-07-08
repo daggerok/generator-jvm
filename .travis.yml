@@ -46,7 +46,8 @@ script:
 - cd ${e2e}
 - yo jvm -n scala-akka-sbt-project -t scala-akka-sbt
 - cd scala-akka-sbt-project/
-- ./sbtw clean compile test run
+- ./sbtw clean compile assembly test run
+- java -jar target/scala-2.12/scala-akka-sbt-project-assembly-0.0.1.jar
 
 # replace dots with underscores test
 - cd ${e2e}

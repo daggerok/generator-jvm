@@ -18,7 +18,8 @@ before_script:
 - source <(curl -s https://raw.githubusercontent.com/daggerok/bash-functions/master/main.bash)
 
 script:
-- ./sbtw clean compile test run
+- ./sbtw clean compile assembly test run
+- java -jar target/scala-2.12/<%= projectDirectory %>-assembly-0.0.1.jar
 
 before_deploy: ./mvnw
 
