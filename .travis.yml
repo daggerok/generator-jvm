@@ -42,6 +42,12 @@ script:
 - npm i -g yo yeoman-generator
 - yo jvm --help
 
+# scala-akka-sbt
+- cd ${e2e}
+- yes 'scala-akka-sbt' | yo jvm -t scala-akka-sbt
+- cd scala-akka-sbt/
+- ./sbtw clean compile test run
+
 # replace dots with underscores test
 - cd ${e2e}
 - yo jvm -n dotted.java1.8 -t java
@@ -187,12 +193,6 @@ script:
 - ./gradlew -S >/dev/null
 - ./mvnw clean deploy >/dev/null
 - ./mvnw -Pdocs
-
-# scala-akka-sbt
-- cd ${e2e}
-- yes 'scala-akka-sbt' | yo jvm -t scala-akka-sbt
-- cd scala-akka-sbt/
-- ./sbtw clean compile test run
 
 # done
 - cd ${base}
