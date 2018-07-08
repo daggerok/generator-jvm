@@ -164,12 +164,22 @@ module.exports = class extends Generator {
 
     [
       '.mvn/redeploy.sh',
-      '.travis.yml',
       'bitbucket-pipelines.yml',
       'docs/docinfo.html',
       'gradle/redeploy.sh',
-      'README.adoc',
       'settings.gradle',
+
+    ].forEach(suffix => this.fs.copyTpl(
+      this.templatePath(`_common/${suffix}`),
+      this.destinationPath(`${this.props.projectDirectory}/${suffix}`),
+      { projectDirectory: this.props.projectDirectory }
+    ));
+
+    /* all templates */
+
+    [
+      '.travis.yml',
+      'README.adoc',
 
     ].forEach(suffix => this.fs.copyTpl(
       this.templatePath(`_common/${suffix}`),
