@@ -1,0 +1,44 @@
+env:
+  global:
+  - TERM=dumb
+
+language: java
+jdk: oraclejdk8
+
+addons:
+  apt:
+    update: true
+    packages:
+    - bash
+    - python-pip
+
+install: true
+before_script:
+- sudo pip install httpie >/dev/null 2>&1
+- source <(curl -s https://raw.githubusercontent.com/daggerok/bash-functions/master/main.bash)
+
+script:
+- ./sbtw clean compile test run
+
+before_deploy: ./mvnw
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  # travis encrypt GITHUB_TOKEN=<your github repo token> --add
+  github-token: "$GITHUB_TOKEN"
+  keep-history: true
+  on:
+    branch: master
+  local-dir: target/generated-docs
+  target_branch: gh-pages
+
+before_cache:
+- bash -c 'for item in $(find ~/.gradle -name "*.lock"); do sudo rm -rf $item ; done'
+
+cache:
+  directories:
+  - $HOME/.m2
+  - $HOME/.sbt
+  - $HOME/.gradle
+  - $HOME/.docker
