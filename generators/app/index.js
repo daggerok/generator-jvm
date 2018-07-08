@@ -87,9 +87,8 @@ module.exports = class extends Generator {
       default: defaultProjectType,
     });
 
-    const projectNameDefined = !!name && name !== defaultProjectName;
-
-    if (projectNameDefined) this.props.projectDirectory = name;
+    if (!!name) this.props.projectDirectory = name;
+    else if (typeOptionFound) this.props.projectDirectory = defaultProjectName;
     else this.prompts.push({
       type: 'input',
       name: 'projectDirectory',
@@ -99,12 +98,15 @@ module.exports = class extends Generator {
   }
 
   prompting() {
+
+    const generatorName = chalk.red('jvm');
+    const generatorVersion = chalk.blue('v' + version);
+
     this.log(yosay(
-      `Welcome to the terrific ${chalk.red('jvm')} generator ${chalk.blue('v' + version)}`
+      `Welcome to the terrific ${generatorName} generator ${generatorVersion}`
     ));
 
     return this.prompt(this.prompts).then(props => {
-      // To access props later use this.props.someAnswer;
       this.props = Object.assign({}, this.props, props);
     });
   }
