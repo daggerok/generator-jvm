@@ -188,6 +188,12 @@ script:
 - ./mvnw clean deploy >/dev/null
 - ./mvnw -Pdocs
 
+# scala-akka-sbt
+- cd ${e2e}
+- yes 'scala-akka-sbt' | yo jvm -t scala-akka-sbt
+- cd scala-akka-sbt/
+- ./sbtw clean compile test run
+
 # done
 - cd ${base}
 
@@ -214,5 +220,6 @@ cache:
   - .m2
   - .gradle
   - $HOME/.m2
+  - $HOME/.sbt
   - $HOME/.gradle
   - $HOME/.docker

@@ -40,11 +40,8 @@ module.exports = class extends Generator {
       'scala',
       'scala-2.11',
       'scala-akka-persistence-gradle',
+      'scala-akka-sbt',
     ];
-
-    // this.nonMavenProjects = [
-    //   'scala-akka-persistence-gradle',
-    // ];
 
     this.props = {
       projectDirectory: defaultProjectName,
@@ -75,25 +72,24 @@ module.exports = class extends Generator {
     });
 
     this.prompts = [];
+
     const name = this.options['name'];
     const type = this.options['type'];
     const typeOptionFound = !!type && this.projectTypes
       .indexOf(type.trim().toLowerCase()) !== -1;
 
     if (typeOptionFound) this.props.projectType = type;
+    else this.prompts.push({
+      type: 'list',
+      name: 'projectType',
+      message: 'What kind of project do you wanna build today, my friend?',
+      choices: this.projectTypes,
+      default: defaultProjectType,
+    });
 
-    else {
-      this.prompts.push({
-        type: 'list',
-        name: 'projectType',
-        message: 'What kind of project do you wanna build today, my friend?',
-        choices: this.projectTypes,
-        default: defaultProjectType,
-      });
-    }
+    const projectNameDefined = !!name && name !== defaultProjectName;
 
-    if (!!name) this.props.projectDirectory = name;
-    else if (typeOptionFound) this.props.projectDirectory = defaultProjectName;
+    if (projectNameDefined) this.props.projectDirectory = name;
     else this.prompts.push({
       type: 'input',
       name: 'projectDirectory',
@@ -165,11 +161,13 @@ module.exports = class extends Generator {
     /* apply common template substitutions */
 
     [
-      'settings.gradle',
+      '.mvn/redeploy.sh',
+      '.travis.yml',
       'bitbucket-pipelines.yml',
       'docs/docinfo.html',
-      '.mvn/redeploy.sh',
       'gradle/redeploy.sh',
+      'README.adoc',
+      'settings.gradle',
 
     ].forEach(suffix => this.fs.copyTpl(
       this.templatePath(`_common/${suffix}`),
@@ -180,14 +178,27 @@ module.exports = class extends Generator {
     /* apply template substitutions */
 
     switch (this.props.projectType) {
+
+      // specific Scala Akka project (gradle only):
+      case 'scala-akka-sbt':
+
+        [
+          'build.sbt',
+
+        ].forEach(path => this.fs.copyTpl(
+          this.templatePath(`${this.props.projectType}/${path}`),
+          this.destinationPath(`${this.props.projectDirectory}/${path}`),
+          { projectDirectory: this.props.projectDirectory }
+        ));
+
+        break;
+
       // specific Scala Akka project (gradle only):
       case 'scala-akka-persistence-gradle':
 
         [
-          '.travis.yml',
-          'README.adoc',
-          'gradle/Dockerfile',
           'docker-compose.yaml',
+          'gradle/Dockerfile',
 
         ].forEach(path => this.fs.copyTpl(
           this.templatePath(`${this.props.projectType}/${path}`),
@@ -210,8 +221,6 @@ module.exports = class extends Generator {
           'servlet/pom.xml',
           'web/pom.xml',
           'ear/pom.xml',
-          '.travis.yml',
-          'README.adoc',
           'settings.gradle',
           'ear/.mvn/Dockerfile',
           'ear/gradle/Dockerfile',
@@ -226,12 +235,11 @@ module.exports = class extends Generator {
 
         break;
 
-      default: // any other projects by standard:
+      // any other projects by standard:
+      default:
 
         [
           'pom.xml',
-          '.travis.yml',
-          'README.adoc',
           '.mvn/Dockerfile',
           'gradle/Dockerfile',
           'docker-compose-maven.yaml',
@@ -252,7 +260,5 @@ module.exports = class extends Generator {
     this.log(`Project ${this.props.projectType} located in ./${this.props.projectDirectory}`);
     this.log(`Let's start hacking! ^_^`);
     this.log(`idea ./${this.props.projectDirectory}/build.gradle`);
-    // const projectHasPomXml = this.nonMavenProjects.filter(i => i === this.props.projectType).length === 0;
-    // if (projectHasPomXml) this.log(`idea ./${this.props.projectDirectory}/pom.xml`);
   }
 };
