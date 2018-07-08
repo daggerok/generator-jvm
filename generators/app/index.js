@@ -182,7 +182,7 @@ module.exports = class extends Generator {
       'README.adoc',
 
     ].forEach(suffix => this.fs.copyTpl(
-      this.templatePath(`_common/${suffix}`),
+      this.templatePath(`${this.props.projectType}/${suffix}`),
       this.destinationPath(`${this.props.projectDirectory}/${suffix}`),
       { projectDirectory: this.props.projectDirectory }
     ));
