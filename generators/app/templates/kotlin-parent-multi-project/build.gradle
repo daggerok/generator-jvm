@@ -72,10 +72,11 @@ shadowJar.mustRunAfter jar
 */
 
 subprojects {
-
   apply plugin: 'java'
-
   sourceCompatibility = targetCompatibility = "$javaVersion"
+
+  apply plugin: 'io.franzbecker.gradle-lombok'
+  lombok.version = project.lombokVersion
 
   apply plugin: 'io.spring.dependency-management'
 

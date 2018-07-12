@@ -27,6 +27,7 @@ plugins {
   id 'com.avast.gradle.docker-compose' version '0.6.13'
   id 'org.asciidoctor.convert' version '1.5.7' apply false
   id 'org.ajoberstar.git-publish' version '0.3.0' apply false
+  id 'io.franzbecker.gradle-lombok' version '1.14' apply false
   id 'cn.bestwu.propdeps-eclipse' version '0.0.10' apply false
   id 'cn.bestwu.propdeps-maven' version '0.0.10' apply false
   id 'cn.bestwu.propdeps-idea' version '0.0.10' apply false
@@ -50,6 +51,9 @@ group = 'com.github.daggerok'
 version = '0.0.1'
 sourceCompatibility = targetCompatibility = "$javaVersion"
 
+apply plugin: 'io.franzbecker.gradle-lombok'
+lombok.version = project.lombokVersion
+
 //ear { archiveName = "${project.name}.ear" }
 war {
   archiveName = "${project.name}.war"
@@ -67,8 +71,6 @@ dependencies {
   //compile 'org.jboss.weld.servlet:weld-servlet:2.4.7.Final'
   providedCompile "javax:javaee-web-api:$javaeeVersion"
 
-  compileOnly "org.projectlombok:lombok:$lombokVersion"
-  testCompileOnly "org.projectlombok:lombok:$lombokVersion"
   compile "org.slf4j:slf4j-api:$slf4jVersion"
   compile "org.slf4j:slf4j-jdk14:$slf4jVersion"
 

@@ -1,6 +1,8 @@
 allprojects {
-
   apply plugin: 'java'
+
+  apply plugin: 'io.franzbecker.gradle-lombok'
+  lombok.version = project.lombokVersion
 
   version = '0.0.1'
   group = 'com.github.daggerok'
@@ -39,10 +41,6 @@ allprojects {
 
     //// In java we trust...
     testImplementation "io.vavr:vavr:$vavrVersion"
-    //compileOnly "org.projectlombok:lombok:$lombokVersion"
-    testCompileOnly "org.projectlombok:lombok:$lombokVersion"
-    //annotationProcessor "org.projectlombok:lombok:$lombokVersion"
-    testAnnotationProcessor "org.projectlombok:lombok:$lombokVersion"
     testImplementation "org.slf4j:slf4j-api:$slf4jVersion"
     testImplementation "org.slf4j:slf4j-jdk14:$slf4jVersion"
   }

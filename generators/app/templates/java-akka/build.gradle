@@ -30,6 +30,7 @@ plugins {
   id 'com.avast.gradle.docker-compose' version '0.6.13'
   id 'org.asciidoctor.convert' version '1.5.7' apply false
   id 'org.ajoberstar.git-publish' version '0.3.0' apply false
+  id 'io.franzbecker.gradle-lombok' version '1.14' apply false
   id 'cn.bestwu.propdeps-eclipse' version '0.0.10' apply false
   id 'cn.bestwu.propdeps-maven' version '0.0.10' apply false
   id 'cn.bestwu.propdeps-idea' version '0.0.10' apply false
@@ -52,6 +53,9 @@ apply plugin: 'org.junit.platform.gradle.plugin'
 group = 'com.github.daggerok'
 version = '0.0.1'
 sourceCompatibility = targetCompatibility = "$javaVersion"
+
+apply plugin: 'io.franzbecker.gradle-lombok'
+lombok.version = project.lombokVersion
 
 mainClassName = 'daggerok.App'
 shadowJar.mustRunAfter jar

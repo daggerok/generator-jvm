@@ -33,15 +33,15 @@ plugins {
   id 'org.jetbrains.kotlin.plugin.noarg' version '1.2.51'
   id 'org.jetbrains.kotlin.plugin.allopen' version '1.2.51'
   id 'org.jetbrains.kotlin.plugin.spring' version '1.2.51' apply false
-  id 'io.spring.dependency-management' version '1.0.5.RELEASE'
-  id 'org.ajoberstar.git-publish' version '0.3.0' apply false
-  id 'org.asciidoctor.convert' version '1.5.7' apply false
-  id 'com.avast.gradle.docker-compose' version '0.6.13'
-  id 'io.franzbecker.gradle-lombok' version '1.14'
   id 'cn.bestwu.propdeps-eclipse' version '0.0.10' apply false
   id 'cn.bestwu.propdeps-maven' version '0.0.10' apply false
   id 'cn.bestwu.propdeps-idea' version '0.0.10' apply false
   id 'cn.bestwu.propdeps' version '0.0.10' apply false
+  id 'org.asciidoctor.convert' version '1.5.7' apply false
+  id 'org.ajoberstar.git-publish' version '0.3.0' apply false
+  id 'io.spring.dependency-management' version '1.0.5.RELEASE'
+  id 'com.avast.gradle.docker-compose' version '0.6.13'
+  id 'io.franzbecker.gradle-lombok' version '1.14'
 }
 
 apply plugin: 'wildfly-swarm'
@@ -112,9 +112,7 @@ defaultTasks 'clean', 'build'
 
 compileJava.dependsOn(processResources)
 
-lombok {
-  version = project.lombokVersion
-}
+lombok.version = project.lombokVersion
 
 dependencies {
 

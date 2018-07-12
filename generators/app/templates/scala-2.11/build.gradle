@@ -23,6 +23,7 @@ plugins {
   id 'maven'
   id 'eclipse'
   id 'application'
+  id 'io.franzbecker.gradle-lombok' version '1.14'
   id 'com.github.johnrengelman.shadow' version '2.0.2'
   id 'com.avast.gradle.docker-compose' version '0.6.13'
   id 'org.asciidoctor.convert' version '1.5.7' apply false
@@ -44,12 +45,15 @@ apply from: "$projectDir/gradle/ide.gradle"
 apply from: "$projectDir/gradle/clean.gradle"
 apply from: "$projectDir/gradle/repositories.gradle"
 
+
 group = 'com.github.daggerok'
 version = '0.0.1'
 sourceCompatibility = targetCompatibility = "$javaVersion"
 
 mainClassName = 'daggerok.App'
 shadowJar.mustRunAfter jar
+
+lombok.version = project.lombokVersion
 
 allprojects {
   apply plugin: 'maven-publish'
@@ -80,8 +84,6 @@ dependencies {
 
   compile "org.slf4j:slf4j-api:$slf4jVersion"
   compile "ch.qos.logback:logback-classic:$logbackVersion"
-  compileOnly "org.projectlombok:lombok:$lombokVersion"
-  testCompileOnly "org.projectlombok:lombok:$lombokVersion"
 
   testCompile 'junit:junit:4.12'
 
