@@ -11,8 +11,8 @@ allprojects {
   defaultTasks 'clean', 'build'
 
   dependencies {
-    //// In java we trust...
-    //implementation "io.vavr:vavr:$vavrVersion"
+    // In java we trust...
+    implementation "io.vavr:vavr:$vavrVersion"
     //implementation "org.slf4j:slf4j-api:$slf4jVersion"
     //implementation "ch.qos.logback:logback-classic:$logbackVersion"
   }

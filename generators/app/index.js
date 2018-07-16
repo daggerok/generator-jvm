@@ -149,17 +149,6 @@ module.exports = class extends Generator {
       this.destinationPath(`${this.props.projectDirectory}/.${suffix}`),
     ));
 
-    /* copy project files by type */
-
-    [
-      '**/*',
-      '**/.*',
-
-    ].forEach(pattern => this.fs.copy(
-      this.templatePath(`${this.props.projectType}/${pattern}`),
-      this.destinationPath(this.props.projectDirectory),
-    ));
-
     /* apply common template substitutions */
 
     [
@@ -175,7 +164,7 @@ module.exports = class extends Generator {
       { projectDirectory: this.props.projectDirectory }
     ));
 
-    /* all templates */
+    /* project templates */
 
     [
       '.travis.yml',
@@ -185,6 +174,17 @@ module.exports = class extends Generator {
       this.templatePath(`${this.props.projectType}/${suffix}`),
       this.destinationPath(`${this.props.projectDirectory}/${suffix}`),
       { projectDirectory: this.props.projectDirectory }
+    ));
+
+    /* copy project files by type */
+
+    [
+      '**/*',
+      '**/.*',
+
+    ].forEach(pattern => this.fs.copy(
+      this.templatePath(`${this.props.projectType}/${pattern}`),
+      this.destinationPath(this.props.projectDirectory),
     ));
 
     /* apply template substitutions */
