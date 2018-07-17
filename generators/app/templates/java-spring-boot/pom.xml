@@ -100,16 +100,6 @@
       <version>${hibernate.core.version}</version>
     </dependency>
     -->
-    <!-- Mongo (+embedded)
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-data-mongodb-reactive</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>de.flapdoodle.embed</groupId>
-      <artifactId>de.flapdoodle.embed.mongo</artifactId>
-    </dependency>
-    -->
     <!-- Kafka (+embedded)
     <dependency>
       <groupId>org.springframework.cloud</groupId>

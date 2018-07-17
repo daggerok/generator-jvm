@@ -19,10 +19,6 @@ dependencies {
   //implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
   //implementation 'org.springframework.boot:spring-boot-starter-data-rest'
 
-  //// Mongo (+embedded)
-  //implementation 'org.springframework.boot:spring-boot-starter-data-mongodb-reactive'
-  //implementation 'de.flapdoodle.embed:de.flapdoodle.embed.mongo'
-
   //// Kafka (+embedded)
   //implementation 'org.springframework.cloud:spring-cloud-stream'
   //implementation 'org.springframework.cloud:spring-cloud-stream-binder-kafka'
