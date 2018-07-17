@@ -61,9 +61,7 @@ deploy:
   target_branch: gh-pages
 
 before_cache:
-- sudo rm -rf $HOME/.gradle/caches/*/fileHashes/fileHashes.bin
-- sudo rm -rf $HOME/.gradle/caches/*/fileHashes/fileHashes.lock
-- sudo rm -rf $HOME/.gradle/caches/modules-2/modules-2.lock
+- bash -c 'for item in $(find ~/.gradle -name "*.lock"); do sudo rm -rf $item ; done'
 
 cache:
   directories:
