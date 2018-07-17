@@ -9,12 +9,12 @@ Maksim Kostromin <daggerok@gmail.com>
 :doctype: book
 :toc: left
 :toclevels: 4
-:source-highlighter: prettify
 :numbered:
 :icons: font
 :hide-uri-scheme:
 :revnumber: {project-version}
 :example-caption!:
+:source-highlighter: highlightjs
 
 Travis CI status:
 image:https://travis-ci.org/daggerok/{root-project-name}.svg?branch=master["Build Status", link={github-url}]

@@ -353,7 +353,7 @@
               <relativeBaseDir>true</relativeBaseDir>
               <headerFooter>true</headerFooter>
               <imagesDir>images</imagesDir>
-              <sourceHighlighter>coderay</sourceHighlighter>
+              <sourceHighlighter>highlightjs</sourceHighlighter>
               <attributes>
                 <toc>left</toc>
                 <linkcss>false</linkcss>
@@ -369,7 +369,6 @@
                 <icons>font</icons>
                 <idseparator>-</idseparator>
                 <setanchors>true</setanchors>
-                <source-highlighter>coderay</source-highlighter>
                 <toc-title>Table of Contents</toc-title>
                 <project-name>${project.artifactId}</project-name>
                 <root-project-name>${project.artifactId}</root-project-name>
