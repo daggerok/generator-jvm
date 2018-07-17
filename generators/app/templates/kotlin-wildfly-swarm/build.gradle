@@ -49,7 +49,7 @@ apply plugin: 'org.junit.platform.gradle.plugin'
 
 /*
 wrapper {
-  gradleVersion = '4.8.1'
+  gradleVersion = '4.9'
   distributionType = 'BIN'
 }
 */
