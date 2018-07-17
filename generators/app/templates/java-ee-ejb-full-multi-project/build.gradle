@@ -3,7 +3,9 @@ buildscript {
     slf4jVersion = '1.7.25'
     logbackVersion = '1.2.3'
     jgivenVersion = '0.15.3'
-    lombokVersion = '1.16.22'
+    lombokVersion = '1.16.20'
+    //lombokVersion = '1.18.0'
+    //lombokVersion = '1.16.22'
     asciidoctorjPdfVersion = '1.5.0-alpha.15'
   }
 

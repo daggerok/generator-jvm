@@ -4,7 +4,9 @@ buildscript {
     javaVersion = JavaVersion.VERSION_1_8
     springBootVersion = '2.0.3.RELEASE'
     springCloudVersion = 'Finchley.RC1'
-    lombokVersion = '1.16.22'
+    //lombokVersion = '1.16.22'
+    //lombokVersion = '1.18.0'
+    lombokVersion = '1.16.20'
     logbackVersion = '1.2.3'
     slf4jVersion = '1.7.25'
     vavrVersion = '0.9.2'

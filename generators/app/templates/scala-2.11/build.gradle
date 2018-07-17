@@ -4,7 +4,9 @@ buildscript {
     slf4jVersion = '1.7.25'
     jgivenVersion = '0.15.3'
     logbackVersion = '1.2.3'
-    lombokVersion = '1.16.22'
+    lombokVersion = '1.16.20'
+    //lombokVersion = '1.18.0'
+    //lombokVersion = '1.16.22'
     scalaCompatVersion = '2.11'
     scalaVersion = "${scalaCompatVersion}.8"
     scalatestVersion = "${scalaCompatVersion}:3.0.4"

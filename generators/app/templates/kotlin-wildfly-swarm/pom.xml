@@ -23,7 +23,7 @@
     <junit.jupiter.version>5.2.0</junit.jupiter.version>
     <maven.compiler.target>1.8</maven.compiler.target>
     <failOnMissingWebXml>false</failOnMissingWebXml>
-    <lombok.version>1.16.22</lombok.version>
+    <lombok.version>1.18.0</lombok.version>
     <kotlin.version>1.2.51</kotlin.version>
     <jgiven.version>0.15.3</jgiven.version>
     <junit4.version>4.12</junit4.version>
