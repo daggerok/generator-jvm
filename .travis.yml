@@ -44,6 +44,13 @@ script:
 
 # scala-akka-sbt
 - cd ${e2e}
+- yo jvm -n javaparentmultiproject -t java-parent-multi-project
+- cd javaparentmultiproject/
+- cat README.adoc
+- cat README.adoc | grep javaparentmultiproject
+
+# scala-akka-sbt
+- cd ${e2e}
 - yo jvm -n scala-akka-sbt-project -t scala-akka-sbt
 - cd scala-akka-sbt-project/
 - ./sbtw clean compile assembly test run
