@@ -118,6 +118,12 @@ module.exports = class extends Generator {
     this.props.projectDirectory = replaceSpacesWithDash(this.props.projectDirectory);
     this.props.projectType = this.props.projectType.trim().toLowerCase();
 
+    /**
+     * RAW files
+     *
+     * Using: copy functionality as is
+     */
+
     /* copy commons */
 
     [
@@ -149,6 +155,23 @@ module.exports = class extends Generator {
       this.destinationPath(`${this.props.projectDirectory}/.${suffix}`),
     ));
 
+    /* copy project files by type */
+
+    [
+      '**/*',
+      '**/.*',
+
+    ].forEach(pattern => this.fs.copy(
+      this.templatePath(`${this.props.projectType}/${pattern}`),
+      this.destinationPath(this.props.projectDirectory),
+    ));
+
+    /**
+     * Template files.
+     *
+     * Using: copyTpl functionality for substitution
+     */
+
     /* apply common template substitutions */
 
     [
@@ -174,17 +197,6 @@ module.exports = class extends Generator {
       this.templatePath(`${this.props.projectType}/${suffix}`),
       this.destinationPath(`${this.props.projectDirectory}/${suffix}`),
       { projectDirectory: this.props.projectDirectory }
-    ));
-
-    /* copy project files by type */
-
-    [
-      '**/*',
-      '**/.*',
-
-    ].forEach(pattern => this.fs.copy(
-      this.templatePath(`${this.props.projectType}/${pattern}`),
-      this.destinationPath(this.props.projectDirectory),
     ));
 
     /* apply template substitutions */
