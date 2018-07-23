@@ -42,7 +42,7 @@ script:
 - npm i -g yo yeoman-generator
 - yo jvm --help
 
-# scala-akka-sbt
+# java-parent-multi-project
 - cd ${e2e}
 - yo jvm -n javaparentmultiproject -t java-parent-multi-project
 - cd javaparentmultiproject/
