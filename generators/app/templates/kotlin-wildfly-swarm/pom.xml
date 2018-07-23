@@ -477,58 +477,18 @@
                 <artifactId>asciidoctorj-pdf</artifactId>
                 <version>1.5.0-alpha.16</version>
               </dependency>
+              <dependency>
+                <groupId>org.asciidoctor</groupId>
+                <artifactId>asciidoctorj-diagram</artifactId>
+                <version>1.5.4</version>
+              </dependency>
             </dependencies>
-            <executions>
-              <execution>
-                <id>output-pdf-doc</id>
-                <phase>generate-resources</phase>
-                <goals>
-                  <goal>process-asciidoc</goal>
-                </goals>
-                <configuration>
-                  <backend>pdf</backend>
-                  <!--
-                    Since 1.5.0-alpha.9 PDF back-end can use 'rouge' as well as 'coderay'
-                    for source highlighting
-                  -->
-                  <!--
-                    Due to a known issue on windows, it is recommended to use 'coderay'
-                    until an new version of 'rouge' is released.
-
-                    see discussions: https://github.com/asciidoctor/asciidoctor-maven-examples/pull/58
-                                     https://github.com/asciidoctor/asciidoctorj-pdf/issues/3
-                                     https://github.com/jneen/rouge/issues/661
-                  -->
-                  <sourceHighlighter>coderay</sourceHighlighter>
-                </configuration>
-              </execution>
-              <execution>
-                <id>output-html</id>
-                <phase>generate-resources</phase>
-                <goals>
-                  <goal>process-asciidoc</goal>
-                </goals>
-                <configuration>
-                  <backend>html</backend>
-                </configuration>
-              </execution>
-              <execution>
-                <id>output-docbook</id>
-                <phase>generate-resources</phase>
-                <goals>
-                  <goal>process-asciidoc</goal>
-                </goals>
-                <configuration>
-                  <backend>docbook</backend>
-                </configuration>
-              </execution>
-            </executions>
             <configuration>
               <outputDirectory>target/generated-docs</outputDirectory>
               <sourceDirectory>docs</sourceDirectory>
               <relativeBaseDir>true</relativeBaseDir>
               <headerFooter>true</headerFooter>
-              <imagesDir>images</imagesDir>
+              <imagesDir>.</imagesDir><!-- Don't know why, but yes - use base sources dir... -->
               <sourceHighlighter>highlightjs</sourceHighlighter>
               <attributes>
                 <toc>left</toc>
@@ -552,8 +512,50 @@
                 <github-url>https://github.com/daggerok/${project.artifactId}</github-url>
               </attributes>
             </configuration>
+            <executions>
+              <execution>
+                <id>output-html</id>
+                <phase>generate-resources</phase>
+                <goals>
+                  <goal>process-asciidoc</goal>
+                </goals>
+                <configuration>
+                  <backend>html</backend>
+                </configuration>
+              </execution>
+              <execution>
+                <id>output-docbook</id>
+                <phase>generate-resources</phase>
+                <goals>
+                  <goal>process-asciidoc</goal>
+                </goals>
+                <configuration>
+                  <backend>docbook</backend>
+                </configuration>
+              </execution>
+              <execution>
+                <id>output-pdf-doc</id>
+                <phase>generate-resources</phase>
+                <goals>
+                  <goal>process-asciidoc</goal>
+                </goals>
+                <configuration>
+                  <backend>pdf</backend>
+                  <sourceHighlighter>coderay</sourceHighlighter>
+                  <requires>
+                    <require>asciidoctor-diagram</require>
+                    <require>coderay</require>
+                  </requires>
+                  <attributes>
+                    <icons>font</icons>
+                    <pagenums/>
+                  </attributes>
+                </configuration>
+              </execution>
+            </executions>
           </plugin>
         </plugins>
+
         <defaultGoal>clean process-resources</defaultGoal>
       </build>
     </profile>
