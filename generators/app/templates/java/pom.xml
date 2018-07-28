@@ -18,7 +18,7 @@
     <junit.jupiter.version>5.1.0</junit.jupiter.version>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <lombok.version>1.18.0</lombok.version>
+    <lombok.version>1.18.2</lombok.version>
     <jgiven.version>0.15.3</jgiven.version>
     <junit4.version>4.12</junit4.version>
     <slf4j.version>1.7.25</slf4j.version>
@@ -94,6 +94,12 @@
     </dependency>
     <dependency>
       <groupId>org.junit.platform</groupId>
+      <artifactId>junit-platform-commons</artifactId>
+      <version>${junit.platform.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.platform</groupId>
       <artifactId>junit-platform-runner</artifactId>
       <version>${junit.platform.version}</version>
       <scope>test</scope>
@@ -142,11 +148,9 @@
         <version>3.1.0</version>
         <configuration>
           <finalName>${project.artifactId}-${project.version}-all</finalName>
-          <!--
-          <descriptors>
+          <!--<descriptors>
             <descriptor>${project.basedir}/.mvn/assembly.xml</descriptor>
-          </descriptors>
-          -->
+          </descriptors>-->
           <appendAssemblyId>false</appendAssemblyId>
           <descriptorRefs>
             <descriptorRef>jar-with-dependencies</descriptorRef>
@@ -192,15 +196,13 @@
         </dependencies>
         <configuration>
           <properties>
-            <!--
-            <includeTags>acceptance | !feature-a</includeTags>
+            <!--<includeTags>acceptance | !feature-a</includeTags>
             <excludeTags>integration, regression</excludeTags>
             <configurationParameters>
               junit.jupiter.conditions.deactivate = *
               junit.jupiter.extensions.autodetection.enabled = true
               junit.jupiter.testinstance.lifecycle.default = per_class
-            </configurationParameters>
-            -->
+            </configurationParameters>-->
           </properties>
         </configuration>
       </plugin>
