@@ -26,3 +26,4 @@ dockerCompose {
 }
 
 composeUp.dependsOn assemble
+composeUp.shouldRunAfter clean, assemble

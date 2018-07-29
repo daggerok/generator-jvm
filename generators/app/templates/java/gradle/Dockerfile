@@ -33,8 +33,8 @@ CMD /bin/bash
 #                -Djavax.net.debug=ssl \
 #                -jar ./app.jar
 #CMD /bin/bash
-EXPOSE 8080
-HEALTHCHECK --timeout=2s \
-            --retries=22 \
-            CMD curl -f http://127.0.0.1:8080/api/health || exit 1
+#EXPOSE 8080
+#HEALTHCHECK --timeout=2s \
+#            --retries=22 \
+#            CMD curl -f http://127.0.0.1:8080/api/health || exit 1
 COPY --chown=appuser ./build/libs/*-all.jar ./app.jar
