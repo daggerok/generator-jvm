@@ -23,7 +23,7 @@ ci-job:
   - which apt-get
   - which apt || true
   - apt-get update -y >/dev/null || true
-  - apt-get install -y --no-install-recommends curl jq bash sudo lsof >/dev/hull
+  - apt-get install -y --no-install-recommends curl jq bash sudo lsof >/dev/null
   - source <(curl -s https://raw.githubusercontent.com/daggerok/bash-functions/master/main.bash)
   - stop_any 80 8080
 
@@ -36,7 +36,7 @@ ci-job:
   - #curl -s 127.0.0.1:8080/api/ | jq .
   - #stop_any 80 8080
   #
-  - #./mvnw >/dev/hull
+  - #./mvnw >/dev/null
   - #bash target/*.jar &
   - #wait_for 8080
   - #curl http://127.0.0.1:8080

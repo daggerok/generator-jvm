@@ -47,7 +47,17 @@ script:
 - bash mvnw com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:up -P docker
 - bash mvnw com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:down -P docker
 
-before_deploy: ./gradlew documentation
+before_cache:
+- bash -c 'for item in $(find ~/.gradle -name "*.lock"); do sudo rm -rf $item ; done'
+
+cache:
+  directories:
+  - $HOME/.m2
+  - $HOME/.gradle
+  - $HOME/.docker
+
+before_deploy:
+- ./mvnw -Pdocs
 
 deploy:
   provider: pages
@@ -59,12 +69,3 @@ deploy:
     branch: master
   local-dir: target/generated-docs
   target_branch: gh-pages
-
-before_cache:
-- bash -c 'for item in $(find ~/.gradle -name "*.lock"); do sudo rm -rf $item ; done'
-
-cache:
-  directories:
-  - $HOME/.m2
-  - $HOME/.gradle
-  - $HOME/.docker

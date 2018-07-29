@@ -6,7 +6,9 @@ env:
   - TERM=dumb
 
 language: java
-jdk: oraclejdk8
+jdk:
+- oraclejdk8
+- oraclejdk10
 
 addons:
   apt:
@@ -28,26 +30,35 @@ before_script:
 - source <(curl -s https://raw.githubusercontent.com/daggerok/bash-functions/master/main.bash)
 
 script:
-- bash gradlew >/dev/null 2>&1
+- bash gradlew >/dev/null
 - java -jar ./build/libs/*-all.jar
 #
-- bash gradlew clean installDist >/dev/null 2>&1
+- bash gradlew clean installDist >/dev/null
 - bash ./build/install/<%= projectDirectory %>/bin/<%= projectDirectory %>
 #
-- bash gradlew clean distZip >/dev/null 2>&1
+- bash gradlew clean distZip >/dev/null
 - unzip -o ./build/distributions/<%= projectDirectory %>-0.0.1.zip -d /tmp
 - bash /tmp/<%= projectDirectory %>-0.0.1/bin/<%= projectDirectory %>
 #
 - bash gradlew clean build composeUp
 - bash gradlew composeDown
 #
-- bash mvnw clean package >/dev/null 2>&1
+- bash mvnw clean package >/dev/null
 - java -jar target/*-all.jar
 #
 - bash mvnw com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:up -P docker
 - bash mvnw com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:down -P docker
 
-before_deploy: ./gradlew documentation
+before_cache:
+- bash -c 'for item in $(find ~/.gradle -name "*.lock"); do sudo rm -rf $item ; done'
+
+cache:
+  directories:
+  - $HOME/.m2
+  - $HOME/.gradle
+  - $HOME/.docker
+
+before_deploy: ./mvnw -Pdocs
 
 deploy:
   provider: pages
@@ -59,12 +70,3 @@ deploy:
     branch: master
   local-dir: target/generated-docs
   target_branch: gh-pages
-
-before_cache:
-- bash -c 'for item in $(find ~/.gradle -name "*.lock"); do sudo rm -rf $item ; done'
-
-cache:
-  directories:
-  - $HOME/.m2
-  - $HOME/.gradle
-  - $HOME/.docker
