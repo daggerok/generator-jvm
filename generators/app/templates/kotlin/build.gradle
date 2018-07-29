@@ -2,9 +2,10 @@ buildscript {
   ext {
     javaVersion = JavaVersion.VERSION_1_8
     jacksonKotlinVersion = '2.9.6'
-    //lombokVersion = '1.16.22'
-    //lombokVersion = '1.18.0'
-    lombokVersion = '1.16.20'
+    ////java 8:
+    //lombokVersion = '1.16.20'
+    ////java 10:
+    lombokVersion = '1.18.2'
     logbackVersion = '1.2.3'
     kotlinVersion = '1.2.51'
     slf4jVersion = '1.7.25'
