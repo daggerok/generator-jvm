@@ -19,6 +19,7 @@
     <maven.compiler.target>1.8</maven.compiler.target>
     <scala.compat.version>2.11</scala.compat.version>
     <scalatestic.version>3.0.4</scalatestic.version>
+    <assertj.version>3.10.0</assertj.version>
     <lombok.version>1.18.0</lombok.version>
     <jgiven.version>0.15.3</jgiven.version>
     <slf4j.version>1.7.25</slf4j.version>
@@ -74,6 +75,13 @@
       <groupId>org.specs2</groupId>
       <artifactId>specs2-junit_${scala.compat.version}</artifactId>
       <version>3.7</version>
+      <scope>test</scope>
+    </dependency>
+    <!-- assertj -->
+    <dependency>
+      <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
+      <version>${assertj.version}</version>
       <scope>test</scope>
     </dependency>
     <!-- jgiven -->

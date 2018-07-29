@@ -23,6 +23,7 @@
     <junit.jupiter.version>5.2.0</junit.jupiter.version>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
+    <assertj.version>3.10.0</assertj.version>
     <lombok.version>1.18.0</lombok.version>
     <kotlin.version>1.2.51</kotlin.version>
     <jgiven.version>0.15.3</jgiven.version>
@@ -174,6 +175,13 @@
       <scope>test</scope>
     </dependency>
 
+    <!-- assertj -->
+    <dependency>
+      <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
+      <version>${assertj.version}</version>
+      <scope>test</scope>
+    </dependency>
     <!-- junit 4 -->
     <dependency>
       <groupId>junit</groupId>

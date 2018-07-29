@@ -5,14 +5,15 @@ buildscript {
     slf4jVersion = '1.7.25'
     jgivenVersion = '0.15.3'
     logbackVersion = '1.2.3'
+    assertjVersion = '3.10.0'
     lombokVersion = '1.16.20'
     //lombokVersion = '1.18.0'
     //lombokVersion = '1.16.22'
     scalaCompatVersion = '2.12'
     scalaVersion = "${scalaCompatVersion}.4"
     scalatestVersion = "${scalaCompatVersion}:3.0.4"
-    specs2Version = '4.0.2'
     asciidoctorjPdfVersion = '1.5.0-alpha.15'
+    specs2Version = '4.0.2'
   }
 
   dependencies {

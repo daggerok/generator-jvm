@@ -3,6 +3,7 @@ allprojects {
 
   dependencies {
     testImplementation "junit:junit:$junit4Version"
+    testImplementation "org.assertj:assertj-core:$assertjVersion"
     testImplementation "org.hamcrest:hamcrest-core:$hamcrestVersion"
     testImplementation "org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion"

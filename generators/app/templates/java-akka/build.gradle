@@ -7,6 +7,7 @@ buildscript {
     slf4jVersion = '1.7.25'
     jgivenVersion = '0.15.3'
     logbackVersion = '1.2.3'
+    assertjVersion = '3.10.0'
     lombokVersion = '1.16.20'
     //lombokVersion = '1.18.0'
     //lombokVersion = '1.16.22'
