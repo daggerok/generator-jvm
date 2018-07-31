@@ -497,8 +497,8 @@
               <relativeBaseDir>true</relativeBaseDir>
               <headerFooter>true</headerFooter>
               <imagesDir>.</imagesDir><!-- Don't know why, but yes - use base sources dir... -->
-              <sourceHighlighter>highlightjs</sourceHighlighter>
               <attributes>
+                <headerFooter>true</headerFooter>
                 <toc>left</toc>
                 <linkcss>false</linkcss>
                 <doctype>book</doctype>
@@ -529,6 +529,7 @@
                 </goals>
                 <configuration>
                   <backend>html</backend>
+                  <sourceHighlighter>highlightjs</sourceHighlighter>
                 </configuration>
               </execution>
               <execution>

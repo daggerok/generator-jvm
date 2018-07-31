@@ -11,6 +11,7 @@ image:https://img.shields.io/bitbucket/pipelines/daggerok/root-project-name.svg[
 ////
 Maksim Kostromin <daggerok@gmail.com>
 {docdatetime}
+:docinfo:
 :doctype: book
 :toc: left
 :toclevels: 4
