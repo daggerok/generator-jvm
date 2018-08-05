@@ -2,11 +2,20 @@ buildscript {
   ext {
     javaVersion = '1.8'
     vavrVersion = '0.9.2'
+    slf4jVersion = '1.7.25'
+    kotlinVersion = '1.2.60'
     jgivenVersion = '0.15.3'
     logbackVersion = '1.2.3'
     lombokVersion = '1.18.2'
-    assertjVersion = '3.10.0'
+    junitJupiterVersion = '5.2.0'
+    junitPlatformVersion = '1.2.0'
+    jacksonKotlinVersion = '2.9.6'
+    springCloudVersion = 'Finchley.RC1'
+    springCloudVersion = '2.0.4.RELEASE'
     asciidoctorjPdfVersion = '1.5.0-alpha.15'
+    assertjVersion = '3.10.0'
+    hamcrestVersion = '1.3'
+    junit4Version = '4.12'
   }
 
   dependencies {
@@ -60,6 +69,9 @@ subprojects {
   dependencies {
     // In java we trust...
     compile "io.vavr:vavr:$vavrVersion"
+
+    compile "org.slf4j:slf4j-api:$slf4jVersion"
+    compile "ch.qos.logback:logback-classic:$logbackVersion"
   }
 }
 

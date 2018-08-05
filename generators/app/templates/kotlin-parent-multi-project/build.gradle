@@ -93,36 +93,7 @@ subprojects {
   }
   */
 
-  apply plugin: 'org.jetbrains.kotlin.jvm'
-  //apply plugin: 'org.jetbrains.kotlin.kapt'
-  apply plugin: 'org.jetbrains.kotlin.plugin.jpa'
-  apply plugin: 'org.jetbrains.kotlin.plugin.noarg'
-  apply plugin: 'org.jetbrains.kotlin.plugin.spring'
-  apply plugin: 'org.jetbrains.kotlin.plugin.allopen'
-
-  compileKotlin {
-    incremental = true
-    kotlinOptions {
-      freeCompilerArgs = ['-Xjsr305=strict']
-      jvmTarget = "$javaVersion"
-    }
-  }
-
-  compileTestKotlin {
-    incremental = true
-    kotlinOptions {
-      freeCompilerArgs = ['-Xjsr305=strict']
-      jvmTarget = "$javaVersion"
-    }
-  }
-
   compileJava.dependsOn(processResources)
-
-  apply plugin: 'io.franzbecker.gradle-lombok'
-
-  lombok {
-    version = project.lombokVersion
-  }
 
   dependencies {
 
@@ -131,16 +102,10 @@ subprojects {
 
     compile "org.slf4j:slf4j-api:$slf4jVersion"
     compile "ch.qos.logback:logback-classic:$logbackVersion"
-
-    // Kotlin
-    compile "com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonKotlinVersion"
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
-    compile "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
-
-    testCompile "org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion"
   }
 }
 
+apply from: "$projectDir/gradle/kotlin.gradle"
 apply from: "$projectDir/gradle/junit.gradle"
 apply from: "$projectDir/gradle/findbugs.gradle"
 apply from: "$projectDir/gradle/docker-compose.gradle"

@@ -48,6 +48,17 @@ script:
 - cd javaparentmultiproject/
 - cat README.adoc
 - cat README.adoc | grep javaparentmultiproject
+- ./mvnw -Pdocs
+- ./gradlew docum
+
+# kotlin-parent-multi-project
+- cd ${e2e}
+- yo jvm -n kotlinparentmultiproject -t kotlin-parent-multi-project
+- cd kotlinparentmultiproject/
+- cat README.adoc
+- cat README.adoc | grep kotlinparentmultiproject
+- ./mvnw -Pdocs
+- ./gradlew docum
 
 # scala-akka-sbt
 - cd ${e2e}
