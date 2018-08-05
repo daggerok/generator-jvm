@@ -27,10 +27,13 @@ plugins {
   id 'idea'
   id 'eclipse'
   id 'com.avast.gradle.docker-compose' version '0.6.13'
+
   id 'org.jetbrains.kotlin.jvm' version '1.2.60' apply false
+  id 'org.jetbrains.kotlin.kapt' version '1.2.60' apply false
   id 'org.jetbrains.kotlin.plugin.noarg' version '1.2.60' apply false
   id 'org.jetbrains.kotlin.plugin.spring' version '1.2.60' apply false
   id 'org.jetbrains.kotlin.plugin.allopen' version '1.2.60' apply false
+
   id 'io.spring.dependency-management' version '1.0.6.RELEASE' apply false
   id 'com.github.johnrengelman.shadow' version '2.0.2' apply false
   id 'io.franzbecker.gradle-lombok' version '1.14' apply false
@@ -64,7 +67,7 @@ allprojects {
   defaultTasks 'clean', 'build'
 }
 
-/*//executable sub-project build.gradle:
+/* //executable sub-project build.gradle:
 apply plugin: 'application'
 apply plugin: 'com.github.johnrengelman.shadow'
 
@@ -90,7 +93,9 @@ subprojects {
   }
   */
 
-  apply plugin: 'kotlin'
+  apply plugin: 'org.jetbrains.kotlin.jvm'
+  //apply plugin: 'org.jetbrains.kotlin.kapt'
+  apply plugin: 'org.jetbrains.kotlin.plugin.jpa'
   apply plugin: 'org.jetbrains.kotlin.plugin.noarg'
   apply plugin: 'org.jetbrains.kotlin.plugin.spring'
   apply plugin: 'org.jetbrains.kotlin.plugin.allopen'

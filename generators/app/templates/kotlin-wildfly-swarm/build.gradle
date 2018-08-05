@@ -30,10 +30,13 @@ plugins {
   id 'idea'
   id 'maven'
   id 'eclipse'
-  id 'org.jetbrains.kotlin.jvm' version '1.2.60'
-  id 'org.jetbrains.kotlin.plugin.noarg' version '1.2.60'
-  id 'org.jetbrains.kotlin.plugin.allopen' version '1.2.60'
+
+  id 'org.jetbrains.kotlin.jvm' version '1.2.60' apply false
+  id 'org.jetbrains.kotlin.kapt' version '1.2.60' apply false
+  id 'org.jetbrains.kotlin.plugin.noarg' version '1.2.60' apply false
   id 'org.jetbrains.kotlin.plugin.spring' version '1.2.60' apply false
+  id 'org.jetbrains.kotlin.plugin.allopen' version '1.2.60' apply false
+
   id 'cn.bestwu.propdeps-eclipse' version '0.0.10' apply false
   id 'cn.bestwu.propdeps-maven' version '0.0.10' apply false
   id 'cn.bestwu.propdeps-idea' version '0.0.10' apply false
@@ -62,6 +65,13 @@ apply from: "$projectDir/gradle/repositories.gradle"
 group = 'com.github.daggerok'
 version = '0.0.1'
 sourceCompatibility = targetCompatibility = "$javaVersion"
+
+apply plugin: 'org.jetbrains.kotlin.jvm'
+//apply plugin: 'org.jetbrains.kotlin.kapt'
+apply plugin: 'org.jetbrains.kotlin.plugin.jpa'
+apply plugin: 'org.jetbrains.kotlin.plugin.noarg'
+apply plugin: 'org.jetbrains.kotlin.plugin.allopen'
+//apply plugin: 'org.jetbrains.kotlin.plugin.spring'
 
 compileKotlin {
   incremental = true
