@@ -28,10 +28,14 @@ before_script:
 - source <(curl -s https://raw.githubusercontent.com/daggerok/bash-functions/master/main.bash)
 
 script:
+- export root=$(pwd)
 - bash mvnw
 - bash gradlew
 
-before_deploy: ./gradlew documentation
+before_deploy:
+- cd ${root}
+- ./mvnw -Pdocs
+#- ./gradlew documentation
 
 deploy:
   provider: pages

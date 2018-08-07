@@ -28,10 +28,14 @@ install: true
 #- source <(curl -s https://raw.githubusercontent.com/daggerok/bash-functions/master/main.bash)
 
 script:
+- export root=$(pwd)
 - bash mvnw >/dev/null
 - bash gradlew >/dev/null
 
-before_deploy: ./gradlew documentation
+before_deploy:
+- cd ${root}
+- ./mvnw -Pdocs
+#- ./gradlew documentation
 
 deploy:
   provider: pages

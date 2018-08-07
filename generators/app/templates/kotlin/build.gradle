@@ -33,6 +33,7 @@ buildscript {
 }
 
 plugins {
+  id 'com.jfrog.artifactory' version '4.7.5' apply false
   id 'org.asciidoctor.convert' version '1.5.7' apply false
   id 'org.ajoberstar.git-publish' version '0.3.0' apply false
 
@@ -68,6 +69,7 @@ apply from: "$projectDir/gradle/kotlin.gradle"
 apply from: "$projectDir/gradle/main.gradle"
 apply from: "$projectDir/gradle/junit.gradle"
 apply from: "$projectDir/gradle/publish.gradle"
+//apply from: "$projectDir/gradle/artifactory-shadow.gradle"
 apply from: "$projectDir/gradle/findbugs.gradle"
 //apply from: "$projectDir/gradle/jacoco.gradle"
 //apply from: "$projectDir/gradle/allure.gradle"

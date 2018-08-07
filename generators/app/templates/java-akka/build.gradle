@@ -29,6 +29,7 @@ plugins {
   id 'application'
   id 'com.github.johnrengelman.shadow' version '2.0.2'
   id 'com.avast.gradle.docker-compose' version '0.6.13'
+  id 'com.jfrog.artifactory' version '4.7.5' apply false
   id 'org.asciidoctor.convert' version '1.5.7' apply false
   id 'org.ajoberstar.git-publish' version '0.3.0' apply false
   id 'io.franzbecker.gradle-lombok' version '1.14' apply false
@@ -95,3 +96,5 @@ dependencies {
 apply from: "$projectDir/gradle/findbugs.gradle"
 apply from: "$projectDir/gradle/docker-compose.gradle"
 apply from: "$projectDir/gradle/docs.gradle"
+apply from: "$projectDir/gradle/publish.gradle"
+//apply from: "$projectDir/gradle/artifactory-shadow.gradle"
