@@ -2,7 +2,7 @@ buildscript {
   ext {
     javaVersion = JavaVersion.VERSION_1_8
     springBootVersion = '2.0.4.RELEASE'
-    springCloudVersion = 'Finchley.RC1'
+    springCloudVersion = 'Finchley.SR1'
     jacksonKotlinVersion = '2.9.6'
     lombokVersion = '1.18.2'
     logbackVersion = '1.2.3'

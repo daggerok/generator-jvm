@@ -10,7 +10,7 @@ buildscript {
     junitJupiterVersion = '5.2.0'
     junitPlatformVersion = '1.2.0'
     jacksonKotlinVersion = '2.9.6'
-    springCloudVersion = 'Finchley.RC1'
+    springCloudVersion = 'Finchley.SR1'
     springCloudVersion = '2.0.4.RELEASE'
     asciidoctorjPdfVersion = '1.5.0-alpha.15'
     assertjVersion = '3.10.0'

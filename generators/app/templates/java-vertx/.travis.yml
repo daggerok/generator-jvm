@@ -1,6 +1,3 @@
-service:
-- docker
-
 env:
   global:
   - TERM=dumb
@@ -8,26 +5,37 @@ env:
 language: java
 jdk: oraclejdk8
 
+service:
+- docker
+
 addons:
   apt:
     update: true
     packages:
-    - sudo
-    - lsof
+    - libappindicator1
+    - fonts-liberation
     - bash
-    - unzip
     - curl
-    - jq
     - libxml2-utils
     - docker-ce
-    - python-pip
+    - google-chrome-stable
 
 install: true
-before_script:
-- sudo pip install docker-compose httpie >/dev/null 2>&1
+before_install:
+- nvm install lts/*
+- export CHROME_BIN=/usr/bin/google-chrome
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
 - source <(curl -s https://raw.githubusercontent.com/daggerok/bash-functions/master/main.bash)
+- stop_any 8080 80
+- sudo add-apt-repository universe -y
+- sudo apt-get update -yqq
+- sudo apt-get install -yqq --no-install-suggests --no-install-recommends tree jq python-pip
+- sudo pip install docker-compose httpie >/dev/null 2>&1
 
 script:
+- export root=$(pwd)
+#
 - bash gradlew >/dev/null
 - java -jar ./build/libs/*-all.jar
 - wait_for 8080
@@ -66,7 +74,12 @@ script:
 - stop_any 8080
 - bash mvnw com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:down -P docker
 
-before_deploy: ./mvnw -Pdocs
+before_deploy:
+- cd ${root}
+#- ./gradlew documentation
+- ./mvnw -Pdocs
+- mkdir -p ./target/generated-docs
+- cp -Rf ./target/generated-docs/index.html ./target/generated-docs/404.html
 
 deploy:
   provider: pages
@@ -80,7 +93,9 @@ deploy:
   target_branch: gh-pages
 
 before_cache:
-- bash -c 'for item in $(find ~/.gradle -name "*.lock"); do sudo rm -rf $item ; done'
+- for item in $(find ~/.gradle -name "*.lock");
+    do sudo rm -rf $item ;
+  done
 
 cache:
   directories:

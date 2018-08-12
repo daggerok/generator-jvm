@@ -2,7 +2,7 @@ buildscript {
   ext {
     javaVersion = JavaVersion.VERSION_1_8
     springBootVersion = '1.5.15.RELEASE'
-    springCloudVersion = 'Edgware.SR3'
+    springCloudVersion = 'Edgware.SR4'
     lombokVersion = '1.18.2'
     logbackVersion = '1.2.3'
     slf4jVersion = '1.7.25'
