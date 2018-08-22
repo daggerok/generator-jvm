@@ -25,10 +25,12 @@ ARG JAVA_OPTS_ARGS='\
  -XshowSettings:vm '
 ENV JAVA_OPTS="${JAVA_OPTS} ${JAVA_OPTS_ARGS}"
 #ENTRYPOINT java ${JAVA_OPTS} -jar ./app.jar
-ENTRYPOINT /bin/bash ./app/bin/<%= projectDirectory %>
+ENTRYPOINT /bin/bash -c '\
+    mkdir -p ./leveldb-journal ./leveldb-snapshot-store \
+ && /bin/bash ./bin/<%= projectDirectory %> '
 CMD /bin/bash
 #EXPOSE 8080
 #HEALTHCHECK --timeout=1s \
 #            --retries=66 \
 #            CMD curl -f http://127.0.0.1:8080/actuator/health || exit 1
-COPY --chown=appuser ./build/install/<%= projectDirectory %> ./app
+COPY --chown=appuser ./build/install/<%= projectDirectory %> .
