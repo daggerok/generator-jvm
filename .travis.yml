@@ -48,6 +48,24 @@ script:
 # generator-jvm cli
 - yo jvm --help
 
+# scala-sbt
+- cd ${e2e}
+- yo jvm -n scala-sbt -t scala-sbt
+- cd scala-sbt/
+- ./sbtw clean compile assembly test run
+- java -jar ./target/scala-2.12/*-assembly-*.jar
+- docker-compose -f docker-compose-sbt.yaml down -v
+- docker-compose -f docker-compose-sbt.yaml up --build
+
+# scala-sbt-akka-actor
+- cd ${e2e}
+- yo jvm -n scala-sbt-akka-actor -t scala-sbt-akka-actor
+- cd scala-sbt-akka-actor/
+- ./sbtw clean compile assembly test run
+- java -jar ./target/scala-2.12/*-assembly-*.jar
+- docker-compose -f docker-compose-sbt.yaml down -v
+- docker-compose -f docker-compose-sbt.yaml up --build
+
 # java-akka-actor
 - cd ${e2e}
 - yo jvm -n java-akka-actor -t java-akka-actor
@@ -78,15 +96,6 @@ script:
 - bash ./build/install/scala-gradle-akka-persistence/bin/scala-gradle-akka-persistence
 - docker-compose -f docker-compose-gradle.yaml down -v
 - docker-compose -f docker-compose-gradle.yaml up --build
-
-# scala-sbt-akka-actor
-- cd ${e2e}
-- yo jvm -n scala-akka-sbt-project -t scala-sbt-akka-actor
-- cd scala-akka-sbt-project/
-- ./sbtw clean compile assembly test run
-- java -jar ./target/scala-2.12/*-assembly-*.jar
-- docker-compose -f docker-compose-sbt.yaml down -v
-- docker-compose -f docker-compose-sbt.yaml up --build
 
 # scala-2.11
 - cd ${e2e}

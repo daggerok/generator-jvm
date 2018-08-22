@@ -1,6 +1,5 @@
 name := "<%= projectDirectory %>"
 
-lazy val akkaVersion = "2.5.14"
 lazy val scalacticVersion = "3.0.5"
 lazy val scalatestVersion = "3.0.5"
 
@@ -19,7 +18,6 @@ lazy val root = (project in file("."))
   )
 
 libraryDependencies ++= Seq(
-  "com.typesafe.akka" %% "akka-actor" % akkaVersion,
   "org.scalactic" %% "scalactic" % scalacticVersion % "test",
   "org.scalatest" %% "scalatest" % scalatestVersion % "test",
 )

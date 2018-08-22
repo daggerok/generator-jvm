@@ -45,6 +45,7 @@ module.exports = class extends Generator {
       'scala-2.11',
       'scala-gradle-akka-actor',
       'scala-gradle-akka-persistence',
+      'scala-sbt',
       'scala-sbt-akka-actor',
     ];
 
@@ -209,6 +210,7 @@ module.exports = class extends Generator {
     switch (this.props.projectType) {
 
       // specific Scala Akka project (sbt only):
+      case 'scala-sbt':
       case 'scala-sbt-akka-actor':
 
         [

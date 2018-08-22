@@ -281,6 +281,7 @@ type options:
 - `kotlin`
 - `scala`
 - `scala-2.11`
+- `scala-sbt`
 
 ## Also inside all projects available
 
