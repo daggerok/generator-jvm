@@ -48,6 +48,19 @@ script:
 # generator-jvm cli
 - yo jvm --help
 
+# java-akka-actor
+- cd ${e2e}
+- yo jvm -n java-akka-actor -t java-akka-actor
+- cd java-akka-actor/
+- ./gradlew
+- java -jar ./build/libs/*-all.jar
+- docker-compose -f docker-compose-gradle.yaml down -v
+- docker-compose -f docker-compose-gradle.yaml up --build
+- ./mvnw
+- java -jar ./target/*-all.jar
+- docker-compose -f docker-compose-maven.yaml down -v
+- docker-compose -f docker-compose-maven.yaml up --build
+
 # scala-gradle-akka-actor
 - cd ${e2e}
 - yo jvm -n scala-gradle-akka-actor -t scala-gradle-akka-actor

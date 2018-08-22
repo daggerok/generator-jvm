@@ -3,12 +3,16 @@
 const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
+
 const { version } = require('../../package.json');
 
 const defaultProjectName = 'app';
 const defaultProjectType = 'java';
+
 const replaceSpacesWithDash = input =>
-  (input.replace(/\./g, '_').replace(/\W+/g, '-') || defaultProjectName).trim();
+  (input || defaultProjectName).trim()
+    .replace(/\./g, '_')
+    .replace(/\W+/g, '-');
 
 module.exports = class extends Generator {
 
@@ -18,23 +22,23 @@ module.exports = class extends Generator {
 
     this.projectTypes = [
       'java',
-      'java-vertx',
+      'java-akka-actor',
+      'java-ee',
+      'java-ee-cdi-full-multi-project',
+      'java-ee-ejb-full-multi-project',
+      'java-ee-faces',
+      'java-ee-thymeleaf',
+      'java-parent-multi-project',
       'java-spring-boot',
       'java-spring-boot-1.x',
       'java-spring-cloud-function-web',
-      'java-parent-multi-project',
-      'java-akka',
-      'java-ee',
-      'java-ee-faces',
-      'java-ee-thymeleaf',
-      'java-ee-cdi-full-multi-project',
-      'java-ee-ejb-full-multi-project',
+      'java-vertx',
       'kotlin',
-      'kotlin-vertx',
+      'kotlin-parent-multi-project',
       'kotlin-spring-boot',
       'kotlin-spring-boot-1.x',
       'kotlin-spring-cloud-function-web',
-      'kotlin-parent-multi-project',
+      'kotlin-vertx',
       'kotlin-wildfly-swarm',
       'kotlin-ee',
       'scala',

@@ -62,13 +62,20 @@ bash mvnw com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:up
 
 ## What's inside?
 
-___scala akka-actor project___
+___akka-actor project___
 
  * scala 2.12
  * akka 2.5.14
  * support fatjar
+ * support sbt build system
  * support gradle build system
  * docker / docker-compose support
+
+type options:
+
+- `java-akka-actor`
+- `scala-gradle-akka-actor`
+- `scala-sbt-akka-actor`
 
 ___scala akka-persistence project___
 
@@ -76,14 +83,6 @@ ___scala akka-persistence project___
  * akka 2.5.14 / akka-persistence
  * support fatjar
  * support gradle build system
- * docker / docker-compose support
-
-___scala akka project___
-
- * scala 2.12
- * akka 2.5.14
- * support fatjar
- * support sbt build system
  * docker / docker-compose support
 
 ___java-ee thymeleaf project___
