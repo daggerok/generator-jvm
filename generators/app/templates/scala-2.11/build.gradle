@@ -4,12 +4,14 @@ buildscript {
     slf4jVersion = '1.7.25'
     jgivenVersion = '0.15.3'
     logbackVersion = '1.2.3'
-    assertjVersion = '3.10.0'
     lombokVersion = '1.18.2'
+    assertjVersion = '3.10.0'
     scalaCompatVersion = '2.11'
-    scalaVersion = "${scalaCompatVersion}.8"
-    scalatestVersion = "${scalaCompatVersion}:3.0.4"
+    scalaVersion = "${scalaCompatVersion}.12"
+    scalatestVersion = "${scalaCompatVersion}:3.0.5"
     asciidoctorjPdfVersion = '1.5.0-alpha.15'
+    specs2JunitVersion = '4.3.3'
+    junit4Version = '4.12'
   }
 
   dependencies {
@@ -87,13 +89,13 @@ dependencies {
   compile "org.slf4j:slf4j-api:$slf4jVersion"
   compile "ch.qos.logback:logback-classic:$logbackVersion"
 
-  testCompile 'junit:junit:4.12'
+testCompile "junit:junit:$junit4Version"
 
   compile "org.scala-lang:scala-library:$scalaVersion"
 
   testCompile "org.scalactic:scalactic_$scalatestVersion"
   testCompile "org.scalatest:scalatest_$scalatestVersion"
-  testCompile "org.specs2:specs2-junit_${scalaCompatVersion}:3.7"
+  testCompile "org.specs2:specs2-junit_${scalaCompatVersion}:$specs2JunitVersion"
 }
 
 apply from: "$projectDir/gradle/findbugs.gradle"

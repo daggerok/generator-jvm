@@ -39,8 +39,9 @@ module.exports = class extends Generator {
       'kotlin-ee',
       'scala',
       'scala-2.11',
-      'scala-akka-persistence-gradle',
-      'scala-akka-sbt',
+      'scala-gradle-akka-actor',
+      'scala-gradle-akka-persistence',
+      'scala-sbt-akka-actor',
     ];
 
     this.props = {
@@ -203,11 +204,14 @@ module.exports = class extends Generator {
 
     switch (this.props.projectType) {
 
-      // specific Scala Akka project (gradle only):
-      case 'scala-akka-sbt':
+      // specific Scala Akka project (sbt only):
+      case 'scala-sbt-akka-actor':
 
         [
+          'pom.xml',
           'build.sbt',
+          'Dockerfile',
+          'docker-compose-sbt.yaml',
 
         ].forEach(path => this.fs.copyTpl(
           this.templatePath(`${this.props.projectType}/${path}`),
@@ -218,11 +222,13 @@ module.exports = class extends Generator {
         break;
 
       // specific Scala Akka project (gradle only):
-      case 'scala-akka-persistence-gradle':
+      case 'scala-gradle-akka-actor':
+      case 'scala-gradle-akka-persistence':
 
         [
-          'docker-compose.yaml',
+          'pom.xml',
           'gradle/Dockerfile',
+          'docker-compose-gradle.yaml',
 
         ].forEach(path => this.fs.copyTpl(
           this.templatePath(`${this.props.projectType}/${path}`),
@@ -259,7 +265,27 @@ module.exports = class extends Generator {
 
         break;
 
-      // any other projects by standard:
+      //// any other projects by standard:
+      //case: 'java':
+      //case: 'java-akka':
+      //case: 'java-ee':
+      //case: 'java-ee-faces':
+      //case: 'java-ee-thymeleaf':
+      //case: 'java-parent-multi-project':
+      //case: 'java-spring-boot':
+      //case: 'java-spring-boot-1.x':
+      //case: 'java-spring-cloud-function-web':
+      //case: 'java-vertx':
+      //case: 'kotlin':
+      //case: 'kotlin-ee':
+      //case: 'kotlin-parent-multi-project':
+      //case: 'kotlin-spring-boot':
+      //case: 'kotlin-spring-boot-1.x':
+      //case: 'kotlin-spring-cloud-function-web':
+      //case: 'kotlin-vertx':
+      //case: 'kotlin-wildfly-swarm':
+      //case: 'scala-2.11':
+      //case: 'scala':
       default:
 
         [

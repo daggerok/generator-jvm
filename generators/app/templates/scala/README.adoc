@@ -8,6 +8,8 @@ image:https://img.shields.io/bitbucket/pipelines/daggerok/<%= projectDirectory %
 
 //tag::content[]
 
+- scala: 2.12
+
 //Read link:https://daggerok.github.io/<%= projectDirectory %>[project reference documentation]
 
 .build

@@ -1,0 +1,111 @@
+buildscript {
+  ext {
+    javaVersion = '1.8'
+    akkaVersion = '2.5.14'
+    slf4jVersion = '1.7.25'
+    jgivenVersion = '0.15.3'
+    logbackVersion = '1.2.3'
+    lombokVersion = '1.18.2'
+    assertjVersion = '3.10.0'
+    scalaCompatVersion = '2.12'
+    scalaVersion = "${scalaCompatVersion}.6"
+    scalatestVersion = "${scalaCompatVersion}:3.0.5"
+    scalacticVersion = "${scalaCompatVersion}:3.0.5"
+    asciidoctorjPdfVersion = '1.5.0-alpha.15'
+    specs2junitVersion = '4.3.3'
+    leveldbjniVersion = '1.8'
+    leveldbVersion = '0.10'
+    junit4Version = '4.12'
+  }
+
+  dependencies {
+    classpath "org.asciidoctor:asciidoctorj-pdf:$asciidoctorjPdfVersion"
+  }
+}
+
+plugins {
+  id 'idea'
+  id 'java'
+  id 'scala'
+  id 'maven'
+  id 'eclipse'
+  id 'application'
+  id 'com.github.johnrengelman.shadow' version '2.0.2'
+  id 'com.avast.gradle.docker-compose' version '0.6.13'
+  id 'com.jfrog.artifactory' version '4.7.5' apply false
+  id 'org.asciidoctor.convert' version '1.5.7' apply false
+  id 'org.ajoberstar.git-publish' version '0.3.0' apply false
+  id 'cn.bestwu.propdeps-eclipse' version '0.0.10' apply false
+  id 'cn.bestwu.propdeps-maven' version '0.0.10' apply false
+  id 'cn.bestwu.propdeps-idea' version '0.0.10' apply false
+  id 'cn.bestwu.propdeps' version '0.0.10' apply false
+}
+
+/*
+wrapper {
+  gradleVersion = '4.9'
+  distributionType = 'BIN'
+}
+*/
+
+apply from: "$projectDir/gradle/ide.gradle"
+apply from: "$projectDir/gradle/clean.gradle"
+apply from: "$projectDir/gradle/repositories.gradle"
+
+group = 'com.github.daggerok'
+version = '0.0.1'
+sourceCompatibility = targetCompatibility = "$javaVersion"
+
+mainClassName = 'daggerok.App'
+
+allprojects {
+  apply plugin: 'maven-publish'
+
+  publishing {
+    publications {
+      shadow(MavenPublication) { publication ->
+        project.shadow.component(publication)
+      }
+    }
+  }
+  publishing {
+    repositories {
+      maven {
+        url "$rootProject.buildDir/maven-publish"
+      }
+    }
+  }
+
+  publish.dependsOn assemble
+}
+
+defaultTasks 'clean', 'installDist'
+
+compileJava.dependsOn(processResources)
+
+dependencies {
+
+  compile "com.typesafe.akka:akka-persistence_$scalaCompatVersion:$akkaVersion",
+    "org.fusesource.leveldbjni:leveldbjni-all:$leveldbjniVersion",
+    "org.iq80.leveldb:leveldb:$leveldbVersion"
+
+  compile "org.slf4j:slf4j-api:$slf4jVersion",
+    "ch.qos.logback:logback-classic:$logbackVersion"
+
+  compileOnly "org.projectlombok:lombok:$lombokVersion"
+  testCompileOnly "org.projectlombok:lombok:$lombokVersion"
+
+  testCompile "junit:junit:$junit4Version"
+
+  compile "org.scala-lang:scala-library:$scalaVersion"
+
+  testCompile "org.specs2:specs2-junit_$scalaCompatVersion:$specs2junitVersion",
+    "org.scalactic:scalactic_$scalacticVersion",
+    "org.scalatest:scalatest_$scalatestVersion"
+}
+
+apply from: "$projectDir/gradle/findbugs.gradle"
+apply from: "$projectDir/gradle/docker-compose.gradle"
+apply from: "$projectDir/gradle/docs.gradle"
+//apply from: "$projectDir/gradle/publish.gradle"
+//apply from: "$projectDir/gradle/artifactory-shadow.gradle"

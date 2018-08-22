@@ -13,17 +13,20 @@
   <packaging>jar</packaging>
 
   <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <scala.version>${scala.compat.version}.8</scala.version>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <scala.compat.version>2.11</scala.compat.version>
-    <scalatestic.version>3.0.4</scalatestic.version>
+    <scala.version>${scala.compat.version}.12</scala.version>
+    <scalactic.version>3.0.5</scalactic.version>
+    <scalatest.version>3.0.5</scalatest.version>
+    <junit4.version>4.12</junit4.version>
+    <specs2.junit.version>4.3.3</specs2.junit.version>
     <assertj.version>3.10.0</assertj.version>
     <lombok.version>1.18.2</lombok.version>
     <jgiven.version>0.15.3</jgiven.version>
     <slf4j.version>1.7.25</slf4j.version>
-    <junit4.version>4.12</junit4.version>
+    <logback.version>1.2.3</logback.version>
   </properties>
 
   <dependencies>
@@ -49,7 +52,7 @@
     <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-classic</artifactId>
-      <version>1.2.3</version>
+      <version>${logback.version}</version>
     </dependency>
 
     <!-- Test -->
@@ -62,19 +65,19 @@
     <dependency>
       <groupId>org.scalactic</groupId>
       <artifactId>scalactic_${scala.compat.version}</artifactId>
-      <version>${scalatestic.version}</version>
+      <version>${scalactic.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.scalatest</groupId>
       <artifactId>scalatest_${scala.compat.version}</artifactId>
-      <version>${scalatestic.version}</version>
+      <version>${scalatest.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.specs2</groupId>
       <artifactId>specs2-junit_${scala.compat.version}</artifactId>
-      <version>3.7</version>
+      <version>${specs2.junit.version}</version>
       <scope>test</scope>
     </dependency>
     <!-- assertj -->

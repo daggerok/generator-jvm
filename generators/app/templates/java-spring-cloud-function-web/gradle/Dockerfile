@@ -1,4 +1,4 @@
-FROM openjdk:8u151-jre-alpine3.7
+FROM openjdk:8u171-jre-alpine3.8
 MAINTAINER Maksim Kostromin https://github.com/daggerok
 RUN apk --no-cache --update add busybox-suid bash curl unzip sudo openssh-client shadow wget \
  && adduser -h /home/appuser -s /bin/bash -D -u 1025 appuser wheel \
@@ -10,7 +10,7 @@ RUN apk --no-cache --update add busybox-suid bash curl unzip sudo openssh-client
                   'http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip' \
          -O /tmp/jce_policy-8.zip \
  && unzip -o /tmp/jce_policy-8.zip -d /tmp \
- && mv -f ${JAVA_HOME}/lib/security ${JAVA_HOME}/lib/backup-security \
+ && mv -f ${JAVA_HOME}/lib/security ${JAVA_HOME}/lib/backup-security || echo 'nothing to backup' \
  && mv -f /tmp/UnlimitedJCEPolicyJDK8 ${JAVA_HOME}/lib/security \
  && apk del busybox-suid unzip openssh-client shadow wget \
  && rm -rf /var/cache/apk/* /tmp/*

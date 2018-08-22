@@ -23,16 +23,19 @@ addons:
 
 install: true
 before_install:
-- nvm install lts/*
 - export CHROME_BIN=/usr/bin/google-chrome
 - export DISPLAY=:99.0
 - sh -e /etc/init.d/xvfb start
-- source <(curl -s https://raw.githubusercontent.com/daggerok/bash-functions/master/main.bash)
-- stop_any 8080 80
+#
+- nvm install lts/*
+#
 - sudo add-apt-repository universe -y
 - sudo apt-get update -yqq
-- sudo apt-get install -yqq --no-install-suggests --no-install-recommends tree jq python-pip
+- sudo apt-get install -yqq --no-install-suggests --no-install-recommends tree jq python-pip bash
 - sudo pip install docker-compose httpie >/dev/null 2>&1
+#
+- source <(curl -s https://raw.githubusercontent.com/daggerok/bash-functions/master/main.bash)
+- stop_any 8080 80
 
 script:
 - export base=$(pwd)
@@ -41,7 +44,58 @@ script:
 - export e2e=/tmp/yo-e2e-testing
 - mkdir -p ${e2e}
 - npm i -g yo yeoman-generator
+
+# generator-jvm cli
 - yo jvm --help
+
+# scala-gradle-akka-actor
+- cd ${e2e}
+- yo jvm -n scala-gradle-akka-actor -t scala-gradle-akka-actor
+- cd scala-gradle-akka-actor/
+- ./gradlew
+- bash ./build/install/scala-gradle-akka-actor/bin/scala-gradle-akka-actor
+- docker-compose -f docker-compose-gradle.yaml down -v
+- docker-compose -f docker-compose-gradle.yaml up --build
+
+# scala-gradle-akka-persistence
+- cd ${e2e}
+- yo jvm -n scala-gradle-akka-persistence -t scala-gradle-akka-persistence
+- cd scala-gradle-akka-persistence/
+- ./gradlew
+- bash ./build/install/scala-gradle-akka-persistence/bin/scala-gradle-akka-persistence
+- docker-compose -f docker-compose-gradle.yaml down -v
+- docker-compose -f docker-compose-gradle.yaml up --build
+
+# scala-sbt-akka-actor
+- cd ${e2e}
+- yo jvm -n scala-akka-sbt-project -t scala-sbt-akka-actor
+- cd scala-akka-sbt-project/
+- ./sbtw clean compile assembly test run
+- java -jar ./target/scala-2.12/*-assembly-*.jar
+- docker-compose -f docker-compose-sbt.yaml down -v
+- docker-compose -f docker-compose-sbt.yaml up --build
+
+# scala-2.11
+- cd ${e2e}
+- yo jvm -t scala-2.11 -n scala-2.11
+- cd scala-2_11/
+- ./mvnw clean package
+- docker-compose -f docker-compose-maven.yaml down -v
+- docker-compose -f docker-compose-maven.yaml up --build
+- ./gradlew build
+- docker-compose -f docker-compose-gradle.yaml down -v
+- docker-compose -f docker-compose-gradle.yaml up --build
+
+# scala (2.12)
+- cd ${e2e}
+- yo jvm -n scala -t scala
+- cd scala/
+- ./mvnw clean package
+- docker-compose -f docker-compose-maven.yaml down -v
+- docker-compose -f docker-compose-maven.yaml up --build
+- ./gradlew build
+- docker-compose -f docker-compose-gradle.yaml down -v
+- docker-compose -f docker-compose-gradle.yaml up --build
 
 # java-parent-multi-project
 - cd ${e2e}
@@ -60,13 +114,6 @@ script:
 - cat README.adoc | grep kotlinparentmultiproject
 - ./mvnw -Pdocs
 - ./gradlew docum
-
-# scala-akka-sbt
-- cd ${e2e}
-- yo jvm -n scala-akka-sbt-project -t scala-akka-sbt
-- cd scala-akka-sbt-project/
-- ./sbtw clean compile assembly test run
-- java -jar target/scala-2.12/*-assembly-*.jar
 
 # replace dots with underscores test
 - cd ${e2e}
@@ -236,10 +283,7 @@ before_cache:
 cache:
   yarn: true
   directories:
-  - node_modules
-  - .m2
-  - .gradle
   - $HOME/.m2
   - $HOME/.sbt
   - $HOME/.gradle
-  - $HOME/.docker
+  - node_modules
