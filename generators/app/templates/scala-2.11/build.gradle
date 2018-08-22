@@ -50,8 +50,8 @@ apply from: "$projectDir/gradle/clean.gradle"
 apply from: "$projectDir/gradle/repositories.gradle"
 
 
-group = 'com.github.daggerok'
 version = '0.0.1'
+group = 'com.github.daggerok'
 sourceCompatibility = targetCompatibility = "$javaVersion"
 
 mainClassName = 'daggerok.App'
@@ -85,17 +85,14 @@ defaultTasks 'clean', 'build'
 compileJava.dependsOn(processResources)
 
 dependencies {
+  implementation "org.slf4j:slf4j-api:$slf4jVersion"
+  implementation "ch.qos.logback:logback-classic:$logbackVersion"
+  implementation "org.scala-lang:scala-library:$scalaVersion"
 
-  compile "org.slf4j:slf4j-api:$slf4jVersion"
-  compile "ch.qos.logback:logback-classic:$logbackVersion"
-
-testCompile "junit:junit:$junit4Version"
-
-  compile "org.scala-lang:scala-library:$scalaVersion"
-
-  testCompile "org.scalactic:scalactic_$scalatestVersion"
-  testCompile "org.scalatest:scalatest_$scalatestVersion"
-  testCompile "org.specs2:specs2-junit_${scalaCompatVersion}:$specs2JunitVersion"
+  testImplementation "junit:junit:$junit4Version"
+  testImplementation "org.scalactic:scalactic_$scalatestVersion"
+  testImplementation "org.scalatest:scalatest_$scalatestVersion"
+  testImplementation "org.specs2:specs2-junit_${scalaCompatVersion}:$specs2JunitVersion"
 }
 
 apply from: "$projectDir/gradle/findbugs.gradle"

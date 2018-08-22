@@ -61,8 +61,8 @@ allprojects {
   apply plugin: 'base'
   apply plugin: 'maven'
 
-  group = 'com.github.daggerok'
   version = '0.0.1'
+  group = 'com.github.daggerok'
 
   defaultTasks 'clean', 'build'
 }

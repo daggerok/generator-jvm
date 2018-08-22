@@ -30,6 +30,7 @@ plugins {
   id 'maven'
   id 'eclipse'
   id 'application'
+  id 'io.franzbecker.gradle-lombok' version '1.14'
   id 'com.github.johnrengelman.shadow' version '2.0.2'
   id 'com.avast.gradle.docker-compose' version '0.6.13'
   id 'com.jfrog.artifactory' version '4.7.5' apply false
@@ -52,8 +53,8 @@ apply from: "$projectDir/gradle/ide.gradle"
 apply from: "$projectDir/gradle/clean.gradle"
 apply from: "$projectDir/gradle/repositories.gradle"
 
-group = 'com.github.daggerok'
 version = '0.0.1'
+group = 'com.github.daggerok'
 sourceCompatibility = targetCompatibility = "$javaVersion"
 
 mainClassName = 'daggerok.App'
@@ -83,23 +84,20 @@ defaultTasks 'clean', 'installDist'
 
 compileJava.dependsOn(processResources)
 
+lombok {
+  version = project.lombokVersion
+}
+
 dependencies {
-
-  compile "com.typesafe.akka:akka-persistence_$scalaCompatVersion:$akkaVersion",
+  implementation "com.typesafe.akka:akka-persistence_$scalaCompatVersion:$akkaVersion",
     "org.fusesource.leveldbjni:leveldbjni-all:$leveldbjniVersion",
-    "org.iq80.leveldb:leveldb:$leveldbVersion"
+    "org.iq80.leveldb:leveldb:$leveldbVersion",
+    "org.slf4j:slf4j-api:$slf4jVersion",
+    "ch.qos.logback:logback-classic:$logbackVersion",
+    "org.scala-lang:scala-library:$scalaVersion"
 
-  compile "org.slf4j:slf4j-api:$slf4jVersion",
-    "ch.qos.logback:logback-classic:$logbackVersion"
-
-  compileOnly "org.projectlombok:lombok:$lombokVersion"
-  testCompileOnly "org.projectlombok:lombok:$lombokVersion"
-
-  testCompile "junit:junit:$junit4Version"
-
-  compile "org.scala-lang:scala-library:$scalaVersion"
-
-  testCompile "org.specs2:specs2-junit_$scalaCompatVersion:$specs2junitVersion",
+  testImplementation "junit:junit:$junit4Version",
+    "org.specs2:specs2-junit_$scalaCompatVersion:$specs2junitVersion",
     "org.scalactic:scalactic_$scalacticVersion",
     "org.scalatest:scalatest_$scalatestVersion"
 }

@@ -26,6 +26,7 @@ plugins {
   id 'maven'
   id 'eclipse'
   id 'application'
+  id 'io.franzbecker.gradle-lombok' version '1.14'
   id 'com.github.johnrengelman.shadow' version '2.0.2'
   id 'com.avast.gradle.docker-compose' version '0.6.13'
   id 'com.jfrog.artifactory' version '4.7.5' apply false
@@ -35,7 +36,6 @@ plugins {
   id 'cn.bestwu.propdeps-maven' version '0.0.10' apply false
   id 'cn.bestwu.propdeps-idea' version '0.0.10' apply false
   id 'cn.bestwu.propdeps' version '0.0.10' apply false
-  id 'io.franzbecker.gradle-lombok' version '1.14'
 }
 
 /*
@@ -49,8 +49,8 @@ apply from: "$projectDir/gradle/ide.gradle"
 apply from: "$projectDir/gradle/clean.gradle"
 apply from: "$projectDir/gradle/repositories.gradle"
 
-group = 'com.github.daggerok'
 version = '0.0.1'
+group = 'com.github.daggerok'
 sourceCompatibility = targetCompatibility = "$javaVersion"
 
 mainClassName = 'daggerok.App'
@@ -71,7 +71,9 @@ jar {
 }
 */
 
-lombok.version = project.lombokVersion
+lombok {
+  version = project.lombokVersion
+}
 
 allprojects {
   apply plugin: 'maven-publish'
@@ -99,17 +101,14 @@ defaultTasks 'clean', 'build'
 compileJava.dependsOn(processResources)
 
 dependencies {
+  implementation "org.slf4j:slf4j-api:$slf4jVersion"
+  implementation "ch.qos.logback:logback-classic:$logbackVersion"
+  implementation "org.scala-lang:scala-library:$scalaVersion"
 
-  compile "org.slf4j:slf4j-api:$slf4jVersion"
-  compile "ch.qos.logback:logback-classic:$logbackVersion"
-
-  testCompile "junit:junit:$junit4Version"
-
-  compile "org.scala-lang:scala-library:$scalaVersion"
-
-  testCompile "org.scalactic:scalactic_$scalatestVersion"
-  testCompile "org.scalatest:scalatest_$scalatestVersion"
-  testCompile "org.specs2:specs2-junit_$scalaCompatVersion:$specs2JunitVersion"
+  testImplementation "junit:junit:$junit4Version"
+  testImplementation "org.scalactic:scalactic_$scalatestVersion"
+  testImplementation "org.scalatest:scalatest_$scalatestVersion"
+  testImplementation "org.specs2:specs2-junit_$scalaCompatVersion:$specs2JunitVersion"
 }
 
 apply from: "$projectDir/gradle/findbugs.gradle"

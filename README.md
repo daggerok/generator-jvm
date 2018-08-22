@@ -64,11 +64,17 @@ bash mvnw com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:up
 
 ___akka-actor project___
 
+ * java 8 based project
  * scala 2.12
- * akka 2.5.14
+ * akka-actor 2.5.14
+ * lombok (slf4j + logback logging)
+ * vavr (javaslang)
  * support fatjar
  * support sbt build system
+ * support maven build system
  * support gradle build system
+ * support application scripts when using gradle
+ * support testing with junit 4 / 5
  * docker / docker-compose support
 
 type options:
@@ -77,13 +83,18 @@ type options:
 - `scala-gradle-akka-actor`
 - `scala-sbt-akka-actor`
 
-___scala akka-persistence project___
+___akka-persistence project___
 
+ * java 8 based project
  * scala 2.12
- * akka 2.5.14 / akka-persistence
+ * akka-actor 2.5.14 / akka-persistence
  * support fatjar
  * support gradle build system
  * docker / docker-compose support
+
+type options:
+
+- `scala-gradle-akka-persistence`
 
 ___java-ee thymeleaf project___
 
@@ -103,7 +114,7 @@ ___vertx project___
 
  * java 8 based Vert.x web project
  * support fatjar
- * support kotlin or java
+ * support kotlin 1.2.61
  * support maven build system
  * support gradle build system
  * docker / docker-compose support
@@ -119,7 +130,7 @@ ___spring cloud function web project___
  * spring-boot 2 / spring framework 5
  * support fatjar
  * support executable bash jar
- * support kotlin or java
+ * support kotlin 1.2.61
  * support maven build system
  * support gradle build system
  * docker / docker-compose support
@@ -135,7 +146,7 @@ ___spring-boot 2 / spring framework 5 project___
  * spring-boot 2 / spring framework 5
  * support fatjar
  * support executable bash jar
- * support kotlin or java
+ * support kotlin 1.2.61
  * support maven build system
  * support gradle build system
  * vavr (javaslang)
@@ -154,7 +165,7 @@ ___spring-boot 1 / spring framework 4 project___
  * spring-boot 1 / spring framework 4
  * support fatjar
  * support executable bash jar
- * support kotlin or java
+ * support kotlin 1.2.61
  * support maven build system
  * support gradle build system
  * vavr (javaslang)
@@ -167,20 +178,6 @@ type options:
 - `java-spring-boot-1.x`
 - `kotlin-spring-boot-1.x`
 
-___kotlin parent multi project___
-
- * java 8 based parent multi project
- * support kotlin
- * support fatjar
- * support executable bash jar
- * support kotlin
- * support maven build system
- * support gradle build system
- * vavr (javaslang)
- * lombok (slf4j + logback logging)
- * support testing with junit 4 / 5
- * docker / docker-compose support
-
 ___java-ee-faces project___
 
  * javaee 8.0 project
@@ -190,10 +187,11 @@ ___java-ee-faces project___
  * support gradle build system
  * docker / docker-compose support (Glassfish 5.0 / JBOSS EAP 7.1)
 
-___java-ee CDI full multi project___
+___java-ee EAR multi project___
 
  * javaee 8.0 project
  * EAR with EJB + CDI configured
+ * EAR without CDI at all, but could be easily added (`java-ee-cdi-multi-project`)
  * EJB3 (business services module: ejb-services)
  * EJB3 (JPA repositories module: ejb-data with embedded H2database for simplicity)
  * JAX-RS REST API
@@ -205,64 +203,10 @@ ___java-ee CDI full multi project___
  * support gradle build system
  * docker / docker-compose support (JBOSS EAP 7.1)
 
-___java-ee EJB full multi project___
+type options:
 
- * javaee 8.0 project
- * EAR without CDI at all, but could be easily added (see java-ee-cdi-multi-project)
- * EJB3 (business services module: ejb-services)
- * EJB3 (JPA repositories module: ejb-data with embedded H2database for simplicity)
- * JAX-RS REST API
- * WEB/HTML5 static content
- * Servlet and JSP with EJB usage
- * lombok (slf4j + logback logging)
- * vavr (javaslang)
- * support maven build system
- * support gradle build system
- * docker / docker-compose support (JBOSS EAP 7.1)
-
-___kotlin java-ee project___
-
- * javaee 8.0 project
- * lombok (slf4j + logback logging)
- * vavr (javaslang)
- * support kotlin
- * support maven build system
- * support gradle build system
- * support testing with junit 4 / 5
- * docker / docker-compose support (JBOSS EAP 7.1)
-
-___kotlin fat project___
-
- * java 8 based project
- * support kotlin
- * support fatjar
- * support maven build system
- * support gradle build system
- * slf4j + logback logging
- * support application scripts when using gradle
- * docker / docker-compose support
-
-___scala akka-persistence gradle project___
-
- * scala 2.12 based project
- * akka-persistence
- * lombok (slf4j + logback logging)
- * support gradle build system and application executable scripts
- * support testing using junit 4, scalactic, scalatest, specs2
- * docker / docker-compose support
-
-___java-akka project___
-
- * java 8 based project
- * akka-actor
- * lombok (slf4j + logback logging)
- * vavr (javaslang)
- * support fatjar
- * support maven build system
- * support gradle build system
- * support application scripts when using gradle
- * support testing with junit 4 / 5
- * docker / docker-compose support
+- `java-ee-cdi-full-multi-project`
+- `java-ee-ejb-full-multi-project`
 
 ___java-ee (micro-profile) project___
 
@@ -270,7 +214,7 @@ ___java-ee (micro-profile) project___
  * javaee 8.0 using wildfly-swarm micro-profile
  * support fatjar
  * support executable bash jar
- * support kotlin
+ * support kotlin 1.2.61
  * support maven build system
  * support gradle build system
  * vavr (javaslang)
@@ -278,16 +222,9 @@ ___java-ee (micro-profile) project___
  * support testing with junit 4 / 5
  * docker / docker-compose support
 
-___scala project___
+type options:
 
- * scala 2.12 based project
- * lombok (slf4j + logback logging)
- * support fatjar
- * support maven build system
- * support gradle build system
- * support application executable scripts when using gradle
- * support testing using junit 4, scalactic, scalatest, specs2
- * docker / docker-compose support
+- `kotlin-wildfly-swarm`
 
 ___java-ee project___
 
@@ -295,41 +232,55 @@ ___java-ee project___
  * javaee 8.0
  * lombok (slf4j + logback logging)
  * vavr (javaslang)
+ * support kotlin 1.2.61
  * support maven build system
  * support gradle build system
  * support testing with junit 4 / 5
  * docker / docker-compose support (JBOSS EAP 7)
 
-___java parent multi project___
+type options:
+
+- `java-ee`
+- `kotlin-ee`
+
+___parent multi project___
 
  * java 8 based parent multi project
- * vavr (javaslang)
- * support maven build system
- * support gradle build system
- * docker / docker-compose support
-
-___scala_2.11 project___
-
- * scala 2.11 based project
- * lombok (slf4j + logback logging)
  * support fatjar
+ * support kotlin 1.2.61
+ * support executable bash jar
  * support maven build system
  * support gradle build system
- * support application scripts (gradle shadow plugin)
- * support testing using junit 4, scalactic, scalatest, specs2
+ * vavr (javaslang)
+ * lombok (slf4j + logback logging)
+ * support testing with junit 4 / 5
  * docker / docker-compose support
 
-___java project___
+type options:
+
+- `java-parent-multi-project`
+- `kotlin-parent-multi-project`
+
+___simple fat project___
 
  * java 8 based project
  * lombok (slf4j + logback logging)
  * vavr (javaslang)
  * support fatjar
+ * support scala 2.12 / 2.11
  * support maven build system
  * support gradle build system
- * support application scripts when using gradle
- * support testing with junit 4 / 5
  * docker / docker-compose support
+ * support application scripts when using gradle
+ * support application executable scripts when using gradle
+ * support testing using junit 4, scalactic, scalatest, specs2
+
+type options:
+
+- `java`
+- `kotlin`
+- `scala`
+- `scala-2.11`
 
 ## Also inside all projects available
 
