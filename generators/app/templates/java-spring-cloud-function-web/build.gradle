@@ -34,7 +34,7 @@ buildscript {
 }
 
 plugins {
-  id 'org.asciidoctor.convert' version '1.5.7' apply false
+  id 'org.asciidoctor.convert' version '1.5.8.1' apply false
   id 'org.ajoberstar.git-publish' version '0.3.0' apply false
   id 'io.spring.dependency-management' version '1.0.6.RELEASE' apply false
   id 'org.springframework.boot' version '2.0.4.RELEASE' apply false
