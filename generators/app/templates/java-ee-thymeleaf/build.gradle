@@ -23,7 +23,7 @@ buildscript {
 }
 
 plugins {
-  id 'com.avast.gradle.docker-compose' version '0.6.13'
+  id 'com.avast.gradle.docker-compose' version '0.6.18'
   id 'org.asciidoctor.convert' version '1.5.8.1' apply false
   id 'org.ajoberstar.git-publish' version '0.3.0' apply false
   id 'io.franzbecker.gradle-lombok' version '1.14' apply false

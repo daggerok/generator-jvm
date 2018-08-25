@@ -309,3 +309,6 @@ cache:
   - $HOME/.sbt
   - $HOME/.gradle
   - node_modules
+
+notifications:
+  email: false
