@@ -11,28 +11,26 @@
   <link rel="icon" type="image/x-icon" th:href="@{/assets/favicon.ico}" />
   <link rel="stylesheet" type="text/css" th:href="@{/webjars/material-design-icons/3.0.1/material-icons.css}"
         href="/webjars/material-design-icons/3.0.1/material-icons.css"/>
-  <link rel="stylesheet" type="text/css" th:href="@{/webjars/materializecss/1.0.0-rc.2/css/materialize.min.css}"
-        href="/webjars/materializecss/1.0.0-rc.2/css/materialize.css"/>
+  <link rel="stylesheet" type="text/css" th:href="@{/webjars/materializecss/0.100.2/css/materialize.min.css}"
+        href="/webjars/materializecss/0.100.2/css/materialize.css"/>
   <link rel="stylesheet" type="text/css" th:href="@{/assets/styles.css}" />
   <!-- custom styles will be added here...-->
-  <!--/*@thymesVar id="view" type="java.lang.String"*/-->
   <th:block th:include="${view} :: header" />
 </head>
 <body>
 
-<!--/*@thymesVar id="message" type="java.lang.String"*/-->
 <div th:text="${message}">Here should be some basic message...</div>
-<!--/*@thymesVar id="data" type="java.util.ArrayList"*/-->
 <ul th:each="item : ${data}">
   <li th:text="${item}"></li>
 </ul>
 
 <!-- custom view specific stuff: -->
-<!--/*@thymesVar id="view" type="java.lang.String"*/-->
 <div th:replace="${view} :: content"></div>
 
-<script th:src="@{/webjars/materializecss/1.0.0-rc.2/js/materialize.min.js}"
-        src="/webjars/materializecss/1.0.0-rc.2/js/materialize.js"></script>
+<script th:src="@{/webjars/jquery/3.3.1-1/jquery.min.js}"
+        src="/webjars/jquery/3.3.1-1/jquery.js"></script>
+<script th:src="@{/webjars/materializecss/0.100.2/js/materialize.min.js}"
+        src="/webjars/materializecss/0.100.2/js/materialize.js"></script>
 <script th:src="@{/assets/scripts.js}"></script>
 <!-- custom scripts will be added here...-->
 <th:block th:include="${view} :: footer" />
