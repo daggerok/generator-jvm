@@ -69,8 +69,8 @@ script:
 - bash mvnw clean package >/dev/null 2>&1
 - java -jar target/*-all.jar
 #
-- bash mvnw com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:up -P docker
-- bash mvnw com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:down -P docker
+- bash mvnw docker-compose:up -P docker
+- bash mvnw docker-compose:down -P docker
 
 before_deploy:
 - cd ${root}

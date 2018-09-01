@@ -48,6 +48,14 @@ script:
 # generator-jvm cli
 - yo jvm --help
 
+# kotlin-spring-cloud-function-web
+- cd ${e2e}
+- yo jvm -n kotlinspringcloudfunctionweb -t kotlin-spring-cloud-function-web
+- cd kotlinspringcloudfunctionweb
+- ./gradlew -S >/dev/null
+- ./mvnw clean deploy
+- ./mvnw -Pdocs
+
 # scala-sbt
 - cd ${e2e}
 - yo jvm -n scala-sbt -t scala-sbt
@@ -271,14 +279,6 @@ script:
 - cd ${e2e}
 - yo jvm -n kotlinspringboot1x -t kotlin-spring-boot-1.x
 - cd kotlinspringboot1x
-- ./gradlew -S >/dev/null
-- ./mvnw clean deploy >/dev/null
-- ./mvnw -Pdocs
-
-# kotlin-spring-cloud-function-web
-- cd ${e2e}
-- yo jvm -n kotlinspringcloudfunctionweb -t kotlin-spring-cloud-function-web
-- cd kotlinspringcloudfunctionweb
 - ./gradlew -S >/dev/null
 - ./mvnw clean deploy >/dev/null
 - ./mvnw -Pdocs

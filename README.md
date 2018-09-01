@@ -57,7 +57,7 @@ docker-compose
 # gradle
 bash gradlew composeUp
 # maven
-bash mvnw com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:up
+bash mvnw docker-compose:up
 ```
 
 ## What's inside?

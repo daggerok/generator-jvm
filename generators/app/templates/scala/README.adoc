@@ -1,4 +1,4 @@
-= <%= projectDirectory %>
+= <%= projectDirectory %> image:https://travis-ci.org/daggerok/<%= projectDirectory %>.svg?branch=master["Build Status", link="https://travis-ci.org/daggerok/<%= projectDirectory %>"]
 
 ////
 image:https://travis-ci.org/daggerok/<%= projectDirectory %>.svg?branch=master["Build Status", link="https://travis-ci.org/daggerok/<%= projectDirectory %>"]
@@ -10,7 +10,7 @@ image:https://img.shields.io/bitbucket/pipelines/daggerok/<%= projectDirectory %
 
 - scala: 2.12
 
-//Read link:https://daggerok.github.io/<%= projectDirectory %>[project reference documentation]
+Read link:https://daggerok.github.io/<%= projectDirectory %>[project reference documentation]
 
 .build
 [source,bash]
@@ -20,8 +20,8 @@ image:https://img.shields.io/bitbucket/pipelines/daggerok/<%= projectDirectory %
 java -jar target/*-all.jar
 
 # maven docker / docker-compose
-./mvnw com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:up -P docker
-./mvnw com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:down -P docker
+./mvnw docker-compose:up -P docker
+./mvnw docker-compose:down -P docker
 
 # gradle jar
 ./gradlew

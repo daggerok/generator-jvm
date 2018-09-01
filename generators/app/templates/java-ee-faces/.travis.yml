@@ -60,11 +60,11 @@ script:
 - bash ./gradlew composeDown >/dev/null 2>&1
 # faces maven
 - bash ./mvnw >/dev/null 2>&1
-- bash ./mvnw clean package com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:up -P docker
+- bash ./mvnw clean package docker-compose:up -P docker
 - sleep 40
 - http :8080/app/
 - http :9990/console/index.html
-- bash ./mvnw com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:down -P docker >/dev/null 2>&1
+- bash ./mvnw docker-compose:down -P docker >/dev/null 2>&1
 
 before_deploy:
 - cd ${root}

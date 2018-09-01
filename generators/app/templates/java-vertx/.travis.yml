@@ -84,12 +84,12 @@ script:
 - http :8080
 - stop_any 8080
 #
-- bash mvnw com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:up -P docker
+- bash mvnw docker-compose:up -P docker
 - wait_for 8080
 - sleep 10
 - http :8080
 - stop_any 8080
-- bash mvnw com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:down -P docker
+- bash mvnw docker-compose:down -P docker
 
 before_deploy:
 - cd ${root}

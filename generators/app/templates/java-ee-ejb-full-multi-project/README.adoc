@@ -1,4 +1,4 @@
-= <%= projectDirectory %>
+= <%= projectDirectory %> image:https://travis-ci.org/daggerok/<%= projectDirectory %>.svg?branch=master["Build Status", link="https://travis-ci.org/daggerok/<%= projectDirectory %>"]
 
 ////
 image:https://travis-ci.org/daggerok/<%= projectDirectory %>.svg?branch=master["Build Status", link="https://travis-ci.org/daggerok/<%= projectDirectory %>"]
@@ -10,19 +10,19 @@ Don't ask...
 
 //tag::content[]
 
-//Read link:https://daggerok.github.io/<%= projectDirectory %>[project reference documentation]
+Read link:https://daggerok.github.io/<%= projectDirectory %>[project reference documentation]
 
 .build and with docker
 [source,bash]
 ----
 # maven
 ./mvnw
-./mvnw -pl ear com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:up -P docker
+./mvnw -pl ear docker-compose:up -P docker
 http :8080/web/
 http --form :8080/servlet/api/ name=Max
 http post :8080/rest/api/ name=Maksim
 http :8080/jsp/
-./mvnw -pl ear com.dkanejs.maven.plugins:docker-compose-maven-plugin:1.0.1:down -P docker
+./mvnw -pl ear docker-compose:down -P docker
 
 # gradle
 ./gradlew
