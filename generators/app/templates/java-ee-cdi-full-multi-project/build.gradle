@@ -1,10 +1,11 @@
 buildscript {
   ext {
     slf4jVersion = '1.7.25'
+    assertkVersion = '0.12'
     jgivenVersion = '0.15.3'
     logbackVersion = '1.2.3'
     lombokVersion = '1.18.2'
-    assertjVersion = '3.10.0'
+    assertjVersion = '3.11.0'
     asciidoctorjPdfVersion = '1.5.0-alpha.15'
   }
 

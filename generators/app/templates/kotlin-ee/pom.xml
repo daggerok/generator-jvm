@@ -20,7 +20,8 @@
     <jakson-kotlin.version>2.9.6</jakson-kotlin.version>
     <maven.compiler.target>1.8</maven.compiler.target>
     <resteasy.version>3.5.0.Final</resteasy.version>
-    <assertj.version>3.10.0</assertj.version>
+    <assertj.version>3.11.0</assertj.version>
+    <assertk.version>0.12</assertk.version>
     <lombok.version>1.18.2</lombok.version>
     <kotlin.version>1.2.61</kotlin.version>
     <jgiven.version>0.15.3</jgiven.version>
@@ -135,6 +136,12 @@
       <groupId>org.jetbrains.kotlin</groupId>
       <artifactId>kotlin-test</artifactId>
       <version>${kotlin.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.willowtreeapps.assertk</groupId>
+      <artifactId>assertk-jvm</artifactId>
+      <version>${assertk.version}</version>
       <scope>test</scope>
     </dependency>
     <!-- assertj -->

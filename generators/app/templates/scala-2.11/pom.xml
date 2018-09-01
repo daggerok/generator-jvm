@@ -22,7 +22,8 @@
     <scalatest.version>3.0.5</scalatest.version>
     <junit4.version>4.12</junit4.version>
     <specs2.junit.version>4.3.3</specs2.junit.version>
-    <assertj.version>3.10.0</assertj.version>
+    <assertj.version>3.11.0</assertj.version>
+    <assertk.version>0.10</assertk.version>
     <lombok.version>1.18.2</lombok.version>
     <jgiven.version>0.15.3</jgiven.version>
     <slf4j.version>1.7.25</slf4j.version>
