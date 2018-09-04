@@ -10,6 +10,8 @@ buildscript {
     assertjVersion = '3.11.0'
     lombokVersion = '1.18.2'
     ozarkVersion = '1.0.0-m03'
+    materializecssVersion = '1.0.0-rc.1'
+    materialDesignIconsVersion = '3.0.1'
     hibernateCoreVersion = '4.2.18.Final'
     asciidoctorjPdfVersion = '1.5.0-alpha.15'
     junitPlatformVersion = '1.2.0'

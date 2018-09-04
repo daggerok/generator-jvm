@@ -7,6 +7,9 @@ defaultTasks 'clean', 'build'
 compileJava.dependsOn(processResources)
 
 dependencies {
+  //implementation "org.webjars:materializecss:$materializecssVersion"
+  //implementation "org.webjars:material-design-icons:$materialDesignIconsVersion"
+  //implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 
   // spring-boot
   implementation 'org.springframework.boot:spring-boot-starter-webflux'

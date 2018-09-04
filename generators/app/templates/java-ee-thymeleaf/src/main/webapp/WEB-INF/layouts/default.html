@@ -28,13 +28,14 @@
 </ul>
 
 <!-- custom view specific stuff: -->
+<!-- custom scripts will be added here...-->
+<th:block th:include="${view} :: footer" />
 <!--/*@thymesVar id="view" type="java.lang.String"*/-->
 <div th:replace="${view} :: content"></div>
 
 <script th:src="@{/webjars/materializecss/1.0.0-rc.2/js/materialize.min.js}"
         src="/webjars/materializecss/1.0.0-rc.2/js/materialize.js"></script>
 <script th:src="@{/assets/scripts.js}"></script>
-<!-- custom scripts will be added here...-->
-<th:block th:include="${view} :: footer" />
+<script>M.AutoInit(document.body);</script>
 </body>
 </html>

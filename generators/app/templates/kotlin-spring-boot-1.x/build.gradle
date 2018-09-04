@@ -2,6 +2,8 @@ buildscript {
   ext {
     javaVersion = JavaVersion.VERSION_1_8
     springBootVersion = '1.5.15.RELEASE'
+    materializecssVersion = '1.0.0-rc.1'
+    materialDesignIconsVersion = '3.0.1'
     springCloudVersion = 'Edgware.SR4'
     jacksonKotlinVersion = '2.9.6'
     lombokVersion = '1.18.2'

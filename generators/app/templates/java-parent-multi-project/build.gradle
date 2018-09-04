@@ -12,6 +12,8 @@ buildscript {
     jacksonKotlinVersion = '2.9.6'
     springCloudVersion = 'Finchley.SR1'
     springBootVersion = '2.0.4.RELEASE'
+    materializecssVersion = '1.0.0-rc.1'
+    materialDesignIconsVersion = '3.0.1'
     asciidoctorjPdfVersion = '1.5.0-alpha.15'
     assertjVersion = '3.11.0'
     assertkVersion = '0.12'

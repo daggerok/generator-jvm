@@ -5,6 +5,9 @@ apply plugin: 'io.spring.dependency-management'
 compileJava.dependsOn(processResources)
 
 dependencies {
+  //implementation "org.webjars:materializecss:$materializecssVersion"
+  //implementation "org.webjars:material-design-icons:$materialDesignIconsVersion"
+  //implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 
   // spring-cloud
   implementation "org.springframework.cloud:spring-cloud-function-web:$springCloudFunctionVersion"

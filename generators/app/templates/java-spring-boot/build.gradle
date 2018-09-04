@@ -1,6 +1,8 @@
 buildscript {
   ext {
     javaVersion = JavaVersion.VERSION_1_8
+    materializecssVersion = '1.0.0-rc.1'
+    materialDesignIconsVersion = '3.0.1'
     springBootVersion = '2.0.4.RELEASE'
     springCloudVersion = 'Finchley.SR1'
     lombokVersion = '1.18.2'
