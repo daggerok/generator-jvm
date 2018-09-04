@@ -15,7 +15,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <hibernate.core.version>4.2.18.Final</hibernate.core.version>
-    <spring-cloud.version>Finchley.SR1</spring-cloud.version>
+    <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
     <spring-boot.version>2.0.4.RELEASE</spring-boot.version>
     <junit.platform.version>1.2.0</junit.platform.version>
     <junit.jupiter.version>5.2.0</junit.jupiter.version>

@@ -20,10 +20,10 @@
   </parent>
 
   <properties>
-    <spring-cloud-function.version>1.0.0.RC1</spring-cloud-function.version>
+    <spring-cloud-function.version>1.0.1.RELEASE</spring-cloud-function.version>
     <spring-boot.version>${project.parent.version}</spring-boot.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <spring-cloud.version>Finchley.SR1</spring-cloud.version>
+    <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
     <junit.platform.version>1.2.0</junit.platform.version>
     <junit.jupiter.version>5.1.0</junit.jupiter.version>
     <maven.compiler.source>1.8</maven.compiler.source>

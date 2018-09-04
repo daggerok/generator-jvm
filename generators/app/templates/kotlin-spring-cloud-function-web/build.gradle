@@ -1,9 +1,9 @@
 buildscript {
   ext {
-    springCloudFunctionVersion = '1.0.0.RC1'
-    javaVersion = JavaVersion.VERSION_1_8
     springBootVersion = '2.0.4.RELEASE'
-    springCloudVersion = 'Finchley.SR1'
+    springCloudVersion = 'Finchley.RELEASE'
+    springCloudFunctionVersion = '1.0.1.RELEASE'
+    javaVersion = JavaVersion.VERSION_1_8
     jacksonKotlinVersion = '2.9.6'
     lombokVersion = '1.18.2'
     logbackVersion = '1.2.3'
