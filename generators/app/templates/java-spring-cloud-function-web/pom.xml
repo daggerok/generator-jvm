@@ -20,6 +20,8 @@
   </parent>
 
   <properties>
+    <materializecss.version>1.0.0-rc.2</materializecss.version>
+    <material.design.icons.version>3.0.1</material.design.icons.version>
     <spring-cloud-function.version>1.0.1.RELEASE</spring-cloud-function.version>
     <spring-boot.version>${project.parent.version}</spring-boot.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -94,6 +96,23 @@
   </dependencyManagement>
 
   <dependencies>
+    <!--
+    <dependency>
+      <groupId>org.webjars</groupId>
+      <artifactId>material-design-icons</artifactId>
+      <version>${material.design.icons.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.webjars</groupId>
+      <artifactId>materializecss</artifactId>
+      <version>${materializecss.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-thymeleaf</artifactId>
+    </dependency>
+    -->
+
     <dependency>
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-function-web</artifactId>
@@ -132,6 +151,7 @@
       <version>${assertj.version}</version>
       <scope>test</scope>
     </dependency>
+
     <!-- junit 4 -->
     <dependency>
       <groupId>junit</groupId>
@@ -145,6 +165,7 @@
       <version>${junit.jupiter.version}</version>
       <scope>test</scope>
     </dependency>
+
     <!-- junit 5 -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
@@ -176,6 +197,7 @@
       <version>${junit.jupiter.version}</version>
       <scope>test</scope>
     </dependency>
+
     <!-- jgiven -->
     <dependency>
       <groupId>com.tngtech.jgiven</groupId>

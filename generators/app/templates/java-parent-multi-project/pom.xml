@@ -17,6 +17,8 @@
   </modules>
 
   <properties>
+    <materializecss.version>1.0.0-rc.2</materializecss.version>
+    <material.design.icons.version>3.0.1</material.design.icons.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
@@ -27,11 +29,25 @@
   </properties>
 
   <dependencies>
+    <!--
+    <dependency>
+      <groupId>org.webjars</groupId>
+      <artifactId>material-design-icons</artifactId>
+      <version>${material.design.icons.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.webjars</groupId>
+      <artifactId>materializecss</artifactId>
+      <version>${materializecss.version}</version>
+    </dependency>
+    -->
+
     <dependency>
       <groupId>io.vavr</groupId>
       <artifactId>vavr</artifactId>
       <version>${vavr.version}</version>
     </dependency>
+
     <!-- assertj -->
     <dependency>
       <groupId>org.assertj</groupId>
@@ -39,6 +55,7 @@
       <version>${assertj.version}</version>
       <scope>test</scope>
     </dependency>
+
     <!-- jgiven -->
     <dependency>
       <groupId>com.tngtech.jgiven</groupId>

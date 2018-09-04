@@ -17,6 +17,8 @@
   </modules>
 
   <properties>
+    <materializecss.version>1.0.0-rc.2</materializecss.version>
+    <material.design.icons.version>3.0.1</material.design.icons.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
     <junit.platform.version>1.2.0</junit.platform.version>
@@ -51,6 +53,7 @@
       <optional>true</optional>
     </dependency>
     -->
+
     <!-- logging -->
     <!--
     <dependency>
@@ -64,6 +67,7 @@
       <version>1.2.3</version>
     </dependency>
     -->
+
     <!-- Kotlin -->
     <!--
     <dependency>
@@ -90,6 +94,7 @@
       <version>${kotlin.version}</version>
       <scope>test</scope>
     </dependency>
+
     <!-- assertj -->
     <dependency>
       <groupId>org.assertj</groupId>
@@ -103,6 +108,7 @@
       <version>${assertk.version}</version>
       <scope>test</scope>
     </dependency>
+
     <!-- junit 4 -->
     <dependency>
       <groupId>junit</groupId>
@@ -116,6 +122,7 @@
       <version>${junit.jupiter.version}</version>
       <scope>test</scope>
     </dependency>
+
     <!-- junit 5 -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
@@ -141,6 +148,7 @@
       <version>${junit.platform.version}</version>
       <scope>test</scope>
     </dependency>
+
     <!-- jgiven -->
     <dependency>
       <groupId>com.tngtech.jgiven</groupId>

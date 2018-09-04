@@ -13,6 +13,8 @@
   <packaging>war</packaging>
 
   <properties>
+    <materializecss.version>1.0.0-rc.2</materializecss.version>
+    <material.design.icons.version>3.0.1</material.design.icons.version>
     <maven.compiler.source>${maven.compiler.target}</maven.compiler.source>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <junit.platform.version>1.2.0</junit.platform.version>
@@ -33,6 +35,19 @@
   </properties>
 
   <dependencies>
+    <!--
+    <dependency>
+      <groupId>org.webjars</groupId>
+      <artifactId>material-design-icons</artifactId>
+      <version>${material.design.icons.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.webjars</groupId>
+      <artifactId>materializecss</artifactId>
+      <version>${materializecss.version}</version>
+    </dependency>
+    -->
+
     <!-- Kotlin -->
     <dependency>
       <groupId>com.fasterxml.jackson.module</groupId>
@@ -49,6 +64,7 @@
       <artifactId>kotlin-reflect</artifactId>
       <version>${kotlin.version}</version>
     </dependency>
+
     <!-- JavaEE-->
     <dependency>
       <groupId>javax</groupId>
@@ -56,6 +72,7 @@
       <version>${javaee.version}</version>
       <scope>provided</scope>
     </dependency>
+
     <!-- H2 -->
     <dependency>
       <groupId>com.h2database</groupId>
@@ -72,6 +89,7 @@
       <version>4.2.18.Final</version>
     </dependency>
     -->
+
     <!-- REST / JSON -->
     <!--
     <dependency>
@@ -118,6 +136,7 @@
       <optional>true</optional>
       <scope>provided</scope>
     </dependency>
+
     <!-- Logging -->
     <dependency>
       <groupId>org.slf4j</groupId>
@@ -131,6 +150,7 @@
       <version>${slf4j.version}</version>
       <scope>test</scope>
     </dependency>
+
     <!-- testing -->
     <dependency>
       <groupId>org.jetbrains.kotlin</groupId>
@@ -144,6 +164,7 @@
       <version>${assertk.version}</version>
       <scope>test</scope>
     </dependency>
+
     <!-- assertj -->
     <dependency>
       <groupId>org.assertj</groupId>
@@ -151,6 +172,7 @@
       <version>${assertj.version}</version>
       <scope>test</scope>
     </dependency>
+
     <!-- junit 4 -->
     <dependency>
       <groupId>junit</groupId>
@@ -164,6 +186,7 @@
       <version>${junit.jupiter.version}</version>
       <scope>test</scope>
     </dependency>
+
     <!-- junit 5 -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
@@ -196,6 +219,7 @@
       <scope>test</scope>
       <optional>true</optional>
     </dependency>
+
     <!-- jgiven -->
     <dependency>
       <groupId>com.tngtech.jgiven</groupId>

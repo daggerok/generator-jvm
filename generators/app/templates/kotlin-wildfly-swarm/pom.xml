@@ -13,6 +13,8 @@
   <packaging>war</packaging>
 
   <properties>
+    <materializecss.version>1.0.0-rc.2</materializecss.version>
+    <material.design.icons.version>3.0.1</material.design.icons.version>
     <maven.compiler.source>${maven.compiler.target}</maven.compiler.source>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
@@ -48,6 +50,19 @@
   </dependencyManagement>
 
   <dependencies>
+    <!--
+    <dependency>
+      <groupId>org.webjars</groupId>
+      <artifactId>material-design-icons</artifactId>
+      <version>${material.design.icons.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.webjars</groupId>
+      <artifactId>materializecss</artifactId>
+      <version>${materializecss.version}</version>
+    </dependency>
+    -->
+
     <!-- wildfly swarm -->
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
@@ -174,6 +189,7 @@
       <version>${junit.jupiter.version}</version>
       <scope>test</scope>
     </dependency>
+
     <!-- junit 5 -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
@@ -206,6 +222,7 @@
       <scope>test</scope>
       <optional>true</optional>
     </dependency>
+
     <!-- jgiven -->
     <dependency>
       <groupId>com.tngtech.jgiven</groupId>
