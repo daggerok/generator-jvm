@@ -1,6 +1,6 @@
 buildscript {
   ext {
-    springBootVersion = '1.5.15.RELEASE'
+    springBootVersion = '1.5.16.RELEASE'
     springCloudVersion = 'Edgware.RELEASE'
     javaVersion = JavaVersion.VERSION_1_8
     materializecssVersion = '1.0.0-rc.1'
@@ -8,7 +8,7 @@ buildscript {
     jacksonKotlinVersion = '2.9.6'
     lombokVersion = '1.18.2'
     logbackVersion = '1.2.3'
-    kotlinVersion = '1.2.61'
+    kotlinVersion = '1.2.70'
     slf4jVersion = '1.7.25'
     vavrVersion = '0.9.2'
 
@@ -41,14 +41,14 @@ plugins {
   id 'org.asciidoctor.convert' version '1.5.8.1' apply false
   id 'org.ajoberstar.git-publish' version '0.3.0' apply false
 
-  id 'org.jetbrains.kotlin.jvm' version '1.2.61' apply false
-  id 'org.jetbrains.kotlin.kapt' version '1.2.61' apply false
-  id 'org.jetbrains.kotlin.plugin.noarg' version '1.2.61' apply false
-  id 'org.jetbrains.kotlin.plugin.spring' version '1.2.61' apply false
-  id 'org.jetbrains.kotlin.plugin.allopen' version '1.2.61' apply false
+  id 'org.jetbrains.kotlin.jvm' version '1.2.70' apply false
+  id 'org.jetbrains.kotlin.kapt' version '1.2.70' apply false
+  id 'org.jetbrains.kotlin.plugin.noarg' version '1.2.70' apply false
+  id 'org.jetbrains.kotlin.plugin.spring' version '1.2.70' apply false
+  id 'org.jetbrains.kotlin.plugin.allopen' version '1.2.70' apply false
 
   id 'io.spring.dependency-management' version '1.0.6.RELEASE' apply false
-  id 'org.springframework.boot' version '1.5.15.RELEASE' apply false
+  id 'org.springframework.boot' version '1.5.16.RELEASE' apply false
   id 'com.avast.gradle.docker-compose' version '0.6.18' apply false
   id 'io.franzbecker.gradle-lombok' version '1.14' apply false
   id 'cn.bestwu.propdeps-eclipse' version '0.0.10' apply false
@@ -60,7 +60,7 @@ plugins {
 
 /*
 wrapper {
-  gradleVersion = '4.10'
+  gradleVersion = '4.10.1'
   distributionType = 'BIN'
 }
 */

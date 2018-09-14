@@ -15,7 +15,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.0.4.RELEASE</version>
+    <version>2.0.5.RELEASE</version>
     <relativePath/>
   </parent>
 
@@ -35,7 +35,7 @@
     <assertj.version>3.11.0</assertj.version>
     <assertk.version>0.12</assertk.version>
     <lombok.version>1.18.2</lombok.version>
-    <kotlin.version>1.2.61</kotlin.version>
+    <kotlin.version>1.2.70</kotlin.version>
     <jgiven.version>0.15.3</jgiven.version>
     <junit4.version>4.12</junit4.version>
     <vavr.version>0.9.2</vavr.version>

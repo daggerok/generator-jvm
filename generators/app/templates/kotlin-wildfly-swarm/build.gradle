@@ -6,7 +6,7 @@ buildscript {
     slf4jVersion = '1.7.25'
     assertkVersion = '0.12'
     logbackVersion = '1.2.3'
-    kotlinVersion = '1.2.61'
+    kotlinVersion = '1.2.70'
     jgivenVersion = '0.15.3'
     lombokVersion = '1.18.2'
     assertjVersion = '3.11.0'
@@ -31,11 +31,11 @@ plugins {
   id 'maven'
   id 'eclipse'
 
-  id 'org.jetbrains.kotlin.jvm' version '1.2.61' apply false
-  id 'org.jetbrains.kotlin.kapt' version '1.2.61' apply false
-  id 'org.jetbrains.kotlin.plugin.noarg' version '1.2.61' apply false
-  id 'org.jetbrains.kotlin.plugin.spring' version '1.2.61' apply false
-  id 'org.jetbrains.kotlin.plugin.allopen' version '1.2.61' apply false
+  id 'org.jetbrains.kotlin.jvm' version '1.2.70' apply false
+  id 'org.jetbrains.kotlin.kapt' version '1.2.70' apply false
+  id 'org.jetbrains.kotlin.plugin.noarg' version '1.2.70' apply false
+  id 'org.jetbrains.kotlin.plugin.spring' version '1.2.70' apply false
+  id 'org.jetbrains.kotlin.plugin.allopen' version '1.2.70' apply false
 
   id 'cn.bestwu.propdeps-eclipse' version '0.0.10' apply false
   id 'cn.bestwu.propdeps-maven' version '0.0.10' apply false
@@ -54,7 +54,7 @@ apply plugin: 'wildfly-swarm'
 
 /*
 wrapper {
-  gradleVersion = '4.10'
+  gradleVersion = '4.10.1'
   distributionType = 'BIN'
 }
 */
