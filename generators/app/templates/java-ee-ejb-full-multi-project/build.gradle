@@ -15,6 +15,7 @@ buildscript {
 }
 
 plugins {
+  id 'com.gradle.build-scan' version '1.16'
   id 'idea'
   id 'eclipse'
   id 'org.asciidoctor.convert' version '1.5.8.1' apply false
@@ -68,5 +69,7 @@ subprojects { p ->
 }
 
 apply from: "$projectDir/gradle/findbugs.gradle"
+apply from: "$projectDir/gradle/jacoco.gradle"
 apply from: "$projectDir/gradle/docker-compose.gradle"
 apply from: "$projectDir/gradle/docs.gradle"
+apply from: "$projectDir/gradle/build-scan.gradle"

@@ -9,18 +9,33 @@ import reactor.core.publisher.toMono
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
+import org.springframework.core.io.ClassPathResource
+
+import org.springframework.web.reactive.function.server.RenderingResponse.create
+import org.springframework.web.reactive.function.server.ServerResponse
+import reactor.core.publisher.Mono
+
 @SpringBootApplication
 class App {
 
-  @Bean fun routes() = router {
+  @Bean
+  fun routes() = router {
     ("/").nest {
+      contentType(TEXT_HTML)
+      GET("/") {
+        //ok().render("index", mapOf("message" to "ololo trololo"))
+        create("index")
+          .modelAttribute("message", "ololo trololo")
+          .build() as Mono<ServerResponse>
+      }
       contentType(APPLICATION_JSON_UTF8)
-      GET("/**") {
+      GET("/api/**") {
         ok().body(
           mapOf("hello" to "world").toMono()
         )
       }
     }
+    resources("/**", ClassPathResource("/public"))
   }
 }
 

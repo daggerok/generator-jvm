@@ -10,7 +10,7 @@ buildscript {
     junitJupiterVersion = '5.2.0'
     junitPlatformVersion = '1.3.0'
     jacksonKotlinVersion = '2.9.6'
-    materializecssVersion = '1.0.0-rc.1'
+    materializecssVersion = '1.0.0-rc.2'
     materialDesignIconsVersion = '3.0.1'
     springBootVersion = '2.0.5.RELEASE'
     springCloudVersion = 'Finchley.RELEASE'
@@ -27,6 +27,7 @@ buildscript {
 }
 
 plugins {
+  id 'com.gradle.build-scan' version '1.16'
   id 'idea'
   id 'eclipse'
   id 'com.avast.gradle.docker-compose' version '0.6.18'
@@ -49,58 +50,9 @@ wrapper {
 apply from: "$projectDir/gradle/ide.gradle"
 apply from: "$projectDir/gradle/clean.gradle"
 apply from: "$projectDir/gradle/repositories.gradle"
-
-allprojects {
-
-  apply plugin: 'base'
-  apply plugin: 'maven'
-
-  version = '0.0.1'
-  group = 'com.github.daggerok'
-
-  defaultTasks 'clean', 'build'
-}
-
-subprojects {
-
-  apply plugin: 'java'
-  sourceCompatibility = targetCompatibility = "$javaVersion"
-
-  apply plugin: 'io.franzbecker.gradle-lombok'
-  lombok.version = project.lombokVersion
-
-  dependencies {
-    // In java we trust...
-    compile "io.vavr:vavr:$vavrVersion"
-
-    compile "org.slf4j:slf4j-api:$slf4jVersion"
-    compile "ch.qos.logback:logback-classic:$logbackVersion"
-  }
-}
-
+apply from: "$projectDir/gradle/java.gradle"
 apply from: "$projectDir/gradle/findbugs.gradle"
+apply from: "$projectDir/gradle/jacoco.gradle"
 apply from: "$projectDir/gradle/docker-compose.gradle"
 apply from: "$projectDir/gradle/docs.gradle"
-
-/*
-// spring-boot multi-module preamble:
-// this in dependencies closure really doesn't work:
-// compile project(":submodule").sourceSets.main.output // dot't do this!
-
-// 1. in spring-boot submodules use next configs:
-
-bootJar {
-  enabled = false
-}
-jar {
-  enabled = true
-}
-
-// 2. in spring-boot target main module to fix gradle compile build + lombok issue use all of these:
-
-dependencies {
-  annotationProcessor(project(":submodule"))
-  compileOnly(project(":submodule"))
-  compile(project(":submodule"))
-}
-*/
+apply from: "$projectDir/gradle/build-scan.gradle"

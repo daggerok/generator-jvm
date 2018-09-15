@@ -23,11 +23,11 @@
   </modules>
 
   <properties>
-    <materializecss.version>1.0.0-rc.2</materializecss.version>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.source>${maven.compiler.target}</maven.compiler.source>
     <material.design.icons.version>3.0.1</material.design.icons.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>${maven.compiler.target}</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
+    <materializecss.version>1.0.0-rc.2</materializecss.version>
     <assertj.version>3.11.0</assertj.version>
     <assertk.version>0.12</assertk.version>
     <lombok.version>1.18.2</lombok.version>
@@ -128,6 +128,7 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
         <version>3.0.0</version>
+
         <configuration>
           <minmemory>128m</minmemory>
           <maxmemory>512m</maxmemory>
@@ -138,6 +139,11 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.7.0</version>
+
+        <configuration>
+          <source>${maven.compiler.source}</source>
+          <target>${maven.compiler.target}</target>
+        </configuration>
       </plugin>
 
       <!-- jgiven: `mvn verify` -->
@@ -145,6 +151,7 @@
         <groupId>com.tngtech.jgiven</groupId>
         <artifactId>jgiven-maven-plugin</artifactId>
         <version>${jgiven.version}</version>
+
         <executions>
           <execution>
             <goals>
@@ -152,6 +159,7 @@
             </goals>
           </execution>
         </executions>
+
         <configuration>
           <format>html</format>
           <outputDirectory>${project.build.directory}/jgiven-report</outputDirectory>
@@ -167,6 +175,7 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-site-plugin</artifactId>
         <version>3.6</version>
+
         <configuration>
           <reportPlugins>
             <plugin>

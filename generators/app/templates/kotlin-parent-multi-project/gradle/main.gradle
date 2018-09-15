@@ -1,0 +1,7 @@
+/* //executable sub-project build.gradle:
+apply plugin: 'application'
+apply plugin: 'com.github.johnrengelman.shadow'
+
+mainClassName = 'daggerok.AppKt'
+shadowJar.mustRunAfter jar
+*/

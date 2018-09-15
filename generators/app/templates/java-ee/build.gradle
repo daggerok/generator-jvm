@@ -7,7 +7,7 @@ buildscript {
     jgivenVersion = '0.15.3'
     logbackVersion = '1.2.3'
     lombokVersion = '1.18.2'
-    materializecssVersion = '1.0.0-rc.1'
+    materializecssVersion = '1.0.0-rc.2'
     materialDesignIconsVersion = '3.0.1'
     hibernateCoreVersion = '4.2.18.Final'
     asciidoctorjPdfVersion = '1.5.0-alpha.15'
@@ -25,6 +25,7 @@ buildscript {
 }
 
 plugins {
+  id 'com.gradle.build-scan' version '1.16'
   id 'com.avast.gradle.docker-compose' version '0.6.18'
   id 'org.asciidoctor.convert' version '1.5.8.1' apply false
   id 'org.ajoberstar.git-publish' version '0.3.0' apply false
@@ -47,6 +48,8 @@ apply from: "$projectDir/gradle/clean.gradle"
 apply from: "$projectDir/gradle/repositories.gradle"
 apply from: "$projectDir/gradle/java.gradle"
 apply from: "$projectDir/gradle/junit.gradle"
+apply from: "$projectDir/gradle/jacoco.gradle"
 apply from: "$projectDir/gradle/findbugs.gradle"
 apply from: "$projectDir/gradle/docker-compose.gradle"
 apply from: "$projectDir/gradle/docs.gradle"
+apply from: "$projectDir/gradle/build-scan.gradle"

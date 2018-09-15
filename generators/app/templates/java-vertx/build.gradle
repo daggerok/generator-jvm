@@ -1,7 +1,7 @@
 buildscript {
   ext {
     javaVersion = JavaVersion.VERSION_1_8
-    materializecssVersion = '1.0.0-rc.1'
+    materializecssVersion = '1.0.0-rc.2'
     materialDesignIconsVersion = '3.0.1'
     lombokVersion = '1.18.2'
     logbackVersion = '1.2.3'
@@ -35,6 +35,7 @@ buildscript {
 }
 
 plugins {
+  id 'com.gradle.build-scan' version '1.16'
   id 'com.jfrog.artifactory' version '4.7.5' apply false
   id 'org.asciidoctor.convert' version '1.5.8.1' apply false
   id 'org.ajoberstar.git-publish' version '0.3.0' apply false
@@ -65,8 +66,9 @@ apply from: "$projectDir/gradle/junit.gradle"
 apply from: "$projectDir/gradle/publish.gradle"
 //apply from: "$projectDir/gradle/artifactory-shadow.gradle"
 apply from: "$projectDir/gradle/findbugs.gradle"
-//apply from: "$projectDir/gradle/jacoco.gradle"
+apply from: "$projectDir/gradle/jacoco.gradle"
 //apply from: "$projectDir/gradle/allure.gradle"
 //apply from: "$projectDir/gradle/selenide.gradle"
 apply from: "$projectDir/gradle/docker-compose.gradle"
 apply from: "$projectDir/gradle/docs.gradle"
+apply from: "$projectDir/gradle/build-scan.gradle"

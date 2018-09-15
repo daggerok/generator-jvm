@@ -7,17 +7,16 @@ defaultTasks 'clean', 'build'
 compileJava.dependsOn(processResources)
 
 dependencies {
-
-  // spring-cloud
   implementation "org.springframework.cloud:spring-cloud-function-web:$springCloudFunctionVersion"
-
-  // spring-boot
   implementation 'org.springframework.boot:spring-boot-starter-web'
   implementation 'org.springframework.boot:spring-boot-starter-actuator'
-  //runtime 'org.springframework.boot:spring-boot-devtools'
+  runtime 'org.springframework.boot:spring-boot-devtools'
 
-  //annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-  //testAnnotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+  annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+  testAnnotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+
+  testImplementation 'org.springframework.boot:spring-boot-starter-test'
+  testImplementation 'io.projectreactor:reactor-test'
 
   //// JPA (+embedded)
   //runtime 'com.h2database:h2'
@@ -30,9 +29,6 @@ dependencies {
   //implementation 'org.springframework.kafka:spring-kafka'
   //implementation 'org.springframework.kafka:spring-kafka-test'
   //testImplementation 'org.springframework.cloud:spring-cloud-stream-test-support'
-
-  testImplementation 'org.springframework.boot:spring-boot-starter-test'
-  testImplementation 'io.projectreactor:reactor-test'
 }
 
 dependencyManagement {

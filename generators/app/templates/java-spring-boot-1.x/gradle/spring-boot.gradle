@@ -5,17 +5,18 @@ apply plugin: 'io.spring.dependency-management'
 compileJava.dependsOn(processResources)
 
 dependencies {
-  //implementation "org.webjars:materializecss:$materializecssVersion"
-  //implementation "org.webjars:material-design-icons:$materialDesignIconsVersion"
-  //implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+  implementation "org.webjars:materializecss:$materializecssVersion"
+  implementation "org.webjars:material-design-icons:$materialDesignIconsVersion"
+  implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 
-  // spring-boot
   implementation 'org.springframework.boot:spring-boot-starter-web'
   implementation 'org.springframework.boot:spring-boot-starter-actuator'
-  //runtime 'org.springframework.boot:spring-boot-devtools'
+  runtime 'org.springframework.boot:spring-boot-devtools'
 
-  //annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-  //testAnnotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+  annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+  testAnnotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+
+  testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
   //// JPA (+embedded)
   //runtime 'com.h2database:h2'
@@ -28,8 +29,6 @@ dependencies {
   //implementation 'org.springframework.kafka:spring-kafka'
   //implementation 'org.springframework.kafka:spring-kafka-test'
   //testImplementation 'org.springframework.cloud:spring-cloud-stream-test-support'
-
-  testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 dependencyManagement {

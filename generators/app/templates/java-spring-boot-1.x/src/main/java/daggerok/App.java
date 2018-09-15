@@ -6,6 +6,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Optional;
@@ -13,6 +15,16 @@ import java.util.Optional;
 import static java.util.Collections.singletonMap;
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
 import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
+
+@Controller
+class RestResource {
+
+  @GetMapping({"", "/"})
+  public String api(final Model model) {
+    model.addAttribute("message", "ololo trololo!");
+    return "index";
+  }
+}
 
 @Slf4j
 @RestControllerAdvice
@@ -28,12 +40,10 @@ class RestResourceErrorHandler {
 }
 
 @RestController
-@RequestMapping(
-    produces = APPLICATION_JSON_UTF8_VALUE
-)
+@RequestMapping(produces = APPLICATION_JSON_UTF8_VALUE)
 class RestResource {
 
-  @GetMapping({"", "/", "/{name}"})
+  @GetMapping("/{name}")
   public ResponseEntity api(@PathVariable final Optional<String> name) {
     final String result = name.orElse("world");
     return ResponseEntity.ok(singletonMap("hello", result));
