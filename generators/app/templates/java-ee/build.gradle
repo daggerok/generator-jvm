@@ -12,8 +12,8 @@ buildscript {
     hibernateCoreVersion = '4.2.18.Final'
     junitPlatformVersion = '1.3.0'
     junitJupiterVersion = '5.3.1'
+    assertkJvmVersion = '0.12'
     assertjVersion = '3.11.0'
-    assertkVersion = '0.12'
     hamcrestVersion = '1.3'
     junit4Version = '4.12'
   }

@@ -3,11 +3,11 @@ buildscript {
     javaVersion = '1.8'
     akkaVersion = '2.5.14'
     slf4jVersion = '1.7.25'
-    assertkVersion = '0.12'
     jgivenVersion = '0.15.3'
     logbackVersion = '1.2.3'
     lombokVersion = '1.18.2'
     assertjVersion = '3.11.0'
+    assertkJvmVersion = '0.12'
     scalaCompatVersion = '2.12'
     scalaVersion = "${scalaCompatVersion}.6"
     scalatestVersion = "${scalaCompatVersion}:3.0.5"

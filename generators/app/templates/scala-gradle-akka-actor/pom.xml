@@ -24,6 +24,7 @@
         <groupId>org.asciidoctor</groupId>
         <artifactId>asciidoctor-maven-plugin</artifactId>
         <version>1.5.6</version>
+
         <dependencies>
           <dependency>
             <groupId>org.asciidoctor</groupId>
@@ -36,6 +37,7 @@
             <version>1.5.4</version>
           </dependency>
         </dependencies>
+
         <configuration>
           <outputDirectory>target/generated-docs</outputDirectory>
           <sourceDirectory>docs</sourceDirectory>
@@ -65,6 +67,7 @@
             <github-url>https://github.com/daggerok/${project.artifactId}</github-url>
           </attributes>
         </configuration>
+
         <executions>
           <execution>
             <id>output-html</id>
@@ -77,6 +80,7 @@
               <sourceHighlighter>highlightjs</sourceHighlighter>
             </configuration>
           </execution>
+
           <execution>
             <id>output-docbook</id>
             <phase>generate-resources</phase>
@@ -87,6 +91,7 @@
               <backend>docbook</backend>
             </configuration>
           </execution>
+
           <execution>
             <id>output-pdf-doc</id>
             <phase>generate-resources</phase>

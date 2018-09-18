@@ -48,12 +48,79 @@ script:
 # generator-jvm cli
 - yo jvm --help
 
+# java-spring-boot-1.x
+- cd ${e2e}
+- yo jvm -n javaspringboot1x -t java-spring-boot-1.x
+- cd javaspringboot1x
+- ./gradlew -S >/dev/null
+- ./mvnw clean deploy >/dev/null
+- ./mvnw -Pdocs
+
+# java-spring-cloud-function-web
+- cd ${e2e}/
+- yo jvm -n javaspringcloudfunctionweb -t java-spring-cloud-function-web
+- cd javaspringcloudfunctionweb
+- ./gradlew -S >/dev/null
+- ./mvnw clean deploy >/dev/null
+- ./mvnw -Pdocs
+
 # kotlin-spring-cloud-function-web
 - cd ${e2e}
 - yo jvm -n kotlinspringcloudfunctionweb -t kotlin-spring-cloud-function-web
 - cd kotlinspringcloudfunctionweb
 - ./gradlew -S >/dev/null
 - ./mvnw clean deploy
+- ./mvnw -Pdocs
+
+# kotlin-vertx
+- cd ${e2e}
+- yo jvm -n kotlinvertx -t kotlin-vertx
+- cd kotlinvertx
+- ./gradlew -S >/dev/null
+- ./gradlew documentation >/dev/null
+- tree target/generated-docs
+- ./mvnw clean deploy >/dev/null
+- ./mvnw -Pdocs
+- tree target/generated-docs
+
+# kotlin-ee
+- cd ${e2e}
+- yo jvm -n kotlinee -t kotlin-ee
+- cd kotlinee
+- ./mvnw >/dev/null
+- ./mvnw -Pdocs
+- ./gradlew -S >/dev/null
+- ./gradlew composeUp
+- http :8080/app/api/health
+- http :8080/app/api/
+- http :8080/app/api/items value=ololo
+- http :8080/app/api/items value=trololo
+- http :8080/app/api/items/2
+- http :8080/app/api/items
+- ./gradlew composeDown
+
+# kotlin
+- cd ${e2e}
+- yo jvm -n kotlin -t kotlin
+- cd kotlin
+- ./gradlew -S >/dev/null
+- ./mvnw clean deploy >/dev/null
+- ./mvnw -Pdocs
+
+# kotlin-spring-boot
+- cd ${e2e}
+- yo jvm -n kotlinspringboot -t kotlin-spring-boot
+- cd kotlinspringboot
+- ./gradlew -S >/dev/null
+- ./mvnw clean deploy >/dev/null
+- ./mvnw -Pdocs
+
+# kotlin-spring-boot-1.x
+- cd ${e2e}
+- yo jvm -n kotlinspringboot1x -t kotlin-spring-boot-1.x
+- cd kotlinspringboot1x
+- ./gradlew -S >/dev/null
+- ./mvnw clean deploy >/dev/null
 - ./mvnw -Pdocs
 
 # scala-sbt
@@ -182,17 +249,6 @@ script:
 - ./mvnw -Pdocs
 - tree target/generated-docs
 
-# kotlin-vertx
-- cd ${e2e}
-- yo jvm -n kotlinvertx -t kotlin-vertx
-- cd kotlinvertx
-- ./gradlew -S >/dev/null
-- ./gradlew documentation >/dev/null
-- tree target/generated-docs
-- ./mvnw clean deploy >/dev/null
-- ./mvnw -Pdocs
-- tree target/generated-docs
-
 # java-ee
 - cd ${e2e}
 - yo jvm -n javaee -t java-ee
@@ -219,22 +275,6 @@ script:
 - http :8080/app/
 - ./gradlew composeDown
 
-# kotlin-ee
-- cd ${e2e}
-- yo jvm -n kotlinee -t kotlin-ee
-- cd kotlinee
-- ./mvnw >/dev/null
-- ./mvnw -Pdocs
-- ./gradlew -S >/dev/null
-- ./gradlew composeUp
-- http :8080/app/api/health
-- http :8080/app/api/
-- http :8080/app/api/items value=ololo
-- http :8080/app/api/items value=trololo
-- http :8080/app/api/items/2
-- http :8080/app/api/items
-- ./gradlew composeDown
-
 # java-spring-boot
 - cd ${e2e}
 - yo jvm -n javaspringboot -t java-spring-boot
@@ -243,48 +283,12 @@ script:
 - ./mvnw clean deploy >/dev/null
 - ./mvnw -Pdocs
 
-# java-spring-boot-1.x
-- cd ${e2e}
-- yo jvm -n javaspringboot1x -t java-spring-boot-1.x
-- cd javaspringboot1x
-- ./gradlew -S >/dev/null
-- ./mvnw clean deploy >/dev/null
-- ./mvnw -Pdocs
-
-# java-spring-cloud-function-web
-- cd ${e2e}/
-- yo jvm -n javaspringcloudfunctionweb -t java-spring-cloud-function-web
-- cd javaspringcloudfunctionweb
-- ./gradlew -S >/dev/null
-- ./mvnw clean deploy >/dev/null
-- ./mvnw -Pdocs
-
-# kotlin
-- cd ${e2e}
-- yo jvm -n kotlin -t kotlin
-- cd kotlin
-- ./gradlew -S >/dev/null
-- ./mvnw clean deploy >/dev/null
-- ./mvnw -Pdocs
-
-# kotlin-spring-boot
-- cd ${e2e}
-- yo jvm -n kotlinspringboot -t kotlin-spring-boot
-- cd kotlinspringboot
-- ./gradlew -S >/dev/null
-- ./mvnw clean deploy >/dev/null
-- ./mvnw -Pdocs
-
-# kotlin-spring-boot-1.x
-- cd ${e2e}
-- yo jvm -n kotlinspringboot1x -t kotlin-spring-boot-1.x
-- cd kotlinspringboot1x
-- ./gradlew -S >/dev/null
-- ./mvnw clean deploy >/dev/null
-- ./mvnw -Pdocs
-
 # done
 - cd ${base}
+
+after_script:
+- npm rm    generator-jvm || echo JVM generator wasn't found locally
+- npm rm -g generator-jvm || echo JVM generator wasn't found globally
 
 deploy:
   provider: npm

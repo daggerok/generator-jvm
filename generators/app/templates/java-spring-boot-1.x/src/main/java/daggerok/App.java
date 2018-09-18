@@ -17,7 +17,7 @@ import static org.springframework.http.HttpStatus.BAD_REQUEST;
 import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
 
 @Controller
-class RestResource {
+class WebPage {
 
   @GetMapping({"", "/"})
   public String api(final Model model) {

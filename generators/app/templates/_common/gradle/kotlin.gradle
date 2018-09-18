@@ -47,6 +47,6 @@ allprojects {
 
     testImplementation "org.jetbrains.kotlin:kotlin-test:$kotlinVersion"
     testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion"
-    testImplementation "com.willowtreeapps.assertk:assertk-jvm:$assertkVersion"
+    testImplementation "com.willowtreeapps.assertk:assertk-jvm:$assertkJvmVersion"
   }
 }

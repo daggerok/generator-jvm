@@ -41,7 +41,5 @@ allprojects {
 
     //// In java we trust...
     testImplementation "io.vavr:vavr:$vavrVersion"
-    testImplementation "org.slf4j:slf4j-api:$slf4jVersion"
-    testImplementation "org.slf4j:slf4j-jdk14:$slf4jVersion"
   }
 }

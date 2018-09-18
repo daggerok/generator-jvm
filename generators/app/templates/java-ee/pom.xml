@@ -185,6 +185,7 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
         <version>3.2.0</version>
+
         <configuration>
           <failOnMissingWebXml>false</failOnMissingWebXml>
         </configuration>
@@ -287,6 +288,7 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-project-info-reports-plugin</artifactId>
         <version>2.9</version>
+
         <configuration>
           <skip>true</skip>
         </configuration>
@@ -311,6 +313,7 @@
             <groupId>com.dkanejs.maven.plugins</groupId>
             <artifactId>docker-compose-maven-plugin</artifactId>
             <version>1.0.1</version>
+
             <executions>
               <execution>
                 <id>up</id>
@@ -320,6 +323,7 @@
                   <goal>up</goal>
                 </goals>
               </execution>
+
               <execution>
                 <id>down</id>
                 <!--<phase>test</phase>-->
@@ -329,6 +333,7 @@
                 </goals>
               </execution>
             </executions>
+
             <configuration>
               <composeFile>${project.basedir}/docker-compose-maven.yaml</composeFile>
               <detachedMode>true</detachedMode>
@@ -348,6 +353,7 @@
             <groupId>org.asciidoctor</groupId>
             <artifactId>asciidoctor-maven-plugin</artifactId>
             <version>1.5.6</version>
+
             <dependencies>
               <dependency>
                 <groupId>org.asciidoctor</groupId>
@@ -360,6 +366,7 @@
                 <version>1.5.4</version>
               </dependency>
             </dependencies>
+
             <configuration>
               <outputDirectory>target/generated-docs</outputDirectory>
               <sourceDirectory>docs</sourceDirectory>
@@ -389,6 +396,7 @@
                 <github-url>https://github.com/daggerok/${project.artifactId}</github-url>
               </attributes>
             </configuration>
+
             <executions>
               <execution>
                 <id>output-html</id>
@@ -401,6 +409,7 @@
                   <sourceHighlighter>highlightjs</sourceHighlighter>
                 </configuration>
               </execution>
+
               <execution>
                 <id>output-docbook</id>
                 <phase>generate-resources</phase>
@@ -411,6 +420,7 @@
                   <backend>docbook</backend>
                 </configuration>
               </execution>
+
               <execution>
                 <id>output-pdf-doc</id>
                 <phase>generate-resources</phase>

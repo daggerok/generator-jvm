@@ -283,9 +283,11 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
         <version>${spring-boot.version}</version>
+
         <configuration>
           <executable>true</executable>
         </configuration>
+
         <executions>
           <execution>
             <goals>
@@ -299,6 +301,7 @@
         <artifactId>kotlin-maven-plugin</artifactId>
         <groupId>org.jetbrains.kotlin</groupId>
         <version>${kotlin.version}</version>
+
         <configuration>
           <jvmTarget>${maven.compiler.target}</jvmTarget>
           <compilerPlugins>
@@ -396,6 +399,7 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>2.22.0</version>
+
         <dependencies>
           <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -408,6 +412,7 @@
             <version>${junit.jupiter.version}</version>
           </dependency>
         </dependencies>
+
         <configuration>
           <properties>
             <!--
@@ -428,6 +433,7 @@
         <groupId>com.tngtech.jgiven</groupId>
         <artifactId>jgiven-maven-plugin</artifactId>
         <version>${jgiven.version}</version>
+
         <executions>
           <execution>
             <goals>
@@ -435,6 +441,7 @@
             </goals>
           </execution>
         </executions>
+
         <configuration>
           <format>html</format>
           <outputDirectory>${project.build.directory}/jgiven-report</outputDirectory>
@@ -451,11 +458,13 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-site-plugin</artifactId>
         <version>3.6</version>
+
         <configuration>
           <reportPlugins>
             <plugin>
               <groupId>org.codehaus.mojo</groupId>
               <artifactId>findbugs-maven-plugin</artifactId>
+
               <configuration>
                 <!-- specify classes for analysis -->
                 <onlyAnalyze>*daggerok*</onlyAnalyze>
@@ -499,6 +508,7 @@
             <groupId>com.dkanejs.maven.plugins</groupId>
             <artifactId>docker-compose-maven-plugin</artifactId>
             <version>1.0.1</version>
+
             <executions>
               <execution>
                 <id>up</id>
@@ -508,6 +518,7 @@
                   <goal>up</goal>
                 </goals>
               </execution>
+
               <execution>
                 <id>down</id>
                 <!--<phase>test</phase>-->
@@ -517,6 +528,7 @@
                 </goals>
               </execution>
             </executions>
+
             <configuration>
               <composeFile>${project.basedir}/docker-compose-maven.yaml</composeFile>
               <detachedMode>true</detachedMode>
@@ -537,6 +549,7 @@
             <groupId>org.asciidoctor</groupId>
             <artifactId>asciidoctor-maven-plugin</artifactId>
             <version>1.5.6</version>
+
             <dependencies>
               <dependency>
                 <groupId>org.asciidoctor</groupId>
@@ -549,6 +562,7 @@
                 <version>1.5.4</version>
               </dependency>
             </dependencies>
+
             <configuration>
               <outputDirectory>target/generated-docs</outputDirectory>
               <sourceDirectory>docs</sourceDirectory>
@@ -578,6 +592,7 @@
                 <github-url>https://github.com/daggerok/${project.artifactId}</github-url>
               </attributes>
             </configuration>
+
             <executions>
               <execution>
                 <id>output-html</id>
@@ -590,6 +605,7 @@
                   <sourceHighlighter>highlightjs</sourceHighlighter>
                 </configuration>
               </execution>
+
               <execution>
                 <id>output-docbook</id>
                 <phase>generate-resources</phase>
@@ -600,6 +616,7 @@
                   <backend>docbook</backend>
                 </configuration>
               </execution>
+
               <execution>
                 <id>output-pdf-doc</id>
                 <phase>generate-resources</phase>

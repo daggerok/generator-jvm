@@ -257,11 +257,6 @@
         <version>3.7.0</version>
 
         <configuration>
-          <source>${maven.compiler.source}</source>
-          <target>${maven.compiler.target}</target>
-        </configuration>
-
-        <configuration>
           <encoding>${project.build.sourceEncoding}</encoding>
           <source>${maven.compiler.source}</source>
           <target>${maven.compiler.target}</target>
