@@ -12,7 +12,6 @@ buildscript {
     scalaVersion = "${scalaCompatVersion}.6"
     scalatestVersion = "${scalaCompatVersion}:3.0.5"
     scalacticVersion = "${scalaCompatVersion}:3.0.5"
-    asciidoctorjPdfVersion = '1.5.0-alpha.15'
     specs2junitVersion = '4.3.3'
     leveldbjniVersion = '1.8'
     leveldbVersion = '0.10'
@@ -20,7 +19,8 @@ buildscript {
   }
 
   dependencies {
-    classpath "org.asciidoctor:asciidoctorj-pdf:$asciidoctorjPdfVersion"
+    classpath 'org.asciidoctor:asciidoctorj-pdf:1.5.0-alpha.16'
+    classpath 'org.jruby:jruby-complete:9.1.13.0'
   }
 }
 

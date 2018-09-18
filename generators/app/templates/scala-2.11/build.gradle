@@ -10,13 +10,13 @@ buildscript {
     scalaCompatVersion = '2.11'
     scalaVersion = "${scalaCompatVersion}.12"
     scalatestVersion = "${scalaCompatVersion}:3.0.5"
-    asciidoctorjPdfVersion = '1.5.0-alpha.15'
     specs2JunitVersion = '4.3.3'
     junit4Version = '4.12'
   }
 
   dependencies {
-    classpath "org.asciidoctor:asciidoctorj-pdf:$asciidoctorjPdfVersion"
+    classpath 'org.asciidoctor:asciidoctorj-pdf:1.5.0-alpha.16'
+    classpath 'org.jruby:jruby-complete:9.1.13.0'
   }
 }
 

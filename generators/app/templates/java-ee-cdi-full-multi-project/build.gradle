@@ -6,11 +6,11 @@ buildscript {
     logbackVersion = '1.2.3'
     lombokVersion = '1.18.2'
     assertjVersion = '3.11.0'
-    asciidoctorjPdfVersion = '1.5.0-alpha.15'
   }
 
   dependencies {
-    classpath "org.asciidoctor:asciidoctorj-pdf:$asciidoctorjPdfVersion"
+    classpath 'org.asciidoctor:asciidoctorj-pdf:1.5.0-alpha.16'
+    classpath 'org.jruby:jruby-complete:9.1.13.0'
   }
 }
 
