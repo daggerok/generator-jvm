@@ -13,7 +13,6 @@ import org.springframework.core.io.ClassPathResource
 
 import org.springframework.web.reactive.function.server.RenderingResponse.create
 import org.springframework.web.reactive.function.server.ServerResponse
-import reactor.core.publisher.Mono
 
 @SpringBootApplication
 class App {
@@ -26,7 +25,8 @@ class App {
         //ok().render("index", mapOf("message" to "ololo trololo"))
         create("index")
           .modelAttribute("message", "ololo trololo")
-          .build() as Mono<ServerResponse>
+          .build()
+          .cast(ServerResponse::class.java)
       }
       contentType(APPLICATION_JSON_UTF8)
       GET("/api/**") {

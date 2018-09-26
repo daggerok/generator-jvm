@@ -4,8 +4,8 @@ buildscript {
     springCloudVersion = 'Finchley.RELEASE'
     springCloudFunctionVersion = '1.0.1.RELEASE'
     javaVersion = JavaVersion.VERSION_1_8
-    materializecssVersion = '1.0.0-rc.2'
     materialDesignIconsVersion = '3.0.1'
+    materializecssVersion = '1.0.0'
     lombokVersion = '1.18.2'
     logbackVersion = '1.2.3'
     slf4jVersion = '1.7.25'
@@ -16,7 +16,7 @@ buildscript {
     junitPlatformVersion = '1.3.0'
     junitJupiterVersion = '5.3.1'
     assertkJvmVersion = '0.12'
-    selenideVersion = '4.14.0'
+    selenideVersion = '4.14.2'
     assertjVersion = '3.11.0'
     jgivenVersion = '0.15.3'
     hamcrestVersion = '1.3'
@@ -40,7 +40,7 @@ plugins {
   id 'org.ajoberstar.git-publish' version '0.3.0' apply false
   id 'io.spring.dependency-management' version '1.0.6.RELEASE' apply false
   id 'org.springframework.boot' version '2.0.5.RELEASE' apply false
-  id 'com.avast.gradle.docker-compose' version '0.6.18' apply false
+  id 'com.avast.gradle.docker-compose' version '0.7.1' apply false
   id 'io.franzbecker.gradle-lombok' version '1.14' apply false
   id 'cn.bestwu.propdeps-eclipse' version '0.0.10' apply false
   id 'cn.bestwu.propdeps-maven' version '0.0.10' apply false
@@ -51,7 +51,7 @@ plugins {
 
 /*
 wrapper {
-  gradleVersion = '4.10.1'
+  gradleVersion = '4.10.2'
   distributionType = 'BIN'
 }
 */
