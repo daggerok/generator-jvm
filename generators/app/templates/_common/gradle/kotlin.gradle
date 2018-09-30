@@ -1,6 +1,5 @@
 allprojects {
   apply plugin: 'org.jetbrains.kotlin.jvm'
-  apply plugin: 'org.jetbrains.kotlin.kapt'
   apply plugin: 'org.jetbrains.kotlin.plugin.jpa'
   apply plugin: 'org.jetbrains.kotlin.plugin.noarg'
   apply plugin: 'org.jetbrains.kotlin.plugin.spring'
@@ -8,14 +7,14 @@ allprojects {
 
   apply plugin: 'kotlin-sam-with-receiver'
   samWithReceiver {
-    //annotation("com.my.Annotation")
+    //annotation('com.my.Annotation')
   }
 
   def projectIncremental = true
   def projectFreeCompileArgs = [
-    "-Xjsr305=strict",
-    "-java-parameters",
-    //"-Xenable-jvm-default",
+    '-Xjsr305=strict',
+    '-java-parameters',
+    //'-Xenable-jvm-default',
   ]
 
   kotlin {
@@ -49,4 +48,7 @@ allprojects {
     testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion"
     testImplementation "com.willowtreeapps.assertk:assertk-jvm:$assertkJvmVersion"
   }
+
+  apply plugin: 'org.jetbrains.kotlin.kapt'
+  processResources.dependsOn('kaptKotlin')
 }

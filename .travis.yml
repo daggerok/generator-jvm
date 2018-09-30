@@ -287,8 +287,8 @@ script:
 - cd ${base}
 
 after_script:
-- npm rm    generator-jvm || echo JVM generator wasn't found locally
-- npm rm -g generator-jvm || echo JVM generator wasn't found globally
+- npm rm    generator-jvm || echo "JVM generator wasn't found locally"
+- npm rm -g generator-jvm || echo "JVM generator wasn't found globally"
 
 deploy:
   provider: npm

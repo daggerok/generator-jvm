@@ -1,6 +1,5 @@
 allprojects {
   apply plugin: 'org.jetbrains.kotlin.jvm'
-  apply plugin: 'org.jetbrains.kotlin.kapt'
   apply plugin: 'org.jetbrains.kotlin.plugin.jpa'
   apply plugin: 'org.jetbrains.kotlin.plugin.noarg'
   apply plugin: 'org.jetbrains.kotlin.plugin.spring'
@@ -49,4 +48,7 @@ allprojects {
     testImplementation "org.jetbrains.kotlin:kotlin-test:$kotlinVersion"
     testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion"
   }
+
+  apply plugin: 'org.jetbrains.kotlin.kapt'
+  processResources.dependsOn('kaptKotlin')
 }
