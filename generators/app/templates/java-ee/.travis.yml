@@ -15,11 +15,9 @@ service:
 
 addons:
   apt:
-    update: true
     sources:
     - google-chrome
     packages:
-    - google-chrome-stable
     - google-chrome-stable
     - libappindicator1
     - fonts-liberation
