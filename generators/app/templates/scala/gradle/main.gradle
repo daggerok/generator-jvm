@@ -1,0 +1,23 @@
+apply plugin: 'base'
+defaultTasks 'clean', 'build'
+
+apply plugin: 'application'
+apply plugin: 'com.github.johnrengelman.shadow'
+
+mainClassName = 'daggerok.App'
+shadowJar.mustRunAfter jar
+
+/*
+shadowJar {
+  transform(com.github.jengelman.gradle.plugins.shadow.transformers.AppendingTransformer) {
+    resource = "reference.conf"
+  }
+}
+
+jar {
+  baseName = project.name
+  manifest {
+    attributes('Main-Class': mainClassName)
+  }
+}
+*/

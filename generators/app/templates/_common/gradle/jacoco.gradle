@@ -2,6 +2,7 @@
 // Also got some thoughts from here: https://gist.github.com/aalmiray/e6f54aa4b3803be0bcac
 
 allprojects {
+  apply plugin: 'java'
   apply plugin: 'jacoco'
 
   jacoco {

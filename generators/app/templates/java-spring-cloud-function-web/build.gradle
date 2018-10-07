@@ -35,7 +35,7 @@ buildscript {
 }
 
 plugins {
-  id 'com.gradle.build-scan' version '1.16'
+  //id 'com.gradle.build-scan' version '1.16'
   id 'org.asciidoctor.convert' version '1.5.8.1' apply false
   id 'org.ajoberstar.git-publish' version '0.3.0' apply false
   id 'io.spring.dependency-management' version '1.0.6.RELEASE' apply false
@@ -64,9 +64,6 @@ apply from: "$projectDir/gradle/spring-boot.gradle"
 apply from: "$projectDir/gradle/junit.gradle"
 apply from: "$projectDir/gradle/findbugs.gradle"
 apply from: "$projectDir/gradle/jacoco.gradle"
-//apply from: "$projectDir/gradle/allure.gradle"
-//apply from: "$projectDir/gradle/selenide.gradle"
-//apply from: "$projectDir/gradle/publish.gradle"
 apply from: "$projectDir/gradle/docker-compose.gradle"
 apply from: "$projectDir/gradle/docs.gradle"
-apply from: "$projectDir/gradle/build-scan.gradle"
+//apply from: "$projectDir/gradle/build-scan.gradle"

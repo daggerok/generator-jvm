@@ -5,9 +5,9 @@ ifndef::backend-html5[]
 = {root-project-name} ({project-version})
 endif::backend-html5[]
 ////
-image:https://travis-ci.org/daggerok/root-project-name.svg?branch=master["Build Status", link=github-url]
-image:https://gitlab.com/daggerok/root-project-name/badges/master/build.svg["Build Status", link=gitlab-url]
-image:https://img.shields.io/bitbucket/pipelines/daggerok/root-project-name.svg["Build Status", link=bitbucket-url]
+image:https://travis-ci.org/daggerok/{root-project-name}.svg?branch=master["Build Status", link=github-url]
+image:https://gitlab.com/daggerok/{root-project-name}/badges/master/build.svg["Build Status", link=gitlab-url]
+image:https://img.shields.io/bitbucket/pipelines/daggerok/{root-project-name}.svg["Build Status", link=bitbucket-url]
 ////
 Maksim Kostromin <daggerok@gmail.com>
 {docdatetime}

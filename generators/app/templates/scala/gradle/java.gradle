@@ -1,0 +1,43 @@
+allprojects {
+  apply plugin: 'java'
+
+  version = '0.0.1'
+  group = 'com.github.daggerok'
+  sourceCompatibility = targetCompatibility = "$javaVersion"
+
+  apply plugin: 'maven-publish'
+
+  publishing {
+    publications {
+      shadow(MavenPublication) { publication ->
+        project.shadow.component(publication)
+      }
+    }
+  }
+  publishing {
+    repositories {
+      maven {
+        url "$rootProject.buildDir/maven-publish"
+      }
+    }
+  }
+
+  publish.dependsOn assemble
+}
+
+lombok {
+  version = project.lombokVersion
+}
+
+compileJava.dependsOn(processResources)
+
+dependencies {
+  implementation "org.slf4j:slf4j-api:$slf4jVersion"
+  implementation "ch.qos.logback:logback-classic:$logbackVersion"
+  implementation "org.scala-lang:scala-library:$scalaVersion"
+
+  testImplementation "junit:junit:$junit4Version"
+  testImplementation "org.scalactic:scalactic_$scalatestVersion"
+  testImplementation "org.scalatest:scalatest_$scalatestVersion"
+  testImplementation "org.specs2:specs2-junit_$scalaCompatVersion:$specs2JunitVersion"
+}

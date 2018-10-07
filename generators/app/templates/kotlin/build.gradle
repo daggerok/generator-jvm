@@ -33,7 +33,7 @@ buildscript {
 }
 
 plugins {
-  id 'com.gradle.build-scan' version '1.16'
+  //id 'com.gradle.build-scan' version '1.16'
 
   id 'com.jfrog.artifactory' version '4.7.5' apply false
   id 'org.asciidoctor.convert' version '1.5.8.1' apply false
@@ -48,7 +48,7 @@ plugins {
 
   id 'io.spring.dependency-management' version '1.0.6.RELEASE' apply false
   id 'com.avast.gradle.docker-compose' version '0.7.1' apply false
-  id 'com.github.johnrengelman.shadow' version '2.0.2' apply false
+  id 'com.github.johnrengelman.shadow' version '2.0.4' apply false
   id 'io.franzbecker.gradle-lombok' version '1.14' apply false
   id 'cn.bestwu.propdeps-eclipse' version '0.0.10' apply false
   id 'cn.bestwu.propdeps-maven' version '0.0.10' apply false
@@ -72,11 +72,8 @@ apply from: "$projectDir/gradle/kotlin.gradle"
 apply from: "$projectDir/gradle/main.gradle"
 apply from: "$projectDir/gradle/junit.gradle"
 apply from: "$projectDir/gradle/publish.gradle"
-//apply from: "$projectDir/gradle/artifactory-shadow.gradle"
 apply from: "$projectDir/gradle/findbugs.gradle"
 apply from: "$projectDir/gradle/jacoco.gradle"
-//apply from: "$projectDir/gradle/allure.gradle"
-//apply from: "$projectDir/gradle/selenide.gradle"
 apply from: "$projectDir/gradle/docker-compose.gradle"
 apply from: "$projectDir/gradle/docs.gradle"
-apply from: "$projectDir/gradle/build-scan.gradle"
+//apply from: "$projectDir/gradle/build-scan.gradle"

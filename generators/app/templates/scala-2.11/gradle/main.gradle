@@ -1,0 +1,10 @@
+apply plugin: 'base'
+defaultTasks 'clean', 'build'
+
+apply plugin: 'application'
+apply plugin: 'com.github.johnrengelman.shadow'
+mainClassName = 'daggerok.App'
+shadowJar.mustRunAfter jar
+
+apply plugin: 'io.franzbecker.gradle-lombok'
+lombok.version = project.lombokVersion
