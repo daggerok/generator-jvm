@@ -1,28 +1,27 @@
 plugins {
-  id "ear"
-  id "com.avast.gradle.docker-compose" version "0.7.1"
+  id 'ear'
 }
 
 repositories { mavenCentral() }
 
 dependencies {
 
-  [":ejb-data", ":ejb-services"]
+  [':ejb-data', ':ejb-services']
       .collect { project it }
       .each { deploy it }
 
-  [":servlet", ":jsp", ":rest", ":web"]
-      .collect { project(path: it, configuration: "archives") }
+  [':servlet', ':jsp', ':rest', ':web']
+      .collect { project(path: it, configuration: 'archives') }
       .each { deploy it }
 }
 
 ear {
   deploymentDescriptor {
 
-    version = "7"
+    version = '7'
     description = "$rootProject.name Gradle EAR"
 
-    [":servlet", ":jsp", ":rest", ":web"]
+    [':servlet', ':jsp', ':rest', ':web']
         .collect { project it }
         .each { webModule("${it.name}-${it.version}.war", "/$it.name") }
   }

@@ -47,6 +47,34 @@ script:
 # generator-jvm cli
 - yo jvm --help
 
+# java-ee-cdi-full-multi-project
+- cd ${e2e}
+- yo jvm -n java-ee-cdi-full-multi-project -t java-ee-cdi-full-multi-project
+- cd ${e2e}/java-ee-cdi-full-multi-project/
+- ./gradlew -S >/dev/null
+- ./gradlew composeUp
+- http :8080/rest/api name=boo
+- ./gradlew composeDown
+- ./mvnw >/dev/null
+- ./mvnw -pl ear docker-compose:up
+- sleep 30s
+- http :8080/rest/api name=booooo
+- ./mvnw  -pl ear docker-compose:down
+
+# java-ee-ejb-full-multi-project
+- cd ${e2e}
+- yo jvm -n java-ee-ejb-full-multi-project -t java-ee-ejb-full-multi-project
+- cd ${e2e}/java-ee-ejb-full-multi-project/
+- ./gradlew -S >/dev/null
+- ./gradlew composeUp
+- http :8080/rest/api name=boo
+- ./gradlew composeDown
+- ./mvnw >/dev/null
+- ./mvnw -pl ear docker-compose:up
+- sleep 30s
+- http :8080/rest/api name=booooo
+- ./mvnw  -pl ear docker-compose:down
+
 # java-spring-boot-1.x
 - cd ${e2e}
 - yo jvm -n javaspringboot1x -t java-spring-boot-1.x

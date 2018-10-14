@@ -57,6 +57,8 @@
   </dependencies>
 
   <build>
+    <defaultGoal>ear:ear</defaultGoal>
+
     <plugins>
       <plugin>
         <artifactId>maven-ear-plugin</artifactId>
