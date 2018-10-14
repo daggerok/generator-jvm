@@ -260,8 +260,8 @@ module.exports = class extends Generator {
           'settings.gradle',
           'ear/.mvn/Dockerfile',
           'ear/gradle/Dockerfile',
-          'ear/docker-compose-maven.yaml',
-          'ear/docker-compose-gradle.yaml',
+          'docker-compose-maven.yaml',
+          'docker-compose-gradle.yaml',
 
         ].forEach(path => this.fs.copyTpl(
           this.templatePath(`${this.props.projectType}/${path}`),
