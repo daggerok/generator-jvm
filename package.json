@@ -51,7 +51,7 @@
     "spring-cloud-function"
   ],
   "devDependencies": {
-    "@types/node": "10.11.7",
+    "@types/node": "10.12.0",
     "@types/yeoman-generator": "3.0.0",
     "coveralls": "3.0.2",
     "husky": "1.1.2",
