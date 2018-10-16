@@ -17,7 +17,7 @@
     <dependency>
       <groupId>com.github.daggerok</groupId>
       <artifactId>ejb-services</artifactId>
-      <version>${parent.version}</version>
+      <version>${project.parent.version}</version>
       <type>ejb-client</type>
       <scope>provided</scope>
     </dependency>
