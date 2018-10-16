@@ -9,8 +9,8 @@
     <version>0.0.1</version>
   </parent>
 
-  <artifactId>web</artifactId>
   <packaging>war</packaging>
+  <artifactId>web</artifactId><name>${parent.artifactId}:${artifactId}</name>
 
   <build>
     <plugins>

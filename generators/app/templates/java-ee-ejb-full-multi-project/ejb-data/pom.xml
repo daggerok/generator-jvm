@@ -9,8 +9,9 @@
     <version>0.0.1</version>
   </parent>
 
-  <artifactId>ejb-data</artifactId>
   <packaging>ejb</packaging>
+  <artifactId>ejb-data</artifactId>
+  <name>${parent.artifactId}:${artifactId}</name>
 
   <dependencies>
     <dependency>

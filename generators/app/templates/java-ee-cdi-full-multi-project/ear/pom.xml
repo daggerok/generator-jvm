@@ -9,49 +9,50 @@
     <version>0.0.1</version>
   </parent>
 
-  <artifactId>ear</artifactId>
   <packaging>ear</packaging>
+  <artifactId>ear</artifactId>
+  <name>${parent.artifactId}:${artifactId}</name>
 
   <dependencies>
     <dependency>
       <groupId>com.github.daggerok</groupId>
       <artifactId>ejb-data</artifactId>
-      <version>0.0.1</version>
+      <version>${parent.version}</version>
       <type>ejb</type>
     </dependency>
 
     <dependency>
       <groupId>com.github.daggerok</groupId>
       <artifactId>ejb-services</artifactId>
-      <version>0.0.1</version>
+      <version>${parent.version}</version>
       <type>ejb</type>
     </dependency>
 
     <dependency>
       <groupId>com.github.daggerok</groupId>
       <artifactId>servlet</artifactId>
-      <version>0.0.1</version>
+      <version>${parent.version}</version>
       <type>war</type>
     </dependency>
 
     <dependency>
       <groupId>com.github.daggerok</groupId>
       <artifactId>jsp</artifactId>
-      <version>0.0.1</version>
+      <version>${parent.version}</version>
       <type>war</type>
     </dependency>
 
     <dependency>
       <groupId>com.github.daggerok</groupId>
       <artifactId>rest</artifactId>
-      <version>0.0.1</version>
+      <version>${parent.version}</version>
       <type>war</type>
     </dependency>
 
     <dependency>
       <groupId>com.github.daggerok</groupId>
       <artifactId>web</artifactId>
-      <version>0.0.1</version>
+      <version>${parent.version}</version>
       <type>war</type>
     </dependency>
   </dependencies>

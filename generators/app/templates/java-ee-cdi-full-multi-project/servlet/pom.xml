@@ -9,14 +9,15 @@
     <version>0.0.1</version>
   </parent>
 
-  <artifactId>servlet</artifactId>
   <packaging>war</packaging>
+  <artifactId>servlet</artifactId>
+  <name>${parent.artifactId}:${artifactId}</name>
 
   <dependencies>
     <dependency>
       <groupId>com.github.daggerok</groupId>
       <artifactId>ejb-services</artifactId>
-      <version>0.0.1</version>
+      <version>${parent.version}</version>
       <type>ejb-client</type>
       <scope>provided</scope>
     </dependency>
