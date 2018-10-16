@@ -26,7 +26,7 @@ http :8080/jsp/
 
 # gradle
 ./gradlew
-./gradlew composeUp
+./gradlew :ear:composeUp
 http :8080/web/
 http --form :8080/servlet/api/ name=Maksim
 http post :8080/rest/api/ name=Maksimko
@@ -34,7 +34,7 @@ http :8080/jsp/
 ./gradlew composeDown
 
 # gradle (maven profile)
-./gradlew -Pprofile=maven clean build composeUp
+./gradlew -Pprofile=maven clean build :ear:composeUp
 http :8080/web/
 http --form :8080/servlet/api/ name=Maksimko
 http post :8080/rest/api/ buddy=Max
