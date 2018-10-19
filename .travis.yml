@@ -57,9 +57,11 @@ script:
 - http :8080/rest/api name=boo
 - ./gradlew composeDown
 - ./mvnw >/dev/null
-- ./mvnw -pl ear docker-compose:down >/dev/null
 - ./mvnw -pl ear docker-compose:up
-- sleep 30s
+- while [[ $(docker ps --latest --quiet --filter health=healthy --filter status=running | wc -l) -lt 1 ]] ; do
+    echo -ne '.' ;
+    sleep 1s ;
+  done
 - http :8080/rest/api name=booooo
 - ./mvnw -pl ear docker-compose:down
 
@@ -68,14 +70,16 @@ script:
 - yo jvm -n java-ee-ejb-full-multi-project -t java-ee-ejb-full-multi-project
 - cd ${e2e}/java-ee-ejb-full-multi-project/
 - ./gradlew -S >/dev/null
-- ./gradlew composeDown >/dev/null
-- ./gradlew :ear:composeUp
+- ./gradlew :composeDown >/dev/null
+- ./gradlew :composeUp
 - http :8080/rest/api name=boo
-- ./gradlew composeDown
+- ./gradlew :composeDown
 - ./mvnw >/dev/null
-- ./mvnw -pl ear docker-compose:down >/dev/null
 - ./mvnw -pl ear docker-compose:up
-- sleep 30s
+- while [[ $(docker ps --latest --quiet --filter health=healthy --filter status=running | wc -l) -lt 1 ]] ; do
+    echo -ne '.' ;
+    sleep 1s ;
+  done
 - http :8080/rest/api name=booooo
 - ./mvnw -pl ear docker-compose:down
 

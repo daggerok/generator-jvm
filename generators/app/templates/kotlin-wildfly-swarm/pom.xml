@@ -22,10 +22,9 @@
     <materializecss.version>1.0.0</materializecss.version>
     <java.net.preferIPv4Stack>true</java.net.preferIPv4Stack>
     <version.wildfly.swarm>2018.1.0</version.wildfly.swarm>
-    <junit.platform.version>1.3.0</junit.platform.version>
     <junit.jupiter.version>5.3.1</junit.jupiter.version>
     <failOnMissingWebXml>false</failOnMissingWebXml>
-    <assertj.version>3.11.0</assertj.version>
+    <assertj.version>3.11.1</assertj.version>
     <assertk.version>0.12</assertk.version>
     <lombok.version>1.18.2</lombok.version>
     <kotlin.version>1.2.71</kotlin.version>
@@ -215,18 +214,6 @@
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-engine</artifactId>
       <version>${junit.jupiter.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.junit.platform</groupId>
-      <artifactId>junit-platform-launcher</artifactId>
-      <version>${junit.platform.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.junit.platform</groupId>
-      <artifactId>junit-platform-runner</artifactId>
-      <version>${junit.platform.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -428,13 +415,6 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>2.22.0</version>
-        <dependencies>
-          <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>${junit.jupiter.version}</version>
-          </dependency>
-        </dependencies>
       </plugin>
 
       <!-- jgiven: `mvn verify` -->

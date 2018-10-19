@@ -18,10 +18,9 @@
     <material.design.icons.version>3.0.1</material.design.icons.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <materializecss.version>1.0.0</materializecss.version>
-    <junit.platform.version>1.3.0</junit.platform.version>
-    <junit.jupiter.version>5.3.0</junit.jupiter.version>
+    <junit.jupiter.version>5.3.1</junit.jupiter.version>
     <jakson-kotlin.version>2.9.7</jakson-kotlin.version>
-    <assertj.version>3.11.0</assertj.version>
+    <assertj.version>3.11.1</assertj.version>
     <assertk.version>0.12</assertk.version>
     <lombok.version>1.18.2</lombok.version>
     <kotlin.version>1.2.71</kotlin.version>
@@ -161,24 +160,6 @@
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-engine</artifactId>
-      <version>${junit.jupiter.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.junit.platform</groupId>
-      <artifactId>junit-platform-launcher</artifactId>
-      <version>${junit.platform.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.junit.platform</groupId>
-      <artifactId>junit-platform-runner</artifactId>
-      <version>${junit.platform.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-params</artifactId>
       <version>${junit.jupiter.version}</version>
       <scope>test</scope>
     </dependency>
@@ -367,32 +348,6 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>2.22.0</version>
-
-        <dependencies>
-          <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>${junit.jupiter.version}</version>
-          </dependency>
-          <dependency>
-            <groupId>org.junit.vintage</groupId>
-            <artifactId>junit-vintage-engine</artifactId>
-            <version>${junit.jupiter.version}</version>
-          </dependency>
-        </dependencies>
-        <configuration>
-          <properties>
-            <!--
-            <includeTags>acceptance | !feature-a</includeTags>
-            <excludeTags>integration, regression</excludeTags>
-            <configurationParameters>
-              junit.jupiter.conditions.deactivate = *
-              junit.jupiter.extensions.autodetection.enabled = true
-              junit.jupiter.testinstance.lifecycle.default = per_class
-            </configurationParameters>
-            -->
-          </properties>
-        </configuration>
       </plugin>
 
       <!-- jgiven: `mvn verify` -->

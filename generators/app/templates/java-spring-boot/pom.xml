@@ -21,9 +21,8 @@
     <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
     <materializecss.version>1.0.0</materializecss.version>
     <spring-boot.version>2.0.5.RELEASE</spring-boot.version>
-    <junit.platform.version>1.3.0</junit.platform.version>
     <junit.jupiter.version>5.3.1</junit.jupiter.version>
-    <assertj.version>3.11.0</assertj.version>
+    <assertj.version>3.11.1</assertj.version>
     <assertk.version>0.12</assertk.version>
     <lombok.version>1.18.2</lombok.version>
     <jgiven.version>0.15.3</jgiven.version>
@@ -214,24 +213,6 @@
       <version>${junit.jupiter.version}</version>
       <scope>test</scope>
     </dependency>
-    <dependency>
-      <groupId>org.junit.platform</groupId>
-      <artifactId>junit-platform-launcher</artifactId>
-      <version>${junit.platform.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.junit.platform</groupId>
-      <artifactId>junit-platform-runner</artifactId>
-      <version>${junit.platform.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-params</artifactId>
-      <version>${junit.jupiter.version}</version>
-      <scope>test</scope>
-    </dependency>
 
     <!-- jgiven -->
     <dependency>
@@ -312,31 +293,6 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>2.22.0</version>
-        <dependencies>
-          <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>${junit.jupiter.version}</version>
-          </dependency>
-          <dependency>
-            <groupId>org.junit.vintage</groupId>
-            <artifactId>junit-vintage-engine</artifactId>
-            <version>${junit.jupiter.version}</version>
-          </dependency>
-        </dependencies>
-        <configuration>
-          <properties>
-            <!--
-            <includeTags>acceptance | !feature-a</includeTags>
-            <excludeTags>integration, regression</excludeTags>
-            <configurationParameters>
-              junit.jupiter.conditions.deactivate = *
-              junit.jupiter.extensions.autodetection.enabled = true
-              junit.jupiter.testinstance.lifecycle.default = per_class
-            </configurationParameters>
-            -->
-          </properties>
-        </configuration>
       </plugin>
 
       <!-- jgiven: `mvn verify` -->
