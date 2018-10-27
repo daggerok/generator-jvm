@@ -47,6 +47,27 @@ script:
 # generator-jvm cli
 - yo jvm --help
 
+# java-wildfly-swarm
+- cd ${e2e}
+- yo jvm -n java-wildfly-swarm -t java-wildfly-swarm
+- cd ${e2e}/java-wildfly-swarm/
+#
+- ./mvnw >/dev/null
+- java -jar -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005 ./target/*-swarm.jar -Djava.net.preferIPv4Stack=true &
+- wait_for 8080
+- sleep 10
+- http :8080/api/v1/hello/00000000-0000-0000-0000-000000000000
+- http :8080/api/v1/hello
+- stop_any 80 8080
+#
+- ./gradlew >/dev/null
+- ./build/libs/*-swarm.jar -Djava.net.preferIPv4Stack=true &
+- wait_for 8080
+- sleep 10
+- http :8080/api/v1/hello/00000000-0000-0000-0000-000000000000
+- http :8080/api/v1/hello
+- stop_any 80 8080
+
 # kotlin-wildfly-swarm
 - cd ${e2e}
 - yo jvm -n kotlin-wildfly-swarm -t kotlin-wildfly-swarm

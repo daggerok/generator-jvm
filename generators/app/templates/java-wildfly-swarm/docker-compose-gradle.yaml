@@ -1,0 +1,16 @@
+version: '2.2'
+
+services:
+
+  gradle-<%= projectDirectory %>-app:
+    build:
+      context: .
+      dockerfile: gradle/Dockerfile
+    ports:
+    - '5005:5005'
+    - '8080:8080'
+    networks: [backing-services]
+
+networks:
+  backing-services:
+    driver: bridge

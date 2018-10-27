@@ -33,6 +33,7 @@ module.exports = class extends Generator {
       'java-spring-boot-1.x',
       'java-spring-cloud-function-web',
       'java-vertx',
+      'java-wildfly-swarm',
       'kotlin',
       'kotlin-parent-multi-project',
       'kotlin-spring-boot',
@@ -282,6 +283,7 @@ module.exports = class extends Generator {
       //case: 'java-spring-boot-1.x':
       //case: 'java-spring-cloud-function-web':
       //case: 'java-vertx':
+      //case: 'java-wildfly-swarm':
       //case: 'kotlin':
       //case: 'kotlin-ee':
       //case: 'kotlin-parent-multi-project':

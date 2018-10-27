@@ -1,0 +1,14 @@
+version: '2.2'
+
+services:
+
+  maven-<%= projectDirectory %>-app:
+    build:
+      context: .
+      dockerfile: .mvn/Dockerfile
+    ports: ['8080:8080']
+    networks: [backing-services]
+
+networks:
+  backing-services:
+    driver: bridge
