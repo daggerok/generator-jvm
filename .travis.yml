@@ -64,6 +64,7 @@ script:
 - wait_for 8080
 - sleep 10s
 - http :8080
+- stop_any 80 8080
 
 # java-ee-cdi-full-multi-project
 - cd ${e2e}
@@ -82,6 +83,7 @@ script:
   done
 - http :8080/rest/api name=booooo
 - ./mvnw -pl ear docker-compose:down
+- stop_any 80 8080
 
 # java-ee-ejb-full-multi-project
 - cd ${e2e}
@@ -100,6 +102,7 @@ script:
   done
 - http :8080/rest/api name=booooo
 - ./mvnw -pl ear docker-compose:down
+- stop_any 80 8080
 
 # java-spring-boot-1.x
 - cd ${e2e}

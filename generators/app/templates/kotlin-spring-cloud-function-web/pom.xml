@@ -259,7 +259,7 @@
         </configuration>
 
         <executions>
-          <execution>
+          <!--<execution>
             <id>kapt</id>
             <goals>
               <goal>kapt</goal>
@@ -269,17 +269,8 @@
                 <sourceDir>src/main/kotlin</sourceDir>
                 <sourceDir>src/main/java</sourceDir>
               </sourceDirs>
-              <annotationProcessorPaths>
-                <!-- Specify your annotation processors here.
-                <annotationProcessorPath>
-                  <groupId>com.google.dagger</groupId>
-                  <artifactId>dagger-compiler</artifactId>
-                  <version>2.9</version>
-                </annotationProcessorPath>
-                -->
-              </annotationProcessorPaths>
             </configuration>
-          </execution>
+          </execution>-->
 
           <execution>
             <id>compile</id>
