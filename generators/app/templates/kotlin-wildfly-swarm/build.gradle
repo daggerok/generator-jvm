@@ -35,7 +35,7 @@ plugins {
   id 'eclipse'
 
   id 'org.jetbrains.kotlin.jvm' version '1.2.71' apply false
-  id 'org.jetbrains.kotlin.kapt' version '1.2.71' apply false
+//id 'org.jetbrains.kotlin.kapt' version '1.2.71' apply false
   id 'org.jetbrains.kotlin.plugin.noarg' version '1.2.71' apply false
   id 'org.jetbrains.kotlin.plugin.spring' version '1.2.71' apply false
   id 'org.jetbrains.kotlin.plugin.allopen' version '1.2.71' apply false
@@ -55,12 +55,10 @@ plugins {
 
 apply plugin: 'wildfly-swarm'
 
-/*
 wrapper {
   gradleVersion = '4.10.2'
   distributionType = 'BIN'
 }
-*/
 
 apply from: "$projectDir/gradle/ide.gradle"
 apply from: "$projectDir/gradle/clean.gradle"
@@ -74,7 +72,7 @@ apply plugin: 'org.jetbrains.kotlin.jvm'
 apply plugin: 'org.jetbrains.kotlin.plugin.jpa'
 apply plugin: 'org.jetbrains.kotlin.plugin.noarg'
 apply plugin: 'org.jetbrains.kotlin.plugin.allopen'
-//apply plugin: 'org.jetbrains.kotlin.plugin.spring'
+apply plugin: 'org.jetbrains.kotlin.plugin.spring'
 
 compileKotlin {
   incremental = true
@@ -129,30 +127,30 @@ compileJava.dependsOn(processResources)
 lombok.version = project.lombokVersion
 
 dependencies {
+
   //implementation "org.webjars:materializecss:$materializecssVersion"
   //implementation "org.webjars:material-design-icons:$materialDesignIconsVersion"
 
-  implementation 'org.wildfly.swarm:microprofile'
   implementation 'org.wildfly.swarm:logging'
   implementation 'org.wildfly.swarm:ejb'
   implementation 'org.wildfly.swarm:cdi'
+  implementation 'org.wildfly.swarm:jaxrs-jsonp'
+
   implementation 'org.wildfly.swarm:jpa'
   implementation 'org.wildfly.swarm:flyway'
-  implementation 'org.wildfly.swarm:jaxrs-jsonp'
-  testImplementation 'org.wildfly.swarm:arquillian'
+  implementation 'com.h2database:h2:1.4.196'
+
+  providedCompile "javax:javaee-api:$javaeeVersion"
 
   implementation('com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.6')
-  //implementation("com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonKotlinVersion")
+  implementation("com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonKotlinVersion")
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
   implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
 
-  providedCompile "javax:javaee-api:$javaeeVersion"
-  providedCompile 'com.h2database:h2:1.4.196'
+  implementation "io.vavr:vavr:$vavrVersion"
 
   implementation "org.slf4j:slf4j-api:$slf4jVersion"
   implementation 'ch.qos.logback:logback-classic:1.2.3'
-
-  implementation "io.vavr:vavr:$vavrVersion"
 
   testImplementation 'junit:junit:4.12'
   testImplementation("org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion")
