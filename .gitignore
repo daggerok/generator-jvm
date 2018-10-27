@@ -12,3 +12,4 @@ out/
 gradle-app.setting
 .gradletasknamecache
 yarn.lock
+.DS_Store
