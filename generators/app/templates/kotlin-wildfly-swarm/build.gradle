@@ -13,8 +13,9 @@ buildscript {
     junitJupiterVersion = '5.3.1'
     junitPlatformVersion = '1.3.0'
     jacksonKotlinVersion = '2.9.7'
-    wildflySwarmVersion = '2018.1.0'
-    hibernateCoreVersion = '4.2.18.Final'
+    wildflySwarmVersion = '2018.5.0'
+    materialDesignIconsVersion = '3.0.1'
+    materializecssVersion = '1.0.0'
   }
 
   dependencies {
@@ -44,9 +45,9 @@ plugins {
   id 'cn.bestwu.propdeps-idea' version '0.0.10' apply false
   id 'cn.bestwu.propdeps' version '0.0.10' apply false
 
-  id 'com.jfrog.artifactory' version '4.7.5' apply false
+  id 'com.jfrog.artifactory' version '4.8.1' apply false
   id 'org.asciidoctor.convert' version '1.5.8.1' apply false
-  id 'org.ajoberstar.git-publish' version '0.3.0' apply false
+  id 'org.ajoberstar.git-publish' version '2.0.0-rc.2' apply false
   id 'io.spring.dependency-management' version '1.0.6.RELEASE'
   id 'com.avast.gradle.docker-compose' version '0.7.1'
   id 'io.franzbecker.gradle-lombok' version '1.14'
@@ -128,39 +129,38 @@ compileJava.dependsOn(processResources)
 lombok.version = project.lombokVersion
 
 dependencies {
+  //implementation "org.webjars:materializecss:$materializecssVersion"
+  //implementation "org.webjars:material-design-icons:$materialDesignIconsVersion"
+
   implementation 'org.wildfly.swarm:microprofile'
   implementation 'org.wildfly.swarm:logging'
   implementation 'org.wildfly.swarm:ejb'
+  implementation 'org.wildfly.swarm:cdi'
+  implementation 'org.wildfly.swarm:jpa'
+  implementation 'org.wildfly.swarm:flyway'
+  implementation 'org.wildfly.swarm:jaxrs-jsonp'
   testImplementation 'org.wildfly.swarm:arquillian'
 
-  //compile("com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonVersion")
+  implementation('com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.6')
+  //implementation("com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonKotlinVersion")
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
   implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
 
   providedCompile "javax:javaee-api:$javaeeVersion"
   providedCompile 'com.h2database:h2:1.4.196'
 
-  compile "org.hibernate:hibernate-core:$hibernateCoreVersion"
-  //implementation 'javax.json:javax.json-api:1.0'
-  //implementation 'org.glassfish:javax.json:1.0.4'
-  //implementation 'org.jboss.resteasy:resteasy-json-p-provider:3.0.7.Final'
-
   implementation "org.slf4j:slf4j-api:$slf4jVersion"
-  implementation "org.slf4j:slf4j-jdk14:$slf4jVersion"
+  implementation 'ch.qos.logback:logback-classic:1.2.3'
 
   implementation "io.vavr:vavr:$vavrVersion"
 
-  // junit 4
   testImplementation 'junit:junit:4.12'
-  // junit 5
   testImplementation("org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion")
-  // hamcrest asserts, like: assertThat
   testImplementation 'org.hamcrest:hamcrest-core:1.3'
 
   testRuntime("org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion")
   testRuntime("org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion")
   testRuntime 'org.junit.vintage:junit-vintage-engine:4.12.3'
-  // IDEA (older bundle):
   testRuntime("org.junit.platform:junit-platform-launcher:$junitPlatformVersion")
   testCompileOnly 'org.apiguardian:apiguardian-api:1.0.0'
 }
@@ -170,7 +170,9 @@ dependencies {
 
 dependencyManagement {
   imports {
-    mavenBom "org.wildfly.swarm:bom:$wildflySwarmVersion"
+    mavenBom "javax:javaee-api:$javaeeVersion"
+    mavenBom "org.junit:junit-bom:$junitJupiterVersion"
+    mavenBom "org.wildfly.swarm:bom-all:$wildflySwarmVersion"
   }
 }
 

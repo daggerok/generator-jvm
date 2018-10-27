@@ -63,7 +63,7 @@
     <plugins>
       <plugin>
         <artifactId>maven-ear-plugin</artifactId>
-        <version>2.10.1</version>
+        <version>3.0.1</version>
         <configuration>
           <version>7</version>
           <archive>
@@ -77,7 +77,7 @@
       <plugin>
         <groupId>com.dkanejs.maven.plugins</groupId>
         <artifactId>docker-compose-maven-plugin</artifactId>
-        <version>1.0.1</version>
+        <version>2.2.0</version>
         <executions>
           <execution>
             <id>up</id>

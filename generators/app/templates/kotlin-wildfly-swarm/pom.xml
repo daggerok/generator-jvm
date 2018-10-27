@@ -18,17 +18,16 @@
     <material.design.icons.version>3.0.1</material.design.icons.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
-    <hibernate.core.version>4.2.18.Final</hibernate.core.version>
     <materializecss.version>1.0.0</materializecss.version>
     <java.net.preferIPv4Stack>true</java.net.preferIPv4Stack>
-    <version.wildfly.swarm>2018.1.0</version.wildfly.swarm>
+    <version.wildfly.swarm>2018.5.0</version.wildfly.swarm>
     <junit.jupiter.version>5.3.1</junit.jupiter.version>
     <failOnMissingWebXml>false</failOnMissingWebXml>
     <assertj.version>3.11.1</assertj.version>
     <assertk.version>0.12</assertk.version>
     <lombok.version>1.18.2</lombok.version>
     <kotlin.version>1.2.71</kotlin.version>
-    <jgiven.version>0.15.3</jgiven.version>
+    <jgiven.version>0.16.1</jgiven.version>
     <junit4.version>4.12</junit4.version>
     <slf4j.version>1.7.22</slf4j.version>
     <javaee.version>8.0</javaee.version>
@@ -38,6 +37,12 @@
 
   <dependencyManagement>
     <dependencies>
+      <dependency>
+        <groupId>javax</groupId>
+        <artifactId>javaee-api</artifactId>
+        <version>${javaee.version}</version>
+        <scope>provided</scope>
+      </dependency>
       <dependency>
         <groupId>org.wildfly.swarm</groupId>
         <artifactId>bom-all</artifactId>
@@ -91,8 +96,30 @@
     </dependency>
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
+      <artifactId>cdi</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.wildfly.swarm</groupId>
+      <artifactId>jaxrs-jsonp</artifactId>
+    </dependency>
+    <dependency><!-- include datasources (which is include logging) -->
+      <groupId>org.wildfly.swarm</groupId>
+      <artifactId>jpa</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.wildfly.swarm</groupId>
+      <artifactId>flyway</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.wildfly.swarm</groupId>
       <artifactId>arquillian</artifactId>
       <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.fasterxml.jackson.datatype</groupId>
+      <artifactId>jackson-datatype-jsr310</artifactId>
+      <version>2.9.6</version>
     </dependency>
 
     <!-- Kotlin -->
@@ -145,34 +172,9 @@
       <version>${slf4j.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-jdk14</artifactId>
-      <version>${slf4j.version}</version>
-    </dependency>
-
-    <!-- JSON
-    <dependency>
-      <groupId>org.jboss.resteasy</groupId>
-      <artifactId>resteasy-json-p-provider</artifactId>
-      <version>3.0.7.Final</version>
-    </dependency>
-    <dependency>
-      <groupId>javax.json</groupId>
-      <artifactId>javax.json-api</artifactId>
-      <version>1.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.glassfish</groupId>
-      <artifactId>javax.json</artifactId>
-      <version>1.0.4</version>
-    </dependency>
-    -->
-
-    <!-- Hibernate UUID -->
-    <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-core</artifactId>
-      <version>${hibernate.core.version}</version>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>1.2.3</version>
     </dependency>
 
     <!-- assertj -->
@@ -271,7 +273,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
-        <version>3.2.0</version>
+        <version>3.2.2</version>
 
         <configuration>
           <failOnMissingWebXml>false</failOnMissingWebXml>
@@ -379,7 +381,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.5.1</version>
+        <version>3.8.0</version>
 
         <configuration>
           <source>${maven.compiler.source}</source>
@@ -414,7 +416,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>2.22.0</version>
+        <version>2.22.1</version>
       </plugin>
 
       <!-- jgiven: `mvn verify` -->
@@ -444,7 +446,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-site-plugin</artifactId>
-        <version>3.6</version>
+        <version>3.7.1</version>
 
         <configuration>
           <reportPlugins>
@@ -469,7 +471,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-project-info-reports-plugin</artifactId>
-        <version>2.9</version>
+        <version>3.0.0</version>
 
         <configuration>
           <skip>true</skip>
@@ -494,7 +496,7 @@
           <plugin>
             <groupId>com.dkanejs.maven.plugins</groupId>
             <artifactId>docker-compose-maven-plugin</artifactId>
-            <version>1.0.1</version>
+            <version>2.2.0</version>
 
             <executions>
               <execution>
@@ -534,7 +536,7 @@
           <plugin>
             <groupId>org.asciidoctor</groupId>
             <artifactId>asciidoctor-maven-plugin</artifactId>
-            <version>1.5.6</version>
+            <version>1.5.7.1</version>
 
             <dependencies>
               <dependency>
@@ -545,7 +547,7 @@
               <dependency>
                 <groupId>org.asciidoctor</groupId>
                 <artifactId>asciidoctorj-diagram</artifactId>
-                <version>1.5.4</version>
+                <version>1.5.10</version>
               </dependency>
             </dependencies>
 
