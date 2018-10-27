@@ -59,7 +59,7 @@ task documentation(type: Copy, dependsOn: asciidoctor) {
 
 gitPublish {
   // repoUri = "git@gitlab.com:daggerok/${rootProject.name}.git" // same gitlab plugin?
-  repoUri = "git@github.com:daggerok/${rootProject.name}.git"
+  repoUri = "git@github.com:daggerok/${rootProject.name}.git" as String
   branch = 'gh-pages'
 
   contents {
@@ -68,7 +68,7 @@ gitPublish {
     }
   }
 
-  commitMessage = "Publish $rootProject.name documentation (${project.group}:${project.name}:$project.version)"
+  commitMessage = "Publish $rootProject.name documentation (${project.group}:${project.name}:$project.version)" as String
 }
 
 gitPublishPush.dependsOn documentation

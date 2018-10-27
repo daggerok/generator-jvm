@@ -6,7 +6,7 @@ buildscript {
     lombokVersion = '1.18.2'
     logbackVersion = '1.2.3'
     slf4jVersion = '1.7.25'
-    vertxVersion = '3.5.2'
+    vertxVersion = '3.5.4'
     vavrVersion = '0.9.2'
 
     phantomjsDriverVersion = '1.4.4'
