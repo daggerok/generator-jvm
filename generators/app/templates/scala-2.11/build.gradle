@@ -42,7 +42,7 @@ plugins {
 
 /*
 wrapper {
-  gradleVersion = '4.10.2'
+  gradleVersion = '5.0-rc-1'
   distributionType = 'BIN'
 }
 */

@@ -15,10 +15,10 @@ import static javax.ws.rs.core.Response.Status.BAD_REQUEST;
 
 @Log
 @Provider
-public class ErrorHandler implements ExceptionMapper<Throwable> {
+public class ErrorHandler implements ExceptionMapper<Exception> {
 
   @Override
-  public Response toResponse(final Throwable exception) {
+  public Response toResponse(final Exception exception) {
     final String message = exception.getLocalizedMessage();
     log.severe(() -> format("Unexpected error: %s", message));
     return Response.status(BAD_REQUEST)
