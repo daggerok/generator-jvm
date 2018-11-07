@@ -19,6 +19,9 @@ addons:
     - libxml2-utils
     - docker-ce
     - google-chrome-stable
+    - tree
+    - jq
+    - python-pip
 
 install: true
 before_install:
@@ -30,7 +33,6 @@ before_install:
 #
 - sudo add-apt-repository universe -y
 - sudo apt-get update -yqq
-- sudo apt-get install -yqq --no-install-suggests --no-install-recommends tree jq python-pip bash
 - sudo pip install docker-compose httpie >/dev/null 2>&1
 #
 - source <(curl -s https://raw.githubusercontent.com/daggerok/bash-functions/master/main.bash)
@@ -46,6 +48,34 @@ script:
 
 # generator-jvm cli
 - yo jvm --help
+
+# java-payara-micro
+- cd ${e2e}
+- yo jvm -n java-payara-micro -t java-payara-micro
+- cd ${e2e}/java-payara-micro
+#
+- ./gradlew clean bundle >/dev/null
+- java -jar -Djava.net.preferIPv4Stack=true ./build/*-microbundle.jar &
+- wait_for 8080
+- sleep 15
+- http :8080/v1 string=one
+- http :8080/v1 string=two
+- http :8080/v1 string=three
+- http :8080/v1
+- http :8080
+- stop_any 80 8080
+#
+- ./mvnw >/dev/null
+- ./mvnw -Pbundle >/dev/null
+- java -jar -Djava.net.preferIPv4Stack=true ./target/*-microbundle.jar &
+- wait_for 8080
+- sleep 15
+- http :8080/v1 string=one
+- http :8080/v1 string=two
+- http :8080/v1 string=three
+- http :8080/v1
+- http :8080
+- stop_any 80 8080
 
 # java-wildfly-swarm
 - cd ${e2e}
@@ -271,94 +301,94 @@ script:
 - docker-compose -f docker-compose-gradle.yaml down -v
 - docker-compose -f docker-compose-gradle.yaml up --build
 
-# java-parent-multi-project
-- cd ${e2e}
-- yo jvm -n javaparentmultiproject -t java-parent-multi-project
-- cd javaparentmultiproject/
-- cat README.adoc
-- cat README.adoc | grep javaparentmultiproject
-- ./mvnw -Pdocs
-- ./gradlew docum
-
-# kotlin-parent-multi-project
-- cd ${e2e}
-- yo jvm -n kotlinparentmultiproject -t kotlin-parent-multi-project
-- cd kotlinparentmultiproject/
-- cat README.adoc
-- cat README.adoc | grep kotlinparentmultiproject
-- ./mvnw -Pdocs
-- ./gradlew docum
-
-# replace dots with underscores test
-- cd ${e2e}
-- yo jvm -n dotted.java1.8 -t java
-- cd dotted_java1_8
-- ./gradlew -S >/dev/null
-- java -jar build/libs/*-all.jar
-- bash build/install/dotted_java1_8/bin/dotted_java1_8
-- tree build/maven-publish
-- ./mvnw clean deploy >/dev/null
-- java -jar target/*-all.jar
-- tree target/local-repo/
-
-# java
-- cd ${e2e}
-- yo jvm -n java -t java
-- cd java
-- ./gradlew -S >/dev/null
-- java -jar build/libs/*-all.jar
-- bash build/install/java/bin/java
-- tree build/maven-publish
-- ./gradlew documentation
-- ./mvnw clean deploy >/dev/null
-- java -jar target/*-all.jar
-- tree target/local-repo/
-- ./mvnw -P docs >/dev/null
-
-# java-vertx
-- cd ${e2e}
-- yo jvm -n javavertx -t java-vertx
-- cd javavertx
-- ./gradlew -S >/dev/null
-- ./gradlew documentation >/dev/null
-- tree target/generated-docs
-- ./mvnw clean deploy >/dev/null
-- ./mvnw -Pdocs
-- tree target/generated-docs
-
-# java-ee
-- cd ${e2e}
-- yo jvm -n javaee -t java-ee
-- cd javaee
-- ./mvnw >/dev/null
-- ./mvnw -Pdocs
-- ./gradlew -S >/dev/null
-- ./gradlew composeUp
-- http :8080/app/api/health
-- http :8080/app/api/ping
-- http :8080/app/api/pong
-- http :8080/app/api/
-- ./gradlew composeDown
-
-# java-ee-thymeleaf
-- cd ${e2e}
-- yo jvm -n javaeeth -t java-ee-thymeleaf
-- cd javaeeth
-- ./mvnw >/dev/null
-- ./mvnw -Pdocs
-- ./gradlew -S >/dev/null
-- ./gradlew composeUp
-- http :8080/app/api/health
-- http :8080/app/
-- ./gradlew composeDown
-
-# java-spring-boot
-- cd ${e2e}
-- yo jvm -n javaspringboot -t java-spring-boot
-- cd javaspringboot
-- ./gradlew -S >/dev/null
-- ./mvnw clean deploy >/dev/null
-- ./mvnw -Pdocs
+## java-parent-multi-project
+#- cd ${e2e}
+#- yo jvm -n javaparentmultiproject -t java-parent-multi-project
+#- cd javaparentmultiproject/
+#- cat README.adoc
+#- cat README.adoc | grep javaparentmultiproject
+#- ./mvnw -Pdocs
+#- ./gradlew docum
+#
+## kotlin-parent-multi-project
+#- cd ${e2e}
+#- yo jvm -n kotlinparentmultiproject -t kotlin-parent-multi-project
+#- cd kotlinparentmultiproject/
+#- cat README.adoc
+#- cat README.adoc | grep kotlinparentmultiproject
+#- ./mvnw -Pdocs
+#- ./gradlew docum
+#
+## replace dots with underscores test
+#- cd ${e2e}
+#- yo jvm -n dotted.java1.8 -t java
+#- cd dotted_java1_8
+#- ./gradlew -S >/dev/null
+#- java -jar build/libs/*-all.jar
+#- bash build/install/dotted_java1_8/bin/dotted_java1_8
+#- tree build/maven-publish
+#- ./mvnw clean deploy >/dev/null
+#- java -jar target/*-all.jar
+#- tree target/local-repo/
+#
+## java
+#- cd ${e2e}
+#- yo jvm -n java -t java
+#- cd java
+#- ./gradlew -S >/dev/null
+#- java -jar build/libs/*-all.jar
+#- bash build/install/java/bin/java
+#- tree build/maven-publish
+#- ./gradlew documentation
+#- ./mvnw clean deploy >/dev/null
+#- java -jar target/*-all.jar
+#- tree target/local-repo/
+#- ./mvnw -P docs >/dev/null
+#
+## java-vertx
+#- cd ${e2e}
+#- yo jvm -n javavertx -t java-vertx
+#- cd javavertx
+#- ./gradlew -S >/dev/null
+#- ./gradlew documentation >/dev/null
+#- tree target/generated-docs
+#- ./mvnw clean deploy >/dev/null
+#- ./mvnw -Pdocs
+#- tree target/generated-docs
+#
+## java-ee
+#- cd ${e2e}
+#- yo jvm -n javaee -t java-ee
+#- cd javaee
+#- ./mvnw >/dev/null
+#- ./mvnw -Pdocs
+#- ./gradlew -S >/dev/null
+#- ./gradlew composeUp
+#- http :8080/app/api/health
+#- http :8080/app/api/ping
+#- http :8080/app/api/pong
+#- http :8080/app/api/
+#- ./gradlew composeDown
+#
+## java-ee-thymeleaf
+#- cd ${e2e}
+#- yo jvm -n javaeeth -t java-ee-thymeleaf
+#- cd javaeeth
+#- ./mvnw >/dev/null
+#- ./mvnw -Pdocs
+#- ./gradlew -S >/dev/null
+#- ./gradlew composeUp
+#- http :8080/app/api/health
+#- http :8080/app/
+#- ./gradlew composeDown
+#
+## java-spring-boot
+#- cd ${e2e}
+#- yo jvm -n javaspringboot -t java-spring-boot
+#- cd javaspringboot
+#- ./gradlew -S >/dev/null
+#- ./mvnw clean deploy >/dev/null
+#- ./mvnw -Pdocs
 
 # done
 - cd ${base}
@@ -383,13 +413,9 @@ before_cache:
     do sudo rm -rf $item ;
   done
 
-cache:
-  yarn: true
-  directories:
-  - $HOME/.m2
-  - $HOME/.sbt
-  - $HOME/.gradle
-  - node_modules
-
 notifications:
   email: false
+
+git:
+  depth: false
+  quiet: true

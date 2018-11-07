@@ -7,7 +7,7 @@ buildscript {
     logbackVersion = '1.2.3'
     kotlinVersion = '1.2.71'
     jgivenVersion = '0.15.3'
-    lombokVersion = '1.18.2'
+    lombokVersion = '1.18.4'
     assertjVersion = '3.11.1'
     assertkJvmVersion = '0.12'
     junitJupiterVersion = '5.3.1'

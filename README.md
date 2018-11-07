@@ -62,6 +62,21 @@ bash mvnw docker-compose:up
 
 ## What's inside?
 
+___java-payara-micro___
+
+ * java 8 based project
+ * Java / JavaEE 8
+ * lombok (slf4j + logback logging)
+ * support fat (uber) jar
+ * support maven build system
+ * support gradle build system
+ * support testing with junit 5
+ * docker / docker-compose support
+
+type options:
+
+- `java-payara-micro`
+
 ___akka-actor project___
 
  * java 8 based project

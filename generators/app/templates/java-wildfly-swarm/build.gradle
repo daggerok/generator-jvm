@@ -53,7 +53,7 @@ allprojects {
 version = '0.0.1'
 group = 'com.github.daggerok'
 sourceCompatibility = targetCompatibility = "$javaVersion"
-lombok.version = '1.18.2'
+lombok.version = '1.18.4'
 
 // ear { archiveName = "${project.name}.ear" }
 war {

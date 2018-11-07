@@ -6,7 +6,7 @@ buildscript {
     materialDesignIconsVersion = '3.0.1'
     materializecssVersion = '1.0.0'
     jacksonKotlinVersion = '2.9.7'
-    lombokVersion = '1.18.2'
+    lombokVersion = '1.18.4'
     logbackVersion = '1.2.3'
     kotlinVersion = '1.2.71'
     slf4jVersion = '1.7.25'

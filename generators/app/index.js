@@ -29,6 +29,7 @@ module.exports = class extends Generator {
       'java-ee-faces',
       'java-ee-thymeleaf',
       'java-parent-multi-project',
+      'java-payara-micro',
       'java-spring-boot',
       'java-spring-boot-1.x',
       'java-spring-cloud-function-web',
@@ -279,6 +280,7 @@ module.exports = class extends Generator {
       //case: 'java-ee-faces':
       //case: 'java-ee-thymeleaf':
       //case: 'java-parent-multi-project':
+      //case: 'java-payara-micro':
       //case: 'java-spring-boot':
       //case: 'java-spring-boot-1.x':
       //case: 'java-spring-cloud-function-web':
