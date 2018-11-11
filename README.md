@@ -226,20 +226,21 @@ type options:
 ___java-ee (micro-profile) project___
 
  * java 8 based project
- * javaee 7.0 and 8.0 using wildfly-swarm micro-profile
+ * javaee 7.0 / 8.0 using thorntail (aka wildfly-swarm) micro-profile
  * support fatjar
  * support executable bash jar
- * support kotlin 1.2.71
+ * support kotlin
  * support maven build system
  * support gradle build system
- * vavr (javaslang)
- * lombok (slf4j + logback logging)
+ * vavr (aka javaslang), lombok
  * support testing with junit 4 / 5
  * docker / docker-compose support
 
 type options:
 
+- `java-thorntail`
 - `java-wildfly-swarm`
+- `kotlin-thorntail`
 - `kotlin-wildfly-swarm`
 
 ___java-ee project___

@@ -1,0 +1,41 @@
+swarm:
+
+  datasources:
+    data-sources:
+      MyWildFlySwarmAppDataSource:
+        driver-name: MyWildFlySwarmAppJdbcDriver
+        connection-url: jdbc:h2:mem:my-wildfly-swarm-app;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+        user-name: my-wildfly-swarm-app-user-name
+        password: my-wildfly-swarm-app-password
+    jdbc-drivers:
+      MyWildFlySwarmAppJdbcDriver:
+        driver-class-name: org.h2.Driver
+        xa-datasource-name: org.h2.jdbcx.JdbcDataSource
+        driver-module-name: com.h2database.h2
+
+#  logging:
+#    pattern-formatters:
+#      LOG_FORMATTER:
+#        pattern: "%p [%c] %s%e%n"
+#    periodic-rotating-file-handlers:
+#      FILE:
+#        file:
+#          path: target/MY_APP_NAME.log
+#        suffix: .yyyy-MM-dd
+#        named-formatter: LOG_FORMATTER
+#        level: INFO
+
+  logging:
+    pattern-formatters:
+      LOG_FORMATTER:
+        pattern: "my-logs %p [%c] %s%e%n"
+    periodic-rotating-file-handlers:
+      FILE:
+        file:
+          path: my-wildfly-swarm.log
+        suffix: .yyyy-MM-dd
+        named-formatter: LOG_FORMATTER
+    root-logger:
+      handlers:
+      - CONSOLE
+      - FILE

@@ -34,6 +34,7 @@ module.exports = class extends Generator {
       'java-spring-boot-1.x',
       'java-spring-cloud-function-web',
       'java-vertx',
+      'java-thorntail',
       'java-wildfly-swarm',
       'kotlin',
       'kotlin-parent-multi-project',
@@ -41,6 +42,7 @@ module.exports = class extends Generator {
       'kotlin-spring-boot-1.x',
       'kotlin-spring-cloud-function-web',
       'kotlin-vertx',
+      'kotlin-thorntail',
       'kotlin-wildfly-swarm',
       'kotlin-ee',
       'scala',
@@ -285,6 +287,7 @@ module.exports = class extends Generator {
       //case: 'java-spring-boot-1.x':
       //case: 'java-spring-cloud-function-web':
       //case: 'java-vertx':
+      //case: 'java-thorntail',
       //case: 'java-wildfly-swarm':
       //case: 'kotlin':
       //case: 'kotlin-ee':
@@ -293,6 +296,7 @@ module.exports = class extends Generator {
       //case: 'kotlin-spring-boot-1.x':
       //case: 'kotlin-spring-cloud-function-web':
       //case: 'kotlin-vertx':
+      //case: 'kotlin-thorntail',
       //case: 'kotlin-wildfly-swarm':
       //case: 'scala-2.11':
       //case: 'scala':
