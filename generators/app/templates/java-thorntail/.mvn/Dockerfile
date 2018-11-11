@@ -32,4 +32,4 @@ EXPOSE 8080
 HEALTHCHECK --timeout=1s \
             --retries=66 \
             CMD curl -f http://127.0.0.1:8080/api/v1/hello || exit 1
-COPY --chown=appuser ./target/*-swarm.jar ./app.jar
+COPY --chown=appuser ./target/*-thorntail.jar ./app.jar

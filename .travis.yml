@@ -58,10 +58,7 @@ script:
 - wait_for 8080
 - sleep 10s
 - http :8080
-#- http post :8080 color=white
-#- http post :8080 ololo=trololo
 - stop_any 8080
-## TODO: Gradle
 
 # java-thorntail
 - cd ${e2e}
@@ -73,10 +70,7 @@ script:
 - sleep 10s
 - http :8080/api/v1/hello/00000000-0000-0000-0000-000000000000
 - http :8080/api/v1/hello
-#- http :8080/health
-#- http :8080
 - stop_any 8080
-## TODO: Gradle
 
 # java-payara-micro
 - cd ${e2e}

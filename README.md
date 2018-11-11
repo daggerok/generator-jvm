@@ -62,6 +62,26 @@ bash mvnw docker-compose:up
 
 ## What's inside?
 
+___java-ee (micro-profile) project___
+
+ * java 8 based project
+ * javaee 7.0 / 8.0 using thorntail (aka wildfly-swarm) micro-profile
+ * support fatjar
+ * support executable bash jar
+ * support kotlin
+ * support maven build system
+ * support gradle build system (only swarm projects)
+ * vavr (aka javaslang), lombok
+ * support testing with junit 4 / 5
+ * docker / docker-compose support
+
+type options:
+
+- `java-thorntail`
+- `java-wildfly-swarm`
+- `kotlin-thorntail`
+- `kotlin-wildfly-swarm`
+
 ___java-payara-micro___
 
  * java 8 based project
@@ -222,26 +242,6 @@ type options:
 
 - `java-ee-cdi-full-multi-project`
 - `java-ee-ejb-full-multi-project`
-
-___java-ee (micro-profile) project___
-
- * java 8 based project
- * javaee 7.0 / 8.0 using thorntail (aka wildfly-swarm) micro-profile
- * support fatjar
- * support executable bash jar
- * support kotlin
- * support maven build system
- * support gradle build system
- * vavr (aka javaslang), lombok
- * support testing with junit 4 / 5
- * docker / docker-compose support
-
-type options:
-
-- `java-thorntail`
-- `java-wildfly-swarm`
-- `kotlin-thorntail`
-- `kotlin-wildfly-swarm`
 
 ___java-ee project___
 
