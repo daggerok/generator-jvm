@@ -27,6 +27,7 @@ module.exports = class extends Generator {
       'java-ee-cdi-full-multi-project',
       'java-ee-ejb-full-multi-project',
       'java-ee-faces',
+      'java-ee-jsf',
       'java-ee-thymeleaf',
       'java-parent-multi-project',
       'java-payara-micro',
@@ -216,6 +217,7 @@ module.exports = class extends Generator {
     switch (this.props.projectType) {
 
       // specific JavaEE project (maven only):
+      case 'java-ee-jsf':
       case 'java-thorntail':
       case 'kotlin-thorntail':
 

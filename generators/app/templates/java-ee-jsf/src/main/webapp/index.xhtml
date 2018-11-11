@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+  <title>Title</title>
+  <link rel="stylesheet" href="/webjars/material-design-icons/3.0.1/material-icons.css"/>
+  <link rel="stylesheet" href="/webjars/materializecss/1.0.0/css/materialize.css"/>
+</h:head>
+<h:body>
+  <h:form id="frm">
+    Name : <h:inputText value="#{helloBean.name}" id="name"/>
+    <h:commandButton value="Say hello" actionListener="#{helloBean.sayHello()}" id="greetingBtn"/>
+  </h:form>
+  #{helloBean.helloText}
+  <script src="/webjars/materializecss/1.0.0/js/materialize.js"></script>
+  <script>M.AutoInit(document.body);</script>
+</h:body>
+</html>

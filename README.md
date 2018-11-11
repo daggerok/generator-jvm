@@ -77,9 +77,10 @@ ___java-ee (micro-profile) project___
 
 type options:
 
+- `java-ee-jsf`
 - `java-thorntail`
-- `java-wildfly-swarm`
 - `kotlin-thorntail`
+- `java-wildfly-swarm`
 - `kotlin-wildfly-swarm`
 
 ___java-payara-micro___

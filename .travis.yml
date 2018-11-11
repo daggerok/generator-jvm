@@ -49,6 +49,17 @@ script:
 # generator-jvm cli
 - yo jvm --help
 
+# java-ee-jsf
+- cd ${e2e}
+- yo jvm -n java-ee-jsf -t java-ee-jsf
+- cd ${e2e}/java-ee-jsf
+- ./mvnw >/dev/null
+- bash ./target/*-thorntail.jar &
+- wait_for 8080
+- sleep 15s
+- http :8080
+- stop_any 8080
+
 # kotlin-thorntail
 - cd ${e2e}
 - yo jvm -n kotlin-thorntail -t kotlin-thorntail
@@ -56,7 +67,7 @@ script:
 - ./mvnw >/dev/null
 - bash ./target/*-thorntail.jar &
 - wait_for 8080
-- sleep 10s
+- sleep 15s
 - http :8080
 - stop_any 8080
 
@@ -67,7 +78,7 @@ script:
 - ./mvnw >/dev/null
 - bash ./target/*-thorntail.jar &
 - wait_for 8080
-- sleep 10s
+- sleep 15s
 - http :8080/api/v1/hello/00000000-0000-0000-0000-000000000000
 - http :8080/api/v1/hello
 - stop_any 8080
@@ -80,7 +91,7 @@ script:
 - ./gradlew clean bundle >/dev/null
 - java -jar -Djava.net.preferIPv4Stack=true ./build/*-microbundle.jar &
 - wait_for 8080
-- sleep 15
+- sleep 15s
 - http :8080/v1 string=one
 - http :8080/v1 string=two
 - http :8080/v1 string=three
@@ -92,7 +103,7 @@ script:
 - ./mvnw -Pbundle >/dev/null
 - java -jar -Djava.net.preferIPv4Stack=true ./target/*-microbundle.jar &
 - wait_for 8080
-- sleep 15
+- sleep 15s
 - http :8080/v1 string=one
 - http :8080/v1 string=two
 - http :8080/v1 string=three
@@ -108,7 +119,7 @@ script:
 - ./mvnw >/dev/null
 - java -jar -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005 ./target/*-swarm.jar -Djava.net.preferIPv4Stack=true &
 - wait_for 8080
-- sleep 10
+- sleep 15s
 - http :8080/api/v1/hello/00000000-0000-0000-0000-000000000000
 - http :8080/api/v1/hello
 - stop_any 80 8080
@@ -116,7 +127,7 @@ script:
 - ./gradlew >/dev/null
 - ./build/libs/*-swarm.jar -Djava.net.preferIPv4Stack=true &
 - wait_for 8080
-- sleep 10
+- sleep 15s
 - http :8080/api/v1/hello/00000000-0000-0000-0000-000000000000
 - http :8080/api/v1/hello
 - stop_any 80 8080
@@ -129,14 +140,14 @@ script:
 - bash mvnw >/dev/null
 - java -Djava.net.preferIPv4Stack=true -jar target/*-swarm.jar &
 - wait_for 8080
-- sleep 10s
+- sleep 15s
 - http :8080
 - stop_any 80 8080
 #
 - bash gradlew >/dev/null
 - bash build/libs/*-swarm.jar -Djava.net.preferIPv4Stack=true &
 - wait_for 8080
-- sleep 10s
+- sleep 15s
 - http :8080
 - stop_any 80 8080
 
