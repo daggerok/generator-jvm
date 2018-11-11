@@ -50,20 +50,12 @@ script:
 - export root=$(pwd)
 #
 - ./mvnw >/dev/null
-- java -jar -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005 ./target/*-swarm.jar -Djava.net.preferIPv4Stack=true &
+- java -jar -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005 ./target/*-thorntail.jar -Djava.net.preferIPv4Stack=true &
 - wait_for 8080
 - sleep 10s
 - http :8080/api/v1/hello/00000000-0000-0000-0000-000000000000
 - http :8080/api/v1/hello
 - stop_any 80 8080
-##TODO: Gradle
-#- ./gradlew >/dev/null
-#- ./build/libs/*-swarm.jar -Djava.net.preferIPv4Stack=true &
-#- wait_for 8080
-#- sleep 10s
-#- http :8080/api/v1/hello/00000000-0000-0000-0000-000000000000
-#- http :8080/api/v1/hello
-#- stop_any 80 8080
 
 before_deploy:
 - cd ${root}

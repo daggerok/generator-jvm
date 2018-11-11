@@ -157,8 +157,9 @@ module.exports = class extends Generator {
     [
       'mvn',
       'gitignore',
-      'hgignore',
-      'gitlab-ci.yml',
+      // // disable for now:
+      // 'hgignore',
+      // 'gitlab-ci.yml',
 
     ].forEach(suffix => this.fs.copy(
       this.templatePath(`_dotted/${suffix}`),
@@ -185,11 +186,12 @@ module.exports = class extends Generator {
     /* apply common template substitutions */
 
     [
-      '.mvn/redeploy.sh',
-      'bitbucket-pipelines.yml',
-      'docs/docinfo.html',
-      'gradle/redeploy.sh',
+      // // disable fo now:
+      // '.mvn/redeploy.sh',
+      // 'bitbucket-pipelines.yml',
+      // 'gradle/redeploy.sh',
       'settings.gradle',
+      'docs/docinfo.html',
 
     ].forEach(suffix => this.fs.copyTpl(
       this.templatePath(`_common/${suffix}`),
@@ -197,7 +199,7 @@ module.exports = class extends Generator {
       { projectDirectory: this.props.projectDirectory }
     ));
 
-    /* project templates */
+    /* all project templates substitutions */
 
     [
       '.travis.yml',
@@ -212,6 +214,22 @@ module.exports = class extends Generator {
     /* apply template substitutions */
 
     switch (this.props.projectType) {
+
+      // specific JavaEE project (maven only):
+      case 'java-thorntail':
+      case 'kotlin-thorntail':
+
+        [
+          'docker-compose-maven.yaml',
+          'pom.xml',
+
+        ].forEach(path => this.fs.copyTpl(
+          this.templatePath(`${this.props.projectType}/${path}`),
+          this.destinationPath(`${this.props.projectDirectory}/${path}`),
+          { projectDirectory: this.props.projectDirectory }
+        ));
+
+        break;
 
       // specific Scala Akka project (sbt only):
       case 'scala-sbt':
@@ -287,7 +305,6 @@ module.exports = class extends Generator {
       //case: 'java-spring-boot-1.x':
       //case: 'java-spring-cloud-function-web':
       //case: 'java-vertx':
-      //case: 'java-thorntail',
       //case: 'java-wildfly-swarm':
       //case: 'kotlin':
       //case: 'kotlin-ee':
@@ -296,7 +313,6 @@ module.exports = class extends Generator {
       //case: 'kotlin-spring-boot-1.x':
       //case: 'kotlin-spring-cloud-function-web':
       //case: 'kotlin-vertx':
-      //case: 'kotlin-thorntail',
       //case: 'kotlin-wildfly-swarm':
       //case: 'scala-2.11':
       //case: 'scala':

@@ -50,18 +50,11 @@ script:
 - export root=$(pwd)
 #
 - bash mvnw >/dev/null
-- bash target/*-swarm.jar &
+- bash target/*-thorntail.jar &
 - wait_for 8080
-- sleep 10s
+- sleep 15s
 - http :8080
 - stop_any 80 8080
-##TODO: Gradle
-#- bash gradlew >/dev/null
-#- bash build/libs/*-swarm.jar &
-#- wait_for 8080
-#- sleep 10s
-#- http :8080
-#- stop_any 80 8080
 
 before_deploy:
 - cd ${root}
