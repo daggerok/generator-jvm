@@ -124,20 +124,17 @@ module.exports = class extends Generator {
   writing() {
 
     /* safety */
-
     this.props.projectDirectory = replaceSpacesWithDash(this.props.projectDirectory);
     this.props.projectType = this.props.projectType.trim().toLowerCase();
 
-    /**
-     * RAW files
-     *
-     * Using: copy functionality as is
-     */
+    /* RAW files. Using: copy functionality as is */
     this.copyCommons();
     this.copyDottedTilesAndFolders();
+    this.copyMavenWrapper();
 
-    // WARNING: this block of code must bi inside writing block!
     /* copy project files by type */
+    // WARNING: this block of code must bi inside writing block!
+    // **/*, **/.*
     [
       '**/*',
       '**/.*',
@@ -147,11 +144,7 @@ module.exports = class extends Generator {
       this.destinationPath(this.props.projectDirectory),
     ));
 
-    /**
-     * Template files.
-     *
-     * Using: copyTpl functionality for substitution
-     */
+    /* Template files. Using: copyTpl functionality for substitution */
     this.applyCommonTemplatesSubsctitutions();
     this.applyAllProjectTemplatesSubsctitutions();
     this.applyTemplatesSubsctitutions();
@@ -177,9 +170,8 @@ module.exports = class extends Generator {
   }
 
   copyDottedTilesAndFolders() {
-    /* copy dotted files / dirs, like: .mvn, .gitignore, ... */
+
     [
-      'mvn',
       'gitignore',
       // // disable for now:
       // 'hgignore',
@@ -189,6 +181,35 @@ module.exports = class extends Generator {
       this.templatePath(`_dotted/${suffix}`),
       this.destinationPath(`${this.props.projectDirectory}/.${suffix}`),
     ));
+  }
+
+  copyMavenWrapper() {
+
+    /* copy dotted files / dirs, like: .mvn, .gitignore, ... */
+    switch (this.props.projectType) {
+
+      // specific JavaEE project (maven only):
+      case 'java-thorntail':
+      case 'java-wildfly-swarm':
+      case 'kotlin-thorntail':
+      case 'kotlin-wildfly-swarm':
+
+        this.fs.copy(
+          this.templatePath(`_dotted/mvn-3.5.4`),
+          this.destinationPath(`${this.props.projectDirectory}/.mvn`),
+        );
+
+        break;
+
+      default:
+
+        this.fs.copy(
+          this.templatePath(`_dotted/mvn`),
+          this.destinationPath(`${this.props.projectDirectory}/.mvn`),
+        );
+
+        break;
+    }
   }
 
   applyCommonTemplatesSubsctitutions() {

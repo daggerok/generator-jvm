@@ -1,6 +1,6 @@
 buildscript {
   ext {
-    springBootVersion = '2.0.6.RELEASE'
+    springBootVersion = '2.1.0.RELEASE'
     springCloudVersion = 'Finchley.RELEASE'
     javaVersion = JavaVersion.VERSION_1_8
     materialDesignIconsVersion = '3.0.1'
@@ -30,7 +30,7 @@ buildscript {
 
   //// spring-boot versions overriding, be careful with it!
   // In our case we are fixing PhantomJS (replacing older spring-boot version):
-  ext['selenium.version'] = "$seleniumDriverVersion"
+  // ext['selenium.version'] = "$seleniumDriverVersion"
 }
 
 plugins {
@@ -38,7 +38,7 @@ plugins {
   id 'org.asciidoctor.convert' version '1.5.8.1' apply false
   id 'org.ajoberstar.git-publish' version '2.0.0-rc.2' apply false
   id 'io.spring.dependency-management' version '1.0.6.RELEASE' apply false
-  id 'org.springframework.boot' version '2.0.6.RELEASE' apply false
+  id 'org.springframework.boot' version '2.1.0.RELEASE' apply false
   id 'com.avast.gradle.docker-compose' version '0.7.1' apply false
   id 'io.franzbecker.gradle-lombok' version '1.14' apply false
   id 'cn.bestwu.propdeps-eclipse' version '0.0.10' apply false
@@ -50,7 +50,7 @@ plugins {
 
 /*
 wrapper {
-  gradleVersion = '5.0-rc-1'
+  gradleVersion = '5.0-rc-3'
   distributionType = 'BIN'
 }
 */

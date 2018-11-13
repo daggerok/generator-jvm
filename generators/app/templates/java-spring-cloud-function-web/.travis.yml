@@ -49,7 +49,7 @@ before_install:
 script:
 - export root=$(pwd)
 #
-- bash gradlew >/dev/null
+- bash gradlew -Dorg.gradle.jvmargs='-Xmx1g' >/dev/null
 - java -jar ./build/libs/*.jar &
 - wait_for 8080
 - http :8080
@@ -60,9 +60,9 @@ script:
 - http :8080
 - stop_any 8080 80
 #
-- bash gradlew composeUp
+- bash gradlew -Dorg.gradle.jvmargs='-Xmx1g' composeUp
 - http :8080
-- bash gradlew composeDown
+- bash gradlew -Dorg.gradle.jvmargs='-Xmx1g' composeDown
 #
 - bash mvnw >/dev/null
 - java -jar ./target/*.jar &
@@ -82,7 +82,7 @@ script:
 
 before_deploy:
 - cd ${root}
-#- ./gradlew documentation
+#- ./gradlew documentation -Dorg.gradle.jvmargs='-Xmx1g'
 - ./mvnw -Pdocs
 - mkdir -p ./target/generated-docs
 - cp -Rf ./target/generated-docs/index.html ./target/generated-docs/404.html

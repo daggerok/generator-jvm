@@ -7,15 +7,14 @@ allprojects {
 
   apply plugin: 'kotlin-sam-with-receiver'
   samWithReceiver {
-//    annotation("com.my.Annotation")
+    //annotation('com.my.Annotation')
   }
 
   def projectIncremental = true
   def projectFreeCompileArgs = [
     '-Xjsr305=strict',
     '-java-parameters',
-    //"-Xenable-jvm-default",     //1.2.41
-    "-Xjvm-default=compatibility",//1.2.50
+    //'-Xenable-jvm-default',
   ]
 
   compileKotlin {
@@ -34,35 +33,14 @@ allprojects {
     }
   }
 
-  allOpen {
-    annotation('javax.ws.rs.Path')
-    annotation('javax.ejb.Startup')
-    annotation('javax.ejb.Stateless')
-    annotation('javax.ejb.Singleton')
-    annotation('javax.inject.Singleton')
-    annotation('javax.ws.rs.ext.Provider')
-    annotation('javax.persistence.Entity')
-    annotation('javax.enterprise.context.ApplicationScoped')
-  }
-
-  noArg {
-    annotation('javax.ws.rs.Path')
-    annotation('javax.ejb.Startup')
-    annotation('javax.ejb.Stateless')
-    annotation('javax.ejb.Singleton')
-    annotation('javax.inject.Singleton')
-    annotation('javax.ws.rs.ext.Provider')
-    annotation('javax.persistence.Entity')
-    annotation('javax.enterprise.context.ApplicationScoped')
-  }
-
   dependencies {
     implementation "com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonKotlinVersion"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
     implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
 
     testImplementation "org.jetbrains.kotlin:kotlin-test:$kotlinVersion"
     testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion"
+    testImplementation "com.willowtreeapps.assertk:assertk-jvm:$assertkJvmVersion"
   }
 
   apply plugin: 'org.jetbrains.kotlin.kapt'
