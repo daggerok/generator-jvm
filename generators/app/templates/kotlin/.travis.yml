@@ -81,7 +81,7 @@ cache:
 
 before_deploy:
 - cd ${root}
-#- ./gradlew documentation
+#- ./gradlew documentation -Dorg.gradle.jvmargs='-Xmx1g'
 - ./mvnw -Pdocs
 - mkdir -p ./target/generated-docs
 - cp -Rf ./target/generated-docs/index.html ./target/generated-docs/404.html

@@ -45,7 +45,7 @@ ci-job:
 
 pages:
   script:
-  - ./gradlew documentation >/dev/null
+  - ./gradlew documentation -Dorg.gradle.jvmargs='-Xmx1g' >/dev/null
 
   artifacts:
     paths:

@@ -17,12 +17,6 @@ allprojects {
     //'-Xenable-jvm-default',
   ]
 
-  kotlin {
-    experimental {
-      coroutines 'enable'
-    }
-  }
-
   compileKotlin {
     incremental = projectIncremental
     kotlinOptions {

@@ -18,12 +18,6 @@ allprojects {
       "-Xjvm-default=compatibility",//1.2.50
   ]
 
-  kotlin {
-    experimental {
-      coroutines 'enable'
-    }
-  }
-
   compileKotlin {
     incremental = projectIncremental
     kotlinOptions {
@@ -42,7 +36,8 @@ allprojects {
 
   dependencies {
     implementation "com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonKotlinVersion"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
+    //implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
     implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
 
     testImplementation "org.jetbrains.kotlin:kotlin-test:$kotlinVersion"
