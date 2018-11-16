@@ -133,9 +133,32 @@ module.exports = class extends Generator {
      *
      * Using: copy functionality as is
      */
+    this.copyCommons();
+    this.copyDottedTilesAndFolders();
 
+    // WARNING: this block of code must bi inside writing block!
+    /* copy project files by type */
+    [
+      '**/*',
+      '**/.*',
+
+    ].forEach(pattern => this.fs.copy(
+      this.templatePath(`${this.props.projectType}/${pattern}`),
+      this.destinationPath(this.props.projectDirectory),
+    ));
+
+    /**
+     * Template files.
+     *
+     * Using: copyTpl functionality for substitution
+     */
+    this.applyCommonTemplatesSubsctitutions();
+    this.applyAllProjectTemplatesSubsctitutions();
+    this.applyTemplatesSubsctitutions();
+  }
+
+  copyCommons() {
     /* copy commons */
-
     [
       'docs',
       'LICENSE',
@@ -151,9 +174,10 @@ module.exports = class extends Generator {
       this.templatePath(`_common/${suffix}`),
       this.destinationPath(`${this.props.projectDirectory}/${suffix}`)
     ));
+  }
 
+  copyDottedTilesAndFolders() {
     /* copy dotted files / dirs, like: .mvn, .gitignore, ... */
-
     [
       'mvn',
       'gitignore',
@@ -165,26 +189,10 @@ module.exports = class extends Generator {
       this.templatePath(`_dotted/${suffix}`),
       this.destinationPath(`${this.props.projectDirectory}/.${suffix}`),
     ));
+  }
 
-    /* copy project files by type */
-
-    [
-      '**/*',
-      '**/.*',
-
-    ].forEach(pattern => this.fs.copy(
-      this.templatePath(`${this.props.projectType}/${pattern}`),
-      this.destinationPath(this.props.projectDirectory),
-    ));
-
-    /**
-     * Template files.
-     *
-     * Using: copyTpl functionality for substitution
-     */
-
+  applyCommonTemplatesSubsctitutions() {
     /* apply common template substitutions */
-
     [
       // // disable fo now:
       // '.mvn/redeploy.sh',
@@ -198,9 +206,10 @@ module.exports = class extends Generator {
       this.destinationPath(`${this.props.projectDirectory}/${suffix}`),
       { projectDirectory: this.props.projectDirectory }
     ));
+  }
 
+  applyAllProjectTemplatesSubsctitutions() {
     /* all project templates substitutions */
-
     [
       '.travis.yml',
       'README.adoc',
@@ -210,9 +219,10 @@ module.exports = class extends Generator {
       this.destinationPath(`${this.props.projectDirectory}/${suffix}`),
       { projectDirectory: this.props.projectDirectory }
     ));
+  }
 
+  applyTemplatesSubsctitutions() {
     /* apply template substitutions */
-
     switch (this.props.projectType) {
 
       // specific JavaEE project (maven only):
