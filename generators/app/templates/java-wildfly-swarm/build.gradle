@@ -129,6 +129,6 @@ apply from: "$projectDir/gradle/docs.gradle"
 //apply from: "$projectDir/gradle/build-scan.gradle"
 
 wrapper {
-  gradleVersion = '5.0-rc-3'
+  gradleVersion = '5.0-rc-5'
   distributionType = 'BIN'
 }
