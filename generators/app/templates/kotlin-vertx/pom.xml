@@ -492,7 +492,7 @@
                 <ruby>erubis</ruby>
                 <encoding>${project.build.sourceEncoding}</encoding>
                 <linkattrs>true</linkattrs>
-                <numbered>true</numbered>
+                <numbered>false</numbered>
                 <sectanchors>true</sectanchors>
                 <sectlink>true</sectlink>
                 <idprefix/>
