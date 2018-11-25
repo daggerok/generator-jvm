@@ -2,12 +2,12 @@ version: "2.1"
 
 services:
 
-  maven-<%= projectDirectory %>-app:
+  <%= projectDirectory %>:
     #mem_limit: 786432000 # container limit: 700Mb (700 * 1024 * 1024)
     build:
       context: .
       dockerfile: .mvn/Dockerfile
-    volumes: ["maven-<%= projectDirectory %>-app-data:/home"]
+    volumes: ["<%= projectDirectory %>-data:/home"]
     ports:
     - "5005:5005"
     - "8080:8080"
@@ -18,7 +18,7 @@ services:
         - app
 
 volumes:
-  maven-<%= projectDirectory %>-app-data:
+  <%= projectDirectory %>-data:
 
 networks:
   public-net:

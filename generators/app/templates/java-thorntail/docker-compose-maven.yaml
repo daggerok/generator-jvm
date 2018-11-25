@@ -2,7 +2,7 @@ version: '2.2'
 
 services:
 
-  maven-<%= projectDirectory %>-app:
+  <%= projectDirectory %>:
     build:
       context: .
       dockerfile: .mvn/Dockerfile

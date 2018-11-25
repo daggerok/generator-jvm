@@ -49,6 +49,8 @@ script:
 # generator-jvm cli
 - yo jvm --help
 
+##### 1-10
+
 # kotlin-thorntail
 - cd ${e2e}
 - yo jvm -n kotlin-thorntail -t kotlin-thorntail
@@ -202,6 +204,8 @@ script:
 - ./mvnw clean deploy >/dev/null
 - ./mvnw -Pdocs >/dev/null
 
+##### 11-20
+
 ## kotlin-vertx
 #- cd ${e2e}
 #- yo jvm -n kotlinvertx -t kotlin-vertx
@@ -303,117 +307,119 @@ script:
 #- bash ./build/install/scala-gradle-akka-persistence/bin/scala-gradle-akka-persistence
 #- docker-compose -f docker-compose-gradle.yaml down -v
 #- docker-compose -f docker-compose-gradle.yaml up --build
+
+##### 21-30
+
+## scala-2.11
+#- cd ${e2e}
+#- yo jvm -t scala-2.11 -n scala-2.11
+#- cd scala-2_11/
+#- ./mvnw clean package >/dev/null
+#- docker-compose -f docker-compose-maven.yaml down -v
+#- docker-compose -f docker-compose-maven.yaml up --build
+#- ./gradlew build >/dev/null
+#- docker-compose -f docker-compose-gradle.yaml down -v
+#- docker-compose -f docker-compose-gradle.yaml up --build
 #
-### scala-2.11
-##- cd ${e2e}
-##- yo jvm -t scala-2.11 -n scala-2.11
-##- cd scala-2_11/
-##- ./mvnw clean package >/dev/null
-##- docker-compose -f docker-compose-maven.yaml down -v
-##- docker-compose -f docker-compose-maven.yaml up --build
-##- ./gradlew build >/dev/null
-##- docker-compose -f docker-compose-gradle.yaml down -v
-##- docker-compose -f docker-compose-gradle.yaml up --build
-##
-### scala (2.12)
-##- cd ${e2e}
-##- yo jvm -n scala -t scala
-##- cd scala/
-##- ./mvnw clean package >/dev/null
-##- docker-compose -f docker-compose-maven.yaml down -v
-##- docker-compose -f docker-compose-maven.yaml up --build
-##- ./gradlew build >/dev/null
-##- docker-compose -f docker-compose-gradle.yaml down -v
-##- docker-compose -f docker-compose-gradle.yaml up --build
-##
-### java-parent-multi-project
-##- cd ${e2e}
-##- yo jvm -n javaparentmultiproject -t java-parent-multi-project
-##- cd javaparentmultiproject/
-##- cat README.adoc
-##- cat README.adoc | grep javaparentmultiproject
-##- ./mvnw -Pdocs >/dev/null
-##- ./gradlew docum >/dev/null
-##
-### kotlin-parent-multi-project
-##- cd ${e2e}
-##- yo jvm -n kotlinparentmultiproject -t kotlin-parent-multi-project
-##- cd kotlinparentmultiproject/
-##- cat README.adoc
-##- cat README.adoc | grep kotlinparentmultiproject
-##- ./mvnw -Pdocs >/dev/null
-##- ./gradlew docum >/dev/null
-##
-### replace dots with underscores test
-##- cd ${e2e}
-##- yo jvm -n dotted.java1.8 -t java
-##- cd dotted_java1_8
-##- ./gradlew -S >/dev/null
-##- java -jar build/libs/*-all.jar
-##- bash build/install/dotted_java1_8/bin/dotted_java1_8
-##- tree build/maven-publish
-##- ./mvnw clean deploy >/dev/null
-##- java -jar target/*-all.jar
-##- tree target/local-repo/
-##
-### java
-##- cd ${e2e}
-##- yo jvm -n java -t java
-##- cd java
-##- ./gradlew -S >/dev/null
-##- java -jar build/libs/*-all.jar
-##- bash build/install/java/bin/java
-##- tree build/maven-publish
-##- ./gradlew documentation >/dev/null
-##- ./mvnw clean deploy >/dev/null
-##- java -jar target/*-all.jar
-##- tree target/local-repo/
-##- ./mvnw -P docs >/dev/null
-##
-### java-vertx
-##- cd ${e2e}
-##- yo jvm -n javavertx -t java-vertx
-##- cd javavertx
-##- ./gradlew -S >/dev/null
-##- ./gradlew documentation >/dev/null
-##- tree target/generated-docs
-##- ./mvnw clean deploy >/dev/null
-##- ./mvnw -Pdocs >/dev/null
-##- tree target/generated-docs
-##
-### java-ee
-##- cd ${e2e}
-##- yo jvm -n javaee -t java-ee
-##- cd javaee
-##- ./mvnw >/dev/null
-##- ./mvnw -Pdocs
-##- ./gradlew -S >/dev/null
-##- ./gradlew composeUp >/dev/null
-##- http :8080/app/api/health
-##- http :8080/app/api/ping
-##- http :8080/app/api/pong
-##- http :8080/app/api/
-##- ./gradlew composeDown
-##
-### java-ee-thymeleaf
-##- cd ${e2e}
-##- yo jvm -n javaeeth -t java-ee-thymeleaf
-##- cd javaeeth
-##- ./mvnw >/dev/null
-##- ./mvnw -Pdocs >/dev/null
-##- ./gradlew -S >/dev/null
-##- ./gradlew composeUp >/dev/null
-##- http :8080/app/api/health
-##- http :8080/app/
-##- ./gradlew composeDown
-##
-### java-spring-boot
-##- cd ${e2e}
-##- yo jvm -n javaspringboot -t java-spring-boot
-##- cd javaspringboot
-##- ./gradlew -S >/dev/null
-##- ./mvnw clean deploy >/dev/null
-##- ./mvnw -Pdocs >/dev/null
+## scala (2.12)
+#- cd ${e2e}
+#- yo jvm -n scala -t scala
+#- cd scala/
+#- ./mvnw clean package >/dev/null
+#- docker-compose -f docker-compose-maven.yaml down -v
+#- docker-compose -f docker-compose-maven.yaml up --build
+#- ./gradlew build >/dev/null
+#- docker-compose -f docker-compose-gradle.yaml down -v
+#- docker-compose -f docker-compose-gradle.yaml up --build
+#
+## java-parent-multi-project
+#- cd ${e2e}
+#- yo jvm -n javaparentmultiproject -t java-parent-multi-project
+#- cd javaparentmultiproject/
+#- cat README.adoc
+#- cat README.adoc | grep javaparentmultiproject
+#- ./mvnw -Pdocs >/dev/null
+#- ./gradlew docum >/dev/null
+#
+## kotlin-parent-multi-project
+#- cd ${e2e}
+#- yo jvm -n kotlinparentmultiproject -t kotlin-parent-multi-project
+#- cd kotlinparentmultiproject/
+#- cat README.adoc
+#- cat README.adoc | grep kotlinparentmultiproject
+#- ./mvnw -Pdocs >/dev/null
+#- ./gradlew docum >/dev/null
+#
+## replace dots with underscores test
+#- cd ${e2e}
+#- yo jvm -n dotted.java1.8 -t java
+#- cd dotted_java1_8
+#- ./gradlew -S >/dev/null
+#- java -jar build/libs/*-all.jar
+#- bash build/install/dotted_java1_8/bin/dotted_java1_8
+#- tree build/maven-publish
+#- ./mvnw clean deploy >/dev/null
+#- java -jar target/*-all.jar
+#- tree target/local-repo/
+#
+## java
+#- cd ${e2e}
+#- yo jvm -n java -t java
+#- cd java
+#- ./gradlew -S >/dev/null
+#- java -jar build/libs/*-all.jar
+#- bash build/install/java/bin/java
+#- tree build/maven-publish
+#- ./gradlew documentation >/dev/null
+#- ./mvnw clean deploy >/dev/null
+#- java -jar target/*-all.jar
+#- tree target/local-repo/
+#- ./mvnw -P docs >/dev/null
+#
+## java-vertx
+#- cd ${e2e}
+#- yo jvm -n javavertx -t java-vertx
+#- cd javavertx
+#- ./gradlew -S >/dev/null
+#- ./gradlew documentation >/dev/null
+#- tree target/generated-docs
+#- ./mvnw clean deploy >/dev/null
+#- ./mvnw -Pdocs >/dev/null
+#- tree target/generated-docs
+#
+## java-ee
+#- cd ${e2e}
+#- yo jvm -n javaee -t java-ee
+#- cd javaee
+#- ./mvnw >/dev/null
+#- ./mvnw -Pdocs
+#- ./gradlew -S >/dev/null
+#- ./gradlew composeUp >/dev/null
+#- http :8080/app/api/health
+#- http :8080/app/api/ping
+#- http :8080/app/api/pong
+#- http :8080/app/api/
+#- ./gradlew composeDown
+#
+## java-ee-thymeleaf
+#- cd ${e2e}
+#- yo jvm -n javaeeth -t java-ee-thymeleaf
+#- cd javaeeth
+#- ./mvnw >/dev/null
+#- ./mvnw -Pdocs >/dev/null
+#- ./gradlew -S >/dev/null
+#- ./gradlew composeUp >/dev/null
+#- http :8080/app/api/health
+#- http :8080/app/
+#- ./gradlew composeDown
+#
+## java-spring-boot
+#- cd ${e2e}
+#- yo jvm -n javaspringboot -t java-spring-boot
+#- cd javaspringboot
+#- ./gradlew -S >/dev/null
+#- ./mvnw clean deploy >/dev/null
+#- ./mvnw -Pdocs >/dev/null
 
 # done
 - cd ${base}

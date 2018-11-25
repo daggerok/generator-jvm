@@ -53,7 +53,7 @@ script:
 - bash ./mvnw >/dev/null
 - bash ./mvnw -pl ear docker-compose:up -P docker >/dev/null
 - wait_for 8080
-- docker logs -f ear_maven-<%= projectDirectory %>-app_1 &
+- docker logs -f ear_<%= projectDirectory %>_1 &
 - sleep 35
 - http :8080/web/
 - http --form :8080/servlet/api/ name=Max
@@ -66,7 +66,7 @@ script:
 - bash ./gradlew composeUp >/dev/null
 - sleep 3
 - wait_for 8080
-- docker logs -f ear_gradle-<%= projectDirectory %>-app_1 &
+- docker logs -f ear_<%= projectDirectory %>_1 &
 - http :8080/web/
 - http --form :8080/servlet/api/ name=Maksim
 - http post :8080/rest/api/ name=Maksimko
@@ -76,7 +76,7 @@ script:
 # gradle (maven profile)
 - bash ./gradlew -Pprofile=maven clean build composeUp >/dev/null
 - wait_for 8080
-- docker logs -f ear_maven-<%= projectDirectory %>-app_1 &
+- docker logs -f ear_<%= projectDirectory %>_1 &
 - sleep 3
 - http :8080/web/
 - http --form :8080/servlet/api/ name=Maksimko

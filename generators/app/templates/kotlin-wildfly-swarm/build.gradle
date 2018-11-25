@@ -56,7 +56,7 @@ plugins {
 apply plugin: 'wildfly-swarm'
 
 wrapper {
-  gradleVersion = '5.0-rc-3'
+  gradleVersion = '5.0-rc-5'
   distributionType = 'BIN'
 }
 
