@@ -49,163 +49,163 @@ script:
 # generator-jvm cli
 - yo jvm --help
 
-##### 1-10
-
-# kotlin-thorntail
-- cd ${e2e}
-- yo jvm -n kotlin-thorntail -t kotlin-thorntail
-- cd ${e2e}/kotlin-thorntail
-- ./mvnw >/dev/null
-- bash ./target/*-thorntail.jar &
-- wait_for 8080
-- sleep 10s
-- http :8080
-- stop_any 8080
-
-# java-thorntail
-- cd ${e2e}
-- yo jvm -n java-thorntail -t java-thorntail
-- cd ${e2e}/java-thorntail
-- ./mvnw >/dev/null
-- bash ./target/*-thorntail.jar &
-- wait_for 8080
-- sleep 10s
-- http :8080/api/v1/hello/00000000-0000-0000-0000-000000000000
-- http :8080/api/v1/hello
-- stop_any 8080
-
-# java-payara-micro
-- cd ${e2e}
-- yo jvm -n java-payara-micro -t java-payara-micro
-- cd ${e2e}/java-payara-micro
+###### 1-10
 #
-- ./gradlew clean bundle >/dev/null
-- java -jar -Djava.net.preferIPv4Stack=true ./build/*-microbundle.jar &
-- wait_for 8080
-- sleep 15
-- http :8080/v1 string=one
-- http :8080/v1 string=two
-- http :8080/v1 string=three
-- http :8080/v1
-- http :8080
-- stop_any 80 8080
+## kotlin-thorntail
+#- cd ${e2e}
+#- yo jvm -n kotlin-thorntail -t kotlin-thorntail
+#- cd ${e2e}/kotlin-thorntail
+#- ./mvnw >/dev/null
+#- bash ./target/*-thorntail.jar &
+#- wait_for 8080
+#- sleep 10s
+#- http :8080
+#- stop_any 8080
 #
-- ./mvnw >/dev/null
-- ./mvnw -Pbundle >/dev/null
-- java -jar -Djava.net.preferIPv4Stack=true ./target/*-microbundle.jar &
-- wait_for 8080
-- sleep 15
-- http :8080/v1 string=one
-- http :8080/v1 string=two
-- http :8080/v1 string=three
-- http :8080/v1
-- http :8080
-- stop_any 80 8080
-
-# java-wildfly-swarm
-- cd ${e2e}
-- yo jvm -n java-wildfly-swarm -t java-wildfly-swarm
-- cd ${e2e}/java-wildfly-swarm/
+## java-thorntail
+#- cd ${e2e}
+#- yo jvm -n java-thorntail -t java-thorntail
+#- cd ${e2e}/java-thorntail
+#- ./mvnw >/dev/null
+#- bash ./target/*-thorntail.jar &
+#- wait_for 8080
+#- sleep 10s
+#- http :8080/api/v1/hello/00000000-0000-0000-0000-000000000000
+#- http :8080/api/v1/hello
+#- stop_any 8080
 #
-- ./mvnw >/dev/null
-- java -jar -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005 ./target/*-swarm.jar -Djava.net.preferIPv4Stack=true &
-- wait_for 8080
-- sleep 10
-- http :8080/api/v1/hello/00000000-0000-0000-0000-000000000000
-- http :8080/api/v1/hello
-- stop_any 80 8080
+## java-payara-micro
+#- cd ${e2e}
+#- yo jvm -n java-payara-micro -t java-payara-micro
+#- cd ${e2e}/java-payara-micro
+##
+#- ./gradlew clean bundle >/dev/null
+#- java -jar -Djava.net.preferIPv4Stack=true ./build/*-microbundle.jar &
+#- wait_for 8080
+#- sleep 15
+#- http :8080/v1 string=one
+#- http :8080/v1 string=two
+#- http :8080/v1 string=three
+#- http :8080/v1
+#- http :8080
+#- stop_any 80 8080
+##
+#- ./mvnw >/dev/null
+#- ./mvnw -Pbundle >/dev/null
+#- java -jar -Djava.net.preferIPv4Stack=true ./target/*-microbundle.jar &
+#- wait_for 8080
+#- sleep 15
+#- http :8080/v1 string=one
+#- http :8080/v1 string=two
+#- http :8080/v1 string=three
+#- http :8080/v1
+#- http :8080
+#- stop_any 80 8080
 #
-- ./gradlew >/dev/null
-- ./build/libs/*-swarm.jar -Djava.net.preferIPv4Stack=true &
-- wait_for 8080
-- sleep 10
-- http :8080/api/v1/hello/00000000-0000-0000-0000-000000000000
-- http :8080/api/v1/hello
-- stop_any 80 8080
-
-# kotlin-wildfly-swarm
-- cd ${e2e}
-- yo jvm -n kotlin-wildfly-swarm -t kotlin-wildfly-swarm
-- cd ${e2e}/kotlin-wildfly-swarm/
+## java-wildfly-swarm
+#- cd ${e2e}
+#- yo jvm -n java-wildfly-swarm -t java-wildfly-swarm
+#- cd ${e2e}/java-wildfly-swarm/
+##
+#- ./mvnw >/dev/null
+#- java -jar -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005 ./target/*-swarm.jar -Djava.net.preferIPv4Stack=true &
+#- wait_for 8080
+#- sleep 10
+#- http :8080/api/v1/hello/00000000-0000-0000-0000-000000000000
+#- http :8080/api/v1/hello
+#- stop_any 80 8080
+##
+#- ./gradlew >/dev/null
+#- ./build/libs/*-swarm.jar -Djava.net.preferIPv4Stack=true &
+#- wait_for 8080
+#- sleep 10
+#- http :8080/api/v1/hello/00000000-0000-0000-0000-000000000000
+#- http :8080/api/v1/hello
+#- stop_any 80 8080
 #
-- bash mvnw >/dev/null
-- java -Djava.net.preferIPv4Stack=true -jar target/*-swarm.jar &
-- wait_for 8080
-- sleep 10s
-- http :8080
-- stop_any 80 8080
+## kotlin-wildfly-swarm
+#- cd ${e2e}
+#- yo jvm -n kotlin-wildfly-swarm -t kotlin-wildfly-swarm
+#- cd ${e2e}/kotlin-wildfly-swarm/
+##
+#- bash mvnw >/dev/null
+#- java -Djava.net.preferIPv4Stack=true -jar target/*-swarm.jar &
+#- wait_for 8080
+#- sleep 10s
+#- http :8080
+#- stop_any 80 8080
+##
+#- bash gradlew >/dev/null
+#- bash build/libs/*-swarm.jar -Djava.net.preferIPv4Stack=true &
+#- wait_for 8080
+#- sleep 10s
+#- http :8080
+#- stop_any 80 8080
 #
-- bash gradlew >/dev/null
-- bash build/libs/*-swarm.jar -Djava.net.preferIPv4Stack=true &
-- wait_for 8080
-- sleep 10s
-- http :8080
-- stop_any 80 8080
+## java-ee-cdi-full-multi-project
+#- cd ${e2e}
+#- yo jvm -n java-ee-cdi-full-multi-project -t java-ee-cdi-full-multi-project
+#- cd ${e2e}/java-ee-cdi-full-multi-project/
+#- ./gradlew -S >/dev/null
+#- ./gradlew composeDown >/dev/null
+#- ./gradlew :ear:composeUp >/dev/null
+#- http :8080/rest/api name=boo
+#- ./gradlew composeDown
+#- ./mvnw >/dev/null
+#- ./mvnw -pl ear docker-compose:up
+#- while [[ $(docker ps --latest --quiet --filter health=healthy --filter status=running | wc -l) -lt 1 ]] ; do
+#    echo -ne '.' ;
+#    sleep 1s ;
+#  done
+#- http :8080/rest/api name=booooo
+#- ./mvnw -pl ear docker-compose:down
+#- stop_any 80 8080
+#
+## java-ee-ejb-full-multi-project
+#- cd ${e2e}
+#- yo jvm -n java-ee-ejb-full-multi-project -t java-ee-ejb-full-multi-project
+#- cd ${e2e}/java-ee-ejb-full-multi-project/
+#- ./gradlew -S >/dev/null
+#- ./gradlew :composeDown >/dev/null
+#- ./gradlew :composeUp >/dev/null
+#- http :8080/rest/api name=boo
+#- ./gradlew :composeDown
+#- ./mvnw >/dev/null
+#- ./mvnw -pl ear docker-compose:up
+#- while [[ $(docker ps --latest --quiet --filter health=healthy --filter status=running | wc -l) -lt 1 ]] ; do
+#    echo -ne '.' ;
+#    sleep 1s ;
+#  done
+#- http :8080/rest/api name=booooo
+#- ./mvnw -pl ear docker-compose:down
+#- stop_any 80 8080
+#
+## java-spring-boot-1.x
+#- cd ${e2e}
+#- yo jvm -n javaspringboot1x -t java-spring-boot-1.x
+#- cd javaspringboot1x
+#- ./gradlew -S >/dev/null
+#- ./mvnw clean deploy >/dev/null
+#- ./mvnw -Pdocs >/dev/null
+#
+## java-spring-cloud-function-web
+#- cd ${e2e}/
+#- yo jvm -n javaspringcloudfunctionweb -t java-spring-cloud-function-web
+#- cd javaspringcloudfunctionweb
+#- ./gradlew -S >/dev/null
+#- ./mvnw clean deploy >/dev/null
+#- ./mvnw -Pdocs >/dev/null
+#
+## kotlin-spring-cloud-function-web
+#- cd ${e2e}
+#- yo jvm -n kotlinspringcloudfunctionweb -t kotlin-spring-cloud-function-web
+#- cd kotlinspringcloudfunctionweb
+#- ./gradlew -S >/dev/null
+#- ./mvnw clean deploy >/dev/null
+#- ./mvnw -Pdocs >/dev/null
 
-# java-ee-cdi-full-multi-project
-- cd ${e2e}
-- yo jvm -n java-ee-cdi-full-multi-project -t java-ee-cdi-full-multi-project
-- cd ${e2e}/java-ee-cdi-full-multi-project/
-- ./gradlew -S >/dev/null
-- ./gradlew composeDown >/dev/null
-- ./gradlew :ear:composeUp >/dev/null
-- http :8080/rest/api name=boo
-- ./gradlew composeDown
-- ./mvnw >/dev/null
-- ./mvnw -pl ear docker-compose:up
-- while [[ $(docker ps --latest --quiet --filter health=healthy --filter status=running | wc -l) -lt 1 ]] ; do
-    echo -ne '.' ;
-    sleep 1s ;
-  done
-- http :8080/rest/api name=booooo
-- ./mvnw -pl ear docker-compose:down
-- stop_any 80 8080
-
-# java-ee-ejb-full-multi-project
-- cd ${e2e}
-- yo jvm -n java-ee-ejb-full-multi-project -t java-ee-ejb-full-multi-project
-- cd ${e2e}/java-ee-ejb-full-multi-project/
-- ./gradlew -S >/dev/null
-- ./gradlew :composeDown >/dev/null
-- ./gradlew :composeUp >/dev/null
-- http :8080/rest/api name=boo
-- ./gradlew :composeDown
-- ./mvnw >/dev/null
-- ./mvnw -pl ear docker-compose:up
-- while [[ $(docker ps --latest --quiet --filter health=healthy --filter status=running | wc -l) -lt 1 ]] ; do
-    echo -ne '.' ;
-    sleep 1s ;
-  done
-- http :8080/rest/api name=booooo
-- ./mvnw -pl ear docker-compose:down
-- stop_any 80 8080
-
-# java-spring-boot-1.x
-- cd ${e2e}
-- yo jvm -n javaspringboot1x -t java-spring-boot-1.x
-- cd javaspringboot1x
-- ./gradlew -S >/dev/null
-- ./mvnw clean deploy >/dev/null
-- ./mvnw -Pdocs >/dev/null
-
-# java-spring-cloud-function-web
-- cd ${e2e}/
-- yo jvm -n javaspringcloudfunctionweb -t java-spring-cloud-function-web
-- cd javaspringcloudfunctionweb
-- ./gradlew -S >/dev/null
-- ./mvnw clean deploy >/dev/null
-- ./mvnw -Pdocs >/dev/null
-
-# kotlin-spring-cloud-function-web
-- cd ${e2e}
-- yo jvm -n kotlinspringcloudfunctionweb -t kotlin-spring-cloud-function-web
-- cd kotlinspringcloudfunctionweb
-- ./gradlew -S >/dev/null
-- ./mvnw clean deploy >/dev/null
-- ./mvnw -Pdocs >/dev/null
-
-##### 11-20
-
+###### 11-20
+#
 ## kotlin-vertx
 #- cd ${e2e}
 #- yo jvm -n kotlinvertx -t kotlin-vertx
@@ -310,116 +310,116 @@ script:
 
 ##### 21-30
 
-## scala-2.11
-#- cd ${e2e}
-#- yo jvm -t scala-2.11 -n scala-2.11
-#- cd scala-2_11/
-#- ./mvnw clean package >/dev/null
-#- docker-compose -f docker-compose-maven.yaml down -v
-#- docker-compose -f docker-compose-maven.yaml up --build
-#- ./gradlew build >/dev/null
-#- docker-compose -f docker-compose-gradle.yaml down -v
-#- docker-compose -f docker-compose-gradle.yaml up --build
-#
-## scala (2.12)
-#- cd ${e2e}
-#- yo jvm -n scala -t scala
-#- cd scala/
-#- ./mvnw clean package >/dev/null
-#- docker-compose -f docker-compose-maven.yaml down -v
-#- docker-compose -f docker-compose-maven.yaml up --build
-#- ./gradlew build >/dev/null
-#- docker-compose -f docker-compose-gradle.yaml down -v
-#- docker-compose -f docker-compose-gradle.yaml up --build
-#
-## java-parent-multi-project
-#- cd ${e2e}
-#- yo jvm -n javaparentmultiproject -t java-parent-multi-project
-#- cd javaparentmultiproject/
-#- cat README.adoc
-#- cat README.adoc | grep javaparentmultiproject
-#- ./mvnw -Pdocs >/dev/null
-#- ./gradlew docum >/dev/null
-#
-## kotlin-parent-multi-project
-#- cd ${e2e}
-#- yo jvm -n kotlinparentmultiproject -t kotlin-parent-multi-project
-#- cd kotlinparentmultiproject/
-#- cat README.adoc
-#- cat README.adoc | grep kotlinparentmultiproject
-#- ./mvnw -Pdocs >/dev/null
-#- ./gradlew docum >/dev/null
-#
-## replace dots with underscores test
-#- cd ${e2e}
-#- yo jvm -n dotted.java1.8 -t java
-#- cd dotted_java1_8
-#- ./gradlew -S >/dev/null
-#- java -jar build/libs/*-all.jar
-#- bash build/install/dotted_java1_8/bin/dotted_java1_8
-#- tree build/maven-publish
-#- ./mvnw clean deploy >/dev/null
-#- java -jar target/*-all.jar
-#- tree target/local-repo/
-#
-## java
-#- cd ${e2e}
-#- yo jvm -n java -t java
-#- cd java
-#- ./gradlew -S >/dev/null
-#- java -jar build/libs/*-all.jar
-#- bash build/install/java/bin/java
-#- tree build/maven-publish
-#- ./gradlew documentation >/dev/null
-#- ./mvnw clean deploy >/dev/null
-#- java -jar target/*-all.jar
-#- tree target/local-repo/
-#- ./mvnw -P docs >/dev/null
-#
-## java-vertx
-#- cd ${e2e}
-#- yo jvm -n javavertx -t java-vertx
-#- cd javavertx
-#- ./gradlew -S >/dev/null
-#- ./gradlew documentation >/dev/null
-#- tree target/generated-docs
-#- ./mvnw clean deploy >/dev/null
-#- ./mvnw -Pdocs >/dev/null
-#- tree target/generated-docs
-#
-## java-ee
-#- cd ${e2e}
-#- yo jvm -n javaee -t java-ee
-#- cd javaee
-#- ./mvnw >/dev/null
-#- ./mvnw -Pdocs
-#- ./gradlew -S >/dev/null
-#- ./gradlew composeUp >/dev/null
-#- http :8080/app/api/health
-#- http :8080/app/api/ping
-#- http :8080/app/api/pong
-#- http :8080/app/api/
-#- ./gradlew composeDown
-#
-## java-ee-thymeleaf
-#- cd ${e2e}
-#- yo jvm -n javaeeth -t java-ee-thymeleaf
-#- cd javaeeth
-#- ./mvnw >/dev/null
-#- ./mvnw -Pdocs >/dev/null
-#- ./gradlew -S >/dev/null
-#- ./gradlew composeUp >/dev/null
-#- http :8080/app/api/health
-#- http :8080/app/
-#- ./gradlew composeDown
-#
-## java-spring-boot
-#- cd ${e2e}
-#- yo jvm -n javaspringboot -t java-spring-boot
-#- cd javaspringboot
-#- ./gradlew -S >/dev/null
-#- ./mvnw clean deploy >/dev/null
-#- ./mvnw -Pdocs >/dev/null
+# scala-2.11
+- cd ${e2e}
+- yo jvm -t scala-2.11 -n scala-2.11
+- cd scala-2_11/
+- ./mvnw clean package >/dev/null
+- docker-compose -f docker-compose-maven.yaml down -v
+- docker-compose -f docker-compose-maven.yaml up --build
+- ./gradlew build >/dev/null
+- docker-compose -f docker-compose-gradle.yaml down -v
+- docker-compose -f docker-compose-gradle.yaml up --build
+
+# scala (2.12)
+- cd ${e2e}
+- yo jvm -n scala -t scala
+- cd scala/
+- ./mvnw clean package >/dev/null
+- docker-compose -f docker-compose-maven.yaml down -v
+- docker-compose -f docker-compose-maven.yaml up --build
+- ./gradlew build >/dev/null
+- docker-compose -f docker-compose-gradle.yaml down -v
+- docker-compose -f docker-compose-gradle.yaml up --build
+
+# java-parent-multi-project
+- cd ${e2e}
+- yo jvm -n javaparentmultiproject -t java-parent-multi-project
+- cd javaparentmultiproject/
+- cat README.adoc
+- cat README.adoc | grep javaparentmultiproject
+- ./mvnw -Pdocs >/dev/null
+- ./gradlew docum >/dev/null
+
+# kotlin-parent-multi-project
+- cd ${e2e}
+- yo jvm -n kotlinparentmultiproject -t kotlin-parent-multi-project
+- cd kotlinparentmultiproject/
+- cat README.adoc
+- cat README.adoc | grep kotlinparentmultiproject
+- ./mvnw -Pdocs >/dev/null
+- ./gradlew docum >/dev/null
+
+# replace dots with underscores test
+- cd ${e2e}
+- yo jvm -n dotted.java1.8 -t java
+- cd dotted_java1_8
+- ./gradlew -S >/dev/null
+- java -jar build/libs/*-all.jar
+- bash build/install/dotted_java1_8/bin/dotted_java1_8
+- tree build/maven-publish
+- ./mvnw clean deploy >/dev/null
+- java -jar target/*-all.jar
+- tree target/local-repo/
+
+# java
+- cd ${e2e}
+- yo jvm -n java -t java
+- cd java
+- ./gradlew -S >/dev/null
+- java -jar build/libs/*-all.jar
+- bash build/install/java/bin/java
+- tree build/maven-publish
+- ./gradlew documentation >/dev/null
+- ./mvnw clean deploy >/dev/null
+- java -jar target/*-all.jar
+- tree target/local-repo/
+- ./mvnw -P docs >/dev/null
+
+# java-vertx
+- cd ${e2e}
+- yo jvm -n javavertx -t java-vertx
+- cd javavertx
+- ./gradlew -S >/dev/null
+- ./gradlew documentation >/dev/null
+- tree target/generated-docs
+- ./mvnw clean deploy >/dev/null
+- ./mvnw -Pdocs >/dev/null
+- tree target/generated-docs
+
+# java-ee
+- cd ${e2e}
+- yo jvm -n javaee -t java-ee
+- cd javaee
+- ./mvnw >/dev/null
+- ./mvnw -Pdocs
+- ./gradlew -S >/dev/null
+- ./gradlew composeUp >/dev/null
+- http :8080/app/api/health
+- http :8080/app/api/ping
+- http :8080/app/api/pong
+- http :8080/app/api/
+- ./gradlew composeDown
+
+# java-ee-thymeleaf
+- cd ${e2e}
+- yo jvm -n javaeeth -t java-ee-thymeleaf
+- cd javaeeth
+- ./mvnw >/dev/null
+- ./mvnw -Pdocs >/dev/null
+- ./gradlew -S >/dev/null
+- ./gradlew composeUp >/dev/null
+- http :8080/app/api/health
+- http :8080/app/
+- ./gradlew composeDown
+
+# java-spring-boot
+- cd ${e2e}
+- yo jvm -n javaspringboot -t java-spring-boot
+- cd javaspringboot
+- ./gradlew -S >/dev/null
+- ./mvnw clean deploy >/dev/null
+- ./mvnw -Pdocs >/dev/null
 
 # done
 - cd ${base}
