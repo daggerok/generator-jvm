@@ -3,4 +3,4 @@ apply plugin: 'com.github.johnrengelman.shadow'
 
 mainClassName = 'daggerok.App'
 shadowJar.mustRunAfter jar
-defaultTasks 'clean', 'build', 'installDist', 'distZip', 'publish'
+defaultTasks 'clean', 'build', 'installDist', 'distZip'
