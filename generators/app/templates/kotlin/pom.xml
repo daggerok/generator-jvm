@@ -21,7 +21,7 @@
     <assertj.version>3.11.1</assertj.version>
     <assertk.version>0.12</assertk.version>
     <lombok.version>1.18.4</lombok.version>
-    <kotlin.version>1.3.10</kotlin.version>
+    <kotlin.version>1.3.11</kotlin.version>
     <jgiven.version>0.16.1</jgiven.version>
     <junit4.version>4.12</junit4.version>
     <slf4j.version>1.7.25</slf4j.version>

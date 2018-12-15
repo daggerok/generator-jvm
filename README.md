@@ -149,7 +149,7 @@ ___vertx project___
 
  * java 8 based Vert.x web project
  * support fatjar
- * support kotlin 1.3.10
+ * support kotlin 1.3.11
  * support maven build system
  * support gradle build system
  * docker / docker-compose support
@@ -165,7 +165,7 @@ ___spring cloud function web project___
  * spring-boot 2 / spring framework 5
  * support fatjar
  * support executable bash jar
- * support kotlin 1.3.10
+ * support kotlin 1.3.11
  * support maven build system
  * support gradle build system
  * docker / docker-compose support
@@ -181,7 +181,7 @@ ___spring-boot 2 / spring framework 5 project___
  * spring-boot 2 / spring framework 5
  * support fatjar
  * support executable bash jar
- * support kotlin 1.3.10
+ * support kotlin 1.3.11
  * support maven build system
  * support gradle build system
  * vavr (javaslang)
@@ -249,7 +249,7 @@ ___java-ee project___
  * javaee 8.0
  * lombok (slf4j + logback logging)
  * vavr (javaslang)
- * support kotlin 1.3.10
+ * support kotlin 1.3.11
  * support maven build system
  * support gradle build system
  * support testing with junit 4 / 5
@@ -264,7 +264,7 @@ ___parent multi project___
 
  * java 8 based parent multi project
  * support fatjar
- * support kotlin 1.3.10
+ * support kotlin 1.3.11
  * support executable bash jar
  * support maven build system
  * support gradle build system
