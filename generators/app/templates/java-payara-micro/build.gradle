@@ -99,6 +99,6 @@ apply from: "$projectDir/gradle/docs.gradle"
 apply from: "$projectDir/gradle/payara-micro.gradle"
 
 wrapper {
-  gradleVersion = '5.0'
+  gradleVersion = '5.1-rc-1'
   distributionType = 'BIN'
 }
