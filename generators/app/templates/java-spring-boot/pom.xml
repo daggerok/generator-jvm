@@ -212,6 +212,13 @@
       <version>${assertj.version}</version>
       <scope>test</scope>
     </dependency>
+    <!-- hamcrest -->
+    <dependency>
+      <groupId>org.hamcrest</groupId>
+      <artifactId>hamcrest-core</artifactId>
+      <version>2.1</version>
+      <scope>test</scope>
+    </dependency>
 
     <!-- junit 4 -->
     <dependency>
