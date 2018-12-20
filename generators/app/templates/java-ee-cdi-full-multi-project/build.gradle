@@ -30,8 +30,8 @@ plugins {
 
 /*
 wrapper {
-  gradleVersion = '5.1-rc-1'
-  distributionType = 'BIN'
+  gradleVersion = '5.1-rc-2'
+  distributionType = Wrapper.DistributionType.BIN
 }
 */
 

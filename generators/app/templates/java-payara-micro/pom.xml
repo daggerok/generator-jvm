@@ -88,6 +88,13 @@
       <version>3.11.1</version>
       <scope>test</scope>
     </dependency>
+    <!-- hamcrest -->
+    <dependency>
+      <groupId>org.hamcrest</groupId>
+      <artifactId>hamcrest-core</artifactId>
+      <version>2.1</version>
+      <scope>test</scope>
+    </dependency>
 
     <dependency>
       <groupId>junit</groupId>
