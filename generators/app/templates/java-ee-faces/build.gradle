@@ -38,8 +38,8 @@ plugins {
 
 /*
 wrapper {
-  gradleVersion = '5.1-rc-1'
-  distributionType = 'BIN'
+  gradleVersion = '5.1-rc-2'
+  distributionType = Wrapper.DistributionType.BIN
 }
 */
 
@@ -76,7 +76,7 @@ dependencies {
 
   testCompile 'junit:junit:4.12'
   testImplementation "org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion"
-  testImplementation 'org.hamcrest:hamcrest-core:1.3'
+  testImplementation 'org.hamcrest:hamcrest-core:2.1'
   testRuntime "org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion"
   testRuntime "org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion"
   testRuntime "org.junit.vintage:junit-vintage-engine:4.12.3"

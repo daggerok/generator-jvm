@@ -31,7 +31,7 @@ plugins {
 /*
 wrapper {
   gradleVersion = '5.0'
-  distributionType = 'BIN'
+  distributionType = Wrapper.DistributionType.BIN
 }
 */
 
