@@ -6,9 +6,8 @@ env:
   - TERM=dumb
 
 language: java
-jdk:
-- oraclejdk8
-#- oraclejdk10
+jdk: oraclejdk8
+#jdk: oraclejdk10
 
 service:
 - docker

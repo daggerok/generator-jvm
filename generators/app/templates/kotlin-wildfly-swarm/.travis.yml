@@ -3,72 +3,65 @@ notifications:
 
 env:
   global:
-  - TERM=dumb
+    - TERM=dumb
 
 language: java
 jdk: oraclejdk8
 
 service:
-- docker
+  - docker
 
 addons:
   apt:
     sources:
-    - google-chrome
+      - google-chrome
     packages:
-    - google-chrome-stable
-    - libappindicator1
-    - fonts-liberation
-    - bash
-    - curl
-    - libxml2-utils
-    - docker-ce
+      - google-chrome-stable
+      - libappindicator1
+      - fonts-liberation
+      - bash
+      - curl
+      - libxml2-utils
+      - docker-ce
 
 install: true
 before_install:
-- export CHROME_BIN=/usr/bin/google-chrome
-- export DISPLAY=:99.0
-- sh -e /etc/init.d/xvfb start
-#
-- sudo add-apt-repository universe -y >/dev/null
-- echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list >/dev/null
-- sudo apt-get update -yqq >/dev/null
-- sudo apt-get install -yqq --no-install-suggests --no-install-recommends
-  tree jq python-pip curl bash sudo >/dev/null
-#
-- sudo pip install docker-compose httpie >/dev/null 2>&1
-#
-- source <(curl -s https://raw.githubusercontent.com/daggerok/bash-functions/master/main.bash)
-- stop_any 8080 3000 80 >/dev/null
-#
-- curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - >/dev/null
-- echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list >/dev/null
-- sudo apt-get update -yqq >/dev/null
-- sudo apt-get install -yqq --no-install-suggests --no-install-recommends yarn >/dev/null
+  - export CHROME_BIN=/usr/bin/google-chrome
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  #
+  - sudo apt-get update -yqq >/dev/null
+  - sudo apt-get install -yqq --no-install-suggests --no-install-recommends
+    tree jq python-pip curl bash sudo >/dev/null
+  #
+  - sudo pip install docker-compose httpie >/dev/null 2>&1
+  #
+  - source <(curl -s https://raw.githubusercontent.com/daggerok/bash-functions/master/main.bash)
+  - stop_any 8080 3000 80 >/dev/null
 
 script:
-- export root=$(pwd)
-#
-- bash mvnw >/dev/null
-- bash target/*-swarm.jar &
-- wait_for 8080
-- sleep 15s
-- http :8080
-- stop_any 80 8080
-#
-- bash gradlew >/dev/null
-- bash build/libs/*-swarm.jar &
-- wait_for 8080
-- sleep 15s
-- http :8080
-- stop_any 80 8080
+  - export root=$(pwd)
+  #
+  - bash mvnw >/dev/null
+  - bash target/*-swarm.jar &
+  - wait_for 8080
+  - sleep 15s
+  - http :8080
+  - stop_any 80 8080
+  #
+  - bash gradlew >/dev/null
+  - bash build/libs/*-swarm.jar &
+  - wait_for 8080
+  - sleep 15s
+  - http :8080
+  - stop_any 80 8080
 #
 
 before_deploy:
-- cd ${root}
-- ./mvnw -Pdocs
-- mkdir -p ./target/generated-docs
-- cp -Rf ./target/generated-docs/index.html ./target/generated-docs/404.html
+  - cd ${root}
+  - ./mvnw -Pdocs
+  - mkdir -p ./target/generated-docs
+  - cp -Rf ./target/generated-docs/index.html ./target/generated-docs/404.html
 
 deploy:
   provider: pages
@@ -82,12 +75,10 @@ deploy:
   target_branch: gh-pages
 
 before_cache:
-- for item in $(find ~/.gradle -name "*.lock");
-    do sudo rm -rf $item ;
-  done
+  - for item in $(find ~/.gradle -name "*.lock") ; do sudo rm -rf $item ; done
 
 cache:
   directories:
-  - $HOME/.m2
-  - $HOME/.gradle
-  - $HOME/.docker
+    - $HOME/.m2
+    - $HOME/.gradle
+    - $HOME/.docker
