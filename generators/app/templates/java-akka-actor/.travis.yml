@@ -3,66 +3,66 @@ notifications:
 
 env:
   global:
-  - TERM=dumb
+    - TERM=dumb
 
 language: java
 jdk: oraclejdk8
 
 service:
-- docker
+  - docker
 
 addons:
   apt:
     sources:
-    - google-chrome
+      - google-chrome
     packages:
-    - google-chrome-stable
-    - libappindicator1
-    - fonts-liberation
-    - bash
-    - curl
-    - libxml2-utils
-    - docker-ce
+      - google-chrome-stable
+      - libappindicator1
+      - fonts-liberation
+      - bash
+      - curl
+      - libxml2-utils
+      - docker-ce
 
 install: true
 before_install:
-- sudo apt-get update -yqq >/dev/null
-- sudo apt-get install -yqq --no-install-suggests --no-install-recommends
-  tree jq python-pip curl bash sudo >/dev/null
-#
-- sudo pip install docker-compose httpie >/dev/null 2>&1
-#
-- source <(curl -s https://raw.githubusercontent.com/daggerok/bash-functions/master/main.bash)
-- stop_any 8080 3000 80 >/dev/null
+  - sudo apt-get update -yqq >/dev/null
+  - sudo apt-get install -yqq --no-install-suggests --no-install-recommends
+    tree jq python-pip curl bash sudo >/dev/null
+  #
+  - sudo pip install docker-compose httpie >/dev/null 2>&1
+  #
+  - source <(curl -s https://raw.githubusercontent.com/daggerok/bash-functions/master/main.bash)
+  - stop_any 8080 3000 80 >/dev/null
 
 script:
-- export root=$(pwd)
-#
-- bash gradlew >/dev/null 2>&1
-- java -jar ./build/libs/*.jar
-#
-- bash gradlew clean installDist >/dev/null 2>&1
-- bash ./build/install/<%= projectDirectory %>/bin/<%= projectDirectory %>
-#
-- bash gradlew clean distZip >/dev/null 2>&1
-- unzip -o ./build/distributions/<%= projectDirectory %>-0.0.1.zip -d /tmp
-- bash /tmp/<%= projectDirectory %>-0.0.1/bin/<%= projectDirectory %>
-#
-- bash gradlew clean build composeUp
-- bash gradlew composeDown
-#
-- bash mvnw clean package >/dev/null 2>&1
-- java -jar target/*-all.jar
-#
-- bash mvnw docker-compose:up -P docker
-- bash mvnw docker-compose:down -P docker
+  - export root=$(pwd)
+  #
+  - bash gradlew >/dev/null 2>&1
+  - java -jar ./build/libs/*.jar
+  #
+  - bash gradlew clean installDist >/dev/null 2>&1
+  - bash ./build/install/<%= projectDirectory %>/bin/<%= projectDirectory %>
+  #
+  - bash gradlew clean distZip >/dev/null 2>&1
+  - unzip -o ./build/distributions/<%= projectDirectory %>-0.0.1.zip -d /tmp
+  - bash /tmp/<%= projectDirectory %>-0.0.1/bin/<%= projectDirectory %>
+  #
+  - bash gradlew clean build composeUp
+  - bash gradlew composeDown
+  #
+  - bash mvnw clean package >/dev/null 2>&1
+  - java -jar target/*-all.jar
+  #
+  - bash mvnw docker-compose:up -P docker
+  - bash mvnw docker-compose:down -P docker
 
 before_deploy:
-- cd ${root}
-#- ./gradlew documentation -Dorg.gradle.jvmargs='-Xmx1g'
-- ./mvnw -Pdocs
-- mkdir -p ./target/generated-docs
-- cp -Rf ./target/generated-docs/index.html ./target/generated-docs/404.html
+  - cd ${root}
+  #- ./gradlew documentation -Dorg.gradle.jvmargs='-Xmx1g'
+  - ./mvnw -Pdocs
+  - mkdir -p ./target/generated-docs
+  - cp -Rf ./target/generated-docs/index.html ./target/generated-docs/404.html
 
 deploy:
   provider: pages
@@ -76,12 +76,10 @@ deploy:
   target_branch: gh-pages
 
 before_cache:
-- for item in $(find ~/.gradle -name "*.lock");
-    do sudo rm -rf $item ;
-  done
+  - for item in $(find ~/.gradle -name "*.lock") ; do sudo rm -rf $item ; done
 
 cache:
   directories:
-  - $HOME/.m2
-  - $HOME/.gradle
-  - $HOME/.docker
+    - $HOME/.m2
+    - $HOME/.gradle
+    - $HOME/.docker
