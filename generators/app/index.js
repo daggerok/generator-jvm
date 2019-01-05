@@ -129,11 +129,11 @@ module.exports = class extends Generator {
 
     /* RAW files. Using: copy functionality as is */
     this.copyCommons();
-    this.copyDottedTilesAndFolders();
+    this.copyDottedFilesAndFolders();
     this.copyMavenWrapper();
 
     /* copy project files by type */
-    // WARNING: this block of code must bi inside writing block!
+    // WARNING: this block of code must be inside writing block!
     // **/*, **/.*
     [
       '**/*',
@@ -169,7 +169,7 @@ module.exports = class extends Generator {
     ));
   }
 
-  copyDottedTilesAndFolders() {
+  copyDottedFilesAndFolders() {
 
     [
       'gitignore',
