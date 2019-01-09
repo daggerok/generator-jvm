@@ -1,7 +1,7 @@
 allprojects {
   apply plugin: 'java'
 
-  version = '0.0.1'
+  version = project.findProperty('ogr.gradle.project.version') ?: '0.0.1'
   group = 'com.github.daggerok'
   sourceCompatibility = targetCompatibility = "$javaVersion"
 

@@ -3,7 +3,7 @@ allprojects {
   apply plugin: 'base'
   apply plugin: 'maven'
 
-  version = '0.0.1'
+  version = project.findProperty('ogr.gradle.project.version') ?: '0.0.1'
   group = 'com.github.daggerok'
 
   defaultTasks 'clean', 'build'
