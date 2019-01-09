@@ -32,8 +32,8 @@ plugins {
   id 'cn.bestwu.propdeps' version '0.0.10' apply false
 
   id 'com.jfrog.artifactory' version '4.8.1' apply false
-  id 'org.asciidoctor.convert' version '1.5.8.1' apply false
-  id 'org.ajoberstar.git-publish' version '2.0.0-rc.2' apply false
+  id 'org.asciidoctor.convert' version '1.5.9.1' apply false
+  id 'org.ajoberstar.git-publish' version '2.0.0' apply false
   id 'io.spring.dependency-management' version '1.0.6.RELEASE'
   id 'com.avast.gradle.docker-compose' version '0.7.1'
   id 'io.franzbecker.gradle-lombok' version '1.14'
@@ -129,6 +129,6 @@ apply from: "$projectDir/gradle/docs.gradle"
 //apply from: "$projectDir/gradle/build-scan.gradle"
 
 wrapper {
-  gradleVersion = '5.1-rc-3'
+  gradleVersion = '5.1'
   distributionType = Wrapper.DistributionType.BIN
 }
