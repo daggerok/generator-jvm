@@ -36,9 +36,9 @@ subprojects {
   jacocoTestReport {
     def main = sourceSets.main
     def srcDirs = main.allSource.srcDirs
-    additionalSourceDirs = files(srcDirs)
-    sourceDirectories = files(srcDirs)
-    classDirectories = files(main.output)
+    additionalSourceDirs.from files(srcDirs)
+    sourceDirectories.from files(srcDirs)
+    classDirectories.from files(main.output)
     reports {
       xml.enabled = false
       csv.enabled = false
@@ -52,12 +52,12 @@ jacocoTestReport {
   def main = subprojects.sourceSets.main
   def srcDirs = main.allSource.srcDirs
   dependsOn = subprojects.check
-  additionalSourceDirs = files(srcDirs)
-  sourceDirectories = files(srcDirs)
-  classDirectories = files(main.output)
-  executionData = files(subprojects.jacocoTestReport.executionData)
+  additionalSourceDirs.from files(srcDirs)
+  sourceDirectories.from files(srcDirs)
+  classDirectories.from files(main.output)
+  executionData.from files(subprojects.jacocoTestReport.executionData)
   afterEvaluate {
-    classDirectories = files(classDirectories.files.collect {
+    classDirectories.from(files(classDirectories.files.collect {
       fileTree(
         dir    : it,
         exclude: [
@@ -65,7 +65,7 @@ jacocoTestReport {
           '*dont/check/metoo*',
         ]
       )
-    })
+    }))
   }
   reports {
     xml.enabled = false
@@ -77,8 +77,6 @@ jacocoTestReport {
     true
   }
   doFirst {
-    executionData = files(executionData.findAll {
-      it.exists()
-    })
+    executionData.from files(executionData.findAll { it.exists() })
   }
 }

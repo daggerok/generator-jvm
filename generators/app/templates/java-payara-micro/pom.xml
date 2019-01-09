@@ -238,29 +238,38 @@
             <groupId>com.dkanejs.maven.plugins</groupId>
             <artifactId>docker-compose-maven-plugin</artifactId>
             <version>2.2.0</version>
-
             <executions>
               <execution>
                 <id>up</id>
-                <phase>verify</phase><!--<phase>process-resources</phase>-->
+                <phase>verify</phase>
                 <goals>
                   <goal>up</goal>
                 </goals>
               </execution>
-
               <execution>
                 <id>down</id>
-                <phase>verify</phase><!--<phase>test</phase>-->
+                <phase>verify</phase>
                 <goals>
                   <goal>down</goal>
                 </goals>
               </execution>
+              <execution>
+                <id>help</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>help</goal>
+                </goals>
+              </execution>
             </executions>
-
             <configuration>
+              <build>true</build>
               <composeFile>${project.basedir}/docker-compose-maven.yaml</composeFile>
               <detachedMode>true</detachedMode>
+              <removeImages>true</removeImages>
+              <removeImagesType>local</removeImagesType>
+              <removeOrphans>true</removeOrphans>
               <removeVolumes>true</removeVolumes>
+              <!--<verbose>true</verbose>-->
               <detail>true</detail>
             </configuration>
           </plugin>

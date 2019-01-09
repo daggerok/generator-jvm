@@ -91,11 +91,23 @@
               <goal>down</goal>
             </goals>
           </execution>
+          <execution>
+            <id>help</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>help</goal>
+            </goals>
+          </execution>
         </executions>
         <configuration>
+          <build>true</build>
           <composeFile>${project.basedir}/../docker-compose-maven.yaml</composeFile>
           <detachedMode>true</detachedMode>
+          <removeImages>true</removeImages>
+          <removeImagesType>local</removeImagesType>
+          <removeOrphans>true</removeOrphans>
           <removeVolumes>true</removeVolumes>
+          <!--<verbose>true</verbose>-->
           <detail>true</detail>
         </configuration>
       </plugin>
