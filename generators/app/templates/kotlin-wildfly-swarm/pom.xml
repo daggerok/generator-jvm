@@ -21,7 +21,7 @@
     <materializecss.version>1.0.0</materializecss.version>
     <java.net.preferIPv4Stack>true</java.net.preferIPv4Stack>
     <version.wildfly.swarm>2018.5.0</version.wildfly.swarm>
-    <junit.jupiter.version>5.3.1</junit.jupiter.version>
+    <junit.jupiter.version>5.3.2</junit.jupiter.version>
     <failOnMissingWebXml>false</failOnMissingWebXml>
     <assertj.version>3.11.1</assertj.version>
     <assertk.version>0.12</assertk.version>

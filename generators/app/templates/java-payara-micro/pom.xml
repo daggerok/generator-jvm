@@ -17,7 +17,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.target>${maven.compiler.source}</maven.compiler.target>
     <java.net.preferIPv4Stack>true</java.net.preferIPv4Stack>
-    <junit.jupiter.version>5.3.1</junit.jupiter.version>
+    <junit.jupiter.version>5.3.2</junit.jupiter.version>
     <maven.compiler.source>1.8</maven.compiler.source>
     <payara.micro.version>5.182</payara.micro.version>
     <failOnMissingWebXml>false</failOnMissingWebXml>

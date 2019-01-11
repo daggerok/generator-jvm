@@ -1,6 +1,6 @@
 {
   "name": "generator-jvm",
-  "version": "1.18.84",
+  "version": "1.18.85",
   "dependencies": {
     "chalk": "2.4.2",
     "yeoman-generator": "3.2.0",

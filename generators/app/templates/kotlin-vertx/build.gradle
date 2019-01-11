@@ -13,8 +13,8 @@ buildscript {
 
     phantomjsDriverVersion = '1.4.4'
     seleniumDriverVersion = '3.14.0'
-    junitPlatformVersion = '1.3.0'
-    junitJupiterVersion = '5.3.1'
+    junitPlatformVersion = '1.3.2'
+    junitJupiterVersion = '5.3.2'
     assertkJvmVersion = '0.12'
     selenideVersion = '5.1.0'
     assertjVersion = '3.11.1'
@@ -27,7 +27,7 @@ buildscript {
   dependencies {
     classpath "org.jetbrains.kotlin:kotlin-sam-with-receiver:$kotlinVersion"
     classpath 'org.asciidoctor:asciidoctorj-pdf:1.5.0-alpha.16'
-    classpath 'org.jruby:jruby-complete:9.1.13.0'
+    classpath 'org.jruby:jruby-complete:9.2.5.0'
   }
 
   //// spring-boot versions overriding, be careful with it!
@@ -38,7 +38,7 @@ buildscript {
 plugins {
   //id 'com.gradle.build-scan' version '1.16'
 
-  id 'com.jfrog.artifactory' version '4.8.1' apply false
+  id 'com.jfrog.artifactory' version '4.9.0' apply false
   id 'org.asciidoctor.convert' version '1.5.9.1' apply false
   id 'org.ajoberstar.git-publish' version '2.0.0' apply false
 
@@ -61,7 +61,7 @@ plugins {
 
 /*
 wrapper {
-  gradleVersion = '5.1'
+  gradleVersion = '5.1.1'
   distributionType = Wrapper.DistributionType.BIN
 }
 */

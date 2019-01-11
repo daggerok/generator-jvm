@@ -27,7 +27,7 @@
     <hibernate.core.version>4.2.18.Final</hibernate.core.version>
     <spring-cloud.version>Edgware.RELEASE</spring-cloud.version>
     <materializecss.version>1.0.0</materializecss.version>
-    <junit.jupiter.version>5.3.1</junit.jupiter.version>
+    <junit.jupiter.version>5.3.2</junit.jupiter.version>
     <jakson-kotlin.version>2.9.7</jakson-kotlin.version>
     <assertj.version>3.11.1</assertj.version>
     <assertk.version>0.12</assertk.version>

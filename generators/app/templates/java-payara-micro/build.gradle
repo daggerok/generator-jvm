@@ -4,13 +4,13 @@ buildscript {
     javaeeVersion = '8.0'
     jgivenVersion = '0.15.3'
     logbackVersion = '1.2.3'
-    junitJupiterVersion = '5.3.1'
-    junitPlatformVersion = '1.3.0'
+    junitJupiterVersion = '5.3.2'
+    junitPlatformVersion = '1.3.2'
   }
 
   dependencies {
     classpath 'org.asciidoctor:asciidoctorj-pdf:1.5.0-alpha.16'
-    classpath 'org.jruby:jruby-complete:9.1.13.0'
+    classpath 'org.jruby:jruby-complete:9.2.5.0'
   }
 }
 
@@ -27,7 +27,7 @@ plugins {
   id 'cn.bestwu.propdeps-idea' version '0.0.10' apply false
   id 'cn.bestwu.propdeps' version '0.0.10' apply false
 
-  id 'com.jfrog.artifactory' version '4.8.1' apply false
+  id 'com.jfrog.artifactory' version '4.9.0' apply false
   id 'org.asciidoctor.convert' version '1.5.9.1' apply false
   id 'org.ajoberstar.git-publish' version '2.0.0' apply false
   id 'io.spring.dependency-management' version '1.0.6.RELEASE'
@@ -99,6 +99,6 @@ apply from: "$projectDir/gradle/docs.gradle"
 apply from: "$projectDir/gradle/payara-micro.gradle"
 
 wrapper {
-  gradleVersion = '5.1'
+  gradleVersion = '5.1.1'
   distributionType = Wrapper.DistributionType.BIN
 }
