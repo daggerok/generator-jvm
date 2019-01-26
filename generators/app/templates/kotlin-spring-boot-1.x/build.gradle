@@ -1,6 +1,6 @@
 buildscript {
   ext {
-    springBootVersion = '1.5.18.RELEASE'
+    springBootVersion = '1.5.19.RELEASE'
     springCloudVersion = 'Edgware.RELEASE'
     javaVersion = JavaVersion.VERSION_1_8
     materialDesignIconsVersion = '3.0.1'
@@ -45,9 +45,9 @@ buildscript {
 plugins {
   //id 'com.gradle.build-scan' version '1.16'
 
+  id 'com.github.spotbugs' version '1.6.9' apply false
   id 'org.asciidoctor.convert' version '1.5.9.1' apply false
   id 'org.ajoberstar.git-publish' version '2.0.0' apply false
-
   id 'org.jetbrains.kotlin.jvm' version '1.2.71' apply false
   id 'org.jetbrains.kotlin.kapt' version '1.2.71' apply false
   id 'org.jetbrains.kotlin.plugin.jpa' version '1.2.71' apply false
@@ -56,7 +56,7 @@ plugins {
   id 'org.jetbrains.kotlin.plugin.allopen' version '1.2.71' apply false
 
   id 'io.spring.dependency-management' version '1.0.6.RELEASE' apply false
-  id 'org.springframework.boot' version '1.5.18.RELEASE' apply false
+  id 'org.springframework.boot' version '1.5.19.RELEASE' apply false
   id 'com.avast.gradle.docker-compose' version '0.7.1' apply false
   id 'io.franzbecker.gradle-lombok' version '1.14' apply false
   id 'cn.bestwu.propdeps-eclipse' version '0.0.10' apply false
@@ -68,7 +68,7 @@ plugins {
 
 /*
 wrapper {
-  gradleVersion = '5.1'
+  gradleVersion = '5.1.1'
   distributionType = Wrapper.DistributionType.BIN
 }
 */
@@ -80,7 +80,8 @@ apply from: "$projectDir/gradle/java.gradle"
 apply from: "$projectDir/gradle/kotlin.gradle"
 apply from: "$projectDir/gradle/spring-boot.gradle"
 apply from: "$projectDir/gradle/junit.gradle"
-apply from: "$projectDir/gradle/findbugs.gradle"
+apply from: "$projectDir/gradle/spotbugs.gradle"
+//apply from: "$projectDir/gradle/findbugs.gradle"
 apply from: "$projectDir/gradle/jacoco.gradle"
 apply from: "$projectDir/gradle/docker-compose.gradle"
 apply from: "$projectDir/gradle/docs.gradle"

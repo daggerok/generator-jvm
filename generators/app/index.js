@@ -31,6 +31,7 @@ module.exports = class extends Generator {
       'java-parent-multi-project',
       'java-payara-micro',
       'java-spring-boot',
+      'java-spring-boot-2.0.x',
       'java-spring-boot-1.x',
       'java-spring-cloud-function-web',
       'java-vertx',
@@ -39,6 +40,7 @@ module.exports = class extends Generator {
       'kotlin',
       'kotlin-parent-multi-project',
       'kotlin-spring-boot',
+      'kotlin-spring-boot-2.0.x',
       'kotlin-spring-boot-1.x',
       'kotlin-spring-cloud-function-web',
       'kotlin-vertx',
@@ -333,6 +335,7 @@ module.exports = class extends Generator {
       //case: 'java-parent-multi-project':
       //case: 'java-payara-micro':
       //case: 'java-spring-boot':
+      //case: 'java-spring-boot-2.0.x':
       //case: 'java-spring-boot-1.x':
       //case: 'java-spring-cloud-function-web':
       //case: 'java-vertx':
@@ -341,6 +344,7 @@ module.exports = class extends Generator {
       //case: 'kotlin-ee':
       //case: 'kotlin-parent-multi-project':
       //case: 'kotlin-spring-boot':
+      //case: 'kotlin-spring-boot-2.0.x':
       //case: 'kotlin-spring-boot-1.x':
       //case: 'kotlin-spring-cloud-function-web':
       //case: 'kotlin-vertx':

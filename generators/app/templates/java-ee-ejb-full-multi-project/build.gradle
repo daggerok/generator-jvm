@@ -24,6 +24,7 @@ plugins {
   //id 'com.gradle.build-scan' version '1.16'
   id 'idea'
   id 'eclipse'
+  id 'com.github.spotbugs' version '1.6.9' apply false
   id 'org.asciidoctor.convert' version '1.5.9.1' apply false
   id 'org.ajoberstar.git-publish' version '2.0.0' apply false
   id 'io.franzbecker.gradle-lombok' version '1.14' apply false
@@ -75,7 +76,8 @@ subprojects { p ->
   }
 }
 
-apply from: "$projectDir/gradle/findbugs.gradle"
+apply from: "$projectDir/gradle/spotbugs.gradle"
+//apply from: "$projectDir/gradle/findbugs.gradle"
 apply from: "$projectDir/gradle/jacoco.gradle"
 apply from: "$projectDir/gradle/docker-compose.gradle"
 apply from: "$projectDir/gradle/docs.gradle"

@@ -40,6 +40,7 @@ buildscript {
 
 plugins {
   //id 'com.gradle.build-scan' version '1.16'
+  id 'com.github.spotbugs' version '1.6.9' apply false
   id 'com.jfrog.artifactory' version '4.8.1' apply false
   id 'org.asciidoctor.convert' version '1.5.9.1' apply false
   id 'org.ajoberstar.git-publish' version '2.0.0' apply false
@@ -56,7 +57,7 @@ plugins {
 
 /*
 wrapper {
-  gradleVersion = '5.1'
+  gradleVersion = '5.1.1'
   distributionType = Wrapper.DistributionType.BIN
 }
 */
@@ -68,7 +69,8 @@ apply from: "$projectDir/gradle/java.gradle"
 apply from: "$projectDir/gradle/main.gradle"
 apply from: "$projectDir/gradle/junit.gradle"
 apply from: "$projectDir/gradle/publish.gradle"
-apply from: "$projectDir/gradle/findbugs.gradle"
+apply from: "$projectDir/gradle/spotbugs.gradle"
+//apply from: "$projectDir/gradle/findbugs.gradle"
 apply from: "$projectDir/gradle/jacoco.gradle"
 apply from: "$projectDir/gradle/docker-compose.gradle"
 apply from: "$projectDir/gradle/docs.gradle"

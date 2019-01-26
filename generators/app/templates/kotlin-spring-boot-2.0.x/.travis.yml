@@ -1,0 +1,102 @@
+notifications:
+  email: false
+
+env:
+  global:
+    - TERM=dumb
+
+language: java
+jdk: oraclejdk8
+
+service:
+  - docker
+
+addons:
+  apt:
+    sources:
+      - google-chrome
+    packages:
+      - google-chrome-stable
+      - libappindicator1
+      - fonts-liberation
+      - bash
+      - curl
+      - libxml2-utils
+      - docker-ce
+
+install: true
+before_install:
+  - export CHROME_BIN=/usr/bin/google-chrome
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  #
+  - sudo apt-get update -yqq >/dev/null
+  - sudo apt-get install -yqq --no-install-suggests --no-install-recommends
+    tree jq python-pip curl bash sudo >/dev/null
+  #
+  - sudo pip install docker-compose httpie >/dev/null 2>&1
+  #
+  - source <(curl -s https://raw.githubusercontent.com/daggerok/bash-functions/master/main.bash)
+  - stop_any 8080 3000 80 >/dev/null
+
+script:
+  - export root=$(pwd)
+  #
+  - bash gradlew >/dev/null
+  - java -jar ./build/libs/*.jar &
+  - wait_for 8080
+  - http :8080
+  - stop_any 8080 80
+  #
+  - bash ./build/libs/*.jar &
+  - wait_for 8080
+  - http :8080
+  - stop_any 8080 80
+  #
+  - bash gradlew composeUp
+  - http :8080
+  - bash gradlew composeDown
+  #
+  - bash mvnw >/dev/null
+  - java -jar ./target/*.jar &
+  - wait_for 8080
+  - http :8080
+  - stop_any 8080 80
+  #
+  - bash ./target/*.jar &
+  - wait_for 8080
+  - http :8080
+  - stop_any 8080 80
+  #
+  - bash mvnw docker-compose:up -P docker
+  - sleep 20
+  - http :8080
+  - bash mvnw docker-compose:down -P docker
+
+before_deploy:
+  - cd ${root}
+  - ./mvnw -Pdocs
+  - mkdir -p ./target/generated-docs
+  - cp -Rf ./target/generated-docs/index.html ./target/generated-docs/404.html
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  # travis encrypt GITHUB_TOKEN=<your github repo token> --add
+  github-token: "$GITHUB_TOKEN"
+  keep-history: true
+  on:
+    branch: master
+  local-dir: target/generated-docs
+  target_branch: gh-pages
+
+before_cache:
+  - for item in $(find ~/.gradle -name "*.lock") ;
+      do sudo rm -rf $item ;
+    done
+
+cache:
+  directories:
+    - $HOME/.m2
+    - $HOME/.gradle
+    - $HOME/.docker

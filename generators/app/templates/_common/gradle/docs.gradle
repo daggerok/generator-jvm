@@ -6,7 +6,6 @@ buildscript {
 }
 
 apply plugin: 'org.asciidoctor.convert'
-apply plugin: 'org.ajoberstar.git-publish'
 
 asciidoctor {
   sourceDir = project.file("$rootDir/docs")
@@ -57,6 +56,18 @@ task documentation(type: Copy, dependsOn: asciidoctor) {
   into adocOutputDir
 }
 
+task docs {
+  shouldRunAfter clean, asciidoctor
+}
+
+/*
+// uncomment whole block of this code only if you want top push documentation on github
+
+task docs(dependsOn: gitPublishPush) {
+  shouldRunAfter clean, asciidoctor
+}
+
+apply plugin: 'org.ajoberstar.git-publish'
 gitPublish {
   // repoUri = "git@gitlab.com:daggerok/${rootProject.name}.git" // same gitlab plugin?
   repoUri = "git@github.com:daggerok/${rootProject.name}.git" as String
@@ -74,6 +85,4 @@ gitPublish {
 gitPublishPush.dependsOn documentation
 gitPublishPush.shouldRunAfter clean, documentation
 
-task docs(dependsOn: gitPublishPush) {
-  shouldRunAfter clean, asciidoctor
-}
+*/
