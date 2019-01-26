@@ -36,6 +36,7 @@ plugins {
   id 'cn.bestwu.propdeps-maven' version '0.0.10' apply false
   id 'cn.bestwu.propdeps-idea' version '0.0.10' apply false
   id 'cn.bestwu.propdeps' version '0.0.10' apply false
+  id 'com.github.spotbugs' version '1.6.9' apply false
 
   id 'com.jfrog.artifactory' version '4.8.1' apply false
   id 'org.asciidoctor.convert' version '1.5.9.1' apply false
@@ -129,12 +130,13 @@ test {
 }
 
 apply from: "$project.rootDir/gradle/jgiven.gradle"
-apply from: "$projectDir/gradle/findbugs.gradle"
+apply from: "$projectDir/gradle/spotbugs.gradle"
+//apply from: "$projectDir/gradle/findbugs.gradle"
 apply from: "$projectDir/gradle/docker-compose.gradle"
 apply from: "$projectDir/gradle/docs.gradle"
 //apply from: "$projectDir/gradle/build-scan.gradle"
 
 wrapper {
-  gradleVersion = '5.1'
+  gradleVersion = '5.1.1'
   distributionType = Wrapper.DistributionType.BIN
 }

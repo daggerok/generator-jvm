@@ -193,6 +193,8 @@ type options:
 
 - `java-spring-boot`
 - `kotlin-spring-boot`
+- `java-spring-boot-2.0.x`
+- `kotlin-spring-boot-2.0.x`
 
 ___spring-boot 1 / spring framework 4 project___
 
