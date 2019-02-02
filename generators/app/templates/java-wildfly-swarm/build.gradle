@@ -43,7 +43,7 @@ plugins {
   id 'org.ajoberstar.git-publish' version '2.0.0' apply false
   id 'io.spring.dependency-management' version '1.0.6.RELEASE'
   id 'com.avast.gradle.docker-compose' version '0.7.1'
-  id 'io.franzbecker.gradle-lombok' version '1.14'
+  id 'io.franzbecker.gradle-lombok' version '2.0'
 }
 
 apply from: "$projectDir/gradle/ide.gradle"

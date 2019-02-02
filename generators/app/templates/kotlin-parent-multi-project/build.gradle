@@ -49,7 +49,7 @@ plugins {
 
   id 'io.spring.dependency-management' version '1.0.6.RELEASE' apply false
   id 'com.github.johnrengelman.shadow' version '4.0.1' apply false
-  id 'io.franzbecker.gradle-lombok' version '1.14' apply false
+  id 'io.franzbecker.gradle-lombok' version '2.0' apply false
   id 'org.ajoberstar.git-publish' version '2.0.0' apply false
   id 'org.asciidoctor.convert' version '1.5.9.1' apply false
   id 'cn.bestwu.propdeps-eclipse' version '0.0.10' apply false

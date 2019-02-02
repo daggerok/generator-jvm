@@ -58,7 +58,7 @@ plugins {
   id 'io.spring.dependency-management' version '1.0.6.RELEASE' apply false
   id 'org.springframework.boot' version '1.5.19.RELEASE' apply false
   id 'com.avast.gradle.docker-compose' version '0.7.1' apply false
-  id 'io.franzbecker.gradle-lombok' version '1.14' apply false
+  id 'io.franzbecker.gradle-lombok' version '2.0' apply false
   id 'cn.bestwu.propdeps-eclipse' version '0.0.10' apply false
   id 'cn.bestwu.propdeps-maven' version '0.0.10' apply false
   id 'cn.bestwu.propdeps-idea' version '0.0.10' apply false
