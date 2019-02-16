@@ -137,6 +137,6 @@ apply from: "$projectDir/gradle/docs.gradle"
 //apply from: "$projectDir/gradle/build-scan.gradle"
 
 wrapper {
-  gradleVersion = '5.1.1'
+  gradleVersion = '5.2.1'
   distributionType = Wrapper.DistributionType.BIN
 }

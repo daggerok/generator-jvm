@@ -211,80 +211,80 @@ script:
 #  - ./mvnw -Pdocs >/dev/null
 
 
-######## 11-20
-#
-#  # scala-sbt
-#  - cd ${e2e}
-#  - yo jvm -n scala-sbt -t scala-sbt
-#  - cd scala-sbt/
-#  - ./sbtw clean compile assembly test >/dev/null
-#  - ./sbtw run
-#  - java -jar ./target/scala-2.12/*-assembly-*.jar
-#  - docker-compose -f docker-compose-sbt.yaml down -v
-#  - docker-compose -f docker-compose-sbt.yaml up --build
-#
-#  # scala-sbt-akka-actor
-#  - cd ${e2e}
-#  - yo jvm -n scala-sbt-akka-actor -t scala-sbt-akka-actor
-#  - cd scala-sbt-akka-actor/
-#  - ./sbtw clean compile assembly test run >/dev/null
-#  - ./sbtw run
-#  - java -jar ./target/scala-2.12/*-assembly-*.jar
-#  - docker-compose -f docker-compose-sbt.yaml down -v
-#  - docker-compose -f docker-compose-sbt.yaml up --build
-#
-#  # java-akka-actor
-#  - cd ${e2e}
-#  - yo jvm -n java-akka-actor -t java-akka-actor
-#  - cd java-akka-actor/
-#  - ./gradlew >/dev/null
-#  - java -jar ./build/libs/*.jar
-#  - docker-compose -f docker-compose-gradle.yaml down -v
-#  - docker-compose -f docker-compose-gradle.yaml up --build
-#  - ./mvnw >/dev/null
-#  - java -jar ./target/*-all.jar
-#  - docker-compose -f docker-compose-maven.yaml down -v
-#  - docker-compose -f docker-compose-maven.yaml up --build
-#
-#  # scala-gradle-akka-actor
-#  - cd ${e2e}
-#  - yo jvm -n scala-gradle-akka-actor -t scala-gradle-akka-actor
-#  - cd scala-gradle-akka-actor/
-#  - ./gradlew >/dev/null
-#  - bash ./build/install/scala-gradle-akka-actor/bin/scala-gradle-akka-actor
-#  - docker-compose -f docker-compose-gradle.yaml down -v
-#  - docker-compose -f docker-compose-gradle.yaml up --build
-#
-#  # scala-gradle-akka-persistence
-#  - cd ${e2e}
-#  - yo jvm -n scala-gradle-akka-persistence -t scala-gradle-akka-persistence
-#  - cd scala-gradle-akka-persistence/
-#  - ./gradlew >/dev/null
-#  - bash ./build/install/scala-gradle-akka-persistence/bin/scala-gradle-akka-persistence
-#  - docker-compose -f docker-compose-gradle.yaml down -v
-#  - docker-compose -f docker-compose-gradle.yaml up --build
-#
-#  # scala-2.11
-#  - cd ${e2e}
-#  - yo jvm -t scala-2.11 -n scala-2.11
-#  - cd scala-2_11/
-#  - ./mvnw clean package >/dev/null
-#  - docker-compose -f docker-compose-maven.yaml down -v
-#  - docker-compose -f docker-compose-maven.yaml up --build
-#  - ./gradlew build >/dev/null
-#  - docker-compose -f docker-compose-gradle.yaml down -v
-#  - docker-compose -f docker-compose-gradle.yaml up --build
-#
-#  # scala (2.12)
-#  - cd ${e2e}
-#  - yo jvm -n scala -t scala
-#  - cd scala/
-#  - ./mvnw clean package >/dev/null
-#  - docker-compose -f docker-compose-maven.yaml down -v
-#  - docker-compose -f docker-compose-maven.yaml up --build
-#  - ./gradlew build >/dev/null
-#  - docker-compose -f docker-compose-gradle.yaml down -v
-#  - docker-compose -f docker-compose-gradle.yaml up --build
+####### 11-20
+
+  # scala-sbt
+  - cd ${e2e}
+  - yo jvm -n scala-sbt -t scala-sbt
+  - cd scala-sbt/
+  - ./sbtw clean compile assembly test >/dev/null
+  - ./sbtw run
+  - java -jar ./target/scala-2.12/*-assembly-*.jar
+  - docker-compose -f docker-compose-sbt.yaml down -v
+  - docker-compose -f docker-compose-sbt.yaml up --build
+
+  # scala-sbt-akka-actor
+  - cd ${e2e}
+  - yo jvm -n scala-sbt-akka-actor -t scala-sbt-akka-actor
+  - cd scala-sbt-akka-actor/
+  - ./sbtw clean compile assembly test run >/dev/null
+  - ./sbtw run
+  - java -jar ./target/scala-2.12/*-assembly-*.jar
+  - docker-compose -f docker-compose-sbt.yaml down -v
+  - docker-compose -f docker-compose-sbt.yaml up --build
+
+  # java-akka-actor
+  - cd ${e2e}
+  - yo jvm -n java-akka-actor -t java-akka-actor
+  - cd java-akka-actor/
+  - ./gradlew >/dev/null
+  - java -jar ./build/libs/*.jar
+  - docker-compose -f docker-compose-gradle.yaml down -v
+  - docker-compose -f docker-compose-gradle.yaml up --build
+  - ./mvnw >/dev/null
+  - java -jar ./target/*-all.jar
+  - docker-compose -f docker-compose-maven.yaml down -v
+  - docker-compose -f docker-compose-maven.yaml up --build
+
+  # scala-gradle-akka-actor
+  - cd ${e2e}
+  - yo jvm -n scala-gradle-akka-actor -t scala-gradle-akka-actor
+  - cd scala-gradle-akka-actor/
+  - ./gradlew >/dev/null
+  - bash ./build/install/scala-gradle-akka-actor/bin/scala-gradle-akka-actor
+  - docker-compose -f docker-compose-gradle.yaml down -v
+  - docker-compose -f docker-compose-gradle.yaml up --build
+
+  # scala-gradle-akka-persistence
+  - cd ${e2e}
+  - yo jvm -n scala-gradle-akka-persistence -t scala-gradle-akka-persistence
+  - cd scala-gradle-akka-persistence/
+  - ./gradlew >/dev/null
+  - bash ./build/install/scala-gradle-akka-persistence/bin/scala-gradle-akka-persistence
+  - docker-compose -f docker-compose-gradle.yaml down -v
+  - docker-compose -f docker-compose-gradle.yaml up --build
+
+  # scala-2.11
+  - cd ${e2e}
+  - yo jvm -t scala-2.11 -n scala-2.11
+  - cd scala-2_11/
+  - ./mvnw clean package >/dev/null
+  - docker-compose -f docker-compose-maven.yaml down -v
+  - docker-compose -f docker-compose-maven.yaml up --build
+  - ./gradlew build >/dev/null
+  - docker-compose -f docker-compose-gradle.yaml down -v
+  - docker-compose -f docker-compose-gradle.yaml up --build
+
+  # scala (2.12)
+  - cd ${e2e}
+  - yo jvm -n scala -t scala
+  - cd scala/
+  - ./mvnw clean package >/dev/null
+  - docker-compose -f docker-compose-maven.yaml down -v
+  - docker-compose -f docker-compose-maven.yaml up --build
+  - ./gradlew build >/dev/null
+  - docker-compose -f docker-compose-gradle.yaml down -v
+  - docker-compose -f docker-compose-gradle.yaml up --build
 
 
 ######## 21-27
@@ -371,71 +371,71 @@ script:
 #  - ./gradlew composeDown
 
 
-####### 28-35
-
-  # java-spring-boot
-  - cd ${e2e}
-  - yo jvm -n javaspringboot -t java-spring-boot
-  - cd javaspringboot
-  - ./gradlew -S >/dev/null
-  - ./mvnw clean deploy >/dev/null
-  - ./mvnw -Pdocs >/dev/null
-
-  # java-spring-boot-2.0.x
-  - cd ${e2e}
-  - yo jvm -n javaspringboot20x -t java-spring-boot-2.0.x
-  - cd javaspringboot20x
-  - ./gradlew -S >/dev/null
-  - ./mvnw clean deploy >/dev/null
-  - ./mvnw -Pdocs >/dev/null
-
-  # java-spring-boot-1.x
-  - cd ${e2e}
-  - yo jvm -n javaspringboot1x -t java-spring-boot-1.x
-  - cd javaspringboot1x
-  - ./gradlew -S >/dev/null
-  - ./mvnw clean deploy >/dev/null
-  - ./mvnw -Pdocs >/dev/null
-
-  # java-spring-cloud-function-web
-  - cd ${e2e}/
-  - yo jvm -n javaspringcloudfunctionweb -t java-spring-cloud-function-web
-  - cd javaspringcloudfunctionweb
-  - ./gradlew -S >/dev/null
-  - ./mvnw clean deploy >/dev/null
-  - ./mvnw -Pdocs >/dev/null
-
-  # kotlin-spring-cloud-function-web
-  - cd ${e2e}
-  - yo jvm -n kotlinspringcloudfunctionweb -t kotlin-spring-cloud-function-web
-  - cd kotlinspringcloudfunctionweb
-  - ./gradlew -S >/dev/null
-  - ./mvnw clean deploy >/dev/null
-  - ./mvnw -Pdocs >/dev/null
-
-  # kotlin-spring-boot
-  - cd ${e2e}
-  - yo jvm -n kotlinspringboot -t kotlin-spring-boot
-  - cd kotlinspringboot
-  - ./gradlew -S >/dev/null
-  - ./mvnw clean deploy >/dev/null
-  - ./mvnw -Pdocs
-
-  # kotlin-spring-boot-2.0.x
-  - cd ${e2e}
-  - yo jvm -n kotlinspringboot20x -t kotlin-spring-boot-2.0.x
-  - cd kotlinspringboot20x
-  - ./gradlew -S >/dev/null
-  - ./mvnw clean deploy >/dev/null
-  - ./mvnw -Pdocs
-
-  # kotlin-spring-boot-1.x
-  - cd ${e2e}
-  - yo jvm -n kotlinspringboot1x -t kotlin-spring-boot-1.x
-  - cd kotlinspringboot1x
-  - ./gradlew -S >/dev/null
-  - ./mvnw clean deploy >/dev/null
-  - ./mvnw -Pdocs
+######## 28-35
+#
+#  # java-spring-boot
+#  - cd ${e2e}
+#  - yo jvm -n javaspringboot -t java-spring-boot
+#  - cd javaspringboot
+#  - ./gradlew -S >/dev/null
+#  - ./mvnw clean deploy >/dev/null
+#  - ./mvnw -Pdocs >/dev/null
+#
+#  # java-spring-boot-2.0.x
+#  - cd ${e2e}
+#  - yo jvm -n javaspringboot20x -t java-spring-boot-2.0.x
+#  - cd javaspringboot20x
+#  - ./gradlew -S >/dev/null
+#  - ./mvnw clean deploy >/dev/null
+#  - ./mvnw -Pdocs >/dev/null
+#
+#  # java-spring-boot-1.x
+#  - cd ${e2e}
+#  - yo jvm -n javaspringboot1x -t java-spring-boot-1.x
+#  - cd javaspringboot1x
+#  - ./gradlew -S >/dev/null
+#  - ./mvnw clean deploy >/dev/null
+#  - ./mvnw -Pdocs >/dev/null
+#
+#  # java-spring-cloud-function-web
+#  - cd ${e2e}/
+#  - yo jvm -n javaspringcloudfunctionweb -t java-spring-cloud-function-web
+#  - cd javaspringcloudfunctionweb
+#  - ./gradlew -S >/dev/null
+#  - ./mvnw clean deploy >/dev/null
+#  - ./mvnw -Pdocs >/dev/null
+#
+#  # kotlin-spring-cloud-function-web
+#  - cd ${e2e}
+#  - yo jvm -n kotlinspringcloudfunctionweb -t kotlin-spring-cloud-function-web
+#  - cd kotlinspringcloudfunctionweb
+#  - ./gradlew -S >/dev/null
+#  - ./mvnw clean deploy >/dev/null
+#  - ./mvnw -Pdocs >/dev/null
+#
+#  # kotlin-spring-boot
+#  - cd ${e2e}
+#  - yo jvm -n kotlinspringboot -t kotlin-spring-boot
+#  - cd kotlinspringboot
+#  - ./gradlew -S >/dev/null
+#  - ./mvnw clean deploy >/dev/null
+#  - ./mvnw -Pdocs
+#
+#  # kotlin-spring-boot-2.0.x
+#  - cd ${e2e}
+#  - yo jvm -n kotlinspringboot20x -t kotlin-spring-boot-2.0.x
+#  - cd kotlinspringboot20x
+#  - ./gradlew -S >/dev/null
+#  - ./mvnw clean deploy >/dev/null
+#  - ./mvnw -Pdocs
+#
+#  # kotlin-spring-boot-1.x
+#  - cd ${e2e}
+#  - yo jvm -n kotlinspringboot1x -t kotlin-spring-boot-1.x
+#  - cd kotlinspringboot1x
+#  - ./gradlew -S >/dev/null
+#  - ./mvnw clean deploy >/dev/null
+#  - ./mvnw -Pdocs
 
   # done
   - cd ${base}
