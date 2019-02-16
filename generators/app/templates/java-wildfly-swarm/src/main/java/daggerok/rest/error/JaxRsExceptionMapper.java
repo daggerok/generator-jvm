@@ -1,5 +1,6 @@
 package daggerok.rest.error;
 
+import io.vavr.Function3;
 import io.vavr.control.Try;
 import lombok.extern.slf4j.Slf4j;
 
@@ -11,7 +12,6 @@ import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 import java.net.URL;
-import java.util.function.BiFunction;
 
 import static java.lang.String.format;
 import static javax.ws.rs.core.Response.Status.BAD_REQUEST;
@@ -22,28 +22,29 @@ public class JaxRsExceptionMapper implements ExceptionMapper<Throwable> {
 
   @Context UriInfo uriInfo;
 
-  final BiFunction<String, String, String> url = (method, path) -> {
-    final Try<URL> tryUrl = Try.of(() -> uriInfo.getBaseUriBuilder()
-                                                .build()
-                                                .toURL());
-    if (tryUrl.isFailure())
-      return format("%s %s", method, path);
-    final URL url = tryUrl.get();
+  static final Function3<UriInfo, String, String, String> url = (uriInfo, method, path) -> {
+    Try<URL> tryUrl = Try.of(() -> uriInfo.getBaseUriBuilder().build().toURL());
+    if (tryUrl.isFailure()) return format("%s %s", method, path);
+
+    URL url = tryUrl.get();
     return format("%s %s://%s%s", method, url.getProtocol(), url.getAuthority(), path);
   };
 
-  final JsonArray endopints = Json.createArrayBuilder()
-                                  .add(url.apply("GET", "/api/v1/hello"))
-                                  .add(url.apply("GET", "/api/v1/hello/{uuid}"))
-                                  .build();
+  public Response toResponse(Throwable e) {
 
-  public Response toResponse(final Throwable e) {
-    final String error = format("%s - %s", e.getClass().getSimpleName(), e.getLocalizedMessage());
-    log.error("handling fallback: {}", error, e);
+    String error = format("%s: %s", e.getClass().getSimpleName(), e.getLocalizedMessage());
+    //log.error("handling fallback: {}", error, e);
+    log.error("handling fallback: {}", error);
+
+    JsonArray resources = Json.createArrayBuilder()
+                              .add(url.apply(uriInfo, "GET", "/api/v1/hello"))
+                              .add(url.apply(uriInfo, "GET", "/api/v1/hello/{uuid}"))
+                              .build();
+
     return Response.status(BAD_REQUEST)
                    .entity(Json.createObjectBuilder()
+                               .add("resources", resources)
                                .add("error", error)
-                               .add("available endopints", endopints)
                                .build())
                    .build();
   }
