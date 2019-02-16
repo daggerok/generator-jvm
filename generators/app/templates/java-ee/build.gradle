@@ -6,7 +6,7 @@ buildscript {
     slf4jVersion = '1.7.25'
     jgivenVersion = '0.15.3'
     logbackVersion = '1.2.3'
-    lombokVersion = '1.18.4'
+    lombokVersion = '1.18.6'
     materializecssVersion = '1.0.0'
     materialDesignIconsVersion = '3.0.1'
     hibernateCoreVersion = '4.2.18.Final'

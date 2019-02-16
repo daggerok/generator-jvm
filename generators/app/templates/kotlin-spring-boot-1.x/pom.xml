@@ -35,7 +35,7 @@
     <jakson-kotlin.version>2.9.7</jakson-kotlin.version>
     <assertj.version>3.11.1</assertj.version>
     <assertk.version>0.12</assertk.version>
-    <lombok.version>1.18.4</lombok.version>
+    <lombok.version>1.18.6</lombok.version>
     <kotlin.version>1.2.71</kotlin.version><!-- kotlin 1.3 for some reasons doesn't work... -->
     <jgiven.version>0.16.1</jgiven.version>
     <junit4.version>4.12</junit4.version>
