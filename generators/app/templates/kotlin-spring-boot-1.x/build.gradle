@@ -1,7 +1,7 @@
 buildscript {
   ext {
     springBootVersion = '1.5.19.RELEASE'
-    springCloudVersion = 'Edgware.RELEASE'
+    springCloudVersion = 'Edgware.SR5'
     javaVersion = JavaVersion.VERSION_1_8
     materialDesignIconsVersion = '3.0.1'
     materializecssVersion = '1.0.0'

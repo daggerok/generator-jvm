@@ -21,7 +21,7 @@
     <material.design.icons.version>3.0.1</material.design.icons.version>
     <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
     <hibernate.core.version>4.2.18.Final</hibernate.core.version>
-    <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
+    <spring-cloud.version>Greenwich.SR1</spring-cloud.version>
     <materializecss.version>1.0.0</materializecss.version>
     <spring-boot.version>2.0.8.RELEASE</spring-boot.version>
     <jakson-kotlin.version>2.9.7</jakson-kotlin.version>

@@ -28,7 +28,7 @@
     <spring-cloud-function.version>1.0.1.RELEASE</spring-cloud-function.version>
     <material.design.icons.version>3.0.1</material.design.icons.version>
     <spring-boot.version>${project.parent.version}</spring-boot.version>
-    <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
+    <spring-cloud.version>Greenwich.SR1</spring-cloud.version>
     <materializecss.version>1.0.0</materializecss.version>
     <junit.jupiter.version>5.3.1</junit.jupiter.version>
     <assertj.version>3.11.1</assertj.version>
