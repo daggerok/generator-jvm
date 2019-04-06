@@ -3,7 +3,7 @@ env:
     - TERM=dumb
 
 language: java
-jdk: oraclejdk8
+jdk: openjdk8
 node_js: lts/*
 
 service:
