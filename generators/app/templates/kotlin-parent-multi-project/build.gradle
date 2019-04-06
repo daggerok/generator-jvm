@@ -12,7 +12,7 @@ buildscript {
     jacksonKotlinVersion = '2.9.7'
     materializecssVersion = '1.0.0'
     materialDesignIconsVersion = '3.0.1'
-    springBootVersion = '2.1.3.RELEASE'
+    springBootVersion = '2.1.4.RELEASE'
     springCloudVersion = '2.0.2.RELEASE'
     assertkJvmVersion = '0.12'
     assertjVersion = '3.11.1'
