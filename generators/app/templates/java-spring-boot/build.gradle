@@ -1,7 +1,7 @@
 buildscript {
   ext {
     springBootVersion = '2.1.4.RELEASE'
-    springCloudVersion = 'Greenwich.SR1'
+    springCloudVersion = 'Greenwich.RELEASE'
     javaVersion = JavaVersion.VERSION_1_8
     materialDesignIconsVersion = '3.0.1'
     materializecssVersion = '1.0.0'
@@ -57,7 +57,7 @@ plugins {
 
 /*
 wrapper {
-  gradleVersion = '5.2.1'
+  gradleVersion = '5.4.1'
   distributionType = Wrapper.DistributionType.BIN
 }
 */

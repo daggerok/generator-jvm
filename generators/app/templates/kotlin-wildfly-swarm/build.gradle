@@ -62,7 +62,7 @@ plugins {
 apply plugin: 'wildfly-swarm'
 
 wrapper {
-  gradleVersion = '5.2.1'
+  gradleVersion = '5.4.1'
   distributionType = Wrapper.DistributionType.BIN
 }
 
