@@ -1,16 +1,16 @@
 {
   "name": "generator-jvm",
-  "version": "1.18.92",
+  "version": "1.18.93",
   "dependencies": {
     "chalk": "2.4.2",
     "yeoman-generator": "3.2.0",
     "yosay": "2.0.2"
   },
   "devDependencies": {
-    "@types/node": "11.13.0",
-    "@types/yeoman-generator": "3.1.1",
+    "@types/node": "12.0.0",
+    "@types/yeoman-generator": "3.1.2",
     "coveralls": "3.0.3",
-    "husky": "1.3.1",
+    "husky": "2.2.0",
     "yeoman-assert": "3.1.1",
     "yeoman-test": "1.9.1"
   },

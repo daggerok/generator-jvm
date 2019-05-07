@@ -20,9 +20,9 @@
     <project.resources.outputEncoding>${encoding}</project.resources.outputEncoding>
     <material.design.icons.version>3.0.1</material.design.icons.version>
     <hibernate.core.version>4.2.18.Final</hibernate.core.version>
-    <spring-cloud.version>Greenwich.SR1</spring-cloud.version>
+    <spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
     <materializecss.version>1.0.0</materializecss.version>
-    <spring-boot.version>2.0.8.RELEASE</spring-boot.version>
+    <spring-boot.version>2.0.9.RELEASE</spring-boot.version>
     <junit.jupiter.version>5.3.1</junit.jupiter.version>
     <assertj.version>3.11.1</assertj.version>
     <assertk.version>0.12</assertk.version>

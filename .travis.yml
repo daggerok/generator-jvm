@@ -1,14 +1,16 @@
+notifications:
+  email: false
+git:
+  depth: false
+  quiet: true
 env:
   global:
     - TERM=dumb
-
 language: java
 jdk: openjdk8
 node_js: lts/*
-
 service:
   - docker
-
 addons:
   apt:
     packages:
@@ -22,7 +24,6 @@ addons:
       - tree
       - jq
       - python-pip
-
 install: true
 before_install:
   - export CHROME_BIN=/usr/bin/google-chrome
@@ -443,7 +444,6 @@ script:
 after_script:
   - npm rm    generator-jvm || echo "JVM generator wasn't found locally"
   - npm rm -g generator-jvm || echo "JVM generator wasn't found globally"
-
 deploy:
   provider: npm
   email: daggerok@gmail.com
@@ -455,15 +455,7 @@ deploy:
     repo: daggerok/generator-jvm
     branch: master
 #  tag: next
-
 before_cache:
-  - for item in $(find ~/.gradle -name "*.lock");
-    do sudo rm -rf $item ;
+  - for item in $(find ~/.gradle -name "*.lock") ;
+      do sudo rm -rf $item ;
     done
-
-notifications:
-  email: false
-
-git:
-  depth: false
-  quiet: true
