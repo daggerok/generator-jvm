@@ -1,6 +1,10 @@
 # generator-jvm [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
 > Generate JVM (java, kotlin, scala) project with gradle / maven build systems and docker / docker-compose for rapid development
 
+## See also
+
+I aslo have a lot of jvm starters [here](https://github.com/daggerok/main-starter), and not sure that will move all of them inside this generator
+
 ## Installation
 
 First, install [Yeoman](http://yeoman.io) and generator-jvm using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
