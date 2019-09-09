@@ -6,11 +6,11 @@ const yosay = require('yosay');
 
 const { version } = require('../../package.json');
 
-const defaultProjectName = 'app';
-const defaultProjectType = 'java';
+const _defaultProjectName = 'app';
+const _defaultProjectType = 'java';
 
-const replaceSpacesWithDash = input =>
-  (input || defaultProjectName).trim()
+const _replaceSpacesWithDash = input =>
+  (input || _defaultProjectName).trim()
     .replace(/\./g, '_')
     .replace(/\W+/g, '-');
 
@@ -56,8 +56,8 @@ module.exports = class extends Generator {
     ];
 
     this.props = {
-      projectDirectory: defaultProjectName,
-      projectType: defaultProjectType,
+      projectDirectory: _defaultProjectName,
+      projectType: _defaultProjectType,
     };
 
     this.option('name', {
@@ -96,16 +96,16 @@ module.exports = class extends Generator {
       name: 'projectType',
       message: 'What kind of project do you wanna build today, my friend?',
       choices: this.projectTypes,
-      default: defaultProjectType,
+      default: _defaultProjectType,
     });
 
     if (!!name) this.props.projectDirectory = name;
-    else if (typeOptionFound) this.props.projectDirectory = defaultProjectName;
+    else if (typeOptionFound) this.props.projectDirectory = _defaultProjectName;
     else this.prompts.push({
       type: 'input',
       name: 'projectDirectory',
       message: 'Enter application project directory name',
-      default: defaultProjectName
+      default: _defaultProjectName
     });
   }
 
@@ -126,13 +126,13 @@ module.exports = class extends Generator {
   writing() {
 
     /* safety */
-    this.props.projectDirectory = replaceSpacesWithDash(this.props.projectDirectory);
+    this.props.projectDirectory = _replaceSpacesWithDash(this.props.projectDirectory);
     this.props.projectType = this.props.projectType.trim().toLowerCase();
 
     /* RAW files. Using: copy functionality as is */
-    this.copyCommons();
-    this.copyDottedFilesAndFolders();
-    this.copyMavenWrapper();
+    this._copyCommons();
+    this._copyDottedFilesAndFolders();
+    this._copyMavenWrapper();
 
     /* copy project files by type */
     // WARNING: this block of code must be inside writing block!
@@ -147,12 +147,12 @@ module.exports = class extends Generator {
     ));
 
     /* Template files. Using: copyTpl functionality for substitution */
-    this.applyCommonTemplatesSubsctitutions();
-    this.applyAllProjectTemplatesSubsctitutions();
-    this.applyTemplatesSubsctitutions();
+    this._applyCommonTemplatesSubstitutions();
+    this._applyAllProjectTemplatesSubstitutions();
+    this._applyTemplatesSubstitutions();
   }
 
-  copyCommons() {
+  _copyCommons() {
     /* copy commons */
     [
       'docs',
@@ -171,7 +171,7 @@ module.exports = class extends Generator {
     ));
   }
 
-  copyDottedFilesAndFolders() {
+  _copyDottedFilesAndFolders() {
 
     [
       'gitignore',
@@ -185,7 +185,7 @@ module.exports = class extends Generator {
     ));
   }
 
-  copyMavenWrapper() {
+  _copyMavenWrapper() {
 
     /* copy dotted files / dirs, like: .mvn, .gitignore, ... */
     switch (this.props.projectType) {
@@ -214,7 +214,7 @@ module.exports = class extends Generator {
     }
   }
 
-  applyCommonTemplatesSubsctitutions() {
+  _applyCommonTemplatesSubstitutions() {
     /* apply common template substitutions */
     [
       // // disable fo now:
@@ -231,7 +231,7 @@ module.exports = class extends Generator {
     ));
   }
 
-  applyAllProjectTemplatesSubsctitutions() {
+  _applyAllProjectTemplatesSubstitutions() {
     /* all project templates substitutions */
     [
       '.travis.yml',
@@ -244,7 +244,7 @@ module.exports = class extends Generator {
     ));
   }
 
-  applyTemplatesSubsctitutions() {
+  _applyTemplatesSubstitutions() {
     /* apply template substitutions */
     switch (this.props.projectType) {
 
