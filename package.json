@@ -1,6 +1,6 @@
 {
   "name": "generator-jvm",
-  "version": "1.18.96",
+  "version": "1.18.97",
   "dependencies": {
     "chalk": "2.4.2",
     "yeoman-generator": "4.0.1",
@@ -69,5 +69,5 @@
   "jest": {
     "testEnvironment": "node"
   },
-  "repository": "daggerok/generator-jvm"
+  "repository": "https://github.com/daggerok/generator-jvm"
 }
