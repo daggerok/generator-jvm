@@ -3,7 +3,7 @@
 
 ## See also
 
-I aslo have a lot of jvm starters [here](https://github.com/daggerok/main-starter), and not sure that will move all of them inside this generator
+I aslo have a lot of jvm starters [here](https://github.com/daggerok/main-starter#other-available-branches), and not sure that will move all of them inside this generator
 
 ## Installation
 
