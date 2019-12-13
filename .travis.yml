@@ -19,7 +19,6 @@ addons:
   apt:
     update: true
     packages:
-      - jq
       - bash
       - curl
       - tree
