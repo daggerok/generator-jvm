@@ -23,7 +23,7 @@
     <scala.version>${scala.compat.version}.6</scala.version>
     <scalactic.version>3.0.5</scalactic.version>
     <scalatest.version>3.0.5</scalatest.version>
-    <junit4.version>4.12</junit4.version>
+    <junit4.version>4.13.1</junit4.version>
     <specs2.junit.version>4.3.3</specs2.junit.version>
     <assertj.version>3.11.1</assertj.version>
     <assertk.version>0.12</assertk.version>
