@@ -1,7 +1,7 @@
 notifications:
   email: false
 git:
-  depth: false
+  depth: 3
   quiet: true
 env:
   global:
